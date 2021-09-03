@@ -24,6 +24,7 @@ import {
   availableAmount,
   buy,
   chatPrivate,
+  choiceFollowsFight,
   cliExecute,
   containsText,
   create,
@@ -87,6 +88,7 @@ import {
   adventureMacro,
   adventureMacroAuto,
   get,
+  have,
   Macro,
   Witchess,
 } from "libram";
@@ -123,7 +125,12 @@ let HOT_RES_TURNS = 0;
 
 let TEMP_TURNS = 0;
 
-// test order will be stats, hot, item, NC, Fam, weapon, spell
+//aborts before doing test
+const HALT_BEFORE_TEST = getPropertyBoolean("c2t_hccs_haltBeforeTest");
+//prints modtrace before non-stat tests
+const PRINT_MODTRACE = getPropertyBoolean("c2t_hccs_printModtrace");
+
+// test order will be stats, weapon, spell, hot, NC, Fam, item
 
 const START_TIME = gametimeToInt();
 
@@ -256,10 +263,15 @@ function summonBrickoOyster(maxSummons: number) {
 function fightSausageIfGuaranteed() {
   if (sausageFightGuaranteed()) {
     equip($item`Iunion Crown`);
-    equip($slot`shirt`, $item`none`);
+    if (have($item`makeshift garbage shirt`)){
+      equip($slot`shirt`, $item`makeshift garbage shirt`);
+    }
+    else {
+      equip($slot`shirt`, $item`none`);
+    }
     equip($item`Fourth of May Cosplay Saber`);
     equip($item`Kramco Sausage-o-Matic™`);
-    equip($item`old sweatpants`);
+    equip($item`Cargo Cultist Shorts`);
     equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
     equip($slot`acc2`, $item`Powerful Glove`);
     equip($slot`acc3`, $item`Lil' Doctor™ bag`);
@@ -305,8 +317,8 @@ export function withMacro<T>(macro: Macro, action: () => T) {
 if (myPathId() !== 25) abort();
 
 // Don't buy stuff from NPC stores.
-setProperty("_saved_autoSatisfyWithNPCs", getProperty("autoSatisfyWithNPCs"));
-setProperty("autoSatisfyWithNPCs", "false");
+//setProperty("_saved_autoSatisfyWithNPCs", getProperty("autoSatisfyWithNPCs"));
+//setProperty("autoSatisfyWithNPCs", "false");
 
 setProperty("recoveryScript", "");
 
@@ -332,7 +344,12 @@ setAutoAttack(0);
 
 // Default equipment.
 equip($item`Iunion Crown`);
-equip($slot`shirt`, $item`none`);
+if (have($item`makeshift garbage shirt`)){
+  equip($slot`shirt`, $item`makeshift garbage shirt`);
+}
+else {
+  equip($slot`shirt`, $item`none`);
+}
 equip($item`vampyric cloake`);
 equip($item`Fourth of May Cosplay Saber`);
 // equip($item[Kramco Sausage-o-Matic&trade;]);
@@ -342,10 +359,10 @@ equip($slot`acc2`, $item`Powerful Glove`);
 equip($slot`acc3`, $item`Lil' Doctor™ bag`);
 
 if (!testDone(TEST_COIL_WIRE)) {
-  setClan("Bonus Adventures from Hell");
+  setClan("Ferengi Commerce Authority");
   if (getPropertyInt("_clanFortuneConsultUses") < 3) {
     while (getPropertyInt("_clanFortuneConsultUses") < 3) {
-      cliExecute("fortune cheesefax");
+      cliExecute("fortune chatplanet");
       cliExecute("wait 5");
     }
   }
@@ -356,7 +373,15 @@ if (!testDone(TEST_COIL_WIRE)) {
     }
   }
 
+  if (getProperty("boomBoxSong") !== "Total Eclipse of Your Meat") {
+    cliExecute("boombox meat");
+  }
+
   // retrieve_item(1, $item[fish hatchet]);
+
+  //setup terminal skills
+  cliExecute("terminal educate extract");
+  cliExecute("terminal educate digitize");
 
   // get cowboy boots
   visitUrl("place.php?whichplace=town_right&action=townright_ltt");
@@ -371,7 +396,7 @@ if (!testDone(TEST_COIL_WIRE)) {
   }
 
   // Chateau piggy bank
-  visitUrl("place.php?whichplace=chateau&action=chateau_desk1");
+  visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
   // autosell(1, $item[gremlin juice]);
   // autosell(1, $item[ectoplasm <i>au jus</i>]);
   // autosell(1, $item[clove-flavored lip balm]);
@@ -381,7 +406,7 @@ if (!testDone(TEST_COIL_WIRE)) {
   tryUse(1, $item`letter from King Ralph XI`);
   tryUse(1, $item`pork elf goodies sack`);
   autosell(5, $item`baconstone`);
-  // autosell(5, $item[porquoise]);
+  autosell(itemAmount($item`porquoise`)-1, $item`porquoise`);
   autosell(5, $item`hamethyst`);
 
   // Buy toy accordion
@@ -389,8 +414,8 @@ if (!testDone(TEST_COIL_WIRE)) {
 
   // make pantogram pants for hilarity and spell damage
   if (availableAmount($item`pantogram pants`) === 0) {
-    // retrieveItem(1, $item`ten-leaf clover`);
-    cliExecute("pantogram hot|-combat|silent");
+    //retrieveItem(1, $item`ten-leaf clover`);
+    cliExecute("pantogram moxie|hot|weapon dmg|-combat|silent");
   }
 
   ensureSong($effect`The Magical Mojomuscular Melody`);
@@ -406,18 +431,138 @@ if (!testDone(TEST_COIL_WIRE)) {
   }
 
   // Depends on Ez's Bastille script.
-  cliExecute("bastille myst brutalist");
-
+  cliExecute("bastille myst brutalist gesture");
+  
   // Upgrade saber for fam wt
   visitUrl("main.php?action=may4");
   runChoice(4);
 
+  //get Crazy Horse
+  if( getProperty("horseryAvailable") )
+  cliExecute("horsery crazy");
+
+  // Put on some fighting gear
+  equip($item`Iunion Crown`);
+  equip($slot`shirt`, $item`makeshift garbage shirt`);
+  equip($item`Fourth of May Cosplay Saber`);
+  equip($item`latte lovers member's mug`)
+  equip($item`protonic accelerator pack`)
+  // equip($item[Kramco Sausage-o-Matic&trade;]);
+  equip($item`Cargo Cultist Shorts`);
+  equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
+  equip($slot`acc2`, $item`Beach Comb`);
+  equip($slot`acc3`, $item`hewn moon-rune spoon`);
+
+  //Fight Bishop with Reanimated Reanimator to wink at them
+
+  useFamiliar($familiar`Reanimated Reanimator`)
+
+  Macro.trySkill($skill`Micrometeorite`)
+  .trySkill($skill`Sing Along`)
+  .trySkill($skill`Gulp Latte`)
+  .trySkill($skill`Wink At`)
+  .trySkill($skill`Extract`)
+  .attack()
+  .step("repeat").setAutoAttack();
+
+  try {
+    Witchess.fightPiece($monster`Witchess Bishop`);
+    if (choiceFollowsFight()) {
+      visitUrl('choice.php');
+    }
+    while (handlingChoice()) {
+      runChoice(-1);
+    }
+  } finally {
+    setAutoAttack(0);
+  }
+
+  // uses familiar jacks to get camel equipment
+  if (
+    availableAmount($item`dromedary drinking helmet`) === 0 &&
+    getPropertyInt("tomeSummons") < 3
+  ) {
+    cliExecute("create 1 box of familiar jacks");
+    useFamiliar($familiar`Melodramedary`);
+    use(1, $item`box of Familiar Jacks`);
+    equip($item`dromedary drinking helmet`);
+  }
+
+  //Fight Protonic Ghost with Stocking mimic to get bag of many confections equip
+
+  useFamiliar($familiar`Stocking Mimic`);
+  equip($slot`familiar`, $item`none`);
+  equip($item`familiar scrapbook`);
+
+  if( myClass() !== $class`Accordian Thief` ){
+    adventureMacroAuto(
+      $location`The Haunted Kitchen`,
+      
+      Macro.if_('!monstername "The Icewoman"', new Macro().step("abort"))
+        .trySkill($skill`Micrometeorite`)
+        .trySkill($skill`Sing Along`)
+        .trySkill($skill`Extract`)
+        .skill($skill`Shoot Ghost`)
+        .skill($skill`Shoot Ghost`)
+        .skill($skill`Shoot Ghost`)
+        .skill($skill`Trap Ghost`)
+      );
+
+      setAutoAttack(0);
+  }
+
+  equip($slot`familiar`, $item`none`);
+
+  //Fight a Kramco Goblin pre Coil Wire. Latte Chilli no longer required thanks to Fire Extinguisher
+
+  equip($item`Kramco Sausage-o-Matic&trade;`);
+  useDefaultFamiliar();
+
+  adventureMacroAuto(
+    $location`The Haunted Kitchen`,
+    Macro.if_('!monstername "sausage goblin"', new Macro().step("abort"))
+      .skill($skill`Digitize`)
+      .step(justKillTheThing)
+  );
+
+  setAutoAttack(0);
+
+  //Map the Amateur ninja now to set the wink and digitize timers and to get a lil ninja costume for the tot
+
+  useDefaultFamiliar();
+
+  if (availableAmount($item`9140`) === 0 && getPropertyInt("_shatteringPunchUsed") < 3) {
+    Macro.skill($skill`shattering punch`).setAutoAttack();
+    mapMonster($location`The Haiku Dungeon`, $monster`Amateur ninja`);
+    setLocation($location`none`);
+    setAutoAttack(0);
+  }
+
+  const lovePotion = $item`Love Potion #0`;
+  const loveEffect = $effect`Tainted Love Potion`;
+  if (haveEffect(loveEffect) === 0) {
+    if (availableAmount(lovePotion) === 0) {
+      useSkill(1, $skill`Love Mixology`);
+    }
+    visitUrl("desc_effect.php?whicheffect=" + loveEffect.descid);
+    if (
+      numericModifier(loveEffect, "mysticality") < 10 ||
+      numericModifier(loveEffect, "muscle") < -30 ||
+      numericModifier(loveEffect, "moxie") < -30 ||
+      numericModifier(loveEffect, "maximum hp percent") < 0.001 /*||
+      numericModifier(loveEffect, "maximum mp percent") < 0.001*/ 
+    ) {
+      use(1, lovePotion);
+    }
+  }
+
   // Put on some regen gear
   equip($item`Iunion Crown`);
-  equip($slot`shirt`, $item`none`);
-  equip($item`Fourth of May Cosplay Saber`);
+  equip($slot`shirt`, $item`makeshift garbage shirt`);
+  equip($item`vampyric cloake`);
+  equip($item`Fourth of May Cosplay Saber`); 
   // equip($item[Kramco Sausage-o-Matic&trade;]);
-  equip($item`old sweatpants`);
+  equip($item`Cargo Cultist Shorts`);
   equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
   equip($slot`acc2`, $item`Powerful Glove`);
   equip($slot`acc3`, $item`Retrospecs`);
@@ -443,6 +588,7 @@ if (!testDone(TEST_HP)) {
 
   // Grab fish hatchett here, for fam wt, -combat, and muscle tests
   // TODO: see if you can cut this
+  setClan("Bonus Adventures From Hell")
   retrieveItem(1, $item`fish hatchet`);
 
   // pulls wrench from deck
@@ -450,23 +596,9 @@ if (!testDone(TEST_HP)) {
     cliExecute("cheat wrench");
   }
 
-  // uses familiar jacks to get camel equipment
-  if (
-    availableAmount($item`dromedary drinking helmet`) === 0 &&
-    getPropertyInt("tomeSummons") < 3
-  ) {
-    cliExecute("create 1 box of familiar jacks");
-    useFamiliar($familiar`Melodramedary`);
-    use(1, $item`box of Familiar Jacks`);
-    equip($item`dromedary drinking helmet`);
-  }
-
   cliExecute("call detective solver");
   buy(1, $item`shoe gum`);
 
-  // learn extract and digitize
-  cliExecute("terminal educate extract");
-  cliExecute("terminal educate digitize");
 
   const lovePotion = $item`Love Potion #0`;
   const loveEffect = $effect`Tainted Love Potion`;
@@ -508,15 +640,16 @@ if (!testDone(TEST_HP)) {
     create(1, $item`bitchin' meatcar`);
   }
 
-  // scrapbook for +exp
-  equip($item`familiar scrapbook`);
 
   // Depends on Ez's Bastille script.
-  cliExecute("bastille myst brutalist");
+  if (!have($item`brutal brogues`)){
+    cliExecute("bastille myst brutalist");
+  }
 
   // if (get_property('_horsery') != 'crazy horse') cli_execute('horsery crazy');
 
-  // Tune moon sign to Blender. Have to do this now to get chewing gum.
+  /* Tune moon sign to Blender. Have to do this now to get chewing gum.
+  TODO: CHECK IF NEEDED ANYMORE WHAT WITH FIRE EXTINGUISHER
   if (!getPropertyBoolean("moonTuned")) {
     if (getPropertyInt("_campAwaySmileBuffs") === 0) {
       visitUrl("place.php?whichplace=campaway&action=campaway_sky");
@@ -529,7 +662,7 @@ if (!testDone(TEST_HP)) {
 
     // Actually tune the moon.
     visitUrl("inv_use.php?whichitem=10254&doit=96&whichsign=8");
-  }
+  }*/
 
   cliExecute("retrocape mysticality thrill");
 
@@ -538,24 +671,23 @@ if (!testDone(TEST_HP)) {
     cliExecute("crossstreams");
   }
 
+  // scrapbook for +exp
+  equip($item`familiar scrapbook`);
   equip($item`Iunion Crown`);
   equip($slot`shirt`, $item`none`);
-  equip($item`unwrapped knock-off retro superhero cape`); //retrocape
+  equip($item`10647`); //retrocape
   equip($item`Fourth of May Cosplay Saber`);
   // equip($item[Kramco Sausage-o-Matic&trade;]);
-  equip($item`old sweatpants`);
+  equip($item`Cargo Cultist Pants`);
   equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
   equip($slot`acc2`, $item`Powerful Glove`);
   equip($slot`acc3`, $item`Lil' Doctor™ bag`);
 
-  if (
+  /*if (
     getPropertyInt("_brickoFights") === 0 &&
     summonBrickoOyster(7) &&
     availableAmount($item`BRICKO oyster`) > 0
   ) {
-    if (availableAmount($item`bag of many confections`) > 0) throw "We should not have a bag yet.";
-    useFamiliar($familiar`Stocking Mimic`);
-    equip($slot`familiar`, $item`none`);
     if (myHp() < 0.8 * myMaxhp()) {
       visitUrl("clan_viplounge.php?where=hottub");
     }
@@ -567,7 +699,7 @@ if (!testDone(TEST_HP)) {
     use(1, $item`BRICKO oyster`);
     autosell(1, $item`BRICKO pearl`);
     setAutoAttack(0);
-  }
+  }*/
 
   // Prep Sweet Synthesis.
   if (myGardenType() === "peppermint") {
@@ -663,22 +795,22 @@ if (!testDone(TEST_HP)) {
     }
   }
 
-  // Don't use Kramco here.
-  equip($slot`off-hand`, $item`none`);
+  /*// Don't use Kramco here.
+  equip($slot`off-hand`, $item`familiar scrapbook`);
 
   if (haveEffect($effect`Holiday Yoked`) === 0 && getPropertyInt("_kgbTranquilizerDartUses") < 3) {
     equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
     useFamiliar($familiar`Ghost of Crimbo Carols`);
     adventureMacroAuto($location`Noob Cave`, Macro.trySkill($skill`KGB tranquilizer dart`));
     setAutoAttack(0);
-  }
+  }*/
 
   // Chateau rest
   while (getPropertyInt("timesRested") < totalFreeRests()) {
     visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
   }
 
-  while (summonBrickoOyster(11) && availableAmount($item`BRICKO oyster`) > 0) {
+  /*while (summonBrickoOyster(11) && availableAmount($item`BRICKO oyster`) > 0) {
     useDefaultFamiliar();
     if (myHp() < 0.8 * myMaxhp()) {
       visitUrl("clan_viplounge.php?where=hottub");
@@ -691,7 +823,7 @@ if (!testDone(TEST_HP)) {
     use(1, $item`BRICKO oyster`);
     autosell(1, $item`BRICKO pearl`);
     setAutoAttack(0);
-  }
+  }*/
 
   ensureEffect($effect`Song of Bravado`);
 
@@ -704,7 +836,7 @@ if (!testDone(TEST_HP)) {
   ensureSewerItem(1, $item`saucepan`);
 
   // Don't use Kramco here.
-  equip($slot`off-hand`, $item`none`);
+  equip($slot`off-hand`, $item`familiar scrapbook`);
 
   // Fruits in skeleton store (Saber YR)
   const missingOintment =
@@ -937,8 +1069,6 @@ if (!testDone(TEST_HP)) {
   useSkill(1, $skill`Grab a Cold One`);
   useSkill(1, $skill`Acquire Rhinestones`);
   useSkill(1, $skill`Perfect Freeze`);
-  useSkill(1, $skill`Summon Kokomo Resort Pass`);
-  autosell(1, $item`Kokomo Resort Pass`);
   autosell(3, $item`coconut shell`);
   autosell(3, $item`magical ice cubes`);
   autosell(3, $item`little paper umbrella`);
