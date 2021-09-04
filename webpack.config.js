@@ -10,11 +10,8 @@ const packageData = require("./package.json");
 module.exports = {
   entry: {
     // Point "entry" to scripts you want to be CLI-eligible.
-    asmohccs: "./src/hccs.ts",
-    hccsAscend: "./src/hccsAscend.ts",
-    // hccsLibrams: "./src/hccsLibrams.ts",
-    hccsPre: "./src/hccsPre.ts",
-    // macroConsult: "./src/macroConsult.ts",
+    asmohccs: "./src/index.ts",
+    hccsAscend: "./src/gash-hop.ts",
   },
   // Turns on tree-shaking and minification in the default Terser minifier
   // https://webpack.js.org/plugins/terser-webpack-plugin/
