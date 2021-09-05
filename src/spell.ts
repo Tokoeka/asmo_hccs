@@ -1,7 +1,10 @@
 import {
+    adv1,
     availableAmount,
     cliExecute,
+    containsText,
     create,
+    equip,
     handlingChoice,
     myClass,
     myLevel,
@@ -88,18 +91,33 @@ function fingies() {
     }
 }
 
+
 function shower() {
-    useFamiliar($familiar`none`);
+    useFamiliar($familiar`ms. puck man`);
     if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
         uniform();
+        equip($item`vampyric cloake`);
         setChoice(1387, 3);
-        
+
+/*adv1($location`LavaCo&trade; Lamp Factory`, -1, "");
+        if (
+            !containsText(
+                $location`LavaCo&trade; Lamp Factory`.noncombatQueue,
+                "LavaCo&trade; Welcomes You"
+            )
+        ) {
+            throw "Something went wrong at LavaCo.";
+        }
+    equip($item`Fourth of May Cosplay Saber`);
+    */
+
         mapMacro($location`LavaCo™ Lamp Factory`,
                 $monster`factory worker (female)`,
-                Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
+                Macro.skill($skill`Meteor Shower`).skill(`Become a Bat`).skill($skill`Use the Force`)
                 );
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+        set("mappingMonsters", false);
     }
 }
 

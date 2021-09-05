@@ -75,12 +75,12 @@ function thisFireIsOutOfControl() {
         mapMacro(
             $location`The Velvet / Gold Mine`,
             $monster`mine worker (female)`,
-            Macro.if_("monstername Sausage goblin", Macro.step(delevel).step(easyFight).attack().repeat())
-            .if_("monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
+            Macro.if_("monstername Sausage goblin || monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
             .skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`meteor shower`).skill($skill`Use the Force`),
         );
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+        set("mappingMonsters", false);
     }
 }
 

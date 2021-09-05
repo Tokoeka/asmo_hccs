@@ -190,7 +190,7 @@ export function kramcoCheck(): boolean {
 export function useDefaultFamiliar(canAttack = true): void {
     if (!get("_bagOfCandy") && canAttack) {
         useFamiliar($familiar`Stocking Mimic`);
-    } else if (get("camelSpit") !== 100 && !haveEffect($effect`Spit Upon`) 
+    } else if (!haveEffect($effect`Spit Upon`)
         && !get("csServicesPerformed").split(",").includes("Reduce Gazelle Population")
     ) {
         useFamiliar($familiar`Melodramedary`);
@@ -441,7 +441,7 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro): vo
     useSkill($skill`Map the Monsters`);
     if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
     else {
-        while (get("mappingMonsters")) {
+        while (get("mappingMonsters") && !have($effect`Meteor Showered`)) {
             visitUrl(toUrl(location));
             runChoice(1, `heyscriptswhatsupwinkwink=${monster.id}`);
             runCombat(macro.toString());
