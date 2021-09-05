@@ -229,7 +229,7 @@ export function hotresOutfit(): void {
             [$slot`hat`, $items`high-temperature mining mask, Iunion crown`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
             [$slot`weapon`, $items`industrial fire extinguisher, Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $items`meteorite guard, latte lover's members mug`],
+            [$slot`off-hand`, $items`meteorite guard, latte lovers member's mug`],
             [$slot`pants`, $items`lava-proof pants, pantogram pants`],
             [$slot`acc1`, $items`heat-resistant necktie, brutal brogues`],
             [$slot`acc2`, $item`heat-resistant gloves`],

@@ -527,7 +527,7 @@ function digitwinked() {
     uniform();
     useDefaultFamiliar();
     if( !get("latteUnlocks").includes("chili")){
-        equip($slot`off-hand`, $item`latte lover's members mug`)
+        equip($slot`off-hand`, $item`latte lovers member's mug`)
     }
     
     advMacro(
