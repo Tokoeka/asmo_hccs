@@ -34,7 +34,7 @@ PropertyManager.set({
 const startTime = gametimeToInt();
 try {
     testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
-    if (myLevel() < 13) levelUp();
+    if (myLevel() < 15) levelUp(); //want to make sure levelling script completes if it breaks mid-script
     testWrapper("muscle", Test.MUS, muscleTest);
     testWrapper("moxie", Test.MOX, moxTest);
     testWrapper("HP", Test.HP, HPTest);
@@ -42,8 +42,8 @@ try {
     testWrapper("weapon damage", Test.WEAPON, weaponTest);
     testWrapper("spell damage", Test.SPELL, spellTest);
     testWrapper("hot res", Test.HOT_RES, hotTest);
+    testWrapper("familiar", Test.FAMILIAR, familiarTest); //reroute noncom after familiar to ensure will cap
     testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
-    testWrapper("familiar", Test.FAMILIAR, familiarTest);
     testWrapper("item", Test.ITEM, itemTest);
 } finally {
     tests.forEach((testDuration) => {

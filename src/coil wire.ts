@@ -2,7 +2,7 @@ import { availableAmount, cliExecute, create, eat, haveEffect, equip, numericMod
 import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, Macro, Witchess } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./phccs-macros";
-import { advMacro, ensureMp, fightSausageIfAble, mapMacro, useDefaultFamiliar } from "./phredhccs-lib";
+import { advMacro, burnLibrams, ensureMp, fightSausageIfAble, mapMacro, useDefaultFamiliar } from "./phredhccs-lib";
 import { runStart, grimoires } from "./runstart";
 
 function firstFights() {
@@ -117,6 +117,6 @@ export default function coilWire(): number {
     firstFights();
     wireOutfit();
     terribleLove();
-    cliExecute("/cast * candy heart");
+    burnLibrams();
     return 60;
 }
