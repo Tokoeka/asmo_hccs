@@ -48,6 +48,7 @@ import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
 import {
     advMacro,
     advMacroAA,
+    burnLibrams,
     ensureEffect,
     ensureInnerElf,
     ensureMp,
@@ -202,10 +203,11 @@ function witchGhostAgent() {
         Witchess.fightPiece($monster`Witchess Witch`);
     }
     equip($slot`acc3`, $item`battle broom`);
-    SourceTerminal.educate($skill`Portscan`);
 
     const ghostLocation = get("ghostLocation");
     if (ghostLocation) {
+        //moved acquiring portscan into the if to stop it doubling up on portscan if need to rerun the script.
+        SourceTerminal.educate($skill`Portscan`);
         equip($slot`off-hand`, $item`familiar scrapbook`);
         useDefaultFamiliar();
         advMacro(
@@ -267,7 +269,7 @@ function lov() {
         );
         //use(1, $item`LOV Extraterrestrial Chocolate`);
     }
-    cliExecute("/cast * candy heart");
+    burnLibrams();
 }
 
 function tomatoJuiceAndNinjaCostume() {
@@ -518,7 +520,7 @@ function royalty() {
 
 function restAndBuff() {
     while (get("timesRested") < totalFreeRests()) {
-        cliExecute("/cast * candy heart");
+        burnLibrams();
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
     }
 }
@@ -530,30 +532,29 @@ function digitwinked() {
         equip($slot`off-hand`, $item`latte lovers member's mug`)
     }
     
-    advMacro(
+    advMacroAA(
         $location`the haunted kitchen`,
-        Macro.if_(
-            "!monstername sausage goblin", new Macro().step("abort")
-            ).step(delevel)
-            .step(easyFight)
-            .step(candyblast)
-            .attack().repeat()
+        Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), 
+        () => {
+            return getCounters("Digitize", 0, 0) !== "";
+        }
     );
 
+
+    uniform();
     if( get("latteUnlocks").includes("chili")){
         equip($slot`off-hand`, $item`familiar scrapbook`)
     }
-    equip($item`protonic accelerator pack`)
     
-    advMacro(
+    advMacroAA(
         $location`the haunted kitchen`,
-        Macro.if_(
-            "!monstername witchess bishop", new Macro().step("abort")
-            ).step(delevel)
-            .step(easyFight)
-            .step(candyblast)
-            .attack().repeat()
+        Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), 
+        () => {
+            return getCounters("Romantic Monster window end", 0, 0) !== "";
+        }
     );
+
+    
 }
 
 function hybridize() {
