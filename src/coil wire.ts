@@ -53,9 +53,9 @@ function firstFights() {
         useDefaultFamiliar();
     }
     fightSausageIfAble(
-       $location`Noob Cave`,
-       Macro.skill($skill`Micrometeorite`)
-            .skill($skill`Digitize`)
+       $location`The Haunted Kitchen`,
+       Macro.skill($skill`Digitize`) //Digitizing First to ensure Latte does not kill the goblin first
+            .skill($skill`Micrometeorite`)
             .attack()
             .repeat()
     );
