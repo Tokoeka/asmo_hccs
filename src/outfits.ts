@@ -95,7 +95,7 @@ export default function uniform(): void {
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`Iunion Crown`],
             [$slot`shirt`, $item`fresh coat of paint`],
-            [$slot`pants`, $items`pantogram pants, Cargo Cultist Shorts, old sweatpants`],
+            [$slot`pants`, $items`Cargo Cultist Shorts, old sweatpants`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $item`familiar scrapbook`],
             [$slot`acc1`, $item`hewn moon-rune spoon`],
@@ -192,8 +192,8 @@ export function mysticalityOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`astral statuette`],
+            [$slot`weapon`, $item`weeping willow wand`],
+            [$slot`off-hand`, $item`wrench`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
             [$slot`shirt`, $items`denim jacket, shoe ad T-shirt, fresh coat of paint`],
             [$slot`pants`, $item`pantogram pants`],
