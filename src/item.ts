@@ -40,6 +40,7 @@ import {
     synthItem,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
+import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
 
 const predictor = () =>
     60 -
@@ -136,7 +137,9 @@ function pirateDNA() {
     ) {
       advMacroAA(
         $location`Pirates of the Garbage Barges`,
-        Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
+        Macro.if_("monstername Sausage goblin", Macro.step(delevel).step(easyFight).attack().repeat())
+        .if_("monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
+        .item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
         () => {
             return get("dnaSyringe") === "pirate";
         },

@@ -21,6 +21,7 @@ import {
 import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, set, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, fuelUp, horse, tryHead, mapMacro } from "./phredhccs-lib";
+import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
@@ -74,7 +75,9 @@ function thisFireIsOutOfControl() {
         mapMacro(
             $location`The Velvet / Gold Mine`,
             $monster`mine worker (female)`,
-            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`meteor shower`).skill($skill`Use the Force`),
+            Macro.if_("monstername Sausage goblin", Macro.step(delevel).step(easyFight).attack().repeat())
+            .if_("monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
+            .skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`meteor shower`).skill($skill`Use the Force`),
         );
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
