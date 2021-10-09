@@ -91,10 +91,10 @@ function moxBuffs() {
 
     ensureEffect($effect`Quiet Desperation`);
     ensureEffect($effect`Disco Fever`);
-    //ensureEffect($effect`Blubbered Up`);
-    //ensureEffect($effect`Mariachi Mood`);
-    //ensureEffect($effect`Disco State of Mind`);
-    //ensureEffect($effect`Disco Smirk`);
+    ensureEffect($effect`Blubbered Up`);
+    ensureEffect($effect`Mariachi Mood`);
+    ensureEffect($effect`Disco State of Mind`);
+    ensureEffect($effect`Disco Smirk`);
     use(availableAmount($item`rhinestone`), $item`rhinestone`);
 
     if (availableAmount($item`dollop of barbecue sauce`) > 0) {
