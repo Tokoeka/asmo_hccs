@@ -18,7 +18,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import { $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
-import { ensureSong, ensureEffect, setClan, tryUse } from "./phredhccs-lib";
+import { ensureSong, ensureEffect, horse, setClan, tryUse } from "./phredhccs-lib";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -146,8 +146,6 @@ function vote() {
 function deck() {
     if (!get("_deckCardsDrawn")) {
         cliExecute("cheat wrench; cheat rope");
-        //autosell(1, $item`1952 Mickey Mantle card`);
-        //useSkill(2, $skill`Ancestral Recall`);
     }
 }
 
@@ -177,12 +175,12 @@ function buff100() {
 
 }
 
-function horsery() {
-    //get Crazy Horse
+/*function getHorse() {
+    //get Dark Horse - Crazy horse is only really useful when you can dynamically change order of tests
     if( get("horseryAvailable") && get("_horsery")==="") {
-        cliExecute("horsery crazy");
+        cliExecute("horsery dark");
     }
-}
+}*/
 
 export function runStart(): void {
     setSettings();
@@ -195,5 +193,5 @@ export function runStart(): void {
     prepGear();
     scavenge();
     buff100();
-    horsery();
+    horse("dark");
 }
