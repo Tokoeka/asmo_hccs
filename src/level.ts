@@ -134,7 +134,6 @@ function buffMyst() {
     ensureEffect($effect`Feeling Excited`);
     if (!get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
 
-    // eslint-disable-next-line libram/verify-constants
     if (have($item`votive of confidence`)) use($item`votive of confidence`);
 
     if (!get("_freePillKeeperUsed")) {
@@ -238,7 +237,7 @@ function witchGhostAgent() {
         equip($slot`off-hand`, $item`familiar scrapbook`);
         advMacroAA(
             $location`Noob Cave`,
-            Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
+            Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"),
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
             }
@@ -276,7 +275,7 @@ function lov() {
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-        //use(1, $item`LOV Extraterrestrial Chocolate`);
+        use(1, $item`LOV Extraterrestrial Chocolate`);
         burnLibrams();
     }
     
@@ -593,7 +592,7 @@ function hybridize() {
                 Macro.while_("!monstername lava lamprey",
                 Macro.trySkill($skill`Extract`).trySkill($skill`Macrometeorite`)
                 ).if_("monstername lava lamprey",
-                Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`)
+                Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`) //1
                 ), () => {
                     return get("dnaSyringe") !== "fish";
                 }, () => {          
