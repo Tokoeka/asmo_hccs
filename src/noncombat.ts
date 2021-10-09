@@ -21,7 +21,10 @@ import uniform, { noncombatOutfit } from "./outfits";
 const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
 
 function castBuffs() {
-    universalWeightBuffs();
+    //universalWeightBuffs();
+    ensureEffect($effect`Empathy`);
+    ensureEffect($effect`Leash of Linguini`);
+    ensureEffect($effect`Blood Bond`);
     ensureEffect($effect`Smooth Movements`);
     ensureEffect($effect`Feeling Lonely`);
     equip($slot`acc3`, $item`Powerful Glove`);
@@ -62,12 +65,20 @@ function godLobster() {
 
 function testPrep() {
     noncombatOutfit();
-    if (predictor() > 1) {
-        if (!have($effect`Gummed Shoes`)) {
-            if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
-            buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
-            use($item`shoe gum`);
-        }
+    const improvements = [
+        () => {
+            if (!have($effect`Gummed Shoes`)) {
+                if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
+                buy($coinmaster`Precinct Materiel Division`, 1, $item`shoe gum`);
+                use($item`shoe gum`);
+            }
+        },
+        () => use($item`aqueaky toy rose`),
+        () => use($item`shady shades`),
+    ];
+
+    for (const improvement of improvements) {
+        if (predictor() > 1) improvement();
     }
 }
 
