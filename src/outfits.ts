@@ -247,6 +247,7 @@ export function noncombatOutfit(): void {
             [$slot`back`, $item`protonic accelerator pack`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $items`burning paper crane, familiar scrapbook`],
+            [$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`Brutal brogues`],
