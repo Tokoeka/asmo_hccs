@@ -30,6 +30,7 @@ import {
     ensureEffect,
     ensureInnerElf,
     fax,
+    geneTonic,
     horse,
     horsery,
     setChoice,
@@ -58,6 +59,9 @@ function getCrushed() {
             runCombat();
             useDefaultFamiliar();
         }
+        geneTonic("elf");
+        ensureEffect($effect`human-elf hybrid`);
+      
     }
 }
 
