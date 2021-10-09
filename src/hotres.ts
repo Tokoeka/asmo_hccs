@@ -64,22 +64,20 @@ function castBuffs() {
     }
 }
 
-function thisFireIsOutOfControl() {
-    // eslint-disable-next-line libram/verify-constants
+function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mining Mask when we can Foam ourselves
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
         uniform();
-        // eslint-disable-next-line libram/verify-constants
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useFamiliar($familiar`Ms. Puck Man`);
-        mapMacro(
-            $location`The Velvet / Gold Mine`,
-            $monster`mine worker (female)`,
-            Macro.if_("monstername Sausage goblin || monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
-            .skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`meteor shower`).skill($skill`Use the Force`),
+        advMacroAA(
+            $location`Noob Cave`,
+            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
+            () => !have($effect`Fireproof Foam Suit`),
+            () => {
+                visitUrl("choice.php");
+                runChoice(3);
+            }
         );
-        if (handlingChoice()) runChoice(-1);
-        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
-        set("mappingMonsters", false);
     }
 }
 

@@ -18685,10 +18685,9 @@ function familiarTest() {
   return 60 - Math.floor(((0,external_kolmafia_.familiarWeight)((0,external_kolmafia_.myFamiliar)()) + (0,external_kolmafia_.weightAdjustment)()) / 5);
 }
 ;// CONCATENATED MODULE: ./src/hotres.ts
-var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19, hotres_templateObject20;
+var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19;
 
 function hotres_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 
 
 
@@ -18738,22 +18737,21 @@ function castBuffs() {
 }
 
 function thisFireIsOutOfControl() {
-  // eslint-disable-next-line libram/verify-constants
+  //Don't need to spend a Map for High-Temp Mining Mask when we can Foam ourselves
   if ((0,dist.get)("_saberForceUses") < 5 && !(0,dist.have)((0,dist.$effect)(hotres_templateObject11 || (hotres_templateObject11 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"]))))) {
-    outfits_uniform(); // eslint-disable-next-line libram/verify-constants
-
+    outfits_uniform();
     (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject12 || (hotres_templateObject12 = hotres_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(hotres_templateObject13 || (hotres_templateObject13 = hotres_taggedTemplateLiteral(["industrial fire extinguisher"]))));
     (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(hotres_templateObject14 || (hotres_templateObject14 = hotres_taggedTemplateLiteral(["Ms. Puck Man"]))));
-    mapMacro((0,dist.$location)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["The Velvet / Gold Mine"]))), (0,dist.$monster)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["mine worker (female)"]))), dist.Macro.if_("monstername Sausage goblin || monstername witchess bishop", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat()).skill((0,dist.$skill)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["meteor shower"])))).skill((0,dist.$skill)(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["Use the Force"])))));
-    if ((0,external_kolmafia_.handlingChoice)()) (0,external_kolmafia_.runChoice)(-1);
-    (0,dist.set)("_meteorShowerUses", 1 + (0,dist.get)("_meteorShowerUses"));
-    (0,dist.set)("mappingMonsters", false);
+    phredhccs_lib_advMacroAA((0,dist.$location)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => !(0,dist.have)((0,dist.$effect)(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))), () => {
+      (0,external_kolmafia_.visitUrl)("choice.php");
+      (0,external_kolmafia_.runChoice)(3);
+    });
   }
 }
 
 function hotres_testPrep() {
   hotresOutfit();
-  var improvements = [() => ensureEffect((0,dist.$effect)(hotres_templateObject20 || (hotres_templateObject20 = hotres_taggedTemplateLiteral(["Amazing"]))))];
+  var improvements = [() => ensureEffect((0,dist.$effect)(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["Amazing"]))))];
 
   for (var _i = 0, _improvements = improvements; _i < _improvements.length; _i++) {
     var improvement = _improvements[_i];
