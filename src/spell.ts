@@ -4,10 +4,16 @@ import {
     cliExecute,
     containsText,
     create,
+    eat,
     equip,
     handlingChoice,
+    haveEffect,
+    maximize,
     myClass,
+    myHp,
+    myMaxhp,
     myLevel,
+    myMp,
     numericModifier,
     runChoice,
     useFamiliar,
@@ -72,6 +78,40 @@ function castBuffs() {
     }
 }
 
+function deepDarkVisions() {
+    horse("pale");
+    useFamiliar($familiar`Exotic Parrot`);
+    /*if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
+        create(1, $item`box of Familiar Jacks`);
+        use(1, $item`box of Familiar Jacks`);
+    }*/
+
+    maximize("spooky res", false);
+    while (
+        have($skill`Deep Dark Visions`) &&
+        !haveEffect($effect`Visions of the Deep Dark Deeps`)
+    ) {
+        if (myMp() < 20) {
+            create(1, $item`magical sausage`);
+            eat(1, $item`magical sausage`);
+        }
+        while (myHp() < myMaxhp()) {
+            useSkill(1, $skill`Cannelloni Cocoon`);
+        }
+        if (myMp() < 100) {
+            create(1, $item`magical sausage`);
+            eat(1, $item`magical sausage`);
+        }
+        if (Math.round(numericModifier("spooky resistance")) < 10) {
+            ensureEffect($effect`Does It Have a Skull In There??`);
+            if (Math.round(numericModifier("spooky resistance")) < 10) {
+                throw "Not enough spooky res for Deep Dark Visions.";
+            }
+        }
+        useSkill(1, $skill`Deep Dark Visions`);
+    }
+}
+
 function fingies() {
     if (
         !have($effect`Saucefingers`) &&
@@ -96,7 +136,6 @@ function shower() {
     useFamiliar($familiar`ms. puck man`);
     if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
         uniform();
-        equip($item`vampyric cloake`);
         setChoice(1387, 3);
 
 /*adv1($location`LavaCo&trade; Lamp Factory`, -1, "");
@@ -113,7 +152,7 @@ function shower() {
 
         mapMacro($location`LavaCo™ Lamp Factory`,
                 $monster`factory worker (female)`,
-                Macro.skill($skill`Meteor Shower`).skill(`Become a Bat`).skill($skill`Use the Force`)
+                Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
                 );
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
@@ -129,6 +168,7 @@ function testPrep() {
 export default function spellTest(): number {
     castBuffs();
     fingies();
+    deepDarkVisions();
     ensureInnerElf();
     shower();
     testPrep();
