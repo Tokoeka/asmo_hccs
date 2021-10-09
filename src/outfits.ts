@@ -233,8 +233,7 @@ export function hotresOutfit(): void {
             [$slot`pants`, $items`lava-proof pants, pantogram pants`],
             [$slot`acc1`, $items`heat-resistant necktie, brutal brogues`],
             [$slot`acc2`, $item`heat-resistant gloves`],
-            //[$slot`acc3`, $item`Kremlin's Greatest Briefcase`],
-            //[$slot`familiar`, $items`cracker`],
+            [$slot`familiar`, $items`cracker`],
         ]),
         $familiar`Exotic Parrot`
     ).dress();
