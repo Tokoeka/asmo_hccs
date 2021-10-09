@@ -14,6 +14,7 @@ import {
     knollAvailable,
     maximize,
     mpCost,
+    myGardenType,
     myInebriety,
     myLevel,
     myMp,
@@ -73,6 +74,14 @@ function initialExp() {
 
     ensureEffect($effect`Inscrutable Gaze`);
     ensureEffect($effect`Thaumodynamic`);
+
+    if (myGardenType() === "peppermint") {
+        cliExecute("garden pick");
+      } else {
+        print(
+          "WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
+        );
+      }
 
     if (!have($effect`Synthesis: Learning`)) synthExp();
 
@@ -268,8 +277,9 @@ function lov() {
             "LOV Extraterrestrial Chocolate"
         );
         //use(1, $item`LOV Extraterrestrial Chocolate`);
+        burnLibrams();
     }
-    burnLibrams();
+    
 }
 
 function tomatoJuiceAndNinjaCostume() {
@@ -360,18 +370,23 @@ function godLob() {
 function snojo() {
     uniform();
     useDefaultFamiliar();
+    if (get("snojoSetting") === "NONE") {
+        visitUrl("place.php?whichplace=snojo&action=snojo_controller");
+        runChoice(2);
+    }
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
         Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
         () => {
-            return get("dnaSyringe") == "construct";
+            return get("dnaSyringe") !== "construct";
         },
         () => {
             heal();
             useDefaultFamiliar();
+            geneTonic("construct");
+
         }
     );
-    geneTonic("construct");
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
         Macro.step(delevel).step(easyFight).attack().repeat(),
@@ -536,21 +551,21 @@ function digitwinked() {
         $location`the haunted kitchen`,
         Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), 
         () => {
-            return getCounters("Digitize", 0, 0) !== "";
+            return getCounters("Digitize", 0, 0).trim() !== "";
         }
     );
 
 
     uniform();
     if( get("latteUnlocks").includes("chili")){
-        equip($slot`off-hand`, $item`familiar scrapbook`)
+        equip($slot`off-hand`, $item`familiar scrapbook`);
     }
     
     advMacroAA(
         $location`the haunted kitchen`,
         Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), 
         () => {
-            return getCounters("Romantic Monster window end", 0, 0) !== "";
+            return getCounters("Romantic Monster window end", 0, 0).trim() !== "";
         }
     );
 
@@ -580,7 +595,7 @@ function hybridize() {
                 ).if_("monstername lava lamprey",
                 Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`)
                 ), () => {
-                    return get("dnaSyringe") == "construct";
+                    return get("dnaSyringe") !== "fish";
                 }, () => {          
                     useDefaultFamiliar();
                     cliExecute("hottub"); // removing lava effect
@@ -645,6 +660,7 @@ export default function levelUp(): void {
 
     royalty();
     mElfLeveling();
+    tomatoJuiceAndNinjaCostume();
     NEP();
     prelude();
     
