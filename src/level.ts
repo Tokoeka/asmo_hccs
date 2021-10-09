@@ -539,37 +539,6 @@ function restAndBuff() {
     }
 }
 
-function digitwinked() { 
-    uniform();
-    useDefaultFamiliar();
-    if( !get("latteUnlocks").includes("chili")){
-        equip($slot`off-hand`, $item`latte lovers member's mug`)
-    }
-    
-    advMacroAA(
-        $location`the haunted kitchen`,
-        Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), 
-        () => {
-            return getCounters("Digitize", 0, 0).trim() !== "";
-        }
-    );
-
-
-    uniform();
-    if( get("latteUnlocks").includes("chili")){
-        equip($slot`off-hand`, $item`familiar scrapbook`);
-    }
-    
-    advMacroAA(
-        $location`the haunted kitchen`,
-        Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), 
-        () => {
-            return getCounters("Romantic Monster window end", 0, 0).trim() !== "";
-        }
-    );
-
-    
-}
 
 function hybridize() {
     // become a human fish hybrid
@@ -650,7 +619,6 @@ export default function levelUp(): void {
     hybridize();
     tomatoJuiceAndNinjaCostume();
     //getYoked();
-    digitwinked();
     witchGhostAgent();
     godLob();
     snojo();
