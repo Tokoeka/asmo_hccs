@@ -1,13 +1,19 @@
 import {
     abort,
+    availableAmount,
     cliExecute,
     gametimeToInt,
+    myFullness,
+    myInebriety,
     myLevel,
     myPathId,
+    mySpleenUse,
+    myTurncount,
     print,
     setAutoAttack,
     visitUrl,
 } from "kolmafia";
+import { $item, $location, $monster, $skill, $slot, get, have, set, Macro } from "libram";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
@@ -42,8 +48,8 @@ try {
     testWrapper("weapon damage", Test.WEAPON, weaponTest);
     testWrapper("spell damage", Test.SPELL, spellTest);
     testWrapper("hot res", Test.HOT_RES, hotTest);
-    testWrapper("familiar", Test.FAMILIAR, familiarTest); //reroute noncom after familiar to ensure will cap
     testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
+    testWrapper("familiar", Test.FAMILIAR, familiarTest); //reroute noncom after familiar to ensure will cap
     testWrapper("item", Test.ITEM, itemTest);
 } finally {
     tests.forEach((testDuration) => {
@@ -55,9 +61,20 @@ try {
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime
-        )}, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
+        )}, assuming it ran contiguously, for a 1 day, ` +
+        (myTurncount() - 1) +
+        ` turn HCCS run. Organ use was ` +
+        myFullness() +
+        `/` +
+        myInebriety() +
+        `/` +
+        mySpleenUse() +
+        `. I drank ` +
+        (6 - availableAmount($item`astral pilsner`)) +
+        ` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
+
     setAutoAttack(0);
     PropertyManager.resetAll();
 }
