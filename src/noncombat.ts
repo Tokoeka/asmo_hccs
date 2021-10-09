@@ -38,9 +38,6 @@ function castBuffs() {
 
     if (!get("_olympicSwimmingPool")) cliExecute("swim sprints");
 
-    //while (getFuel() < 37) fuelUp();
-    //if (!have($effect`Driving Stealthily`)) cliExecute("asdonmartin drive stealthily");
-
     horse("dark");
 }
 
