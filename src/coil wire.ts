@@ -12,12 +12,12 @@ function firstFights() {
     equip($slot`shirt`, $item`makeshift garbage shirt`)
     equip($slot`off-hand`, $item`latte lovers member's mug`)
 
-    useFamiliar($familiar`Reanimated Reanimator`)
+    //useFamiliar($familiar`Reanimated Reanimator`)
+    useDefaultFamiliar();
 
     Macro.trySkill($skill`Micrometeorite`)
         .trySkill($skill`Sing Along`)
         .trySkill($skill`Gulp Latte`)
-        .trySkill($skill`Wink At`)
         .trySkill($skill`Extract`)
         .attack()
         .step("repeat").setAutoAttack();
@@ -54,8 +54,7 @@ function firstFights() {
     }
     fightSausageIfAble(
        $location`The Haunted Kitchen`,
-       Macro.skill($skill`Digitize`) //Digitizing First to ensure Latte does not kill the goblin first
-            .skill($skill`Micrometeorite`)
+       Macro.skill($skill`Micrometeorite`)
             .attack()
             .repeat()
     );

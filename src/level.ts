@@ -651,7 +651,7 @@ export default function levelUp(): void {
     hybridize();
     tomatoJuiceAndNinjaCostume();
     //getYoked();
-    digitwinked();
+    //digitwinked();
     witchGhostAgent();
     godLob();
     snojo();
