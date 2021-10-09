@@ -4,8 +4,7 @@ import {
     create,
     eat,
     equip,
-    getFuel,
-    haveEffect,
+    getFuel,  
     handlingChoice,
     maximize,
     myHp,
@@ -84,40 +83,6 @@ function thisFireIsOutOfControl() {
     }
 }
 
-function deepDarkVisions() {
-    horse("pale");
-    useFamiliar($familiar`Exotic Parrot`);
-    /*if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
-        create(1, $item`box of Familiar Jacks`);
-        use(1, $item`box of Familiar Jacks`);
-    }*/
-
-    maximize("spooky res", false);
-    while (
-        have($skill`Deep Dark Visions`) &&
-        haveEffect($effect`Visions of the Deep Dark Deeps`) < 30
-    ) {
-        if (myMp() < 20) {
-            create(1, $item`magical sausage`);
-            eat(1, $item`magical sausage`);
-        }
-        while (myHp() < myMaxhp()) {
-            useSkill(1, $skill`Cannelloni Cocoon`);
-        }
-        if (myMp() < 100) {
-            create(1, $item`magical sausage`);
-            eat(1, $item`magical sausage`);
-        }
-        if (Math.round(numericModifier("spooky resistance")) < 10) {
-            ensureEffect($effect`Does It Have a Skull In There??`);
-            if (Math.round(numericModifier("spooky resistance")) < 10) {
-                throw "Not enough spooky res for Deep Dark Visions.";
-            }
-        }
-        useSkill(1, $skill`Deep Dark Visions`);
-    }
-}
-
 function testPrep() {
     hotresOutfit();
     const improvements = [
@@ -131,7 +96,6 @@ function testPrep() {
 export default function hotTest(): number {
     castBuffs();
     thisFireIsOutOfControl();
-    deepDarkVisions();
     testPrep();
     return predictor();
 }
