@@ -46,16 +46,21 @@ const predictor = () =>
     Math.floor(numericModifier("weapon damage") / 25 + 0.001) -
     Math.floor(numericModifier("weapon damage percent") / 25 + 0.001);
 
-function getCrushed() {
-    if (!have($effect`Do You Crush What I Crush?`)) {
+function getCrushed() { // Deck pull elf for DNA and ghost buff (reflex hammer)
+    if ((!have($effect`Do You Crush What I Crush?`) || get("dnaSyringe") !== "elf") && get("_deckCardsDrawn") <= 10) {
         if (have($effect`Holiday Yoked`) && have($item`soft green echo eyedrop antidote`)) {
             uneffect($effect`Holiday Yoked`);
         }
         if (!have($effect`Holiday Yoked`)) {
             useFamiliar($familiar`Ghost of Crimbo Carols`);
             uniform();
-            Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat().setAutoAttack();
-            visitUrl("place.php?whichplace=chateau&action=chateau_painting", false);
+            equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+            /*if (get("_reflexHammerUsed") > 2) {
+                throw "You do not have any banishes left";
+              }*/
+            Macro.item($item`DNA extraction syringe`).skill($skill`Feel Hatred`).setAutoAttack(); //3
+            //visitUrl("place.php?whichplace=chateau&action=chateau_painting", false);
+            cliExecute("cheat phylum elf");
             runCombat();
             useDefaultFamiliar();
         }

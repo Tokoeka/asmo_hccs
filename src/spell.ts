@@ -125,7 +125,7 @@ function fingies() {
         setChoice(768, 4);
         advMacroAA(
             $location`The Dire Warren`,
-            Macro.skill($skill`Feel Hatred`),
+            Macro.skill($skill`Feel Hatred`), //2
             () => !have($effect`Saucefingers`)
         );
     }
