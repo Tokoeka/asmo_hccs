@@ -141,7 +141,7 @@ function pirateDNA() {
         .if_("monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
         .item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
         () => {
-            return get("dnaSyringe") === "pirate";
+            return get("dnaSyringe") !== "pirate";
         },
         () => {
             geneTonic("pirate");
