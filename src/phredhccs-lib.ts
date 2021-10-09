@@ -566,29 +566,6 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
     ? $familiar`Disembodied Hand`
     : $familiar`Left-Hand Man`;
 
-export function getPropertyInt(name: string) {
-    const str = getProperty(name);
-    if (str === "") {
-        throw `Unknown property ${name}.`;
-    }
-    return toInt(str);
-}
-      
-export function setPropertyInt(name: string, value: number) {
-    setProperty(name, `${value}`);
-}
-      
-export function incrementProperty(name: string) {
-    setPropertyInt(name, getPropertyInt(name) + 1);
-}
-      
-export function getPropertyBoolean(name: string) {
-    const str = getProperty(name);
-    if (str === "") {
-        throw `Unknown property ${name}.`;
-    }
-    return str === "true";
-}
 
 // Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
 export function geneTonic(ph: string) {
@@ -630,7 +607,7 @@ export function geneTonic(ph: string) {
   function canCastLibrams(): boolean {
     const summonNumber = 1 + get("libramSummons");
     const cost = 1 + (summonNumber * (summonNumber - 10)) / 2;
-    return myMp() >= cost;
+    return myMp() >= cost + 100;
 }
 
   export function burnLibrams(): void {
@@ -639,21 +616,29 @@ export function geneTonic(ph: string) {
     while (canCastLibrams()) {
         const testsDone = get("csServicesPerformed").split(",");
         if (
-            (!testsDone.includes("Breed More Collies") && !have($item`green candy heart`)) ||
+            ((!testsDone.includes("Breed More Collies") && !have($item`green candy heart`)) ||
             (!testsDone.includes("Make Margaritas") &&
-                !have($item`lavender candy heart`) &&
-                have($skill`Summon Candy Heart`))
+                !have($item`lavender candy heart`))) &&
+                have($skill`Summon Candy Heart`)
         ) {
             useSkill($skill`Summon Candy Heart`);
         } else if (
             !testsDone.includes("Breed More Collies") &&
-            !have($item`love song of icy revenge`, 4)
+            !have($item`love song of icy revenge`, 4) && 
+            have($skill`Summon Love Song`)
         ) {
             useSkill($skill`Summon Love Song`);
-        } else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
+        } /*else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
             useSkill($skill`Summon BRICKOs`);
-        } else {
-            const summonSkill = $skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.find(
+        } else if (
+                have($skill`Summon Pulled Taffy`) &&
+                (!testsDone.includes("Breed More Collies") && !have($item`Pulled Blue Taffy`, 5))
+        ) {
+            useSkill($skill`Summon Pulled Taffy`);
+        }*/
+            
+            else {
+            const summonSkill = $skills`Summon Candy Heart, Summon Love Song`.find(
                 (skill) => have(skill)
             );
             if (!summonSkill) return;
