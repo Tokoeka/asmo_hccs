@@ -65,10 +65,8 @@ function castBuffs() {
 }
 
 function thisFireIsOutOfControl() {
-    // eslint-disable-next-line libram/verify-constants
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
         uniform();
-        // eslint-disable-next-line libram/verify-constants
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useFamiliar($familiar`Ms. Puck Man`);
         mapMacro(
@@ -93,8 +91,25 @@ function testPrep() {
     }
 }
 
+function tuneMoon() {
+    if (!get("moonTuned")) {
+        if (get("_campAwaySmileBuffs") === 0) {
+          visitUrl("place.php?whichplace=campaway&action=campaway_sky");
+        }
+    
+        // Unequip spoon.
+        equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
+        equip($slot`acc2`, $item`Powerful Glove`);
+        equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+    
+        // Actually tune the moon.
+        visitUrl("inv_use.php?whichitem=10254&doit=96&whichsign=4");
+      }
+}
+
 export default function hotTest(): number {
     castBuffs();
+    tuneMoon();
     thisFireIsOutOfControl();
     testPrep();
     return predictor();
