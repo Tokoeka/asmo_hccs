@@ -65,6 +65,7 @@ import {
     tryHead,
     useDefaultFamiliar,
 } from "./phredhccs-lib";
+import { universalWeightBuffs, universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
 
 function initialExp() {
@@ -88,14 +89,15 @@ function initialExp() {
     equip($item`familiar scrapbook`, $slot`off-hand`);
     equip($item`LOV Epaulettes`, $slot`back`)
 
-    if (availableAmount($item`white candy heart`) > 0) {
-        use(1, $item`white candy heart`);
+    if (have($item`white candy heart`)) {
+       	ensureEffect($effect`Heart of White`);
     }
 
     if (availableAmount($item`a ten-percent bonus`)) {
         use(1, $item`a ten-percent bonus`);
     }
     cliExecute("bastille myst brutalist");
+
 }
 
 function buffMyst() {
@@ -180,6 +182,8 @@ function castBuffs() {
             }
         }
     );
+
+	universalWeightEffects();
 }
 
 function getYoked() {
@@ -382,13 +386,13 @@ function snojo() {
         $location`The X-32-F Combat Training Snowman`,
         Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
         () => {
-            return get("dnaSyringe") !== "construct";
+            return get(`dnaSyringe`) !== `construct`;
         },
         () => {
             heal();
             useDefaultFamiliar();
-            geneTonic("construct");
-
+            geneTonic(`construct`);
+			ensureEffect($effect`Human-Machine Hybrid`);
         }
     );
     advMacroAA(
@@ -600,9 +604,6 @@ function hybridize() {
                 Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`)
                 ), () => {
                     return get("dnaSyringe") !== "fish";
-                }, () => {          
-                    useDefaultFamiliar();
-                    cliExecute("hottub"); // removing lava effect
                 }
             );
         //} else throw "Something went wrong getting fish DNA.";
@@ -611,6 +612,10 @@ function hybridize() {
     if (get("_dnaHybrid") === false && get("dnaSyringe") === "fish") {
         cliExecute("camp dnainject");
     }
+	useDefaultFamiliar();
+    if (haveEffect($effect`Drenched in Lava`)){
+		cliExecute("hottub");
+	}	
 }
 
 function prelude() {

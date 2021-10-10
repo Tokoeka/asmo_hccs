@@ -5,6 +5,7 @@ import {
     equip,
     getFuel,
     haveEffect,
+    itemAmount,
     numericModifier,
     runChoice,
     runCombat,
@@ -21,10 +22,7 @@ import uniform, { noncombatOutfit } from "./outfits";
 const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
 
 function castBuffs() {
-    //universalWeightBuffs();
-    ensureEffect($effect`Empathy`);
-    ensureEffect($effect`Leash of Linguini`);
-    ensureEffect($effect`Blood Bond`);
+    universalWeightBuffs();
     ensureEffect($effect`Smooth Movements`);
     ensureEffect($effect`Feeling Lonely`);
     equip($slot`acc3`, $item`Powerful Glove`);
@@ -73,7 +71,11 @@ function testPrep() {
                 use($item`shoe gum`);
             }
         },
-        () => use($item`aqueaky toy rose`),
+        () => {
+			if(itemAmount($item`squeaky toy rose`) > 0){
+				use($item`squeaky toy rose`)
+			}
+		},
         () => use($item`shady shades`),
     ];
 

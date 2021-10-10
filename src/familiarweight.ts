@@ -30,6 +30,9 @@ export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);
     ensureEffect($effect`Leash of Linguini`);
     ensureEffect($effect`Blood Bond`);
+}
+
+export function universalWeightEffects(): void {
     ensureEffect($effect`Billiards Belligerence`);
 
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
@@ -41,14 +44,13 @@ export function universalWeightBuffs(): void {
     }
 
     tryHead($effect`Do I Know You From Somewhere?`);
-
-    if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
 }
 
 function gearAndUncommonBuffs() {
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
     if (have($item`burning newspaper`) && !have($item`rope`)) create(1, $item`burning paper crane`);
     if (have($item`short stack of pancakes`)) ensureEffect($effect`Shortly Stacked`);
+	if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
     useFamiliar($familiar`Baby Bugged Bugbear`);
     visitUrl("arena.php");
 }
@@ -100,6 +102,7 @@ function testPrep() {
 
 export default function familiarTest(): number {
     universalWeightBuffs();
+	universalWeightEffects();
     familiarStuff();
     gearAndUncommonBuffs();
     takeAShower();
