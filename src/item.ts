@@ -122,34 +122,20 @@ function batForm() {
 
 function pirateDNA() {
     // get pirate DNA and make a gene tonic
-  if (get("dnaSyringe") !== "pirate" && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
-    equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
-    // adv once for the opening free NC, should check NC queue here
-    print($location`Pirates of the Garbage Barges`.noncombatQueue);
-    adv1($location`Pirates of the Garbage Barges`, -1, "");
-    print($location`Pirates of the Garbage Barges`.noncombatQueue);
-
-    if (
-      containsText(
-        $location`Pirates of the Garbage Barges`.noncombatQueue,
-        "Dead Men Smell No Tales"
-      )
-    ) {
-      advMacroAA(
-        $location`Pirates of the Garbage Barges`,
-        Macro.if_("monstername Sausage goblin", Macro.step(delevel).step(easyFight).attack().repeat())
-        .if_("monstername witchess bishop", Macro.step(delevel).step(easyFight).attack().repeat())
-        .item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
-        () => {
-            return get("dnaSyringe") !== "pirate";
-        },
-        () => {
-            geneTonic("pirate");
-            ensureEffect($effect`Human-Pirate Hybrid`);
-        }
-      );
-    } else throw "Something went wrong getting pirate DNA.";
-  }
+	if (get("dnaSyringe") !== "pirate" && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
+		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
+    	advMacroAA(
+        	$location`Pirates of the Garbage Barges`,
+        	Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
+        	() => {
+	            return get("dnaSyringe") !== "pirate";
+    	    },
+        	() => {
+            	geneTonic("pirate");
+            	ensureEffect($effect`Human-Pirate Hybrid`);
+        	}
+      	);
+	} else throw "Something went wrong getting pirate DNA.";
 }
 
 function testPrep() {
