@@ -583,30 +583,18 @@ function digitwinked() {
 function hybridize() {
     // become a human fish hybrid
     if (get("_dnaHybrid") === false && get("dnaSyringe") !== "fish") {
-        // tryEquip($item`powerful glove`);
-        // useFamiliar($familiar`frumious bandersnatch`);
         useFamiliar($familiar`ms puck man`);
-        /*print($location`The Bubblin' Caldera`.noncombatQueue);
-        adv1($location`The Bubblin' Caldera`, -1, "");
-        adv1($location`The Bubblin' Caldera`, -1, "");
-        print($location`The Bubblin' Caldera`.noncombatQueue);
-        if (
-            containsText(
-            $location`The Bubblin' Caldera`.noncombatQueue,
-            "Caldera Air; Aaaaah!  Aaaaaaaah!"
-            )
-        ) {*/
-            advMacroAA(
-                $location`The Bubblin' Caldera`,
-                Macro.while_("!monstername lava lamprey",
-                Macro.trySkill($skill`Extract`).trySkill($skill`Macrometeorite`)
-                ).if_("monstername lava lamprey",
-                Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`)
-                ), () => {
+        advMacroAA(
+            $location`The Bubblin' Caldera`,
+            Macro.while_("!monstername lava lamprey",
+					Macro.trySkill($skill`Extract`).trySkill($skill`Macrometeorite`))
+				.if_("monstername lava lamprey",
+                	Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`)
+                ), 
+				() => {
                     return get("dnaSyringe") !== "fish";
                 }
             );
-        //} else throw "Something went wrong getting fish DNA.";
     }
 
     if (get("_dnaHybrid") === false && get("dnaSyringe") === "fish") {
