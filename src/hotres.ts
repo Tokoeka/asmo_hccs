@@ -6,6 +6,7 @@ import {
     equip,
     getFuel,  
     handlingChoice,
+    haveEffect,
     maximize,
     myHp,
     myMaxhp,
@@ -19,7 +20,7 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, set, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, fuelUp, horse, tryHead, mapMacro } from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, fuelUp, horse, horsery, tryHead, mapMacro } from "./phredhccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
@@ -69,13 +70,19 @@ function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mi
         uniform();
         equip($slot`off-hand`, $item`industrial fire extinguisher`);
         useFamiliar($familiar`Ms. Puck Man`);
+		if (horsery() === `pale`){
+			horse(`dark`);
+		}
         advMacroAA(
             $location`Noob Cave`,
             Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
-            () => !have($effect`Fireproof Foam Suit`),
+            () => get(`_fireExtinguisherCharge`) > 90,
             () => {
                 visitUrl("choice.php");
                 runChoice(3);
+				if (!haveEffect($effect`Fireproof Foam Suit`)){
+					throw "failed to Get Fireproof Foam Suit, please Help";
+				}
             }
         );
     }
@@ -83,6 +90,7 @@ function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mi
 
 function testPrep() {
     hotresOutfit();
+	horse("pale" );
     const improvements = [
         () => ensureEffect($effect`Amazing`),
     ];
