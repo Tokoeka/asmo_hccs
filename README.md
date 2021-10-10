@@ -66,6 +66,7 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
  * God Lobster
  * Industrial Fire Extinguisher
  * Gingerbread Mob Hit
+ * Gingerbread City
  * Horsery
  * Ms. Puck Man
  

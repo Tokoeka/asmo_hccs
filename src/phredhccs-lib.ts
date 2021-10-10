@@ -11,6 +11,7 @@ import {
     eat,
     equip,
     getClanName,
+	getInventory,
     getProperty,
     haveEffect,
     inMultiFight,
@@ -52,11 +53,20 @@ import {
     Macro,
     PropertiesManager,
     property,
+	set,
 } from "libram";
 import { Outfit, withOutfit } from "./outfits";
 import { error } from "libram/dist/console";
 
 export const PropertyManager = new PropertiesManager();
+
+export function gingerCandy(): void {
+	useFamiliar($familiar`Pair of Stomping Boots`);
+	set(`choiceAdventure1215`, 1);
+	set(`choiceAdventure1204`, 1);
+	advMacroAA($location`Gingerbread Civic Center`, Macro.step(`runaway`), 1);
+	advMacroAA($location`Gingerbread Train Station`, Macro.step(`runaway`), 4);
+}
 
 export function fuelUp(): void {
     buy(1, $item`all-purpose flower`);
@@ -88,15 +98,46 @@ export function synthExp(): void {
             sweetSynthesis(bark, $item`peppermint sprout`);
         }
     } else {
-        if (!have($item`sugar shotgun`)) {
-            if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-            create(1, $item`sugar shotgun`);
-        }
-        if (pecans >= 1) {
-            sweetSynthesis(pecan, $item`sugar shotgun`);
-        } else {
-            sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
-        }
+		gingerCandy(); //Section below stolen from Bean (with edits)
+		const inventory = getInventory();
+		for (const itemName of Object.keys(inventory)) {
+			const item = Item.get(itemName);
+			const count = inventory[itemName];
+			const mod = (toInt(Item.get(itemName)) % 5)
+
+			if (item.candyType !== 'complex') {
+				continue;
+			}
+			if (mod === 4){
+				if(fudges >= 1){
+					sweetSynthesis(fudge, item);
+					break;
+				}
+			}
+			else if (mod === 3){
+				if( pecans >= 1){
+					sweetSynthesis(pecan, item);
+					break;
+				}
+			}
+			else if (mod === 0){
+				if( barks >= 1){
+					sweetSynthesis(bark, item);
+					break;
+				}
+			}
+		  }
+		if (!have($effect`Synthesis: Learning`)){
+			if (!have($item`sugar shotgun`)) {
+				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+				create(1, $item`sugar shotgun`);
+			}
+			if (pecans >= 1) {
+				sweetSynthesis(pecan, $item`sugar shotgun`);
+			} else {
+				sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
+			}
+		}
     }
     if (!have($effect`Synthesis: Learning`)) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
