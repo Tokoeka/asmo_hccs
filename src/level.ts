@@ -88,6 +88,10 @@ function initialExp() {
     equip($item`familiar scrapbook`, $slot`off-hand`);
     equip($item`LOV Epaulettes`, $slot`back`)
 
+    if (availableAmount($item`white candy heart`) > 0) {
+        use(1, $item`white candy heart`);
+    }
+
     if (availableAmount($item`a ten-percent bonus`)) {
         use(1, $item`a ten-percent bonus`);
     }

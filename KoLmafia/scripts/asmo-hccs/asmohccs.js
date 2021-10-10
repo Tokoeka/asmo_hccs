@@ -17961,7 +17961,7 @@ function doTest(testNum) {
 function ensureInnerElf() {
   //stolen merely mostly from bean
   if (!(0,dist.have)((0,dist.$effect)(phredhccs_lib_templateObject58 || (phredhccs_lib_templateObject58 = phredhccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
-    setClan((0,dist.get)("phccs_elfClan", "Hobopolis Vacation Home"));
+    setClan((0,dist.get)("asmocs_elfClan", "Hobopolis Vacation Home"));
 
     try {
       withOutfit(new Outfit(new Map([[(0,dist.$slot)(phredhccs_lib_templateObject59 || (phredhccs_lib_templateObject59 = phredhccs_lib_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(phredhccs_lib_templateObject60 || (phredhccs_lib_templateObject60 = phredhccs_lib_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))]]), (0,dist.$familiar)(phredhccs_lib_templateObject61 || (phredhccs_lib_templateObject61 = phredhccs_lib_taggedTemplateLiteral(["Machine Elf"])))), () => {
@@ -17969,7 +17969,7 @@ function ensureInnerElf() {
         advMacro((0,dist.$location)(phredhccs_lib_templateObject63 || (phredhccs_lib_templateObject63 = phredhccs_lib_taggedTemplateLiteral(["The Slime Tube"]))), dist.Macro.trySkill((0,dist.$skill)(phredhccs_lib_templateObject64 || (phredhccs_lib_templateObject64 = phredhccs_lib_taggedTemplateLiteral(["KGB tranquilizer dart"])))).trySkill((0,dist.$skill)(phredhccs_lib_templateObject65 || (phredhccs_lib_templateObject65 = phredhccs_lib_taggedTemplateLiteral(["Snokebomb"])))));
       });
     } finally {
-      setClan((0,dist.get)("phccs_mainClan", "Alliance From Heck"));
+      setClan((0,dist.get)("asmocs_mainClan", "Alliance From Heck"));
     }
   }
 }
@@ -18292,7 +18292,7 @@ function canCastLibrams() {
 }
 
 function burnLibrams() {
-  if (!(0,dist.$skills)(phredhccs_lib_templateObject100 || (phredhccs_lib_templateObject100 = phredhccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon BRICKOs, Summon Love Song"]))).some(skill => (0,dist.have)(skill))) return;
+  if (!(0,dist.$skills)(phredhccs_lib_templateObject100 || (phredhccs_lib_templateObject100 = phredhccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Taffy, Summon Love Song"]))).some(skill => (0,dist.have)(skill))) return;
 
   while (canCastLibrams()) {
     var testsDone = (0,dist.get)("csServicesPerformed").split(",");
@@ -18305,10 +18305,10 @@ function burnLibrams() {
     /*else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
       useSkill($skill`Summon BRICKOs`);
     } else if (
-          have($skill`Summon Pulled Taffy`) &&
+          have($skill`Summon Taffy`) &&
           (!testsDone.includes("Breed More Collies") && !have($item`Pulled Blue Taffy`, 5))
     ) {
-      useSkill($skill`Summon Pulled Taffy`);
+      useSkill($skill`Summon Taffy`);
     }*/
     else {
       var summonSkill = (0,dist.$skills)(phredhccs_lib_templateObject108 || (phredhccs_lib_templateObject108 = phredhccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Love Song"]))).find(skill => (0,dist.have)(skill));
@@ -18367,7 +18367,7 @@ function grimoires() {
 
 function setSettings() {
   dist.SourceTerminal.educate([(0,dist.$skill)(runstart_templateObject22 || (runstart_templateObject22 = runstart_taggedTemplateLiteral(["Digitize"]))), (0,dist.$skill)(runstart_templateObject23 || (runstart_templateObject23 = runstart_taggedTemplateLiteral(["Extract"])))]);
-  setClan((0,dist.get)("phccs_mainClan", "Alliance From Heck"));
+  setClan((0,dist.get)("asmocs_mainClan", "Alliance From Heck"));
 }
 
 function getTurns() {
@@ -18891,7 +18891,7 @@ function itemTest() {
   return item_predictor();
 }
 ;// CONCATENATED MODULE: ./src/level.ts
-var level_templateObject, level_templateObject2, level_templateObject3, level_templateObject4, level_templateObject5, level_templateObject6, level_templateObject7, level_templateObject8, level_templateObject9, level_templateObject10, level_templateObject11, level_templateObject12, level_templateObject13, level_templateObject14, level_templateObject15, level_templateObject16, level_templateObject17, level_templateObject18, level_templateObject19, level_templateObject20, level_templateObject21, level_templateObject22, level_templateObject23, level_templateObject24, level_templateObject25, level_templateObject26, level_templateObject27, level_templateObject28, level_templateObject29, level_templateObject30, level_templateObject31, level_templateObject32, level_templateObject33, level_templateObject34, level_templateObject35, level_templateObject36, level_templateObject37, level_templateObject38, level_templateObject39, level_templateObject40, level_templateObject41, level_templateObject42, level_templateObject43, level_templateObject44, level_templateObject45, level_templateObject46, level_templateObject47, level_templateObject48, level_templateObject49, level_templateObject50, level_templateObject51, level_templateObject52, level_templateObject53, level_templateObject54, level_templateObject55, level_templateObject56, level_templateObject57, level_templateObject58, level_templateObject59, level_templateObject60, level_templateObject61, level_templateObject62, level_templateObject63, level_templateObject64, level_templateObject65, level_templateObject66, level_templateObject67, level_templateObject68, level_templateObject69, level_templateObject70, level_templateObject71, level_templateObject72, level_templateObject73, level_templateObject74, level_templateObject75, level_templateObject76, level_templateObject77, level_templateObject78, level_templateObject79, level_templateObject80, level_templateObject81, level_templateObject82, level_templateObject83, level_templateObject84, level_templateObject85, level_templateObject86, level_templateObject87, level_templateObject88, level_templateObject89, level_templateObject90, level_templateObject91, level_templateObject92, level_templateObject93, level_templateObject94, level_templateObject95, level_templateObject96, level_templateObject97, level_templateObject98, level_templateObject99, level_templateObject100, level_templateObject101, level_templateObject102, level_templateObject103, level_templateObject104, level_templateObject105, level_templateObject106, level_templateObject107, level_templateObject108, level_templateObject109, level_templateObject110, level_templateObject111, level_templateObject112, level_templateObject113, level_templateObject114, level_templateObject115, level_templateObject116, level_templateObject117, level_templateObject118, level_templateObject119, level_templateObject120, level_templateObject121, level_templateObject122, level_templateObject123, level_templateObject124, level_templateObject125, level_templateObject126, level_templateObject127, level_templateObject128, level_templateObject129, level_templateObject130, level_templateObject131, level_templateObject132, level_templateObject133, level_templateObject134, level_templateObject135, level_templateObject136, level_templateObject137, level_templateObject138, level_templateObject139, level_templateObject140, level_templateObject141, level_templateObject142, level_templateObject143, level_templateObject144;
+var level_templateObject, level_templateObject2, level_templateObject3, level_templateObject4, level_templateObject5, level_templateObject6, level_templateObject7, level_templateObject8, level_templateObject9, level_templateObject10, level_templateObject11, level_templateObject12, level_templateObject13, level_templateObject14, level_templateObject15, level_templateObject16, level_templateObject17, level_templateObject18, level_templateObject19, level_templateObject20, level_templateObject21, level_templateObject22, level_templateObject23, level_templateObject24, level_templateObject25, level_templateObject26, level_templateObject27, level_templateObject28, level_templateObject29, level_templateObject30, level_templateObject31, level_templateObject32, level_templateObject33, level_templateObject34, level_templateObject35, level_templateObject36, level_templateObject37, level_templateObject38, level_templateObject39, level_templateObject40, level_templateObject41, level_templateObject42, level_templateObject43, level_templateObject44, level_templateObject45, level_templateObject46, level_templateObject47, level_templateObject48, level_templateObject49, level_templateObject50, level_templateObject51, level_templateObject52, level_templateObject53, level_templateObject54, level_templateObject55, level_templateObject56, level_templateObject57, level_templateObject58, level_templateObject59, level_templateObject60, level_templateObject61, level_templateObject62, level_templateObject63, level_templateObject64, level_templateObject65, level_templateObject66, level_templateObject67, level_templateObject68, level_templateObject69, level_templateObject70, level_templateObject71, level_templateObject72, level_templateObject73, level_templateObject74, level_templateObject75, level_templateObject76, level_templateObject77, level_templateObject78, level_templateObject79, level_templateObject80, level_templateObject81, level_templateObject82, level_templateObject83, level_templateObject84, level_templateObject85, level_templateObject86, level_templateObject87, level_templateObject88, level_templateObject89, level_templateObject90, level_templateObject91, level_templateObject92, level_templateObject93, level_templateObject94, level_templateObject95, level_templateObject96, level_templateObject97, level_templateObject98, level_templateObject99, level_templateObject100, level_templateObject101, level_templateObject102, level_templateObject103, level_templateObject104, level_templateObject105, level_templateObject106, level_templateObject107, level_templateObject108, level_templateObject109, level_templateObject110, level_templateObject111, level_templateObject112, level_templateObject113, level_templateObject114, level_templateObject115, level_templateObject116, level_templateObject117, level_templateObject118, level_templateObject119, level_templateObject120, level_templateObject121, level_templateObject122, level_templateObject123, level_templateObject124, level_templateObject125, level_templateObject126, level_templateObject127, level_templateObject128, level_templateObject129, level_templateObject130, level_templateObject131, level_templateObject132, level_templateObject133, level_templateObject134, level_templateObject135, level_templateObject136, level_templateObject137, level_templateObject138, level_templateObject139, level_templateObject140, level_templateObject141, level_templateObject142, level_templateObject143, level_templateObject144, level_templateObject145, level_templateObject146;
 
 function level_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -18919,20 +18919,24 @@ function initialExp() {
   (0,external_kolmafia_.equip)((0,dist.$item)(level_templateObject5 || (level_templateObject5 = level_taggedTemplateLiteral(["familiar scrapbook"]))), (0,dist.$slot)(level_templateObject6 || (level_templateObject6 = level_taggedTemplateLiteral(["off-hand"]))));
   (0,external_kolmafia_.equip)((0,dist.$item)(level_templateObject7 || (level_templateObject7 = level_taggedTemplateLiteral(["LOV Epaulettes"]))), (0,dist.$slot)(level_templateObject8 || (level_templateObject8 = level_taggedTemplateLiteral(["back"]))));
 
-  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject9 || (level_templateObject9 = level_taggedTemplateLiteral(["a ten-percent bonus"]))))) {
-    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject10 || (level_templateObject10 = level_taggedTemplateLiteral(["a ten-percent bonus"]))));
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject9 || (level_templateObject9 = level_taggedTemplateLiteral(["white candy heart"])))) > 0) {
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject10 || (level_templateObject10 = level_taggedTemplateLiteral(["white candy heart"]))));
+  }
+
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject11 || (level_templateObject11 = level_taggedTemplateLiteral(["a ten-percent bonus"]))))) {
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject12 || (level_templateObject12 = level_taggedTemplateLiteral(["a ten-percent bonus"]))));
   }
 
   (0,external_kolmafia_.cliExecute)("bastille myst brutalist");
 }
 
 function buffMyst() {
-  var lovePotion = (0,dist.$item)(level_templateObject11 || (level_templateObject11 = level_taggedTemplateLiteral(["Love Potion #0"])));
-  var loveEffect = (0,dist.$effect)(level_templateObject12 || (level_templateObject12 = level_taggedTemplateLiteral(["Tainted Love Potion"])));
+  var lovePotion = (0,dist.$item)(level_templateObject13 || (level_templateObject13 = level_taggedTemplateLiteral(["Love Potion #0"])));
+  var loveEffect = (0,dist.$effect)(level_templateObject14 || (level_templateObject14 = level_taggedTemplateLiteral(["Tainted Love Potion"])));
 
   if (!(0,dist.have)(loveEffect)) {
     if (!(0,dist.have)(lovePotion)) {
-      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject13 || (level_templateObject13 = level_taggedTemplateLiteral(["Love Mixology"]))));
+      (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject15 || (level_templateObject15 = level_taggedTemplateLiteral(["Love Mixology"]))));
     }
 
     (0,external_kolmafia_.visitUrl)("desc_effect.php?whicheffect=".concat(loveEffect.descid));
@@ -18942,26 +18946,26 @@ function buffMyst() {
     }
   }
 
-  ensureEffect((0,dist.$effect)(level_templateObject14 || (level_templateObject14 = level_taggedTemplateLiteral(["Uncucumbered"]))));
-  if (!(0,dist.have)((0,dist.$effect)(level_templateObject15 || (level_templateObject15 = level_taggedTemplateLiteral(["Synthesis: Smart"]))))) synthMyst();
-  tryHead((0,dist.$effect)(level_templateObject16 || (level_templateObject16 = level_taggedTemplateLiteral(["You Learned Something Maybe!"]))));
-  tryHead((0,dist.$effect)(level_templateObject17 || (level_templateObject17 = level_taggedTemplateLiteral(["We're All Made of Starfish"]))));
-  tryHead((0,dist.$effect)(level_templateObject18 || (level_templateObject18 = level_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))));
-  if (!(0,dist.get)("_lyleFavored")) ensureEffect((0,dist.$effect)(level_templateObject19 || (level_templateObject19 = level_taggedTemplateLiteral(["Favored by Lyle"]))));
-  if (!(0,dist.get)("telescopeLookedHigh")) ensureEffect((0,dist.$effect)(level_templateObject20 || (level_templateObject20 = level_taggedTemplateLiteral(["Starry-Eyed"]))));
-  ensureEffect((0,dist.$effect)(level_templateObject21 || (level_templateObject21 = level_taggedTemplateLiteral(["Glittering Eyelashes"]))));
-  ensureEffect((0,dist.$effect)(level_templateObject22 || (level_templateObject22 = level_taggedTemplateLiteral(["Broad-Spectrum Vaccine"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject16 || (level_templateObject16 = level_taggedTemplateLiteral(["Uncucumbered"]))));
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject17 || (level_templateObject17 = level_taggedTemplateLiteral(["Synthesis: Smart"]))))) synthMyst();
+  tryHead((0,dist.$effect)(level_templateObject18 || (level_templateObject18 = level_taggedTemplateLiteral(["You Learned Something Maybe!"]))));
+  tryHead((0,dist.$effect)(level_templateObject19 || (level_templateObject19 = level_taggedTemplateLiteral(["We're All Made of Starfish"]))));
+  tryHead((0,dist.$effect)(level_templateObject20 || (level_templateObject20 = level_taggedTemplateLiteral(["Do I Know You From Somewhere?"]))));
+  if (!(0,dist.get)("_lyleFavored")) ensureEffect((0,dist.$effect)(level_templateObject21 || (level_templateObject21 = level_taggedTemplateLiteral(["Favored by Lyle"]))));
+  if (!(0,dist.get)("telescopeLookedHigh")) ensureEffect((0,dist.$effect)(level_templateObject22 || (level_templateObject22 = level_taggedTemplateLiteral(["Starry-Eyed"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject23 || (level_templateObject23 = level_taggedTemplateLiteral(["Glittering Eyelashes"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject24 || (level_templateObject24 = level_taggedTemplateLiteral(["Broad-Spectrum Vaccine"]))));
 
   if (!(0,dist.get)("_streamsCrossed")) {
     (0,external_kolmafia_.cliExecute)("crossstreams");
   }
 
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject23 || (level_templateObject23 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject24 || (level_templateObject24 = level_taggedTemplateLiteral(["Powerful Glove"]))));
-  ensureEffect((0,dist.$effect)(level_templateObject25 || (level_templateObject25 = level_taggedTemplateLiteral(["Triple-Sized"]))));
-  ensureEffect((0,dist.$effect)(level_templateObject26 || (level_templateObject26 = level_taggedTemplateLiteral(["Feeling Excited"]))));
-  if (!(0,dist.get)("_favoriteBirdVisited")) (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject27 || (level_templateObject27 = level_taggedTemplateLiteral(["Visit your Favorite Bird"])))); // eslint-disable-next-line libram/verify-constants
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject25 || (level_templateObject25 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject26 || (level_templateObject26 = level_taggedTemplateLiteral(["Powerful Glove"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject27 || (level_templateObject27 = level_taggedTemplateLiteral(["Triple-Sized"]))));
+  ensureEffect((0,dist.$effect)(level_templateObject28 || (level_templateObject28 = level_taggedTemplateLiteral(["Feeling Excited"]))));
+  if (!(0,dist.get)("_favoriteBirdVisited")) (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject29 || (level_templateObject29 = level_taggedTemplateLiteral(["Visit your Favorite Bird"])))); // eslint-disable-next-line libram/verify-constants
 
-  if ((0,dist.have)((0,dist.$item)(level_templateObject28 || (level_templateObject28 = level_taggedTemplateLiteral(["votive of confidence"]))))) (0,external_kolmafia_.use)((0,dist.$item)(level_templateObject29 || (level_templateObject29 = level_taggedTemplateLiteral(["votive of confidence"]))));
+  if ((0,dist.have)((0,dist.$item)(level_templateObject30 || (level_templateObject30 = level_taggedTemplateLiteral(["votive of confidence"]))))) (0,external_kolmafia_.use)((0,dist.$item)(level_templateObject31 || (level_templateObject31 = level_taggedTemplateLiteral(["votive of confidence"]))));
 
   if (!(0,dist.get)("_freePillKeeperUsed")) {
     (0,external_kolmafia_.cliExecute)("pillkeeper familiar");
@@ -18969,28 +18973,28 @@ function buffMyst() {
 }
 
 function level_castBuffs() {
-  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject30 || (level_templateObject30 = level_taggedTemplateLiteral(["Left-Hand Man"]))));
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject32 || (level_templateObject32 = level_taggedTemplateLiteral(["Left-Hand Man"]))));
   (0,external_kolmafia_.maximize)("mp", false);
 
   if ((0,dist.get)("_sausagesEaten") === 0) {
     (0,external_kolmafia_.cliExecute)("eat 1 magic sausage");
-    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject31 || (level_templateObject31 = level_taggedTemplateLiteral(["Advanced Saucecrafting"]))));
-    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject32 || (level_templateObject32 = level_taggedTemplateLiteral(["Advanced Cocktailcrafting"]))));
-    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject33 || (level_templateObject33 = level_taggedTemplateLiteral(["Acquire Rhinestones"]))));
-    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject34 || (level_templateObject34 = level_taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject33 || (level_templateObject33 = level_taggedTemplateLiteral(["Advanced Saucecrafting"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject34 || (level_templateObject34 = level_taggedTemplateLiteral(["Advanced Cocktailcrafting"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject35 || (level_templateObject35 = level_taggedTemplateLiteral(["Acquire Rhinestones"]))));
+    (0,external_kolmafia_.useSkill)(1, (0,dist.$skill)(level_templateObject36 || (level_templateObject36 = level_taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
   }
 
-  if (!(0,dist.have)((0,dist.$item)(level_templateObject35 || (level_templateObject35 = level_taggedTemplateLiteral(["turtle totem"]))))) (0,external_kolmafia_.cliExecute)("acquire turtle totem");
-  if (!(0,dist.have)((0,dist.$item)(level_templateObject36 || (level_templateObject36 = level_taggedTemplateLiteral(["saucepan"]))))) (0,external_kolmafia_.cliExecute)("acquire saucepan");
-  (0,dist.$skills)(level_templateObject37 || (level_templateObject37 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody, \n    Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, \n     Polka of Plenty, Leash of Linguini, Empathy of the Newt, \n     Blood Bond, Blood Bubble, Song of Bravado, Get Big"]))).forEach(buff => {
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject37 || (level_templateObject37 = level_taggedTemplateLiteral(["turtle totem"]))))) (0,external_kolmafia_.cliExecute)("acquire turtle totem");
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject38 || (level_templateObject38 = level_taggedTemplateLiteral(["saucepan"]))))) (0,external_kolmafia_.cliExecute)("acquire saucepan");
+  (0,dist.$skills)(level_templateObject39 || (level_templateObject39 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody, \n    Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, \n     Polka of Plenty, Leash of Linguini, Empathy of the Newt, \n     Blood Bond, Blood Bubble, Song of Bravado, Get Big"]))).forEach(buff => {
     if (!(0,dist.have)((0,external_kolmafia_.toEffect)(buff))) {
       if ((0,external_kolmafia_.myMp)() < (0,external_kolmafia_.mpCost)(buff)) {
         if ((0,external_kolmafia_.totalFreeRests)() > (0,dist.get)("timesRested")) {
           (0,external_kolmafia_.visitUrl)("place.php?whichplace=chateau&action=chateau_restbox");
-        } else if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject38 || (level_templateObject38 = level_taggedTemplateLiteral(["psychokinetic energy blob"])))) >= 1) {
-          (0,external_kolmafia_.use)(2, (0,dist.$item)(level_templateObject39 || (level_templateObject39 = level_taggedTemplateLiteral(["psychokinetic energy blob"]))));
+        } else if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject40 || (level_templateObject40 = level_taggedTemplateLiteral(["psychokinetic energy blob"])))) >= 1) {
+          (0,external_kolmafia_.use)(2, (0,dist.$item)(level_templateObject41 || (level_templateObject41 = level_taggedTemplateLiteral(["psychokinetic energy blob"]))));
         } else {
-          (0,external_kolmafia_.eat)(1, (0,dist.$item)(level_templateObject40 || (level_templateObject40 = level_taggedTemplateLiteral(["magical sausage"]))));
+          (0,external_kolmafia_.eat)(1, (0,dist.$item)(level_templateObject42 || (level_templateObject42 = level_taggedTemplateLiteral(["magical sausage"]))));
         }
       }
 
@@ -19001,7 +19005,7 @@ function level_castBuffs() {
 
 function getYoked() {
   uniform();
-  useFamiliar($familiar(level_templateObject41 || (level_templateObject41 = level_taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
+  useFamiliar($familiar(level_templateObject43 || (level_templateObject43 = level_taggedTemplateLiteral(["Ghost of Crimbo Carols"]))));
 
   if (get("snojoSetting") === "NONE") {
     visitUrl("place.php?whichplace=snojo&action=snojo_controller");
@@ -19009,8 +19013,8 @@ function getYoked() {
   }
 
   heal();
-  advMacroAA($location(level_templateObject42 || (level_templateObject42 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), Macro.step(delevel).attack().repeat(), () => {
-    return !have($effect(level_templateObject43 || (level_templateObject43 = level_taggedTemplateLiteral(["Holiday Yoked"]))));
+  advMacroAA($location(level_templateObject44 || (level_templateObject44 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), Macro.step(delevel).attack().repeat(), () => {
+    return !have($effect(level_templateObject45 || (level_templateObject45 = level_taggedTemplateLiteral(["Holiday Yoked"]))));
   });
 }
 
@@ -19021,40 +19025,40 @@ function witchGhostAgent() {
   }
 
   outfits_uniform();
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject44 || (level_templateObject44 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject45 || (level_templateObject45 = level_taggedTemplateLiteral(["protonic accelerator pack"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject46 || (level_templateObject46 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject47 || (level_templateObject47 = level_taggedTemplateLiteral(["protonic accelerator pack"]))));
   (0,external_kolmafia_.cliExecute)("fold makeshift garbage shirt");
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject46 || (level_templateObject46 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject47 || (level_templateObject47 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject48 || (level_templateObject48 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject49 || (level_templateObject49 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
   phredhccs_lib_heal();
   phredhccs_lib_useDefaultFamiliar();
   ensureMp(100);
   dist.Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
 
-  if (!(0,dist.have)((0,dist.$item)(level_templateObject48 || (level_templateObject48 = level_taggedTemplateLiteral(["battle broom"]))))) {
-    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject49 || (level_templateObject49 = level_taggedTemplateLiteral(["Witchess Witch"]))));
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject50 || (level_templateObject50 = level_taggedTemplateLiteral(["battle broom"]))))) {
+    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject51 || (level_templateObject51 = level_taggedTemplateLiteral(["Witchess Witch"]))));
   }
 
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject50 || (level_templateObject50 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject51 || (level_templateObject51 = level_taggedTemplateLiteral(["battle broom"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject52 || (level_templateObject52 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject53 || (level_templateObject53 = level_taggedTemplateLiteral(["battle broom"]))));
   var ghostLocation = (0,dist.get)("ghostLocation");
 
   if (ghostLocation) {
     //moved acquiring portscan into the if to stop it doubling up on portscan if need to rerun the script.
-    dist.SourceTerminal.educate((0,dist.$skill)(level_templateObject52 || (level_templateObject52 = level_taggedTemplateLiteral(["Portscan"]))));
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject53 || (level_templateObject53 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject54 || (level_templateObject54 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    dist.SourceTerminal.educate((0,dist.$skill)(level_templateObject54 || (level_templateObject54 = level_taggedTemplateLiteral(["Portscan"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject55 || (level_templateObject55 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject56 || (level_templateObject56 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
     phredhccs_lib_useDefaultFamiliar();
     advMacro(ghostLocation, dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).skill("portscan").skill("shoot ghost").skill("shoot ghost").skill("shoot ghost").skill("trap ghost"));
   }
 
-  if (!(0,dist.have)((0,dist.$item)(level_templateObject55 || (level_templateObject55 = level_taggedTemplateLiteral(["government"])))) && !(0,dist.have)((0,dist.$item)(level_templateObject56 || (level_templateObject56 = level_taggedTemplateLiteral(["government cheese"]))))) {
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject57 || (level_templateObject57 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject58 || (level_templateObject58 = level_taggedTemplateLiteral(["vampyric cloake"]))));
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject57 || (level_templateObject57 = level_taggedTemplateLiteral(["government"])))) && !(0,dist.have)((0,dist.$item)(level_templateObject58 || (level_templateObject58 = level_taggedTemplateLiteral(["government cheese"]))))) {
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject59 || (level_templateObject59 = level_taggedTemplateLiteral(["back"]))), (0,dist.$item)(level_templateObject60 || (level_templateObject60 = level_taggedTemplateLiteral(["vampyric cloake"]))));
     phredhccs_lib_useDefaultFamiliar();
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject59 || (level_templateObject59 = level_taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(level_templateObject60 || (level_templateObject60 = level_taggedTemplateLiteral(["gold detective badge"]))));
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject61 || (level_templateObject61 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject62 || (level_templateObject62 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject63 || (level_templateObject63 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject64 || (level_templateObject64 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
-    phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject65 || (level_templateObject65 = level_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.step(phccs_macros_delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject61 || (level_templateObject61 = level_taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(level_templateObject62 || (level_templateObject62 = level_taggedTemplateLiteral(["gold detective badge"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject63 || (level_templateObject63 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject64 || (level_templateObject64 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject65 || (level_templateObject65 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject66 || (level_templateObject66 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject67 || (level_templateObject67 = level_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.step(phccs_macros_delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
     () => {
       return (0,external_kolmafia_.getCounters)("Portscan", 0, 0) !== "";
     });
-    var desertAccessItem = (0,external_kolmafia_.knollAvailable)() ? (0,dist.$item)(level_templateObject66 || (level_templateObject66 = level_taggedTemplateLiteral(["bitchin' meatcar"]))) : (0,dist.$item)(level_templateObject67 || (level_templateObject67 = level_taggedTemplateLiteral(["Desert Bus pass"])));
+    var desertAccessItem = (0,external_kolmafia_.knollAvailable)() ? (0,dist.$item)(level_templateObject68 || (level_templateObject68 = level_taggedTemplateLiteral(["bitchin' meatcar"]))) : (0,dist.$item)(level_templateObject69 || (level_templateObject69 = level_taggedTemplateLiteral(["Desert Bus pass"])));
 
     if (!(0,dist.have)(desertAccessItem)) {
       (0,external_kolmafia_.cliExecute)("acquire ".concat(desertAccessItem.name));
@@ -19068,10 +19072,10 @@ function lov() {
   outfits_uniform(); //equip($slot`back`, $item`protonic accelerator pack`);
 
   (0,external_kolmafia_.cliExecute)("fold makeshift garbage shirt");
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject68 || (level_templateObject68 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject69 || (level_templateObject69 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject70 || (level_templateObject70 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject71 || (level_templateObject71 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
   phredhccs_lib_heal();
   phredhccs_lib_useDefaultFamiliar();
-  dist.Macro.if_("monstername LOV enforcer", dist.Macro.attack().repeat()).if_("monstername LOV Engineer", dist.Macro.step(phccs_macros_candyblast).skill("saucegeyser").repeat()).if_("monstername LOV equivocator", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).trySkill((0,dist.$skill)(level_templateObject70 || (level_templateObject70 = level_taggedTemplateLiteral(["Become a Wolf"])))).step(phccs_macros_candyblast).attack().repeat()).setAutoAttack();
+  dist.Macro.if_("monstername LOV enforcer", dist.Macro.attack().repeat()).if_("monstername LOV Engineer", dist.Macro.step(phccs_macros_candyblast).skill("saucegeyser").repeat()).if_("monstername LOV equivocator", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).trySkill((0,dist.$skill)(level_templateObject72 || (level_templateObject72 = level_taggedTemplateLiteral(["Become a Wolf"])))).step(phccs_macros_candyblast).attack().repeat()).setAutoAttack();
 
   if (!(0,dist.get)("_loveTunnelUsed")) {
     dist.TunnelOfLove.fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate"); //use(1, $item`LOV Extraterrestrial Chocolate`);
@@ -19117,33 +19121,33 @@ function tomatoJuiceAndNinjaCostume() {
   }*/
 
   if (!(0,dist.get)("hasRange")) {
-    if (!(0,dist.have)((0,dist.$item)(level_templateObject71 || (level_templateObject71 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))))) {
-      (0,external_kolmafia_.buy)(1, (0,dist.$item)(level_templateObject72 || (level_templateObject72 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))));
+    if (!(0,dist.have)((0,dist.$item)(level_templateObject73 || (level_templateObject73 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))))) {
+      (0,external_kolmafia_.buy)(1, (0,dist.$item)(level_templateObject74 || (level_templateObject74 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))));
     }
 
-    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject73 || (level_templateObject73 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))));
+    (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject75 || (level_templateObject75 = level_taggedTemplateLiteral(["Dramatic\u2122 range"]))));
   }
 
-  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject74 || (level_templateObject74 = level_taggedTemplateLiteral(["Advanced Saucecrafting"]))));
-  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject75 || (level_templateObject75 = level_taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject76 || (level_templateObject76 = level_taggedTemplateLiteral(["Advanced Saucecrafting"]))));
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject77 || (level_templateObject77 = level_taggedTemplateLiteral(["Prevent Scurvy and Sobriety"]))));
 
-  if (!(0,dist.have)((0,dist.$effect)(level_templateObject76 || (level_templateObject76 = level_taggedTemplateLiteral(["Tomato Power"]))))) {
-    if (!(0,dist.have)((0,dist.$item)(level_templateObject77 || (level_templateObject77 = level_taggedTemplateLiteral(["tomato juice of powerful power"])))) && (0,dist.have)((0,dist.$item)(level_templateObject78 || (level_templateObject78 = level_taggedTemplateLiteral(["tomato"]))))) {
-      (0,external_kolmafia_.create)(1, (0,dist.$item)(level_templateObject79 || (level_templateObject79 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))));
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject78 || (level_templateObject78 = level_taggedTemplateLiteral(["Tomato Power"]))))) {
+    if (!(0,dist.have)((0,dist.$item)(level_templateObject79 || (level_templateObject79 = level_taggedTemplateLiteral(["tomato juice of powerful power"])))) && (0,dist.have)((0,dist.$item)(level_templateObject80 || (level_templateObject80 = level_taggedTemplateLiteral(["tomato"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(level_templateObject81 || (level_templateObject81 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))));
     }
 
-    if ((0,dist.have)((0,dist.$item)(level_templateObject80 || (level_templateObject80 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))))) {
-      (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject81 || (level_templateObject81 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))));
+    if ((0,dist.have)((0,dist.$item)(level_templateObject82 || (level_templateObject82 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))))) {
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject83 || (level_templateObject83 = level_taggedTemplateLiteral(["tomato juice of powerful power"]))));
     }
   }
 
-  if (!(0,dist.have)((0,dist.$effect)(level_templateObject82 || (level_templateObject82 = level_taggedTemplateLiteral(["Mystically Oiled"]))))) {
-    if (!(0,dist.have)((0,dist.$item)(level_templateObject83 || (level_templateObject83 = level_taggedTemplateLiteral(["ointment of the occult"]))))) {
-      (0,external_kolmafia_.create)(1, (0,dist.$item)(level_templateObject84 || (level_templateObject84 = level_taggedTemplateLiteral(["ointment of the occult"]))));
+  if (!(0,dist.have)((0,dist.$effect)(level_templateObject84 || (level_templateObject84 = level_taggedTemplateLiteral(["Mystically Oiled"]))))) {
+    if (!(0,dist.have)((0,dist.$item)(level_templateObject85 || (level_templateObject85 = level_taggedTemplateLiteral(["ointment of the occult"]))))) {
+      (0,external_kolmafia_.create)(1, (0,dist.$item)(level_templateObject86 || (level_templateObject86 = level_taggedTemplateLiteral(["ointment of the occult"]))));
     }
 
-    if ((0,dist.have)((0,dist.$item)(level_templateObject85 || (level_templateObject85 = level_taggedTemplateLiteral(["ointment of the occult"]))))) {
-      (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject86 || (level_templateObject86 = level_taggedTemplateLiteral(["ointment of the occult"]))));
+    if ((0,dist.have)((0,dist.$item)(level_templateObject87 || (level_templateObject87 = level_taggedTemplateLiteral(["ointment of the occult"]))))) {
+      (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject88 || (level_templateObject88 = level_taggedTemplateLiteral(["ointment of the occult"]))));
     }
   }
 }
@@ -19152,21 +19156,21 @@ function godLob() {
   if ((0,dist.get)("_godLobsterFights") === 0) {
     dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat().setAutoAttack();
     outfits_uniform();
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject87 || (level_templateObject87 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject88 || (level_templateObject88 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject89 || (level_templateObject89 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject90 || (level_templateObject90 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
     phredhccs_lib_heal();
-    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject89 || (level_templateObject89 = level_taggedTemplateLiteral(["God Lobster"]))));
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject91 || (level_templateObject91 = level_taggedTemplateLiteral(["God Lobster"]))));
     setChoice(1310, 1);
     (0,external_kolmafia_.visitUrl)("main.php?fightgodlobster=1");
     (0,external_kolmafia_.runCombat)(dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat().toString());
     multiFightAutoAttack();
     (0,external_kolmafia_.runChoice)(-1);
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject90 || (level_templateObject90 = level_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(level_templateObject91 || (level_templateObject91 = level_taggedTemplateLiteral(["God Lobster's Scepter"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject92 || (level_templateObject92 = level_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(level_templateObject93 || (level_templateObject93 = level_taggedTemplateLiteral(["God Lobster's Scepter"]))));
     phredhccs_lib_heal();
     (0,external_kolmafia_.visitUrl)("main.php?fightgodlobster=1");
     (0,external_kolmafia_.runCombat)();
     multiFightAutoAttack();
     (0,external_kolmafia_.runChoice)(-1);
-    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject92 || (level_templateObject92 = level_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(level_templateObject93 || (level_templateObject93 = level_taggedTemplateLiteral(["God Lobster's Ring"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject94 || (level_templateObject94 = level_taggedTemplateLiteral(["familiar"]))), (0,dist.$item)(level_templateObject95 || (level_templateObject95 = level_taggedTemplateLiteral(["God Lobster's Ring"]))));
   }
 }
 
@@ -19179,14 +19183,14 @@ function snojo() {
     (0,external_kolmafia_.runChoice)(2);
   }
 
-  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject94 || (level_templateObject94 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.item((0,dist.$item)(level_templateObject95 || (level_templateObject95 = level_taggedTemplateLiteral(["DNA extraction syringe"])))).step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat(), () => {
+  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject96 || (level_templateObject96 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.item((0,dist.$item)(level_templateObject97 || (level_templateObject97 = level_taggedTemplateLiteral(["DNA extraction syringe"])))).step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat(), () => {
     return (0,dist.get)("dnaSyringe") !== "construct";
   }, () => {
     phredhccs_lib_heal();
     phredhccs_lib_useDefaultFamiliar();
     geneTonic("construct");
   });
-  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject96 || (level_templateObject96 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat(), () => {
+  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject98 || (level_templateObject98 = level_taggedTemplateLiteral(["The X-32-F Combat Training Snowman"]))), dist.Macro.step(phccs_macros_delevel).step(phccs_macros_easyFight).attack().repeat(), () => {
     return (0,dist.get)("_snojoFreeFights") < 10;
   }, () => {
     phredhccs_lib_heal();
@@ -19215,61 +19219,61 @@ function NEP() {
   }
 
   outfits_uniform();
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject97 || (level_templateObject97 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject98 || (level_templateObject98 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject99 || (level_templateObject99 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject100 || (level_templateObject100 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject99 || (level_templateObject99 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject100 || (level_templateObject100 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject101 || (level_templateObject101 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject102 || (level_templateObject102 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
   phredhccs_lib_useDefaultFamiliar();
-  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject101 || (level_templateObject101 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.step(phccs_macros_delevel).trySkill("feel pride").trySkill((0,dist.$skill)(level_templateObject102 || (level_templateObject102 = level_taggedTemplateLiteral(["%fn, spit on me!"])))).step(phccs_macros_easyFight).attack().repeat(), () => {
+  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject103 || (level_templateObject103 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.step(phccs_macros_delevel).trySkill("feel pride").trySkill((0,dist.$skill)(level_templateObject104 || (level_templateObject104 = level_taggedTemplateLiteral(["%fn, spit on me!"])))).step(phccs_macros_easyFight).attack().repeat(), () => {
     return (0,dist.get)("_neverendingPartyFreeTurns") < 10;
   }, () => {
     phredhccs_lib_useDefaultFamiliar();
     phredhccs_lib_heal();
 
-    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject103 || (level_templateObject103 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
-      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject104 || (level_templateObject104 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject105 || (level_templateObject105 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject105 || (level_templateObject105 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
+      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject106 || (level_templateObject106 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject107 || (level_templateObject107 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
     }
 
     if ((0,dist.get)("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
       setChoice(1324, 5);
     }
 
-    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject106 || (level_templateObject106 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
+    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject108 || (level_templateObject108 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
       ensureInnerElf();
     }
   });
-  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject107 || (level_templateObject107 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_candyblast).attack().repeat()), () => {
+  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject109 || (level_templateObject109 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_candyblast).attack().repeat()), () => {
     return (0,dist.get)("_shatteringPunchUsed") < 3 && !(0,dist.get)("_gingerbreadMobHitUsed");
   }, () => {
     phredhccs_lib_heal();
     phredhccs_lib_useDefaultFamiliar();
 
-    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject108 || (level_templateObject108 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
-      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject109 || (level_templateObject109 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject110 || (level_templateObject110 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject110 || (level_templateObject110 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
+      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject111 || (level_templateObject111 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject112 || (level_templateObject112 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
     }
 
     if ((0,dist.get)("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
       setChoice(1324, 5);
     }
 
-    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject111 || (level_templateObject111 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
+    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject113 || (level_templateObject113 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
       ensureInnerElf();
     }
   });
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject112 || (level_templateObject112 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject113 || (level_templateObject113 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject114 || (level_templateObject114 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_candyblast).attack().repeat()), () => {
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject114 || (level_templateObject114 = level_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(level_templateObject115 || (level_templateObject115 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
+  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject116 || (level_templateObject116 = level_taggedTemplateLiteral(["The Neverending Party"]))), dist.Macro.if_("!monstername sausage goblin", dist.Macro.trySkill("shattering punch").trySkill("gingerbread mob hit").trySkill("chest x-ray")).if_("monstername sausage goblin", dist.Macro.step(phccs_macros_delevel).step(phccs_macros_candyblast).attack().repeat()), () => {
     return (0,dist.get)("_chestXRayUsed") < 3;
   }, () => {
     phredhccs_lib_heal();
     phredhccs_lib_useDefaultFamiliar();
 
-    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject115 || (level_templateObject115 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
-      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject116 || (level_templateObject116 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    if ((0,dist.get)("_sausageFights") > 3 && (0,external_kolmafia_.haveEquipped)((0,dist.$item)(level_templateObject117 || (level_templateObject117 = level_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))))) {
+      (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject118 || (level_templateObject118 = level_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(level_templateObject119 || (level_templateObject119 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
     }
 
     if ((0,dist.get)("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
       setChoice(1324, 5);
     }
 
-    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject118 || (level_templateObject118 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
+    if ((0,external_kolmafia_.myLevel)() >= 13 && !(0,dist.have)((0,dist.$effect)(level_templateObject120 || (level_templateObject120 = level_taggedTemplateLiteral(["Inner Elf"]))))) {
       ensureInnerElf();
     }
   });
@@ -19278,28 +19282,28 @@ function NEP() {
 function mElfLeveling() {
   outfits_uniform();
   (0,external_kolmafia_.cliExecute)("fold garbage shirt");
-  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject119 || (level_templateObject119 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject120 || (level_templateObject120 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
-  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject121 || (level_templateObject121 = level_taggedTemplateLiteral(["Machine Elf"]))));
-  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject122 || (level_templateObject122 = level_taggedTemplateLiteral(["The Deep Machine Tunnels"]))), defaultKill, () => {
+  (0,external_kolmafia_.equip)((0,dist.$slot)(level_templateObject121 || (level_templateObject121 = level_taggedTemplateLiteral(["shirt"]))), (0,dist.$item)(level_templateObject122 || (level_templateObject122 = level_taggedTemplateLiteral(["makeshift garbage shirt"]))));
+  (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject123 || (level_templateObject123 = level_taggedTemplateLiteral(["Machine Elf"]))));
+  phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject124 || (level_templateObject124 = level_taggedTemplateLiteral(["The Deep Machine Tunnels"]))), defaultKill, () => {
     return (0,dist.get)("_machineTunnelsAdv") < 5;
   }, phredhccs_lib_heal);
 }
 
 function royalty() {
-  if (!(0,dist.have)((0,dist.$item)(level_templateObject123 || (level_templateObject123 = level_taggedTemplateLiteral(["very pointy crown"]))))) {
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject125 || (level_templateObject125 = level_taggedTemplateLiteral(["very pointy crown"]))))) {
     dist.Macro.tryItem("jam band flyer").tryItem("gas can").tryItem("time-spinner").attack().repeat().setAutoAttack();
     outfits_uniform();
     phredhccs_lib_useDefaultFamiliar();
     phredhccs_lib_heal();
-    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject124 || (level_templateObject124 = level_taggedTemplateLiteral(["Witchess Queen"]))));
+    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject126 || (level_templateObject126 = level_taggedTemplateLiteral(["Witchess Queen"]))));
   }
 
-  if (!(0,dist.have)((0,dist.$item)(level_templateObject125 || (level_templateObject125 = level_taggedTemplateLiteral(["dented scepter"]))))) {
+  if (!(0,dist.have)((0,dist.$item)(level_templateObject127 || (level_templateObject127 = level_taggedTemplateLiteral(["dented scepter"]))))) {
     dist.Macro.step(phccs_macros_delevel).attack().repeat().setAutoAttack();
     outfits_uniform();
     phredhccs_lib_useDefaultFamiliar();
     phredhccs_lib_heal();
-    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject126 || (level_templateObject126 = level_taggedTemplateLiteral(["Witchess King"]))));
+    dist.Witchess.fightPiece((0,dist.$monster)(level_templateObject128 || (level_templateObject128 = level_taggedTemplateLiteral(["Witchess King"]))));
   }
 }
 
@@ -19315,19 +19319,19 @@ function digitwinked() {
   useDefaultFamiliar();
 
   if (!get("latteUnlocks").includes("chili")) {
-    equip($slot(level_templateObject127 || (level_templateObject127 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject128 || (level_templateObject128 = level_taggedTemplateLiteral(["latte lovers member's mug"]))));
+    equip($slot(level_templateObject129 || (level_templateObject129 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject130 || (level_templateObject130 = level_taggedTemplateLiteral(["latte lovers member's mug"]))));
   }
 
-  advMacroAA($location(level_templateObject129 || (level_templateObject129 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
+  advMacroAA($location(level_templateObject131 || (level_templateObject131 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
     return getCounters("Digitize", 0, 0).trim() !== "";
   });
   uniform();
 
   if (get("latteUnlocks").includes("chili")) {
-    equip($slot(level_templateObject130 || (level_templateObject130 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject131 || (level_templateObject131 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    equip($slot(level_templateObject132 || (level_templateObject132 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject133 || (level_templateObject133 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
   }
 
-  advMacroAA($location(level_templateObject132 || (level_templateObject132 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
+  advMacroAA($location(level_templateObject134 || (level_templateObject134 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
     return getCounters("Romantic Monster window end", 0, 0).trim() !== "";
   });
 }
@@ -19337,7 +19341,7 @@ function hybridize() {
   if ((0,dist.get)("_dnaHybrid") === false && (0,dist.get)("dnaSyringe") !== "fish") {
     // tryEquip($item`powerful glove`);
     // useFamiliar($familiar`frumious bandersnatch`);
-    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject133 || (level_templateObject133 = level_taggedTemplateLiteral(["ms puck man"]))));
+    (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(level_templateObject135 || (level_templateObject135 = level_taggedTemplateLiteral(["ms puck man"]))));
     /*print($location`The Bubblin' Caldera`.noncombatQueue);
     adv1($location`The Bubblin' Caldera`, -1, "");
     adv1($location`The Bubblin' Caldera`, -1, "");
@@ -19349,7 +19353,7 @@ function hybridize() {
         )
     ) {*/
 
-    phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject134 || (level_templateObject134 = level_taggedTemplateLiteral(["The Bubblin' Caldera"]))), dist.Macro.while_("!monstername lava lamprey", dist.Macro.trySkill((0,dist.$skill)(level_templateObject135 || (level_templateObject135 = level_taggedTemplateLiteral(["Extract"])))).trySkill((0,dist.$skill)(level_templateObject136 || (level_templateObject136 = level_taggedTemplateLiteral(["Macrometeorite"]))))).if_("monstername lava lamprey", dist.Macro.trySkill((0,dist.$skill)(level_templateObject137 || (level_templateObject137 = level_taggedTemplateLiteral(["Extract"])))).item((0,dist.$item)(level_templateObject138 || (level_templateObject138 = level_taggedTemplateLiteral(["DNA extraction syringe"])))).skill((0,dist.$skill)(level_templateObject139 || (level_templateObject139 = level_taggedTemplateLiteral(["Feel Hatred"]))))), () => {
+    phredhccs_lib_advMacroAA((0,dist.$location)(level_templateObject136 || (level_templateObject136 = level_taggedTemplateLiteral(["The Bubblin' Caldera"]))), dist.Macro.while_("!monstername lava lamprey", dist.Macro.trySkill((0,dist.$skill)(level_templateObject137 || (level_templateObject137 = level_taggedTemplateLiteral(["Extract"])))).trySkill((0,dist.$skill)(level_templateObject138 || (level_templateObject138 = level_taggedTemplateLiteral(["Macrometeorite"]))))).if_("monstername lava lamprey", dist.Macro.trySkill((0,dist.$skill)(level_templateObject139 || (level_templateObject139 = level_taggedTemplateLiteral(["Extract"])))).item((0,dist.$item)(level_templateObject140 || (level_templateObject140 = level_taggedTemplateLiteral(["DNA extraction syringe"])))).skill((0,dist.$skill)(level_templateObject141 || (level_templateObject141 = level_taggedTemplateLiteral(["Feel Hatred"]))))), () => {
       return (0,dist.get)("dnaSyringe") !== "fish";
     }, () => {
       phredhccs_lib_useDefaultFamiliar();
@@ -19364,12 +19368,12 @@ function hybridize() {
 
 function prelude() {
   horse("dark");
-  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject140 || (level_templateObject140 = level_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject141 || (level_templateObject141 = level_taggedTemplateLiteral(["astral six-pack"]))));
-  if ((0,dist.have)((0,dist.$effect)(level_templateObject142 || (level_templateObject142 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_.cliExecute)("shrug The Magical Mojomuscular Melody");
-  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject143 || (level_templateObject143 = level_taggedTemplateLiteral(["The Ode to Booze"]))));
+  if ((0,external_kolmafia_.availableAmount)((0,dist.$item)(level_templateObject142 || (level_templateObject142 = level_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_.use)(1, (0,dist.$item)(level_templateObject143 || (level_templateObject143 = level_taggedTemplateLiteral(["astral six-pack"]))));
+  if ((0,dist.have)((0,dist.$effect)(level_templateObject144 || (level_templateObject144 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_.cliExecute)("shrug The Magical Mojomuscular Melody");
+  (0,external_kolmafia_.useSkill)((0,dist.$skill)(level_templateObject145 || (level_templateObject145 = level_taggedTemplateLiteral(["The Ode to Booze"]))));
 
   while ((0,external_kolmafia_.myInebriety)() < 5) {
-    (0,external_kolmafia_.drink)(1, (0,dist.$item)(level_templateObject144 || (level_templateObject144 = level_taggedTemplateLiteral(["astral pilsner"]))));
+    (0,external_kolmafia_.drink)(1, (0,dist.$item)(level_templateObject146 || (level_templateObject146 = level_taggedTemplateLiteral(["astral pilsner"]))));
   }
 }
 /*
@@ -19851,7 +19855,7 @@ function weapon_testPrep() {
   ;
 
   if (!(0,dist.get)("_floundryItemCreated")) {
-    setClan("Adventurers From Heck");
+    setClan((0,dist.get)("asmocs_fishClan", "Alliance From Heck"));
     (0,external_kolmafia_.cliExecute)("acquire fish hatchet");
   }
 
