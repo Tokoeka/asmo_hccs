@@ -247,7 +247,7 @@ export function doTest(testNum: number): void {
 export function ensureInnerElf(): void {
     //stolen merely mostly from bean
     if (!have($effect`Inner Elf`)) {
-        setClan(get("phccs_elfClan", "Hobopolis Vacation Home"));
+        setClan(get("asmocs_elfClan", "Hobopolis Vacation Home"));
         try {
             withOutfit(
                 new Outfit(
@@ -263,7 +263,7 @@ export function ensureInnerElf(): void {
                 }
             );
         } finally {
-            setClan(get("phccs_mainClan", "Alliance From Heck"));
+            setClan(get("asmocs_mainClan", "Alliance From Heck"));
         }
     }
 }
@@ -611,15 +611,14 @@ export function geneTonic(ph: string) {
 }
 
   export function burnLibrams(): void {
-    if (!$skills`Summon Candy Heart, Summon BRICKOs, Summon Love Song`.some((skill) => have(skill)))
+    if (!$skills`Summon Candy Heart, Summon Taffy, Summon Love Song`.some((skill) => have(skill)))
         return;
     while (canCastLibrams()) {
         const testsDone = get("csServicesPerformed").split(",");
         if (
             ((!testsDone.includes("Breed More Collies") && !have($item`green candy heart`)) ||
-            (!testsDone.includes("Make Margaritas") &&
-                !have($item`lavender candy heart`))) &&
-                have($skill`Summon Candy Heart`)
+            (!testsDone.includes("Make Margaritas") && !have($item`lavender candy heart`))) &&
+            have($skill`Summon Candy Heart`)
         ) {
             useSkill($skill`Summon Candy Heart`);
         } else if (
@@ -631,10 +630,10 @@ export function geneTonic(ph: string) {
         } /*else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
             useSkill($skill`Summon BRICKOs`);
         } else if (
-                have($skill`Summon Pulled Taffy`) &&
+                have($skill`Summon Taffy`) &&
                 (!testsDone.includes("Breed More Collies") && !have($item`Pulled Blue Taffy`, 5))
         ) {
-            useSkill($skill`Summon Pulled Taffy`);
+            useSkill($skill`Summon Taffy`);
         }*/
             
             else {

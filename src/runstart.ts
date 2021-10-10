@@ -62,7 +62,7 @@ export function grimoires() {
 
 function setSettings() {
     SourceTerminal.educate([$skill`Digitize`, $skill`Extract`]);
-    setClan(get("phccs_mainClan", "Alliance From Heck"));
+    setClan(get("asmocs_mainClan", "Alliance From Heck"));
 }
 
 function getTurns() {
