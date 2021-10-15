@@ -93,7 +93,7 @@ export function withOutfit<T>(outfit: Outfit, callback: () => T): T {
 export default function uniform(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`Iunion Crown`],
+            [$slot`hat`, $items`astral chapeau, Iunion Crown`],
             [$slot`shirt`, $item`fresh coat of paint`],
             [$slot`pants`, $items`Cargo Cultist Shorts, old sweatpants`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
@@ -288,7 +288,7 @@ export function weaponOutfit(): void {
             [$slot`acc1`, $item`Brutal brogues`],
             [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc3`, $item`Powerful Glove`],
-            [$slot`familiar`, $item`fish hatchet`],
+            [$slot`familiar`, $items`fish hatchet, mutant arm`],
         ]),
         $familiar`Disembodied Hand`
     ).dress();
@@ -297,10 +297,10 @@ export function weaponOutfit(): void {
 export function spellOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $items`sugar chapeau, Hollandaise helmet`],
+            [$slot`hat`, $items`sugar chapeau, astral chapeau, Hollandaise helmet`],
             [$slot`weapon`, $item`weeping willow wand`],
-            [$slot`off-hand`, $item`wrench`],
-            [$slot`familiar`, $item`acandalabra`],
+            [$slot`off-hand`, $items`stick-knife of loathing, wrench`],
+            [$slot`familiar`, $item`abracandalabra`],
             [$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`powerful glove`],
