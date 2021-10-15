@@ -16,6 +16,7 @@ import {
     myMp,
     numericModifier,
     runChoice,
+	use,
     useFamiliar,
     useSkill,
     visitUrl,
@@ -56,8 +57,8 @@ function castBuffs() {
 
     if (availableAmount($item`LOV Elixir #6`) > 0) ensureEffect($effect`The Magic of LOV`);
 
-    if (get("tomeSummons") < 3) useSkill(1, $skill`Summon Sugar Sheets`);
-    if (have($item`sugar sheet`)) create(1, $item`sugar chapeau`);
+    /*if (get("tomeSummons") < 3) useSkill(1, $skill`Summon Sugar Sheets`);
+    if (have($item`sugar sheet`)) create(1, $item`sugar chapeau`);*/
     visitUrl("shop.php?whichshop=lathe");
     if (availableAmount($item`flimsy hardwood scraps`) > 0) {
         create(1, $item`weeping willow wand`);
@@ -81,10 +82,10 @@ function castBuffs() {
 function deepDarkVisions() {
     horse("pale");
     useFamiliar($familiar`Exotic Parrot`);
-    /*if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
+    if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
         create(1, $item`box of Familiar Jacks`);
         use(1, $item`box of Familiar Jacks`);
-    }*/
+    }
 
     maximize("spooky res", false);
     while (
