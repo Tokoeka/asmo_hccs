@@ -129,12 +129,10 @@ function pirateDNA() {
         	Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
         	() => {
 	            return get("dnaSyringe") !== "pirate";
-    	    },
-        	() => {
-            	geneTonic("pirate");
-            	ensureEffect($effect`Human-Pirate Hybrid`);
-        	}
+    	    }
       	);
+		geneTonic("pirate");
+		ensureEffect($effect`Human-Pirate Hybrid`);
 	} else throw "Something went wrong getting pirate DNA.";
 }
 
