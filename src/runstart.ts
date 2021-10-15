@@ -17,7 +17,7 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, SourceTerminal } from "libram";
+import { $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, set, SourceTerminal } from "libram";
 import { ensureSong, ensureEffect, setClan, tryUse } from "./phredhccs-lib";
 
 function juiceBar() {
@@ -63,6 +63,11 @@ export function grimoires() {
 function setSettings() {
     SourceTerminal.educate([$skill`Digitize`, $skill`Extract`]);
     setClan(get("asmocs_mainClan", "Alliance From Heck"));
+	set("choiceAdventure1106",3); //Halloweiner Dog get Food rather than Buff
+	set("mpAutoRecovery",0.05);
+	set("mpAutoRecoveryTarget",0.1);
+	set("hpAutoRecovery",0.65);
+	set("hpAutoRecoveryTarget",0.95);
 }
 
 function getTurns() {
@@ -115,9 +120,10 @@ function prepGear() {
         }
     }
 
-    /*if (!get("_floundryItemCreated")) {
+    if (!get("_floundryItemCreated")) {
+		setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire codpiece");
-    }*/
+    }
 
     // Get flimsy hardwood scraps.
     visitUrl("shop.php?whichshop=lathe");
@@ -183,6 +189,7 @@ function horsery() {
         cliExecute("horsery crazy");
     }
 }
+
 
 export function runStart(): void {
     setSettings();
