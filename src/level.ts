@@ -38,6 +38,7 @@ import {
     $skill,
     $skills,
     $slot,
+	ChateauMantegna,
     get,
     have,
     Macro,
@@ -542,6 +543,7 @@ function royalty() {
 }
 
 function restAndBuff() {
+	ChateauMantegna.changeNightstand($item`foreign language tapes`);
     while (get("timesRested") < totalFreeRests()) {
         burnLibrams();
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
