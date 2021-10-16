@@ -55,18 +55,18 @@ function getCrushed() {
         if (!have($effect`Holiday Yoked`)) {
             useFamiliar($familiar`Ghost of Crimbo Carols`);
             uniform();
-			if (ChateauMantegna.paintingMonster() === $monster`Black Crayon Crimbo Elf`){
+			/*if (ChateauMantegna.paintingMonster() === $monster`Black Crayon Crimbo Elf`){
 				Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat().setAutoAttack();
             	ChateauMantegna.fightPainting();
 			}
-            else{
+            else{*/
 				equip($slot`acc3`, $item`Lil' Doctor™ bag`);
 				Macro.item($item`DNA extraction syringe`)
 				.if_(`monstername black crayon crimbo elf`, Macro.step(delevel).step(easyFight).attack().repeat())
 				.skill($skill`Feel Hatred`).setAutoAttack();
 				cliExecute(`cheat phylum elf`);
 				runCombat();
-			}
+			//}
             useDefaultFamiliar();
         }
         geneTonic("elf");
