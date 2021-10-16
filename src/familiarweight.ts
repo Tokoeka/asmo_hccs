@@ -81,7 +81,7 @@ function takeAShower() {
     horse("dark");
     uniform();
     setChoice(1387, 3);
-    if (get("_meteorShowerUses") < 5 && !have($effect`Meteor Showered`)) {
+    if (get("_meteorShowerUses") < 5 && !have($effect`Meteor Showered`) && get(`_saberForceUses`) < 5) {
         advMacroAA(
             $location`The Dire Warren`,
             Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
