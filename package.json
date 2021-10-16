@@ -30,9 +30,11 @@
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+    "ansi-regex": "^5.0.1",
     "core-js": "^3.16.4",
     "kolmafia": "^1.2.0",
-    "libram": "^0.4.1"
+    "libram": "^0.4.1",
+    "set-value": "^4.0.1"
   },
   "author": "Tokoeka",
   "license": "ISC",
