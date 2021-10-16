@@ -7,9 +7,11 @@ import {
     create,
     eudoraItem,
     haveEffect,
+    inHardcore,
     itemAmount,
     myLevel,
     mySpleenUse,
+    pullsRemaining,
     retrieveItem,
     runChoice,
     use,
@@ -18,7 +20,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import { $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, set, SourceTerminal } from "libram";
-import { ensureSong, ensureEffect, setClan, tryUse } from "./phredhccs-lib";
+import { ensureSong, ensureEffect, setClan, tryUse, pullIfPossible } from "./phredhccs-lib";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -63,7 +65,7 @@ export function grimoires() {
 function setSettings() {
     SourceTerminal.educate([$skill`Digitize`, $skill`Extract`]);
     setClan(get("asmocs_mainClan", "Alliance From Heck"));
-	set("choiceAdventure1106",3); //Halloweiner Dog get Food rather than Buff
+	set("choiceAdventure1106",1); //Halloweiner Dog get Buff to help with Stat Tests
 	set("mpAutoRecovery",0.05);
 	set("mpAutoRecoveryTarget",0.1);
 	set("hpAutoRecovery",0.65);
@@ -131,9 +133,9 @@ function prepGear() {
         retrieveItem(1, $item`weeping willow wand`);
     }
 
-    if (!have($item`pantogram pants`)) {
+    /*if (!have($item`pantogram pants`)) {
         cliExecute("pantogram mysticality|hot|drops of blood|some self-respect|your dreams|silent");
-    }
+    }*/
 
     if (get("boomBoxSong") !== "Total Eclipse of Your Meat") {
         cliExecute("boombox meat");
@@ -151,9 +153,12 @@ function vote() {
 
 function deck() {
     if (!get("_deckCardsDrawn")) {
-        cliExecute("cheat wrench; cheat rope");
-        //autosell(1, $item`1952 Mickey Mantle card`);
-        //useSkill(2, $skill`Ancestral Recall`);
+		if(!inHardcore()){
+			cliExecute(`cheat rope`); //Don't get Wrench in Softcore as we can pull the Stick-Knife
+		}
+		else{
+			cliExecute("cheat wrench; cheat rope");
+		}
     }
 }
 
@@ -188,6 +193,15 @@ function horsery() {
     if( get("horseryAvailable") && get("_horsery")==="") {
         cliExecute("horsery crazy");
     }
+}
+
+function softcorePulls() {
+	//return true; //TODO - pull Stick-Knife of Loathing, Snow Suit, Corrupted Marrow
+	if (pullsRemaining() > 4){
+		pullIfPossible(1, $item`stick-knife of loathing`, 100);
+		pullIfPossible(1, $item`snow suit`, 100);
+		pullIfPossible(1, $item`corrupted marrow`, 5000);
+	}
 }
 
 

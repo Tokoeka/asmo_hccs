@@ -3,6 +3,7 @@ import {
     adv1,
     availableAmount,
     buy,
+	buyUsingStorage,
     chatPrivate,
     choiceFollowsFight,
     cliExecute,
@@ -20,6 +21,7 @@ import {
     myMp,
     myTurncount,
     print,
+	pullsRemaining,
     restoreHp,
     restoreMp,
     retrieveItem,
@@ -27,7 +29,10 @@ import {
     runCombat,
     setAutoAttack,
     setProperty,
+	shopAmount,
+	storageAmount,
     sweetSynthesis,
+	takeShop,
     totalTurnsPlayed,
     toString as toStringAsh,
     toEffect,
@@ -686,3 +691,23 @@ export function geneTonic(ph: string) {
         }
     }
 }
+
+export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
+	if (pullsRemaining() > 0) {
+	  const quantityPull = Math.max(0, quantity - availableAmount(it));
+	  if (shopAmount(it) > 0) {
+		takeShop(Math.min(shopAmount(it), quantityPull), it);
+	  }
+	  if (storageAmount(it) < quantityPull) {
+		buyUsingStorage(quantityPull - storageAmount(it), it, maxPrice);
+	  }
+	  cliExecute(`pull ${quantityPull} ${it.name}`);
+	  return true;
+	} else return false;
+  }
+  
+  export function ensurePullEffect(ef: Effect, it: Item) {
+	if (haveEffect(ef) === 0) {
+	  if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) ensureEffect(ef);
+	}
+  }

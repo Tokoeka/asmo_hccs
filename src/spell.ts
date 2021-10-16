@@ -8,6 +8,7 @@ import {
     equip,
     handlingChoice,
     haveEffect,
+	inHardcore,
     maximize,
     myClass,
     myHp,
@@ -82,7 +83,7 @@ function castBuffs() {
 function deepDarkVisions() {
     //horse("pale");
     useFamiliar($familiar`Exotic Parrot`);
-    if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
+    if (!have($item`astral pet sweater`) && get("tomeSummons") < 3 && inHardcore()) {
         create(1, $item`box of Familiar Jacks`);
         use(1, $item`box of Familiar Jacks`);
     }

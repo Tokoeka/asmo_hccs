@@ -1,4 +1,4 @@
-import { cliExecute, equip, equippedItem, myFamiliar, useFamiliar } from "kolmafia";
+import { cliExecute, equip, equippedItem, inHardcore, myFamiliar, useFamiliar } from "kolmafia";
 import { $familiar, $item, $items, $slot, $slots, have } from "libram";
 
 export class Outfit {
@@ -196,7 +196,7 @@ export function mysticalityOutfit(): void {
             [$slot`off-hand`, $item`wrench`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
             [$slot`shirt`, $items`denim jacket, shoe ad T-shirt, fresh coat of paint`],
-            [$slot`pants`, $item`pantogram pants`],
+            [$slot`pants`, $items`cultist cargo shorts, pantogram pants`],
             [$slot`acc1`, $item`your cowboy boots`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`battle broom`],
@@ -234,7 +234,7 @@ export function hotresOutfit(): void {
             [$slot`acc1`, $items`heat-resistant necktie, brutal brogues`],
             [$slot`acc2`, $item`heat-resistant gloves`],
             //[$slot`acc3`, $item`Kremlin's Greatest Briefcase`],
-            //[$slot`familiar`, $items`cracker`],
+            [$slot`familiar`, $items`snow suit, cracker`],
         ]),
         $familiar`Exotic Parrot`
     ).dress();
@@ -247,7 +247,7 @@ export function noncombatOutfit(): void {
             [$slot`back`, $item`protonic accelerator pack`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $items`burning paper crane, familiar scrapbook`],
-            [$slot`pants`, $item`pantogram pants`],
+            //[$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`Brutal brogues`],
@@ -257,7 +257,9 @@ export function noncombatOutfit(): void {
 }
 
 export function famweightOutfit(): void {
-    const familiarAndEquip = have($item`cracker`)
+    const familiarAndEquip = !inHardcore()
+		? { fam: $familiar`Exotic Parrot`, equip: $item`snow suit`}
+		: have($item`cracker`)
         ? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
         : have($familiar`Baby Bugged Bugbear`)
         ? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
@@ -288,7 +290,7 @@ export function weaponOutfit(): void {
             [$slot`acc1`, $item`Brutal brogues`],
             [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc3`, $item`Powerful Glove`],
-            [$slot`familiar`, $items`fish hatchet, mutant arm`],
+            [$slot`familiar`, $items`stick-knife of loathing, fish hatchet, mutant arm`],
         ]),
         $familiar`Disembodied Hand`
     ).dress();
@@ -299,13 +301,13 @@ export function spellOutfit(): void {
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $items`sugar chapeau, astral chapeau, Hollandaise helmet`],
             [$slot`weapon`, $item`weeping willow wand`],
-            [$slot`off-hand`, $items`stick-knife of loathing, wrench`],
-            [$slot`familiar`, $item`abracandalabra`],
-            [$slot`pants`, $item`pantogram pants`],
+            [$slot`familiar`, $items`stick-knife of loathing, wrench`],
+            [$slot`off-hand`, $item`abracandalabra`],
+            //[$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`powerful glove`],
             [$slot`acc3`, $item`battle broom`],
         ]),
-        $familiar`Left-Hand Man`
+        $familiar`Disembodied Hand`
     ).dress();
 }
