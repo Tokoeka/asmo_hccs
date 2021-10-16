@@ -19182,7 +19182,7 @@ function takeAShower() {
   outfits_uniform();
   setChoice(1387, 3);
 
-  if ((0,dist.get)("_meteorShowerUses") < 5 && !(0,dist.have)((0,dist.$effect)(familiarweight_templateObject20 || (familiarweight_templateObject20 = familiarweight_taggedTemplateLiteral(["Meteor Showered"]))))) {
+  if ((0,dist.get)("_meteorShowerUses") < 5 && !(0,dist.have)((0,dist.$effect)(familiarweight_templateObject20 || (familiarweight_templateObject20 = familiarweight_taggedTemplateLiteral(["Meteor Showered"])))) && (0,dist.get)("_saberForceUses") < 5) {
     phredhccs_lib_advMacroAA((0,dist.$location)(familiarweight_templateObject21 || (familiarweight_templateObject21 = familiarweight_taggedTemplateLiteral(["The Dire Warren"]))), dist.Macro.skill((0,dist.$skill)(familiarweight_templateObject22 || (familiarweight_templateObject22 = familiarweight_taggedTemplateLiteral(["Meteor Shower"])))).skill((0,dist.$skill)(familiarweight_templateObject23 || (familiarweight_templateObject23 = familiarweight_taggedTemplateLiteral(["Use the Force"])))), 1, () => {
       (0,external_kolmafia_.visitUrl)("choice.php");
       (0,external_kolmafia_.runChoice)(3);
@@ -19206,7 +19206,7 @@ function familiarTest() {
   return 60 - Math.floor(((0,external_kolmafia_.familiarWeight)((0,external_kolmafia_.myFamiliar)()) + (0,external_kolmafia_.weightAdjustment)()) / 5);
 }
 ;// CONCATENATED MODULE: ./src/hotres.ts
-var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19, hotres_templateObject20, hotres_templateObject21, hotres_templateObject22, hotres_templateObject23, hotres_templateObject24, hotres_templateObject25;
+var hotres_templateObject, hotres_templateObject2, hotres_templateObject3, hotres_templateObject4, hotres_templateObject5, hotres_templateObject6, hotres_templateObject7, hotres_templateObject8, hotres_templateObject9, hotres_templateObject10, hotres_templateObject11, hotres_templateObject12, hotres_templateObject13, hotres_templateObject14, hotres_templateObject15, hotres_templateObject16, hotres_templateObject17, hotres_templateObject18, hotres_templateObject19, hotres_templateObject20, hotres_templateObject21, hotres_templateObject22, hotres_templateObject23, hotres_templateObject24, hotres_templateObject25, hotres_templateObject26;
 
 function hotres_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -19264,14 +19264,15 @@ function thisFireIsOutOfControl() {
     (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject12 || (hotres_templateObject12 = hotres_taggedTemplateLiteral(["off-hand"]))), (0,dist.$item)(hotres_templateObject13 || (hotres_templateObject13 = hotres_taggedTemplateLiteral(["industrial fire extinguisher"]))));
     (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(hotres_templateObject14 || (hotres_templateObject14 = hotres_taggedTemplateLiteral(["Ms. Puck Man"]))));
     horse("dark");
-    phredhccs_lib_advMacroAA((0,dist.$location)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => (0,dist.get)("_fireExtinguisherCharge") > 90, () => {
+    phredhccs_lib_advMacroAA((0,dist.$location)(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Noob Cave"]))), dist.Macro.skill((0,dist.$skill)(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill((0,dist.$skill)(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => (0,external_kolmafia_.haveEffect)((0,dist.$effect)(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))) < 1 && (0,dist.get)("_saberForceUses") < 3, () => {
       (0,external_kolmafia_.visitUrl)("choice.php");
       (0,external_kolmafia_.runChoice)(3);
 
-      if (!(0,external_kolmafia_.haveEffect)((0,dist.$effect)(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"]))))) {
+      if (!(0,external_kolmafia_.haveEffect)((0,dist.$effect)(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"]))))) {
         throw "failed to Get Fireproof Foam Suit, please Help";
       }
     });
+    (0,dist.set)("_fireExtinguisherCharge", 90);
   }
 }
 
@@ -19283,9 +19284,9 @@ function moonTune() {
     } // Unequip spoon.
 
 
-    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(hotres_templateObject20 || (hotres_templateObject20 = hotres_taggedTemplateLiteral(["Eight Days a Week Pill Keeper"]))));
-    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject21 || (hotres_templateObject21 = hotres_taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(hotres_templateObject22 || (hotres_templateObject22 = hotres_taggedTemplateLiteral(["Powerful Glove"]))));
-    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject23 || (hotres_templateObject23 = hotres_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"])))); // Actually tune the moon.
+    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject20 || (hotres_templateObject20 = hotres_taggedTemplateLiteral(["acc1"]))), (0,dist.$item)(hotres_templateObject21 || (hotres_templateObject21 = hotres_taggedTemplateLiteral(["Eight Days a Week Pill Keeper"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject22 || (hotres_templateObject22 = hotres_taggedTemplateLiteral(["acc2"]))), (0,dist.$item)(hotres_templateObject23 || (hotres_templateObject23 = hotres_taggedTemplateLiteral(["Powerful Glove"]))));
+    (0,external_kolmafia_.equip)((0,dist.$slot)(hotres_templateObject24 || (hotres_templateObject24 = hotres_taggedTemplateLiteral(["acc3"]))), (0,dist.$item)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"])))); // Actually tune the moon.
 
     (0,external_kolmafia_.visitUrl)("inv_use.php?whichitem=10254&doit=96&whichsign=4");
   }
@@ -19294,7 +19295,7 @@ function moonTune() {
 function hotres_testPrep() {
   hotresOutfit();
   horse("pale");
-  var improvements = [() => ensureEffect((0,dist.$effect)(hotres_templateObject25 || (hotres_templateObject25 = hotres_taggedTemplateLiteral(["Amazing"]))))];
+  var improvements = [() => ensureEffect((0,dist.$effect)(hotres_templateObject26 || (hotres_templateObject26 = hotres_taggedTemplateLiteral(["Amazing"]))))];
 
   for (var _i = 0, _improvements = improvements; _i < _improvements.length; _i++) {
     var improvement = _improvements[_i];
@@ -20065,7 +20066,7 @@ function spell_castBuffs() {
 }
 
 function deepDarkVisions() {
-  horse("pale");
+  //horse("pale");
   (0,external_kolmafia_.useFamiliar)((0,dist.$familiar)(spell_templateObject12 || (spell_templateObject12 = spell_taggedTemplateLiteral(["Exotic Parrot"]))));
 
   if (!(0,dist.have)((0,dist.$item)(spell_templateObject13 || (spell_templateObject13 = spell_taggedTemplateLiteral(["astral pet sweater"])))) && (0,dist.get)("tomeSummons") < 3) {
