@@ -19,6 +19,7 @@ import {
     $monster,
     $skill,
     $slot,
+	ChateauMantegna,
     get,
     have,
     Macro,
@@ -54,9 +55,18 @@ function getCrushed() {
         if (!have($effect`Holiday Yoked`)) {
             useFamiliar($familiar`Ghost of Crimbo Carols`);
             uniform();
-            Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat().setAutoAttack();
-            visitUrl("place.php?whichplace=chateau&action=chateau_painting", false);
-            runCombat();
+			if (ChateauMantegna.paintingMonster() === $monster`Black Crayon Crimbo Elf`){
+				Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat().setAutoAttack();
+            	ChateauMantegna.fightPainting();
+			}
+            else{
+				equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+				Macro.item($item`DNA extraction syringe`)
+				.if_(`monstername black crayon crimbo elf`, Macro.step(delevel).step(easyFight).attack().repeat())
+				.skill($skill`Feel Hatred`).setAutoAttack();
+				cliExecute(`cheat phylum elf`);
+				runCombat();
+			}
             useDefaultFamiliar();
         }
         geneTonic("elf");
