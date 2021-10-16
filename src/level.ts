@@ -141,7 +141,6 @@ function buffMyst() {
     ensureEffect($effect`Feeling Excited`);
     if (!get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
 
-    // eslint-disable-next-line libram/verify-constants
     if (have($item`votive of confidence`)) use($item`votive of confidence`);
 
     if (!get("_freePillKeeperUsed")) {
@@ -247,7 +246,7 @@ function witchGhostAgent() {
         equip($slot`off-hand`, $item`familiar scrapbook`);
         advMacroAA(
             $location`Noob Cave`,
-            Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"), //1
+            Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"),
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
             }
@@ -285,13 +284,13 @@ function lov() {
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-        //use(1, $item`LOV Extraterrestrial Chocolate`);
+        use(1, $item`LOV Extraterrestrial Chocolate`);
         burnLibrams();
     }
     
 }
 
-function tomatoJuiceAndNinjaCostume() {
+function sauceCraft() {
     cliExecute("backupcamera ml");
 
     /*if (have($item`magical sausage casing`) || have($item`magical sausage`)) {
@@ -314,17 +313,6 @@ function tomatoJuiceAndNinjaCostume() {
                 `monsterid ${$monster`possessed can of tomatoes`.id}`,
                 Macro.skill($skill`Reflex Hammer`)
             )
-        );
-        useDefaultFamiliar(false);
-        uniform();
-        ensureMp(30);
-        mapMacro(
-            $location`The Haiku Dungeon`,
-            $monster`amateur ninja`,
-            Macro.if_(
-                `monsterid ${$monster`amateur ninja`.id}`,
-                Macro.skill($skill`Feel Nostalgic`).skill($skill`Gingerbread Mob Hit`)
-            ).step("abort")
         );
     }*/
 
@@ -625,11 +613,10 @@ function prelude() {
 Buff Up
 LOV Tunnel
 ALL THE EXP (Bastille + Ten Percent Bonus)
-Fight Digitized Sausage Goblin
-Fight Winked Witchess Knight - with protopack on
+Fight Portscan - with protopack on (TODO - Move to DMT to reduce freekill usage?)
 Fight Ghost
 God Lob
-Snojo
+Snojo - get construct DNA
 
 Rest - should be level 9 by this point
 
@@ -648,7 +635,7 @@ export default function levelUp(): void {
     lov();
     initialExp();
     hybridize();
-    tomatoJuiceAndNinjaCostume();
+    sauceCraft();
     //getYoked();
     //digitwinked();
     witchGhostAgent();
@@ -659,7 +646,7 @@ export default function levelUp(): void {
 
     royalty();
     mElfLeveling();
-    tomatoJuiceAndNinjaCostume();
+    sauceCraft(); //done twice in case not enough meat for Dramatic Range when forst run
     NEP();
     prelude();
     

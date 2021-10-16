@@ -49,7 +49,7 @@ try {
     testWrapper("spell damage", Test.SPELL, spellTest);
     testWrapper("hot res", Test.HOT_RES, hotTest);
     testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
-    testWrapper("familiar", Test.FAMILIAR, familiarTest); //reroute noncom after familiar to ensure will cap
+    testWrapper("familiar", Test.FAMILIAR, familiarTest); 
     testWrapper("item", Test.ITEM, itemTest);
 } finally {
     tests.forEach((testDuration) => {
