@@ -80,7 +80,7 @@ function castBuffs() {
 }
 
 function deepDarkVisions() {
-    horse("pale");
+    //horse("pale");
     useFamiliar($familiar`Exotic Parrot`);
     if (!have($item`astral pet sweater`) && get("tomeSummons") < 3) {
         create(1, $item`box of Familiar Jacks`);
