@@ -74,7 +74,7 @@ function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mi
         advMacroAA(
             $location`Noob Cave`,
             Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
-            () => get(`_fireExtinguisherCharge`) > 90,
+            () => (haveEffect($effect`Fireproof Foam Suit`) < 1 && get(`_saberForceUses`) < 3),
             () => {
                 visitUrl("choice.php");
                 runChoice(3);
@@ -83,6 +83,7 @@ function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mi
 				}
             }
         );
+		set(`_fireExtinguisherCharge`, 90);
     }
 }
 
