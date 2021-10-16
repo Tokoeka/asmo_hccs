@@ -12,7 +12,6 @@ function firstFights() {
     equip($slot`shirt`, $item`makeshift garbage shirt`)
     equip($slot`off-hand`, $item`latte lovers member's mug`)
 
-    //useFamiliar($familiar`Reanimated Reanimator`)
     useDefaultFamiliar();
 
     Macro.trySkill($skill`Micrometeorite`)
@@ -69,15 +68,7 @@ function firstFights() {
                 Macro.skill($skill`Gingerbread Mob Hit`)
             ).step("abort")
         );
-
-    /*if (have($item`magical sausage casing`)) {
-        create(1, $item`magical sausage`);
-    }
-    if (have($item`magical sausage`)) {
-        eat(1, $item`magical sausage`);
-    }*/
-
-    
+   
 }
 
 function terribleLove() {
@@ -103,9 +94,9 @@ function terribleLove() {
 
 /*
 Inital Setup & Prep
-Fight (and wink at?) a witchess Bishop with latte in offhand for MP
+Fight a witchess Bishop with latte in offhand for MP
 Fight Proto-Ghost (with latte in offhand?)
-Fight (and digitize?) a Sausage Goblin (in kitchen with latte in lefty?)
+Fight a Sausage Goblin (in kitchen with latte in lefty?)
 Map and Insta-kill Ninja for tot equip
 MP Regen Outfit
 Use Love Potion if Shitty
