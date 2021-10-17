@@ -24,7 +24,6 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
  * Kramco
  * Scrapbook
  * Latte
- * Pantogram
  * Detective School
  * Machine Elf
  * KGBriefcase
