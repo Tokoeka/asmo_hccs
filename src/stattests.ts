@@ -2,6 +2,8 @@ import {
     availableAmount,
     create,
     eat,
+    equip,
+    haveEffect,
     itemAmount,
     maximize,
     myBasestat,
@@ -12,7 +14,7 @@ import {
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skill, $stat, get, have } from "libram";
+import { $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
 
@@ -37,10 +39,12 @@ function musclebuffs() {
 function muscleTestPrep() {
     muscleOutfit();
 
+	if (getModifier("Muscle", $item`no hat`) > 0){
+		equip($slot`hat`, $item`no hat`);
+	}
+
     for (const increaser of [
-        () => {
-            if (!get("")) ensureEffect($effect`Lack of Body-Building`);
-        }, // will stay on all the way to weapon damage.
+		() => ensureEffect($effect`Lack of Body-Building`),
         () => ensureEffect($effect`Ham-Fisted`),
         () => ensureInnerElf(),
     ]) {
@@ -63,6 +67,9 @@ function mystbuffs() {
 
 function mystTestPrep() {
     mysticalityOutfit();
+	if (getModifier("Mysticality", $item`no hat`) > 0){
+		equip($slot`hat`, $item`no hat`);
+	}
 }
 
 export function mystTest(): number {
@@ -91,31 +98,40 @@ function moxBuffs() {
 
     ensureEffect($effect`Quiet Desperation`);
     ensureEffect($effect`Disco Fever`);
-    //ensureEffect($effect`Blubbered Up`);
-    //ensureEffect($effect`Mariachi Mood`);
-    //ensureEffect($effect`Disco State of Mind`);
-    //ensureEffect($effect`Disco Smirk`);
-    use(availableAmount($item`rhinestone`), $item`rhinestone`);
-
-    if (availableAmount($item`dollop of barbecue sauce`) > 0) {
-        use(1, $item`dollop of barbecue sauce`);
-    }
-    if (itemAmount($item`confiscated love note`) > 0) {
-        use(1, $item`confiscated love note`);
-    }
-
-    if (!have($effect`Unrunnable Face`)) {
-        tryUse(1, $item`runproof mascara`);
-    }
+    ensureEffect($effect`Blubbered Up`);
+    ensureEffect($effect`Mariachi Mood`);
+    ensureEffect($effect`Disco State of Mind`);
+    ensureEffect($effect`Disco Smirk`);
 }
 
 function moxTestPrep() {
     useFamiliar($familiar`Left-Hand Man`);
-    maximize("moxie", false);
-    if (moxPredictor() > 1) {
-        ensureInnerElf();
+	//maximize("moxie", false);
+	moxieOutfit();
+	if (getModifier("Moxie", $item`no hat`) > 0){
+		equip($slot`hat`, $item`no hat`);
+	}
+    for (const increaser of [
+		() => use(availableAmount($item`rhinestone`), $item`rhinestone`),
+		() => {
+			if (!have($effect`Unrunnable Face`)) {
+				tryUse(1, $item`runproof mascara`);
+			}
+		},
+		() => {
+			if (availableAmount($item`dollop of barbecue sauce`) > 0) {
+				use(1, $item`dollop of barbecue sauce`);
+			}
+		},
+        () => {
+			if (itemAmount($item`confiscated love note`) > 0) {
+				use(1, $item`confiscated love note`);
+			}
+		},
+        () => ensureInnerElf(),
+    ]) {
+        if (musclePredictor() > 1) increaser();
     }
-    moxieOutfit();
 }
 
 export function moxTest(): number {

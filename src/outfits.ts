@@ -133,7 +133,6 @@ export function moxieOutfit(): void {
             [$slot`acc1`, $item`Beach Comb`],
             [$slot`acc2`, $item`"I Voted!" sticker`],
             [$slot`acc3`, $item`Retrospecs`],
-            [$slot`familiar`, $item`miniature crystal ball`],
         ])
     ).dress();
 }
@@ -191,7 +190,7 @@ export function mysticalityOutfit(): void {
     cliExecute("retrocape heck");
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`wad of used tape`],
+            [$slot`hat`, $items`astral chapeau, wad of used tape`],
             [$slot`weapon`, $item`weeping willow wand`],
             [$slot`off-hand`, $item`wrench`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],

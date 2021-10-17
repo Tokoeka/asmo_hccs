@@ -75,5 +75,6 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
   * Guzzlr
   * Pulled Taffy
   * Doghouse
+  * Ceci N'Est Pas Un Chapeau
   
 
