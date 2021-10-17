@@ -196,7 +196,7 @@ export function mysticalityOutfit(): void {
             [$slot`off-hand`, $item`wrench`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
             [$slot`shirt`, $items`denim jacket, shoe ad T-shirt, fresh coat of paint`],
-            [$slot`pants`, $items`cultist cargo shorts, pantogram pants`],
+            [$slot`pants`, $items`cargo cultist shorts, pantogram pants`],
             [$slot`acc1`, $item`your cowboy boots`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`battle broom`],
