@@ -1,8 +1,8 @@
 import { availableAmount, cliExecute, create, eat, haveEffect, equip, numericModifier, use, useFamiliar, useSkill, visitUrl } from "kolmafia";
 import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, Macro, Witchess } from "libram";
 import uniform, { wireOutfit } from "./outfits";
-import { delevel, easyFight } from "./phccs-macros";
-import { advMacro, burnLibrams, ensureMp, fightSausageIfAble, mapMacro, useDefaultFamiliar } from "./phredhccs-lib";
+import { delevel, easyFight } from "./asmohccs-macros";
+import { advMacro, burnLibrams, ensureMp, fightSausageIfAble, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
 import { runStart, grimoires } from "./runstart";
 
 function firstFights() {
@@ -44,13 +44,7 @@ function firstFights() {
     }
 
     equip($item`Kramco Sausage-o-Matic&trade;`);
-    if( !get('latteUnlocks').includes('chili') ){
-        useFamiliar($familiar`Left-Hand Man`);
-        equip($slot`familiar`, $item`latte lovers member's mug`);
-    }
-    else {
-        useDefaultFamiliar();
-    }
+    useDefaultFamiliar();
     fightSausageIfAble(
        $location`The Haunted Kitchen`,
        Macro.skill($skill`Micrometeorite`)
