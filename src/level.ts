@@ -11,6 +11,7 @@ import {
     getCounters,
     haveEffect,
     haveEquipped,
+    haveSkill,
     knollAvailable,
     maximize,
     mpCost,
@@ -285,6 +286,9 @@ function lov() {
             "LOV Extraterrestrial Chocolate"
         );
         use(1, $item`LOV Extraterrestrial Chocolate`);
+		if (haveSkill($skill`Ceci N'Est Pas Un Chapeau`)){
+			useSkill(1, $skill`Ceci N'Est Pas Un Chapeau`);
+		}
         burnLibrams();
     }
     
@@ -449,7 +453,7 @@ function NEP() {
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return get("_shatteringPunchUsed") < 3 && !get("_gingerbreadMobHitUsed");
+            return (get("_shatteringPunchUsed") < 3 && !get("_gingerbreadMobHitUsed") && myLevel() < 15);
         },
         () => {
             heal();
@@ -475,7 +479,7 @@ function NEP() {
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return get("_chestXRayUsed") < 3;
+            return (get("_chestXRayUsed") < 3 && myLevel() < 15);
         },
         () => {
             heal();
@@ -646,7 +650,7 @@ export default function levelUp(): void {
 
     royalty();
     mElfLeveling();
-    sauceCraft(); //done twice in case not enough meat for Dramatic Range when forst run
+    sauceCraft(); //done twice in case not enough meat for Dramatic Range when first run
     NEP();
     prelude();
     
