@@ -39,9 +39,6 @@ function musclebuffs() {
 function muscleTestPrep() {
     muscleOutfit();
 
-	if (getModifier("Muscle", $item`no hat`) > 0){
-		equip($slot`hat`, $item`no hat`);
-	}
 
     for (const increaser of [
 		() => ensureEffect($effect`Lack of Body-Building`),
@@ -67,9 +64,6 @@ function mystbuffs() {
 
 function mystTestPrep() {
     mysticalityOutfit();
-	if (getModifier("Mysticality", $item`no hat`) > 0){
-		equip($slot`hat`, $item`no hat`);
-	}
 }
 
 export function mystTest(): number {
@@ -108,9 +102,6 @@ function moxTestPrep() {
     useFamiliar($familiar`Left-Hand Man`);
 	//maximize("moxie", false);
 	moxieOutfit();
-	if (getModifier("Moxie", $item`no hat`) > 0){
-		equip($slot`hat`, $item`no hat`);
-	}
     for (const increaser of [
 		() => use(availableAmount($item`rhinestone`), $item`rhinestone`),
 		() => {

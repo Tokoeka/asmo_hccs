@@ -286,9 +286,6 @@ function lov() {
             "LOV Extraterrestrial Chocolate"
         );
         use(1, $item`LOV Extraterrestrial Chocolate`);
-		if (haveSkill($skill`Ceci N'Est Pas Un Chapeau`)){
-			useSkill(1, $skill`Ceci N'Est Pas Un Chapeau`);
-		}
         burnLibrams();
     }
     
