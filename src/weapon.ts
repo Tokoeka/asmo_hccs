@@ -34,13 +34,14 @@ import {
     geneTonic,
     horse,
     horsery,
+	modTraceList,
     setChoice,
     setClan,
     tryHead,
     useDefaultFamiliar,
-} from "./phredhccs-lib";
+} from "./asmohccs-lib";
 import uniform, { weaponOutfit } from "./outfits";
-import { delevel, easyFight } from "./phccs-macros";
+import { delevel, easyFight } from "./asmohccs-macros";
 
 const predictor = () =>
     60 -
@@ -147,5 +148,6 @@ export default function weaponTest(): number {
     kungFuMeteors();
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";
+	modTraceList("weapon damage");
     return predictor();
 }

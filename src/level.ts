@@ -47,7 +47,7 @@ import {
     TunnelOfLove,
     Witchess,
 } from "libram";
-import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
+import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import {
     advMacro,
     advMacroAA,
@@ -66,7 +66,7 @@ import {
     synthMyst,
     tryHead,
     useDefaultFamiliar,
-} from "./phredhccs-lib";
+} from "./asmohccs-lib";
 import { universalWeightBuffs, universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
 

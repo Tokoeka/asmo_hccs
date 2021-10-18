@@ -37,10 +37,11 @@ import {
     fuelUp,
     geneTonic,
     horse,
+	modTraceList,
     synthItem,
     useDefaultFamiliar,
-} from "./phredhccs-lib";
-import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
+} from "./asmohccs-lib";
+import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 
 const predictor = () =>
     60 -
@@ -96,7 +97,7 @@ function batForm() {
     if (!have($effect`Bat-Adjacent Form`)) {
         const run = Macro.skill($skill`Become a Bat`);
         if (!get("_latteBanishUsed")) {
-            useDefaultFamiliar(false);
+            useDefaultFamiliar(false); 
             equip($slot`off-hand`, $item`latte lovers member's mug`);
             equip($slot`back`, $item`vampyric cloake`);
             run.skill($skill`Throw Latte on Opponent`);
@@ -154,5 +155,6 @@ export default function itemTest(): number {
     batForm();
     testPrep();
     if (predictor() > 1) throw "Failed to cap item";
+	modTraceList("item drop");
     return predictor();
 }

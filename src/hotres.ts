@@ -20,8 +20,8 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, set, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, fuelUp, horse, horsery, tryHead, mapMacro } from "./phredhccs-lib";
-import { candyblast, defaultKill, delevel, easyFight } from "./phccs-macros";
+import { advMacroAA, ensureEffect, fuelUp, horse, horsery, modTraceList, tryHead, mapMacro } from "./asmohccs-lib";
+import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
@@ -120,5 +120,6 @@ export default function hotTest(): number {
     thisFireIsOutOfControl();
 	moonTune();
     testPrep();
+	modTraceList("hot resistance");
     return predictor();
 }

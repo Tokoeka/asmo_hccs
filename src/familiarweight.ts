@@ -22,8 +22,8 @@ import {
     set,
     Witchess,
 } from "libram";
-import { defaultKill } from "./phccs-macros";
-import { advMacroAA, ensureEffect, horse, setChoice, tryHead } from "./phredhccs-lib";
+import { defaultKill } from "./asmohccs-macros";
+import { advMacroAA, ensureEffect, horse, modTraceList, setChoice, tryHead } from "./asmohccs-lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -107,5 +107,6 @@ export default function familiarTest(): number {
     gearAndUncommonBuffs();
     takeAShower();
     testPrep();
+	modTraceList("familiar weight");
     return 60 - Math.floor((familiarWeight(myFamiliar()) + weightAdjustment()) / 5);
 }

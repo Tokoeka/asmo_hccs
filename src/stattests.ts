@@ -1,5 +1,6 @@
 import {
     availableAmount,
+	cliExecute,
     create,
     eat,
     equip,
@@ -16,7 +17,7 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
-import { ensureEffect, ensureInnerElf, tryUse } from "./phredhccs-lib";
+import { ensureEffect, ensureInnerElf, modTraceList, tryUse } from "./asmohccs-lib";
 
 const musclePredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
@@ -52,6 +53,8 @@ function muscleTestPrep() {
 export function muscleTest(): number {
     musclebuffs();
     muscleTestPrep();
+	modTraceList("muscle");
+	modTraceList("muscle percent");
     return musclePredictor();
 }
 
@@ -70,6 +73,8 @@ export function mystTest(): number {
     mystbuffs();
     mystTestPrep();
     if (mystPredictor() > 1) throw "Not enough mysticality to cap";
+	modTraceList("mysticality");
+	modTraceList("mysticality percent");
     return mystPredictor();
 }
 
@@ -131,6 +136,8 @@ export function moxTest(): number {
     if (moxPredictor() > 1) {
         throw "Not enough moxie to cap.";
     }
+	modTraceList("moxie");
+	modTraceList("moxie percent");
     return moxPredictor();
 }
 
@@ -160,5 +167,7 @@ export function HPTest(): number {
     if (hpPredictor() > 1) {
         throw "Failed to cap HP";
     }
+	modTraceList("maximum hp");
+	modTraceList("maximum hp percent");
     return hpPredictor();
 }

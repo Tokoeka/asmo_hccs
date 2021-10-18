@@ -15,8 +15,8 @@ import {
 } from "kolmafia";
 import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { defaultKill } from "./phccs-macros";
-import { ensureEffect, fuelUp, heal, horse, setChoice } from "./phredhccs-lib";
+import { defaultKill } from "./asmohccs-macros";
+import { ensureEffect, fuelUp, heal, horse, modTraceList, setChoice } from "./asmohccs-lib";
 import uniform, { noncombatOutfit } from "./outfits";
 
 const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
@@ -89,5 +89,6 @@ export default function noncombatTest(): number {
     godLobster();
     testPrep();
     if (predictor() > 1) throw "Failed to cap noncombat";
+	modTraceList("combat rate");
     return predictor();
 }

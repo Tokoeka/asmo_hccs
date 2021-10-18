@@ -20,7 +20,7 @@ import {
     visitUrl,
 } from "kolmafia";
 import { $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, set, SourceTerminal } from "libram";
-import { ensureSong, ensureEffect, setClan, tryUse, pullIfPossible } from "./phredhccs-lib";
+import { ensureSong, ensureEffect, setClan, tryUse, pullIfPossible } from "./asmohccs-lib";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");

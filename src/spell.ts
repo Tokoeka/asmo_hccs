@@ -36,7 +36,7 @@ import {
     Macro,
     set,
 } from "libram";
-import { advMacroAA, ensureEffect, ensureInnerElf, horse, mapMacro, setChoice } from "./phredhccs-lib";
+import { advMacroAA, ensureEffect, ensureInnerElf, horse, mapMacro, modTraceList, setChoice } from "./asmohccs-lib";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
@@ -174,5 +174,6 @@ export default function spellTest(): number {
     ensureInnerElf();
     shower();
     testPrep();
+	modTraceList("spell damage");
     return 1 + predictor();
 }

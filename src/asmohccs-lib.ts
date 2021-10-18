@@ -11,6 +11,7 @@ import {
     create,
     eat,
     equip,
+	equippedItem,
     getClanName,
 	getInventory,
     getProperty,
@@ -37,12 +38,23 @@ import {
     toString as toStringAsh,
     toEffect,
     toInt,
+	toItem,
+	toSkill,
+	toSlot,
     toUrl,
     use,
     useFamiliar,
     useSkill,
     visitUrl,
     wait,
+	myEffects,
+	numericModifier,
+	equippedAmount,
+	haveEquipped,
+	myFamiliar,
+	familiarWeight,
+	weightAdjustment,
+	haveSkill,
 } from "kolmafia";
 import {
     $effect,
@@ -53,6 +65,7 @@ import {
     $skill,
     $skills,
     $slot,
+	$slots,
     get,
     have,
     Macro,
@@ -711,3 +724,40 @@ export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
 	  if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) ensureEffect(ef);
 	}
   }
+
+export function modTraceList(modifier: string) {
+	let totalVal = 0;
+	print("");
+	print("MOD TRACE: "+ modifier, "red");
+	for (const effect in myEffects()) {
+		let ef = toEffect(effect);
+		if (numericModifier(ef, modifier) !=0) {
+			totalVal = totalVal + numericModifier(ef, modifier);
+			print("EFFECT "+ ef+" : "+numericModifier(ef, modifier)+" "+modifier+" for "+haveEffect(ef)+" more turns");
+		}
+	}
+	for (const slot in $slots``){
+		let sl = toSlot(slot);
+		let it = equippedItem(sl);
+		if (numericModifier(it, modifier) != 0 && 
+			(haveEquipped(it) || (haveEquipped($item`your cowboy boots`) && 
+			(sl === $slot`bootspur` || sl === $slot`bootskin`)))){
+				totalVal = totalVal + numericModifier(it, modifier);
+				print("ITEM "+ it + " : "+ numericModifier(it, modifier));
+		}
+	}
+	const famMod = numericModifier(myFamiliar(), modifier, familiarWeight(myFamiliar()) + weightAdjustment(), $item`none`);
+	if (famMod != 0){
+		totalVal = totalVal + famMod;
+		print("FAMILIAR " + myFamiliar() + " : " + famMod);
+	}
+	for (const skill in $skills``){
+		let sk = toSkill(skill);
+		if (haveSkill(sk) && numericModifier(sk, modifier) != 0){
+			totalVal = totalVal + numericModifier(sk, modifier);
+			print("SKILL "+ sk + " : " + numericModifier(sk, modifier));
+		}
+	}
+
+	print("Total " + modifier + ": " + totalVal, "purple");
+}
