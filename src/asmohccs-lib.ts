@@ -736,14 +736,14 @@ export function modTraceList(modifier: string) {
 			print("EFFECT "+ ef+" : "+numericModifier(ef, modifier)+" "+modifier+" for "+haveEffect(ef)+" more turns");
 		}
 	}
-	for (const slot in $slots``){
-		let sl = toSlot(slot);
-		let it = equippedItem(sl);
+
+	for (const slot of $slots``){
+		let it = equippedItem(slot);
 		if (numericModifier(it, modifier) != 0 && 
-			(haveEquipped(it) || (haveEquipped($item`your cowboy boots`) && 
-			(sl === $slot`bootspur` || sl === $slot`bootskin`)))){
+			(haveEquipped(it) || (haveEquipped($item`your cowboy boots`) && $slots`bootspur, bootskin`.includes(slot)))){
 				totalVal = totalVal + numericModifier(it, modifier);
-				print("ITEM "+ it + " : "+ numericModifier(it, modifier));
+				print("SLOT "+ slot);
+				print("ITEM " + it + " : "+ numericModifier(it, modifier));
 		}
 	}
 	const famMod = numericModifier(myFamiliar(), modifier, familiarWeight(myFamiliar()) + weightAdjustment(), $item`none`);
@@ -751,8 +751,7 @@ export function modTraceList(modifier: string) {
 		totalVal = totalVal + famMod;
 		print("FAMILIAR " + myFamiliar() + " : " + famMod);
 	}
-	for (const skill in $skills``){
-		let sk = toSkill(skill);
+	for (const sk of $skills``){
 		if (haveSkill(sk) && numericModifier(sk, modifier) != 0){
 			totalVal = totalVal + numericModifier(sk, modifier);
 			print("SKILL "+ sk + " : " + numericModifier(sk, modifier));
@@ -760,4 +759,5 @@ export function modTraceList(modifier: string) {
 	}
 
 	print("Total " + modifier + ": " + totalVal, "purple");
+	print("");
 }
