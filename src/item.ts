@@ -156,5 +156,6 @@ export default function itemTest(): number {
     testPrep();
     if (predictor() > 1) throw "Failed to cap item";
 	modTraceList("item drop");
+	modTraceList("booze drop");
     return predictor();
 }

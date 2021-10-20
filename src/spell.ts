@@ -175,5 +175,6 @@ export default function spellTest(): number {
     shower();
     testPrep();
 	modTraceList("spell damage");
+	modTraceList("spell damage percent");
     return 1 + predictor();
 }

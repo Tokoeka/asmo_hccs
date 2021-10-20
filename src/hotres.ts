@@ -7,6 +7,7 @@ import {
     getFuel,  
     handlingChoice,
     haveEffect,
+	knollAvailable,
     maximize,
     myHp,
     myMaxhp,
@@ -89,6 +90,14 @@ function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mi
 
 function moonTune() {
 	// Tune moon sign to Platypus
+	const desertAccessItem = knollAvailable()
+            ? $item`bitchin' meatcar`
+            : $item`Desert Bus pass`;
+    if (!have(desertAccessItem)) {
+        cliExecute(`acquire ${desertAccessItem.name}`);
+    }
+    visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
+
 	if (!get("moonTuned")) {
 		if (get("_campAwaySmileBuffs") === 0) {
 		  visitUrl("place.php?whichplace=campaway&action=campaway_sky");

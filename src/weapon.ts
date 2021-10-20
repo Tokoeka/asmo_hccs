@@ -149,5 +149,6 @@ export default function weaponTest(): number {
     testPrep();
     if (predictor() > 1) throw "Failed to cap weapon damage!";
 	modTraceList("weapon damage");
+	modTraceList("weapon damage percent");
     return predictor();
 }
