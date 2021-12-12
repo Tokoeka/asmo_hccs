@@ -53,6 +53,13 @@ function gearAndUncommonBuffs() {
 	if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
     useFamiliar($familiar`Baby Bugged Bugbear`);
     visitUrl("arena.php");
+
+	//removed due to Meat buff being better for aftercore than 1 turn saved
+	/*if (!get("_madTeaParty")) {
+		visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
+		cliExecute("acquire sombrero-mounted sparkler");
+		ensureEffect($effect`You Can Really Taste The Dormouse`);
+	}*/
 }
 
 function familiarStuff() {
