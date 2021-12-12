@@ -69,6 +69,7 @@ import {
     $familiar,
     $item,
     $location,
+	$phylum,
     $skill,
     $skills,
     $slot,
@@ -933,7 +934,7 @@ export function geneTonic(ph: string) {
       if (
         haveEffect($effect`Human-Machine Hybrid`) === 0 &&
         availableAmount($item`Gene Tonic: Construct`) === 0 &&
-        get("dnaSyringe") === "construct"
+        get("dnaSyringe") === $phylum`construct`
       ) {
         cliExecute("camp dnapotion 1");
         if (availableAmount($item`Gene Tonic: ${ph}`) === 0) {

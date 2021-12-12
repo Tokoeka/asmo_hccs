@@ -37,6 +37,7 @@ import {
     $item,
     $location,
     $monster,
+	$phylum,
     $skill,
     $skills,
     $slot,
@@ -530,7 +531,7 @@ function snojo() {
         $location`The X-32-F Combat Training Snowman`,
         Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
         () => {
-            return get(`dnaSyringe`) !== `construct`;
+            return get(`dnaSyringe`) !== $phylum`construct`;
         },
         () => {
             heal();
@@ -727,7 +728,7 @@ function digitwinked() {
 
 function hybridize() {
     // become a human fish hybrid
-    if (get("_dnaHybrid") === false && get("dnaSyringe") !== "fish") {
+    if (get("_dnaHybrid") === false && get("dnaSyringe") !== $phylum`fish`) {
         useFamiliar($familiar`ms puck man`);
         advMacroAA(
             $location`The Bubblin' Caldera`,
@@ -737,12 +738,12 @@ function hybridize() {
                 	Macro.trySkill($skill`Extract`).item($item`DNA extraction syringe`).skill($skill`Feel Hatred`)
                 ), 
 				() => {
-                    return get("dnaSyringe") !== "fish";
+                    return get("dnaSyringe") !== $phylum`fish`;
                 }
             );
     }
 
-    if (get("_dnaHybrid") === false && get("dnaSyringe") === "fish") {
+    if (get("_dnaHybrid") === false && get("dnaSyringe") === $phylum`fish`) {
         cliExecute("camp dnainject");
     }
 	useDefaultFamiliar();

@@ -24,6 +24,7 @@ import {
     $familiar,
     $item,
     $location,
+	$phylum,
     $skill,
     $slot,
     get,
@@ -124,18 +125,20 @@ function batForm() {
 
 function pirateDNA() {
     // get pirate DNA and make a gene tonic
-	if (get("dnaSyringe") !== "pirate" && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
+	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
 		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
     	advMacroAA(
         	$location`Pirates of the Garbage Barges`,
         	Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
         	() => {
-	            return get("dnaSyringe") !== "pirate";
+	            return get("dnaSyringe") !== $phylum`pirate`;
     	    }
       	);
 		geneTonic("pirate");
 		ensureEffect($effect`Human-Pirate Hybrid`);
-	} else throw "Something went wrong getting pirate DNA.";
+	} else {
+		throw "Something went wrong getting pirate DNA.";
+	}
 }
 
 function testPrep() {
