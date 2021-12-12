@@ -1,5 +1,17 @@
-import { availableAmount, cliExecute, create, eat, haveEffect, equip, numericModifier, use, useFamiliar, useSkill, visitUrl } from "kolmafia";
-import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, Macro, Witchess } from "libram";
+import { 
+	availableAmount, 
+	cliExecute, 
+	create, 
+	eat, 
+	haveEffect, 
+	equip, 
+	myClass, 
+	numericModifier, 
+	use, 
+	useFamiliar, 
+	useSkill, 
+	visitUrl } from "kolmafia";
+import { $class, $classes, $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, Macro, Witchess } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { advMacro, burnLibrams, ensureMp, fightSausageIfAble, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
@@ -11,6 +23,9 @@ function firstFights() {
     if (!have($item`makeshiftgarbage shirt`)) cliExecute("fold makeshift garbage shirt");
     equip($slot`shirt`, $item`makeshift garbage shirt`)
     equip($slot`off-hand`, $item`latte lovers member's mug`)
+	if ($classes`sauceror`.includes(myClass())){
+		equip($slot`hat`, $item`Daylight Shavings Helmet`);
+	}
 
     useDefaultFamiliar();
 
@@ -52,16 +67,16 @@ function firstFights() {
             .repeat()
     );
 
-    useDefaultFamiliar(false);
-        uniform();
-        mapMacro(
-            $location`The Haiku Dungeon`,
-            $monster`amateur ninja`,
-            Macro.if_(
-                `monsterid ${$monster`amateur ninja`.id}`,
-                Macro.skill($skill`Gingerbread Mob Hit`)
-            ).step("abort")
-        );
+    /*useDefaultFamiliar(false); //TODO - move to item test as no longer needed for digitize/wink purposes, and being in itemtest will allow for daylight hsaving shenanigans
+    uniform();
+    mapMacro(
+        $location`The Haiku Dungeon`,
+        $monster`amateur ninja`,
+        Macro.if_(
+            `monsterid ${$monster`amateur ninja`.id}`,
+            Macro.skill($skill`Gingerbread Mob Hit`)
+        ).step("abort")
+	);*/
    
 }
 

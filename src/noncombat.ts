@@ -6,6 +6,7 @@ import {
     getFuel,
     haveEffect,
     itemAmount,
+	knollAvailable,
 	myClass,
     numericModifier,
     runChoice,
@@ -54,6 +55,9 @@ function godLobster() {
         useFamiliar($familiar`God Lobster`);
         equip($slot`familiar`, $item`God Lobster's Ring`);
         uniform();
+		if ($classes`sauceror, accordion thief, pastamancer`.includes(myClass())){
+			equip($slot`hat`, $item`Daylight Shavings Helmet`);
+		}
         defaultKill.setAutoAttack();
         heal();
         setChoice(1310, 2);
@@ -87,8 +91,34 @@ function testPrep() {
     }
 }
 
+function moonTune() {
+	// Tune moon sign to Platypus
+	const desertAccessItem = knollAvailable()
+            ? $item`bitchin' meatcar`
+            : $item`Desert Bus pass`;
+    if (!have(desertAccessItem)) {
+        cliExecute(`acquire ${desertAccessItem.name}`);
+    }
+    visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
+
+	if (!get("moonTuned")) {
+		if (get("_campAwaySmileBuffs") === 0) {
+		  visitUrl("place.php?whichplace=campaway&action=campaway_sky");
+		}
+	
+		// Unequip spoon.
+		equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
+		equip($slot`acc2`, $item`Powerful Glove`);
+		equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+	
+		// Actually tune the moon.
+		visitUrl("inv_use.php?whichitem=10254&doit=96&whichsign=4");
+	  }
+}
+
 export default function noncombatTest(): number {
     castBuffs();
+	moonTune();
     godLobster();
     testPrep();
     if (predictor() > 1) throw "Failed to cap noncombat";

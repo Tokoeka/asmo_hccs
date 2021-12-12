@@ -93,31 +93,6 @@ function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mi
     }
 }
 
-function moonTune() {
-	// Tune moon sign to Platypus
-	const desertAccessItem = knollAvailable()
-            ? $item`bitchin' meatcar`
-            : $item`Desert Bus pass`;
-    if (!have(desertAccessItem)) {
-        cliExecute(`acquire ${desertAccessItem.name}`);
-    }
-    visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
-
-	if (!get("moonTuned")) {
-		if (get("_campAwaySmileBuffs") === 0) {
-		  visitUrl("place.php?whichplace=campaway&action=campaway_sky");
-		}
-	
-		// Unequip spoon.
-		equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
-		equip($slot`acc2`, $item`Powerful Glove`);
-		equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-	
-		// Actually tune the moon.
-		visitUrl("inv_use.php?whichitem=10254&doit=96&whichsign=4");
-	  }
-}
-
 function testPrep() {
     hotresOutfit();
 	horse("pale");
@@ -137,7 +112,7 @@ function testPrep() {
 export default function hotTest(): number {
     castBuffs();
     thisFireIsOutOfControl();
-	moonTune();
+	//moonTune();
     testPrep();
 	modTraceList("hot resistance");
     return predictor();

@@ -108,7 +108,7 @@ export default function uniform(): void {
                 ? $items`very pointy crown, Iunion Crown`
                 : inMysClass()
 					? $items`astral chapeau, Iunion Crown`
-					: $item`Iunion Crown`],
+					: $items`Daylight Shavings Helmet, Iunion Crown`],
             [$slot`shirt`, $items`LOV Eardigan, fresh coat of paint`],
             [$slot`pants`, $items`Cargo Cultist Shorts, old sweatpants`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],

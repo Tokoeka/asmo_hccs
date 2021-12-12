@@ -20,10 +20,12 @@ import {
 } from "kolmafia";
 import {
     $class,
+	$classes,
     $effect,
     $familiar,
     $item,
     $location,
+	$monster,
 	$phylum,
     $skill,
     $slot,
@@ -31,13 +33,14 @@ import {
     have,
     Macro,
 } from "libram";
-import { itemOutfit } from "./outfits";
+import uniform, { itemOutfit } from "./outfits";
 import {
     advMacroAA,
     ensureEffect,
     fuelUp,
     geneTonic,
     horse,
+	mapMacro,
 	modTraceList,
     synthItem,
     useDefaultFamiliar,
@@ -82,6 +85,22 @@ function castBuffs() {
     }
 
     if (have($item`lavender candy heart`)) ensureEffect($effect`Heart of Lavender`);
+}
+
+function ninjaTot() {
+	useFamiliar($familiar`puck man`); 
+	uniform();
+	if ($classes`sauceror, disco bandit`.includes(myClass())){
+		equip($slot`hat`, $item`Daylight Shavings Helmet`);
+	}
+    mapMacro(
+    	$location`The Haiku Dungeon`,
+        $monster`amateur ninja`,
+        Macro.if_(
+            `monsterid ${$monster`amateur ninja`.id}`,
+            Macro.skill($skill`Gingerbread Mob Hit`)
+        ).step("abort")
+    );
 }
 
 function batForm() {
@@ -180,6 +199,7 @@ function testPrep() {
 export default function itemTest(): number {
     castBuffs();
     pirateDNA();
+	ninjaTot();
     batForm();
     testPrep();
     if (predictor() > 1) throw "Failed to cap item";

@@ -15,6 +15,7 @@ import {
     knollAvailable,
     maximize,
     mpCost,
+	myClass,
     myGardenType,
     myInebriety,
     myLevel,
@@ -32,7 +33,9 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
-    $effect,
+    $class,
+	$classes,
+	$effect,
     $familiar,
     $item,
     $location,
@@ -330,6 +333,11 @@ function witchGhostAgent() {
         //moved acquiring portscan into the if to stop it doubling up on portscan if need to rerun the script.
         SourceTerminal.educate($skill`Portscan`);
         equip($slot`off-hand`, $item`familiar scrapbook`);
+
+		if ($classes`sauceror, pastamancer`.includes(myClass())){
+			equip($slot`hat`, $item`Daylight Shavings Helmet`);
+		}
+
         useDefaultFamiliar();
         advMacro(
             ghostLocation,
