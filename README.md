@@ -22,7 +22,7 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
  * Garbage Fire
  * Saber
  * Kramco
- * Scrapbook
+ * Familiar Scrapbook
  * Latte
  * Detective School
  * Machine Elf
@@ -74,7 +74,8 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
   * Mini-Adventurer
   * Guzzlr
   * Pulled Taffy
-  * Doghouse
-  * Ceci N'Est Pas Un Chapeau
+  * Haunted Doghouse
+  * Daylight Shavings Helmet
+
   
 
