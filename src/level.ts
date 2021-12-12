@@ -43,6 +43,7 @@ import {
     $slot,
 	BeachComb,
 	ChateauMantegna,
+	DNALab,
     get,
     have,
     Macro,
@@ -536,7 +537,7 @@ function snojo() {
         () => {
             heal();
             useDefaultFamiliar();
-            geneTonic(`construct`);
+            geneTonic($phylum`construct`);
 			ensureEffect($effect`Human-Machine Hybrid`);
         }
     );
@@ -728,7 +729,7 @@ function digitwinked() {
 
 function hybridize() {
     // become a human fish hybrid
-    if (get("_dnaHybrid") === false && get("dnaSyringe") !== $phylum`fish`) {
+    if (!DNALab.isHybridized($phylum`fish`) && get("dnaSyringe") !== $phylum`fish`) {
         useFamiliar($familiar`ms puck man`);
         advMacroAA(
             $location`The Bubblin' Caldera`,
@@ -743,9 +744,9 @@ function hybridize() {
             );
     }
 
-    if (get("_dnaHybrid") === false && get("dnaSyringe") === $phylum`fish`) {
-        cliExecute("camp dnainject");
-    }
+    if (!DNALab.hybridize()) {
+		throw "Failed to hybridize fish";
+	}
 	useDefaultFamiliar();
     if (haveEffect($effect`Drenched in Lava`)){
 		cliExecute("hottub");

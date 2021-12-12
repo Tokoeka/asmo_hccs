@@ -17,6 +17,7 @@ import {
     $item,
     $location,
     $monster,
+	$phylum,
     $skill,
     $slot,
 	BeachComb,
@@ -70,7 +71,7 @@ function getCrushed() {
 			//}
             useDefaultFamiliar();
         }
-        geneTonic("elf");
+        geneTonic($phylum`elf`);
         ensureEffect($effect`human-elf hybrid`);
       
     }

@@ -134,7 +134,7 @@ function pirateDNA() {
 	            return get("dnaSyringe") !== $phylum`pirate`;
     	    }
       	);
-		geneTonic("pirate");
+		geneTonic($phylum`pirate`);
 		ensureEffect($effect`Human-Pirate Hybrid`);
 	} else {
 		throw "Something went wrong getting pirate DNA.";

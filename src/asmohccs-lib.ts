@@ -83,6 +83,12 @@ import {
 } from "libram";
 import { Outfit, withOutfit } from "./outfits";
 import { error } from "libram/dist/console";
+import {
+	getEffect,
+	getTonic,
+	makeTonic,
+	tonicsLeft,
+  } from "libram/dist/resources/2014/DNALab";
 
 export const PropertyManager = new PropertiesManager();
 
@@ -647,6 +653,7 @@ export function shrug(ef: Effect) {
   }
 
 // We have Stevedave's, Ur-Kel's on at all times during leveling (managed via mood); third and fourth slots are variable.
+
 const songSlots = [
     $effects`Stevedave's Shanty of Superiority`,
     $effects`Ur-Kel's Aria of Annoyance`,
@@ -907,40 +914,21 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
 
 
 // Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
-export function geneTonic(ph: string) {
-    if (ph === "dude" || ph === "weird") {
-      print("This function doesn't work for dudes or weirds.", "red");
-    } else if (ph === "construct") {
-      if (
-        haveEffect($effect`Human-Machine Hybrid`) === 0 &&
-        availableAmount($item`Gene Tonic: Construct`) === 0 &&
-        get("dnaSyringe") === $phylum`construct`
-      ) {
-        cliExecute("camp dnapotion 1");
-        if (availableAmount($item`Gene Tonic: ${ph}`) === 0) {
-          error("something went wrong getting your gene tonic");
-        } else {
-          print("successfully created gene tonic: construct");
-        }
-      } else {
-        print("You already have construct DNA");
-      }
-    } else {
-      if (
-        haveEffect($effect`Human-${ph} Hybrid`) === 0 &&
-        availableAmount($item`Gene Tonic: ${ph}`) === 0 &&
-        getProperty("dnaSyringe") === ph
-      ) {
-        cliExecute("camp dnapotion 1");
-        if (availableAmount($item`Gene Tonic: ${ph}`) === 0) {
-          error("something went wrong getting your gene tonic");
-        } else {
-          print("successfully created gene tonic: " + ph);
-        }
-      } else {
-        print("You already have " + ph + " DNA");
-      }
-    }
+
+
+  export function geneTonic(ph: Phylum) {
+	if (tonicsLeft() < 1) throw "You can't make any more tonics";
+	if (!have(getEffect(ph)) && !have(getTonic(ph))) {
+	  if (get("dnaSyringe") !== ph) throw "You have the wrong DNA in your syringe";
+	  makeTonic();
+	  if (!have(getTonic(ph))) {
+		throw "something went wrong getting your gene tonic";
+	  } else {
+		print(`successfully created ${getTonic(ph).name}`);
+	  }
+	} else {
+	  print(`You already have ${ph} DNA`);
+	}
   }
 
   function canCastLibrams(): boolean {
