@@ -70,6 +70,7 @@ function setSettings() {
 	set("mpAutoRecoveryTarget",0.1);
 	set("hpAutoRecovery",0.65);
 	set("hpAutoRecoveryTarget",0.95);
+	visitUrl("clan_viplounge.php?action=fwshop"); //visit Fireworks shop to ensure can buy fireworks
 }
 
 function getTurns() {
