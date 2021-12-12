@@ -9,6 +9,7 @@ import {
     haveEffect,
 	knollAvailable,
     maximize,
+	myClass,
     myHp,
     myMaxhp,
     myMp,
@@ -19,7 +20,7 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $effect, $familiar, $item, $location, $monster, $skill, $slot, BeachComb, get, have, set, Macro } from "libram";
+import { $class, $effect, $familiar, $item, $location, $monster, $skill, $slot, BeachComb, get, have, set, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, fuelUp, horse, horsery, modTraceList, mapMacro } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
@@ -64,6 +65,10 @@ function castBuffs() {
     if (!have($effect`Puzzle Champ`)) {
         cliExecute("witchess");
     }
+
+	if (myClass() === $class`seal clubber`){
+		ensureEffect($effect`Blessing of the Bird`);
+	}
 }
 
 function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mining Mask when we can Foam ourselves

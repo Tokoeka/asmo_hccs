@@ -144,6 +144,8 @@ function buffMainstat() {
 
 	if (have($item`natural magick candle`)) use($item`natural magick candle`);
 
+	use(1, $item`Bird-a-Day calendar`);
+
     const lovePotion = $item`Love Potion #0`;
     const loveEffect = $effect`Tainted Love Potion`;
 

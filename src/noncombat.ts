@@ -6,6 +6,7 @@ import {
     getFuel,
     haveEffect,
     itemAmount,
+	myClass,
     numericModifier,
     runChoice,
     runCombat,
@@ -13,7 +14,7 @@ import {
     useFamiliar,
     visitUrl,
 } from "kolmafia";
-import { $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
+import { $classes, $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
 import { ensureEffect, fuelUp, heal, horse, modTraceList, setChoice } from "./asmohccs-lib";
@@ -27,9 +28,11 @@ function castBuffs() {
     ensureEffect($effect`Feeling Lonely`);
     equip($slot`acc3`, $item`Powerful Glove`);
     ensureEffect($effect`Invisible Avatar`);
-    ensureEffect($effect`Blessing of the Bird`);
-    
 
+	if ($classes`pastamancer, disco bandit`.includes(myClass())){
+		ensureEffect($effect`Blessing of the Bird`);
+	}
+    
     if (haveEffect($effect`Fat Leon's Phat Loot Lyric`))
         cliExecute("shrug fat leon's phat loot lyric");
     ensureEffect($effect`The Sonata of Sneakiness`);

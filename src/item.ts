@@ -153,10 +153,23 @@ function testPrep() {
 	if (numericModifier($item`latte lovers member's mug`, "Item Drop") === 20){
 		equip($slot`offhand`, $item`latte lovers member's mug`);
 	}
-    
-	if (predictor() > 1) equip($slot`weapon`, $item`oversized sparkler`);
-	if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
-	if (predictor() > 1 && have($item`Salsa Caliente™ candle`)) use($item`Salsa Caliente™ candle`);
+
+	const improvements = [
+		() => {
+			if (myClass() === $class`sauceror`){
+				ensureEffect($effect`Blessing of the Bird`);
+			}
+		},
+        () => ensureEffect($effect`Nearly All-Natural`),
+		() => {
+			if (have($item`Salsa Caliente™ candle`)) {
+				use($item`Salsa Caliente™ candle`)
+			}
+		},
+    ];
+    for (const improvement of improvements) {
+        if (predictor() > 1) improvement();
+    }
 
 	//Save for aftercore bonus adventures
 	/*if (predictor() > 1 && myClass() === $class`Accordion Thief` && !get("_barrelPrayer")) {

@@ -16,7 +16,7 @@ import {
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $class, $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
+import { $class, $classes, $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, inMysClass, modTraceList, tryUse } from "./asmohccs-lib";
 
@@ -36,6 +36,10 @@ function musclebuffs() {
         retrieveItem($item`Ben-Gal™ Balm`);
         use(1, $item`Ben-Gal™ Balm`);
     }
+
+	if (myClass() === $class`accordion thief`){
+		ensureEffect($effect`Blessing of the Bird`);
+	}
 }
 
 function muscleTestPrep() {
@@ -64,6 +68,10 @@ const mystPredictor = () =>
 
 function mystbuffs() {
     ensureEffect($effect`Feeling Excited`);
+
+	if (myClass() === $class`turtle tamer`){
+		ensureEffect($effect`Blessing of the Bird`);
+	}
 }
 
 function mystTestPrep() {
@@ -93,8 +101,10 @@ function moxBuffs() {
     useSkill(1, $skill`Bind Penne Dreadful`);
     ensureEffect($effect`Pomp & Circumsands`);
 
-    use(1, $item`Bird-a-Day calendar`);
-    ensureEffect($effect`Blessing of the Bird`);
+    
+	if ($classes`pastamancer, seal clubber, sauceror`.includes(myClass())){
+		ensureEffect($effect`Blessing of the Bird`);
+	}
 
     ensureEffect($effect`Quiet Desperation`);
     ensureEffect($effect`Disco Fever`);
