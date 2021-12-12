@@ -47,8 +47,8 @@ try {
     testWrapper("mysticality", Test.MYS, mystTest);
     testWrapper("weapon damage", Test.WEAPON, weaponTest);
     testWrapper("spell damage", Test.SPELL, spellTest);
-    testWrapper("hot res", Test.HOT_RES, hotTest);
-    testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
+	testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
+    testWrapper("hot res", Test.HOT_RES, hotTest); 
     testWrapper("familiar", Test.FAMILIAR, familiarTest); 
     testWrapper("item", Test.ITEM, itemTest);
 } finally {
