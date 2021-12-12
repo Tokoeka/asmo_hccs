@@ -42,15 +42,15 @@ prepareAscension(
     }
 );
 
-/*const pet = have($familiar`Baby Bugged Bugbear`)
-    ? $item`astral statuette`
-    : $item`astral pet sweater`;*/
+const pet = have($familiar`Baby Bugged Bugbear`)
+    ? $item`astral chapeau`
+    : $item`astral pet sweater`;
 
 ascend(
     Paths.CommunityService,
     $class`Pastamancer`,
     Lifestyle.hardcore,
     "knoll",
-    $item`astral six-pack`//,
-    //pet
+    $item`astral six-pack`,
+    pet
 );
