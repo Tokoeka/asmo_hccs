@@ -19,6 +19,7 @@ import {
     $monster,
     $skill,
     $slot,
+	BeachComb,
 	ChateauMantegna,
     get,
     have,
@@ -37,7 +38,6 @@ import {
 	modTraceList,
     setChoice,
     setClan,
-    tryHead,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import uniform, { weaponOutfit } from "./outfits";
@@ -84,7 +84,7 @@ function castBuffs() {
     );
     ensureEffect($effect`Frenzied, Bloody`);
     if (have($item`LOV Elixir #3`)) use($item`LOV Elixir #3`);
-    tryHead($effect`Lack of Body-Building`);
+    BeachComb.tryHead($effect`Lack of Body-Building`);
 }
 
 //moved Force Spit to occur during NEP Levelling, in order to get it during last little bit of levelling & as bonus to stat tests.

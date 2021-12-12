@@ -19,9 +19,9 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, set, Macro } from "libram";
+import { $effect, $familiar, $item, $location, $monster, $skill, $slot, BeachComb, get, have, set, Macro } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, fuelUp, horse, horsery, modTraceList, tryHead, mapMacro } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, fuelUp, horse, horsery, modTraceList, mapMacro } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
@@ -29,7 +29,7 @@ const predictor = () => 60 - numericModifier("hot resistance");
 function castBuffs() {
     universalWeightBuffs();
 
-    tryHead($effect`Hot-Headed`);
+    BeachComb.tryHead($effect`Hot-Headed`);
 
     /*if (!have($item`tenderizing hammer`)) {
         buy(1, $item`tenderizing hammer`);

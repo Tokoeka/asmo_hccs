@@ -41,6 +41,7 @@ import {
     $skill,
     $skills,
     $slot,
+	BeachComb,
 	ChateauMantegna,
     get,
     have,
@@ -73,7 +74,6 @@ import {
 	synthMox,
 	synthMus,
     synthMyst,
-    tryHead,
 	tryUse,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
@@ -143,11 +143,11 @@ function buffMainstat() {
     const lovePotion = $item`Love Potion #0`;
     const loveEffect = $effect`Tainted Love Potion`;
 
-    tryHead($effect`You Learned Something Maybe!`);
-    tryHead($effect`Do I Know You From Somewhere?`);
+    BeachComb.tryHead($effect`You Learned Something Maybe!`);
+    BeachComb.tryHead($effect`Do I Know You From Somewhere?`);
 	
 	if(inMysClass()){
-		tryHead($effect`We're All Made of Starfish`);
+		BeachComb.tryHead($effect`We're All Made of Starfish`);
 		ensureEffect($effect`Uncucumbered`);
 		ensureEffect($effect`Glittering Eyelashes`);
 
@@ -169,7 +169,7 @@ function buffMainstat() {
 		}
 	}
 	else if (inMusClass()){
-		tryHead($effect`Lack of Body-Building`);
+		BeachComb.tryHead($effect`Lack of Body-Building`);
 		ensureEffect($effect`Muddled`);
 		ensureEffect($effect`Quiet Determination`);
 
@@ -196,7 +196,7 @@ function buffMainstat() {
 		}
 	}
 	else if (inMoxClass()){
-		tryHead($effect`Pomp & Circumsands`);
+		BeachComb.tryHead($effect`Pomp & Circumsands`);
 		ensureEffect($effect`Ten out of Ten`);
 		ensureEffect($effect`Quiet Desperation`);
 

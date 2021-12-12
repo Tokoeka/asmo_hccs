@@ -16,6 +16,7 @@ import {
     $location,
     $monster,
     $skill,
+	BeachComb,
     get,
     have,
     Macro,
@@ -23,7 +24,7 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./asmohccs-macros";
-import { advMacroAA, ensureEffect, horse, modTraceList, setChoice, tryHead } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, modTraceList, setChoice } from "./asmohccs-lib";
 import uniform, { famweightOutfit } from "./outfits";
 
 export function universalWeightBuffs(): void {
@@ -43,7 +44,7 @@ export function universalWeightEffects(): void {
         cliExecute("witchess");
     }
 
-    tryHead($effect`Do I Know You From Somewhere?`);
+    BeachComb.tryHead($effect`Do I Know You From Somewhere?`);
 }
 
 function gearAndUncommonBuffs() {
