@@ -55,6 +55,7 @@ function castBuffs() {
     ensureEffect($effect`Fat Leon's Phat Loot Lyric`);
     ensureEffect($effect`The Spirit of Taking`);
     ensureEffect($effect`items.enh`);
+	ensureEffect($effect`Singer's Faithful Ocelot`);
 
     if (getWorkshed() === $item`Asdon Martin keyfob` && !have($effect`Driving Observantly`)) {
         if (getFuel() < 37) fuelUp();
@@ -146,7 +147,12 @@ function testPrep() {
     }
     useFamiliar($familiar`Trick-or-Treating Tot`);
     itemOutfit();
-    if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
+	if (numericModifier($item`latte lovers member's mug`, "Item Drop") === 20){
+		equip($slot`offhand`, $item`latte lovers member's mug`);
+	}
+    
+	if (predictor() > 1) equip($slot`weapon`, $item`oversized sparkler`);
+	if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
 }
 
 export default function itemTest(): number {

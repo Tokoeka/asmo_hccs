@@ -21,6 +21,7 @@ import {
     myMp,
     numericModifier,
     print,
+	retrieveItem,
     runChoice,
     runCombat,
     toEffect,
@@ -58,25 +59,32 @@ import {
     geneTonic,
     heal,
     horse,
+	inMoxClass,
+	inMusClass,
+	inMysClass,
     mapMacro,
     multiFightAutoAttack,
     questStep,
     setChoice,
-    synthExp,
+	synthMoxExp,
+	synthMusExp,
+    synthMysExp,
+	synthMox,
+	synthMus,
     synthMyst,
     tryHead,
+	tryUse,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { universalWeightBuffs, universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
 
 function initialExp() {
-    if (!have($effect`That's Just Cloud-Talk, Man`)) {
+	if (!have($effect`That's Just Cloud-Talk, Man`)) {
         visitUrl("place.php?whichplace=campaway&action=campaway_sky");
     }
 
-    ensureEffect($effect`Inscrutable Gaze`);
-    ensureEffect($effect`Thaumodynamic`);
+    
 
     if (myGardenType() === "peppermint") {
         cliExecute("garden pick");
@@ -85,11 +93,27 @@ function initialExp() {
           "WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
         );
       }
-
-    if (!have($effect`Synthesis: Learning`)) synthExp();
+	
+	if(inMysClass()){
+		ensureEffect($effect`Inscrutable Gaze`);
+    	ensureEffect($effect`Thaumodynamic`);
+		if (!have($effect`Synthesis: Learning`)) synthMysExp();
+		equip($item`LOV Epaulettes`, $slot`back`)
+	}
+	else if (inMusClass()){
+    	ensureEffect($effect`Muscle Unbound`);
+		if (!have($effect`Synthesis: Movement`)) synthMusExp();
+		equip($item`LOV Eardigan`, $slot`shirt`)
+	}
+	else if (inMoxClass()){
+    	ensureEffect($effect`So Fresh and So Clean`);
+		if (!have($effect`Synthesis: Style`)) synthMoxExp();
+		equip($item`LOV Earrings`, $slot`acc1`)
+	}
+	
 
     equip($item`familiar scrapbook`, $slot`off-hand`);
-    equip($item`LOV Epaulettes`, $slot`back`)
+    
 
     if (have($item`white candy heart`)) {
        	ensureEffect($effect`Heart of White`);
@@ -98,39 +122,109 @@ function initialExp() {
     if (availableAmount($item`a ten-percent bonus`)) {
         use(1, $item`a ten-percent bonus`);
     }
-    cliExecute("bastille myst brutalist");
+
+	if(inMysClass()){
+		cliExecute("bastille myst brutalist");
+	}
+	else if (inMusClass()){
+		cliExecute("bastille muscle brutalist");
+	}
+	else if (inMoxClass()){
+		cliExecute("bastille moxie brutalist");
+
+	}
+
+
 
 }
 
-function buffMyst() {
+function buffMainstat() {
     const lovePotion = $item`Love Potion #0`;
     const loveEffect = $effect`Tainted Love Potion`;
-    if (!have(loveEffect)) {
-        if (!have(lovePotion)) {
-            useSkill(1, $skill`Love Mixology`);
-        }
-        visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
-        if (
-            numericModifier(loveEffect, "mysticality") > 10 &&
-            numericModifier(loveEffect, "muscle") > -30 &&
-            numericModifier(loveEffect, "moxie") > -30 &&
-            numericModifier(loveEffect, "maximum hp percent") > -0.001
-        ) {
-            use(1, lovePotion);
-        }
-    }
-
-    ensureEffect($effect`Uncucumbered`);
-    if (!have($effect`Synthesis: Smart`)) synthMyst();
 
     tryHead($effect`You Learned Something Maybe!`);
-    tryHead($effect`We're All Made of Starfish`);
     tryHead($effect`Do I Know You From Somewhere?`);
+	
+	if(inMysClass()){
+		tryHead($effect`We're All Made of Starfish`);
+		ensureEffect($effect`Uncucumbered`);
+		ensureEffect($effect`Glittering Eyelashes`);
+
+		if (!have($effect`Synthesis: Smart`)) synthMyst();
+
+		if (!have(loveEffect)) {
+			if (!have(lovePotion)) {
+				useSkill(1, $skill`Love Mixology`);
+			}
+			visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
+			if (
+				numericModifier(loveEffect, "mysticality") > 10 &&
+				numericModifier(loveEffect, "muscle") > -30 &&
+				numericModifier(loveEffect, "moxie") > -30 &&
+				numericModifier(loveEffect, "maximum hp percent") > -0.001
+			) {
+				use(1, lovePotion);
+			}
+		}
+	}
+	else if (inMusClass()){
+		tryHead($effect`Lack of Body-Building`);
+		ensureEffect($effect`Muddled`);
+		ensureEffect($effect`Quiet Determination`);
+
+		if (!have($effect`Go Get 'Em, Tiger!`)) {
+			retrieveItem($item`Ben-Gal™ Balm`);
+			use(1, $item`Ben-Gal™ Balm`);
+		}
+
+		if (!have($effect`Synthesis: Strong`)) synthMus();
+
+		if (!have(loveEffect)) {
+			if (!have(lovePotion)) {
+				useSkill(1, $skill`Love Mixology`);
+			}
+			visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
+			if (
+				numericModifier(loveEffect, "mysticality") > -30 &&
+				numericModifier(loveEffect, "muscle") > 10 &&
+				numericModifier(loveEffect, "moxie") > -30 &&
+				numericModifier(loveEffect, "maximum hp percent") > -0.001
+			) {
+				use(1, lovePotion);
+			}
+		}
+	}
+	else if (inMoxClass()){
+		tryHead($effect`Pomp & Circumsands`);
+		ensureEffect($effect`Ten out of Ten`);
+		ensureEffect($effect`Quiet Desperation`);
+
+		if (!have($effect`Unrunnable Face`)) {
+			tryUse(1, $item`runproof mascara`);
+		}
+
+		if (!have($effect`Synthesis: Cool`)) synthMox();
+
+		if (!have(loveEffect)) {
+			if (!have(lovePotion)) {
+				useSkill(1, $skill`Love Mixology`);
+			}
+			visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
+			if (
+				numericModifier(loveEffect, "mysticality") > -30 &&
+				numericModifier(loveEffect, "muscle") > -30 &&
+				numericModifier(loveEffect, "moxie") > 10 &&
+				numericModifier(loveEffect, "maximum hp percent") > -0.001
+			) {
+				use(1, lovePotion);
+			}
+		}
+	}
+
 
     if (!get("_lyleFavored")) ensureEffect($effect`Favored by Lyle`);
     if (!get("telescopeLookedHigh")) ensureEffect($effect`Starry-Eyed`);
 
-    ensureEffect($effect`Glittering Eyelashes`);
     ensureEffect($effect`Broad-Spectrum Vaccine`);
 
     if (!get("_streamsCrossed")) {
@@ -264,7 +358,7 @@ function witchGhostAgent() {
 
 function lov() {
     uniform();
-    //equip($slot`back`, $item`protonic accelerator pack`);
+    equip($slot`back`, $item`vampyric cloake`);
     cliExecute("fold makeshift garbage shirt");
     equip($slot`shirt`, $item`makeshift garbage shirt`);
     heal();
@@ -279,9 +373,25 @@ function lov() {
             Macro.step(delevel).step(easyFight).trySkill($skill`Become a Wolf`).step(candyblast).attack().repeat()
         )
         .setAutoAttack();
-    if (!get("_loveTunnelUsed")) {
+    if (!get("_loveTunnelUsed") && inMysClass()) {
         TunnelOfLove.fightAll(
             "LOV Epaulettes",
+            "Open Heart Surgery",
+            "LOV Extraterrestrial Chocolate"
+        );
+        use(1, $item`LOV Extraterrestrial Chocolate`);
+        burnLibrams();
+    } else if (!get("_loveTunnelUsed") && inMusClass()) {
+        TunnelOfLove.fightAll(
+            "LOV Eardigan",
+            "Open Heart Surgery",
+            "LOV Extraterrestrial Chocolate"
+        );
+        use(1, $item`LOV Extraterrestrial Chocolate`);
+        burnLibrams();
+    } else if (!get("_loveTunnelUsed") && inMoxClass()) {
+        TunnelOfLove.fightAll(
+            "LOV Earring",
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
@@ -293,6 +403,20 @@ function lov() {
 
 function sauceCraft() {
     cliExecute("backupcamera ml");
+
+	//TODO - map/wish for Lemon for Muscle Classes ???
+	//TODO - Wish to fight Evil Olive for olive for Moxie Classes - needs to be done to get a Jumbo Olive anyway
+
+	if(inMysClass()){
+		
+	}
+	else if (inMusClass()){
+		
+	}
+	else if (inMoxClass()){
+		
+
+	}
 
     /*if (have($item`magical sausage casing`) || have($item`magical sausage`)) {
         cliExecute("eat magic sausage");
@@ -333,14 +457,37 @@ function sauceCraft() {
             use(1, $item`tomato juice of powerful power`);
         }
     }
-    if (!have($effect`Mystically Oiled`)) {
-        if (!have($item`ointment of the occult`)) {
-            create(1, $item`ointment of the occult`);
-        }
-        if (have($item`ointment of the occult`)) {
-            use(1, $item`ointment of the occult`);
-        }
-    }
+	if(inMysClass()){
+		if (!have($effect`Mystically Oiled`)) {
+			if (!have($item`ointment of the occult`)) {
+				create(1, $item`ointment of the occult`);
+			}
+			if (have($item`ointment of the occult`)) {
+				use(1, $item`ointment of the occult`);
+			}
+		}
+	}
+	else if (inMusClass()){
+		if (!have($effect`Phorcefullness`)) {
+			if (!have($item`philter of phorce`)) {
+				create(1, $item`philter of phorce`);
+			}
+			if (have($item`philter of phorce`)) {
+				use(1, $item`philter of phorce`);
+			}
+		}
+	}
+	else if (inMoxClass()){
+		if (!have($effect`Superhuman Sarcasm`)) {
+			if (!have($item`serum of sarcasm`)) {
+				create(1, $item`serum of sarcasm`);
+			}
+			if (have($item`serum of sarcasm`)) {
+				use(1, $item`serum of sarcasm`);
+			}
+		}
+	}
+    
 }
 
 function godLob() {
@@ -370,7 +517,14 @@ function snojo() {
     useDefaultFamiliar();
     if (get("snojoSetting") === "NONE") {
         visitUrl("place.php?whichplace=snojo&action=snojo_controller");
-        runChoice(2);
+		if (inMysClass()){
+			runChoice(2);
+		} else if (inMusClass()){
+			runChoice(1);
+		} else if (inMoxClass()){
+			runChoice(3);
+		}
+        
     }
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
@@ -631,7 +785,7 @@ King
 */
 
 export default function levelUp(): void {
-    buffMyst();
+    buffMainstat();
     castBuffs();
     lov();
     initialExp();

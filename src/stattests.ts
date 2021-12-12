@@ -17,7 +17,7 @@ import {
 } from "kolmafia";
 import { $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
-import { ensureEffect, ensureInnerElf, modTraceList, tryUse } from "./asmohccs-lib";
+import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, inMysClass, modTraceList, tryUse } from "./asmohccs-lib";
 
 const musclePredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
