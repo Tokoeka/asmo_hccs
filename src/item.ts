@@ -156,6 +156,11 @@ function testPrep() {
     
 	if (predictor() > 1) equip($slot`weapon`, $item`oversized sparkler`);
 	if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
+
+	//Save for aftercore bonus adventures
+	/*if (predictor() > 1 && myClass() === $class`Accordion Thief` && !get("_barrelPrayer")) {
+		cliExecute("barrelprayer buff");
+	}*/
 }
 
 export default function itemTest(): number {

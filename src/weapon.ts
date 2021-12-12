@@ -2,6 +2,7 @@ import {
     cliExecute,
     equip,
     handlingChoice,
+	myClass,
     numericModifier,
     runChoice,
     runCombat,
@@ -11,7 +12,8 @@ import {
     visitUrl,
 } from "kolmafia";
 import {
-    $effect,
+    $class,
+	$effect,
     $effects,
     $familiar,
     $item,
@@ -86,6 +88,10 @@ function castBuffs() {
     ensureEffect($effect`Frenzied, Bloody`);
     if (have($item`LOV Elixir #3`)) use($item`LOV Elixir #3`);
     BeachComb.tryHead($effect`Lack of Body-Building`);
+
+	if (myClass() === $class`Seal Clubber` && !get("_barrelPrayer")) {
+        cliExecute("barrelprayer buff");
+    }
 }
 
 //moved Force Spit to occur during NEP Levelling, in order to get it during last little bit of levelling & as bonus to stat tests.

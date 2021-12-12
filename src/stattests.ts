@@ -9,13 +9,14 @@ import {
     maximize,
     myBasestat,
     myBuffedstat,
+	myClass,
     myMaxhp,
     retrieveItem,
     use,
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
+import { $class, $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, inMysClass, modTraceList, tryUse } from "./asmohccs-lib";
 
@@ -154,6 +155,12 @@ function hpBuffs() {
         retrieveItem($item`Ben-Gal™ Balm`);
         use(1, $item`Ben-Gal™ Balm`);
     }
+
+	//Save Turtle Barrel Buff for aftercore bonus adv with food
+	/*if (myClass() === $class`Turtle Tamer` && !get("_barrelPrayer")) {
+        cliExecute("barrelprayer buff");
+    }*/
+
 }
 
 const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);

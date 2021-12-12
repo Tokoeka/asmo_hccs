@@ -88,6 +88,10 @@ function castBuffs() {
     if (availableAmount($item`flask of baconstone juice`) > 0) {
         ensureEffect($effect`Baconstoned`);
     }
+
+	if (myClass() === $class`Sauceror` && !get("_barrelPrayer")) {
+        cliExecute("barrelprayer buff");
+    }
 }
 
 function deepDarkVisions() {
