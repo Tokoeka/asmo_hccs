@@ -974,11 +974,11 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
 }
 
 const moonBonus = [
-	["weapon damage percent", "mongoose", 20],
-	["spell damage percent", "wallaby", 20],
-	["familiar weight", "platypus", 5],
-	["meat drop", "wombat", 20],
-	["item drop", "packrat", 10]
+	["weapon damage percent", "mongoose", "20"],
+	["spell damage percent", "wallaby", "20"],
+	["familiar weight", "platypus", "5"],
+	["meat drop", "wombat", "20"],
+	["item drop", "packrat", "10"]
 ];
 
 export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
@@ -1033,34 +1033,45 @@ export function modTraceList(modifier: string) {
 		}
 	}
 
-	const moon = mySign();
+	const myMoon = mySign();
 	if (modifier.includes("experience percent")){
 		if (modifier.includes("muscle") && inMuscleSign()){
 			totalVal = totalVal + 10;
-			print("MOON " + moon + " : " + 10);
+			print("MOON " + myMoon + " : " + 10);
 		}
 		else if (modifier.includes("mysticality") && inMysticalitySign()){
 			totalVal = totalVal + 10;
-			print("MOON " + moon + " : " + 10);
+			print("MOON " + myMoon + " : " + 10);
 		}
 		else if (modifier.includes("moxie") && inMoxieSign()){
 			totalVal = totalVal + 10;
-			print("MOON " + moon + " : " + 10);
+			print("MOON " + myMoon + " : " + 10);
 		}
 	}
-	else if (modifier.includes("damage percent")){
-		if (modifier.includes("weapon") && moon === "Mongoose"){
+	/*else if (modifier.includes("damage percent")){
+		if (modifier.includes("weapon") && myMoon === "Mongoose"){
 			totalVal = totalVal + 20;
-			print("MOON " + moon + " : " + 20);			
+			print("MOON " + myMoon + " : " + 20);			
 		}
-		else if (modifier.includes("spell") && moon === "Wallaby"){
+		else if (modifier.includes("spell") && myMoon === "Wallaby"){
 			totalVal = totalVal + 20;
-			print("MOON " + moon + " : " + 20);	
+			print("MOON " + myMoon + " : " + 20);	
 		}
 	}
-	else if (modifier === "familiar weight" && moon === "Platypus"){
+	else if (modifier === "familiar weight" && myMoon === "Platypus"){
 		totalVal = totalVal + 5;
-		print("MOON " + moon + " : " + 5);	
+		print("MOON " + myMoon + " : " + 5);	
+	}*/ 
+	else {
+		for (const line in moonBonus){
+			const mod = line[0];
+			const moon = line[1];
+			const bonus = line[2];
+			if (modifier.includes(mod) && myMoon === moon){
+				totalVal = totalVal + parseInt(bonus);
+				print("MOON " + myMoon + " : " + bonus)
+			}
+		}
 	}
 
 	const squint = $effect`Steely-Eyed Squint`;
