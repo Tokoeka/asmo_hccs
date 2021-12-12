@@ -36,7 +36,17 @@ import {
     Macro,
     set,
 } from "libram";
-import { advMacroAA, ensureEffect, ensureInnerElf, horse, mapMacro, modTraceList, setChoice } from "./asmohccs-lib";
+import { 
+	advMacroAA, 
+	ensureEffect, 
+	ensureInnerElf,
+	fightSausageIfAble, 
+	horse, 
+	mapMacro, 
+	modTraceList, 
+	setChoice, 
+	useDefaultFamiliar } from "./asmohccs-lib";
+import { delevel, easyFight } from "./asmohccs-macros";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () =>
@@ -67,11 +77,11 @@ function castBuffs() {
 
     cliExecute("briefcase enchantment spell");
 
-    if (!get("_madTeaParty")) {
+    /* if (!get("_madTeaParty")) {
         visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
         cliExecute("acquire mariachi hat");
         ensureEffect($effect`Full Bottle in front of Me`);
-    }
+     }*/
 
     useSkill(1, $skill`Spirit of Cayenne`);
 
@@ -167,10 +177,22 @@ function testPrep() {
     spellOutfit();
 }
 
+function getToxic() {
+	uniform();
+	useDefaultFamiliar();
+	fightSausageIfAble(
+		$location`The Toxic Teacups`,
+		Macro.step(delevel)
+			 .attack()
+			 .repeat()
+	 );
+}
+
 export default function spellTest(): number {
     castBuffs();
     fingies();
     deepDarkVisions();
+	getToxic();
     ensureInnerElf();
     shower();
     testPrep();
