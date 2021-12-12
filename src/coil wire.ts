@@ -59,7 +59,14 @@ function firstFights() {
     }
 
     equip($item`Kramco Sausage-o-Matic&trade;`);
-    useDefaultFamiliar();
+	//added attempting to get Chili for the latte back in, but only for classes that don't have the metal meteoroid
+	if( !get('latteUnlocks').includes('chili') && $classes`turtle tamer, disco bandit, accordion thief`.includes(myClass()) ){
+        useFamiliar($familiar`Left-Hand Man`);
+        equip($slot`familiar`, $item`latte lovers member's mug`);
+    }
+    else {
+    	useDefaultFamiliar();
+	}
     fightSausageIfAble(
        $location`The Haunted Kitchen`,
        Macro.skill($skill`Micrometeorite`)
@@ -67,7 +74,7 @@ function firstFights() {
             .repeat()
     );
 
-    /*useDefaultFamiliar(false); //TODO - move to item test as no longer needed for digitize/wink purposes, and being in itemtest will allow for daylight hsaving shenanigans
+    /*useDefaultFamiliar(false); //moved to item test as no longer needed for digitize/wink purposes, and being in itemtest will allow for daylight hsaving shenanigans
     uniform();
     mapMacro(
         $location`The Haiku Dungeon`,
