@@ -9,7 +9,9 @@ import {
     haveEffect,
     inHardcore,
     itemAmount,
+    myClass,
     myLevel,
+    myName,
     mySpleenUse,
     pullsRemaining,
     retrieveItem,
@@ -19,7 +21,7 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, set, SourceTerminal } from "libram";
+import { $class, $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, set, SourceTerminal } from "libram";
 import { ensureSong, ensureEffect, setClan, tryUse, pullIfPossible } from "./asmohccs-lib";
 
 function juiceBar() {
@@ -148,7 +150,30 @@ function prepGear() {
 function vote() {
     if (!get("_voteToday")) {
         visitUrl("place.php?whichplace=town_right&action=townright_vote");
-        visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+		if (myClass() === $class`Pastamancer`) {
+			//Weapon Damage & Gear Drop
+			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+		}
+		else if (myClass() === $class`Sauceror`) {
+			//Exp & Spooky Res
+			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=4");
+		}
+		else if (myClass() === $class`Accordion Thief`) {
+			//Booze Drop & Init
+			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=3&local%5B%5D=4");
+		}
+		else if (myClass() === $class`Disco Bandit`) {
+			//Max MP  & Food Drop
+			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+		}
+		else if (myClass() === $class`Seal Clubber`) {
+			//Fam Exp & Spooky Res
+			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+		}
+		else if (myClass() === $class`Turtle Tamer`) {
+			//ML & Weapon Dmg
+			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=2");
+		}
     }
 }
 
