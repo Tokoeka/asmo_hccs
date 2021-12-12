@@ -124,13 +124,14 @@ function prepGear() {
         cliExecute("backupcamera reverser on");
         }
     }
-
+	
     if (!get("_floundryItemCreated")) {
 		setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire codpiece");
     }
 
     // Get flimsy hardwood scraps.
+	//TODO Change depending on class???
     visitUrl("shop.php?whichshop=lathe");
     if (availableAmount($item`flimsy hardwood scraps`) > 0) {
         retrieveItem(1, $item`weeping willow wand`);

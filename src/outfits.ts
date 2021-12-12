@@ -122,13 +122,13 @@ export default function uniform(): void {
 }
 
 export function wireOutfit(): void {
-    new Outfit(
-        new Map<Slot, Item>([
+    Outfit.doYourBest(
+        new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`Iunion Crown`],
             [$slot`shirt`, $item`fresh coat of paint`],
             [$slot`pants`, $item`Cargo Cultist Shorts`],
             [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $item`familiar scrapbook`],
+            [$slot`off-hand`, $items`Abracandalabra, familiar scrapbook`],
             [$slot`acc1`, $item`Eight Days a Week Pill Keeper`],
             [$slot`acc2`, $item`Powerful Glove`],
             [$slot`acc3`, $item`Lil' Doctor™ bag`],
@@ -157,7 +157,7 @@ export function hpOutfit(): void {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`wad of used tape`],
+            [$slot`hat`, $item`extra-wide head candle, wad of used tape`],
             [$slot`weapon`, $item`dented scepter`],
             [$slot`off-hand`, $item`Fourth of May Cosplay Saber`],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
@@ -225,6 +225,7 @@ export function itemOutfit(): void {
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
+			[$slot`weapon`, $items`extra-large utility candle, runed taper candle, novelty sparkling candle`],
             [$slot`off-hand`, $item`Kramco Sausage-o-Matic™`],
             [$slot`back`, $items`vampyric cloake, protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
@@ -299,7 +300,7 @@ export function weaponOutfit(): void {
     if (!have($item`broken champagne bottle`)) cliExecute("fold broken champagne bottle");
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $items`seal-skull helmet`],
+            [$slot`hat`, $items`extra-wide head candle, seal-skull helmet`],
             [$slot`weapon`, $item`broken champagne bottle`],
             [$slot`off-hand`, $item`dented scepter`],
             [$slot`acc1`, $item`Brutal brogues`],

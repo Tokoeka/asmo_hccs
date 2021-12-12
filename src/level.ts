@@ -141,6 +141,9 @@ function initialExp() {
 }
 
 function buffMainstat() {
+
+	if (have($item`natural magick candle`)) use($item`natural magick candle`);
+
     const lovePotion = $item`Love Potion #0`;
     const loveEffect = $effect`Tainted Love Potion`;
 
@@ -256,6 +259,8 @@ function castBuffs() {
         useSkill(1, $skill`Acquire Rhinestones`);
         useSkill(1, $skill`Prevent Scurvy and Sobriety`);
     }
+
+	if (have($item`Napalm In The Morning™ candle`)) use($item`Napalm In The Morning™ candle`);
 
     if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
     if (!have($item`saucepan`)) cliExecute("acquire saucepan");

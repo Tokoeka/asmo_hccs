@@ -118,6 +118,11 @@ function testPrep() {
 	horse("pale");
     const improvements = [
         () => ensureEffect($effect`Amazing`),
+		() => {
+			if (have($item`rainbow glitter candle`)) {
+				use($item`rainbow glitter candle`)
+			}
+		},
     ];
     for (const improvement of improvements) {
         if (predictor() > 1) improvement();

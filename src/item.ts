@@ -156,6 +156,7 @@ function testPrep() {
     
 	if (predictor() > 1) equip($slot`weapon`, $item`oversized sparkler`);
 	if (predictor() > 1) ensureEffect($effect`Nearly All-Natural`);
+	if (predictor() > 1 && have($item`Salsa Caliente™ candle`)) use($item`Salsa Caliente™ candle`);
 
 	//Save for aftercore bonus adventures
 	/*if (predictor() > 1 && myClass() === $class`Accordion Thief` && !get("_barrelPrayer")) {
