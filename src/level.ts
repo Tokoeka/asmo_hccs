@@ -154,6 +154,10 @@ function buffMainstat() {
 
     BeachComb.tryHead($effect`You Learned Something Maybe!`);
     BeachComb.tryHead($effect`Do I Know You From Somewhere?`);
+
+	if (have($item`potion of temporary gr8ness`)){
+		use($item`potion of temporary gr8ness`);
+	}
 	
 	if(inMysClass()){
 		BeachComb.tryHead($effect`We're All Made of Starfish`);
@@ -213,6 +217,10 @@ function buffMainstat() {
 			tryUse(1, $item`runproof mascara`);
 		}
 
+		if (have($item`eyedrops of newt`)){
+			use($item`eyedrops of newt`);
+		}
+
 		if (!have($effect`Synthesis: Cool`)) synthMox();
 
 		if (!have(loveEffect)) {
@@ -244,7 +252,7 @@ function buffMainstat() {
     equip($slot`acc3`, $item`Powerful Glove`);
     ensureEffect($effect`Triple-Sized`);
     ensureEffect($effect`Feeling Excited`);
-    if (!get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`);
+    if (!get("_favoriteBirdVisited")) useSkill($skill`Visit your Favorite Bird`); //TODO check on this
 
     if (have($item`votive of confidence`)) use($item`votive of confidence`);
 
@@ -266,6 +274,8 @@ function castBuffs() {
     }
 
 	if (have($item`Napalm In The Morning™ candle`)) use($item`Napalm In The Morning™ candle`);
+
+	if(have($item`pressurized potion of proficiency`)) use($item`pressurized potion of proficiency`);
 
     if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
     if (!have($item`saucepan`)) cliExecute("acquire saucepan");
@@ -418,22 +428,45 @@ function lov() {
     
 }
 
+function acquireFruit() {
+	cliExecute("backupcamera ml");
+
+	if($classes`sauceror, seal clubber, turtle tamer`.includes(myClass())){
+		//acquiring lemon (for mus classes) and cherry for saucerors (as well as lime and grapefruit if you don't have Summon Sobriety & Scurvy)
+		uniform();
+		useDefaultFamiliar(false);
+
+		if (get("questM23Meatsmith") === "unstarted") {
+			visitUrl("shop.php?whichshop=meatsmith&action=talk");
+			runChoice(1);
+		}
+
+		mapMacro(
+            $location`The Skeleton Store`,
+            $monster`Novelty Tropical Skeleton`,
+            Macro.if_(
+                `monsterid ${$monster`Novelty Tropical Skeleton`.id}`,
+                Macro.trySkill($skill`feel envy`).trySkill($skill`shattering punch`)
+            )
+        );
+	}
+	else if (inMoxClass()){
+		uniform();
+		useDefaultFamiliar(false);
+
+		cliExecute("genie monster evil olive");
+		runCombat(Macro.trySkill($skill`feel envy`).trySkill($skill`shattering punch`).toString());
+	}
+
+}
+
 function sauceCraft() {
-    cliExecute("backupcamera ml");
+    
 
 	//TODO - map/wish for Lemon for Muscle Classes ???
 	//TODO - Wish to fight Evil Olive for olive for Moxie Classes - needs to be done to get a Jumbo Olive anyway
 
-	if(inMysClass()){
-		
-	}
-	else if (inMusClass()){
-		
-	}
-	else if (inMoxClass()){
-		
-
-	}
+	
 
     /*if (have($item`magical sausage casing`) || have($item`magical sausage`)) {
         cliExecute("eat magic sausage");
@@ -463,48 +496,60 @@ function sauceCraft() {
             buy(1, $item`Dramatic™ range`);
         }
         use(1, $item`Dramatic™ range`);
-    }
-    useSkill($skill`Advanced Saucecrafting`);
-    useSkill($skill`Prevent Scurvy and Sobriety`);
-    if (!have($effect`Tomato Power`)) {
-        if (!have($item`tomato juice of powerful power`) && have($item`tomato`)) {
-            create(1, $item`tomato juice of powerful power`);
-        }
-        if (have($item`tomato juice of powerful power`)) {
-            use(1, $item`tomato juice of powerful power`);
-        }
-    }
-	if(inMysClass()){
-		if (!have($effect`Mystically Oiled`)) {
-			if (!have($item`ointment of the occult`)) {
-				create(1, $item`ointment of the occult`);
-			}
-			if (have($item`ointment of the occult`)) {
-				use(1, $item`ointment of the occult`);
-			}
-		}
-	}
-	else if (inMusClass()){
-		if (!have($effect`Phorcefullness`)) {
-			if (!have($item`philter of phorce`)) {
-				create(1, $item`philter of phorce`);
-			}
-			if (have($item`philter of phorce`)) {
-				use(1, $item`philter of phorce`);
-			}
-		}
-	}
-	else if (inMoxClass()){
-		if (!have($effect`Superhuman Sarcasm`)) {
-			if (!have($item`serum of sarcasm`)) {
-				create(1, $item`serum of sarcasm`);
-			}
-			if (have($item`serum of sarcasm`)) {
-				use(1, $item`serum of sarcasm`);
-			}
-		}
-	}
     
+    	useSkill($skill`Advanced Saucecrafting`);
+    	useSkill($skill`Prevent Scurvy and Sobriety`);
+    	if (!have($effect`Tomato Power`)) {
+	        if (!have($item`tomato juice of powerful power`) && have($item`tomato`)) {
+    	        create(1, $item`tomato juice of powerful power`);
+        	}
+        	if (have($item`tomato juice of powerful power`)) {
+            	use(1, $item`tomato juice of powerful power`);
+	        }
+    	}
+		if(inMysClass()){
+			if (!have($effect`Mystically Oiled`)) {
+				if (!have($item`ointment of the occult`)) {
+					create(1, $item`ointment of the occult`);
+				}
+				if (have($item`ointment of the occult`)) {
+					use(1, $item`ointment of the occult`);
+				}
+			
+			}
+			if (myClass() === $class`sauceror`){
+				if (!have($item`oil of expertise`)) {
+					create(1, $item`oil of expertise`);
+				}
+			}
+		}
+		else if (inMusClass()){
+			if (!have($effect`Phorcefullness`)) {
+				if (!have($item`philter of phorce`)) {
+					create(1, $item`philter of phorce`);
+				}
+				if (have($item`philter of phorce`)) {
+					use(1, $item`philter of phorce`);
+				}
+			}
+			if (!have($item`oil of stability`)) {
+				create(1, $item`oil of stability`);
+			}
+		}
+		else if (inMoxClass()){
+			if (!have($effect`Superhuman Sarcasm`)) {
+				if (!have($item`serum of sarcasm`)) {
+					create(1, $item`serum of sarcasm`);
+				}
+				if (have($item`serum of sarcasm`)) {
+					use(1, $item`serum of sarcasm`);
+				}
+			}
+			if (!have($item`oil of slipperiness`)) {
+				create(1, $item`oil of slipperiness`);
+			}
+		}
+	}
 }
 
 function godLob() {
@@ -617,11 +662,10 @@ function NEP() {
         Macro.if_(
             "!monstername sausage goblin",
             Macro.trySkill("shattering punch")
-                .trySkill("gingerbread mob hit")
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return (get("_shatteringPunchUsed") < 3 && !get("_gingerbreadMobHitUsed") && myLevel() < 15);
+            return (get("_shatteringPunchUsed") < 3 && myLevel() < 15);
         },
         () => {
             heal();
@@ -643,7 +687,6 @@ function NEP() {
         Macro.if_(
             "!monstername sausage goblin",
             Macro.trySkill("shattering punch")
-                .trySkill("gingerbread mob hit")
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
@@ -807,6 +850,7 @@ export default function levelUp(): void {
     lov();
     initialExp();
     hybridize();
+	acquireFruit();
     sauceCraft();
     //getYoked();
     //digitwinked();

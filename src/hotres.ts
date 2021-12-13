@@ -97,10 +97,15 @@ function testPrep() {
     hotresOutfit();
 	horse("pale");
     const improvements = [
+		() => {
+			if (have($item`programmable turtle`)) {
+				use($item`programmable turtle`);
+			}
+		},
         () => ensureEffect($effect`Amazing`),
 		() => {
 			if (have($item`rainbow glitter candle`)) {
-				use($item`rainbow glitter candle`)
+				use($item`rainbow glitter candle`);
 			}
 		},
     ];

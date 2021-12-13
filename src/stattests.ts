@@ -16,7 +16,7 @@ import {
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $class, $classes, $effect, $familiar, $item, $skill, $stat, $slot, get, getModifier, have } from "libram";
+import { $class, $classes, $effect, $familiar, $item, $skill, $stat, $slot, BeachComb, get, getModifier, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, inMysClass, modTraceList, tryUse } from "./asmohccs-lib";
 
@@ -24,12 +24,26 @@ const musclePredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
 
 function musclebuffs() {
-    useSkill(1, $skill`Bind Undead Elbow Macaroni`);
+	if (myClass() === $class`pastamancer`){
+		useSkill(1, $skill`Bind Undead Elbow Macaroni`);
+	}
+    else if (myClass() === $class`sauceror`){
+		ensureEffect($effect`expert oiliness`);
+	}
+	else if (inMoxClass()){
+		ensureEffect($effect`slippery oiliness`);
+	}
+    
     ensureEffect($effect`Big`);
     ensureEffect($effect`Song of Bravado`);
     ensureEffect($effect`Rage of the Reindeer`);
     ensureEffect($effect`Quiet Determination`);
-    ensureEffect($effect`Disdain of the War Snapper`);
+    if (myClass() !== $class`turtle tamer`) {
+		ensureEffect($effect`Disdain of the War Snapper`);
+	}
+	else {
+		ensureEffect($effect`Blessing of the War Snapper`);
+	}
     ensureEffect($effect`Feeling Excited`);
     ensureEffect($effect`The Power of LOV`);
     if (!have($effect`Go Get 'Em, Tiger!`)) {
@@ -48,7 +62,11 @@ function muscleTestPrep() {
 
     for (const increaser of [
 		() => ensureEffect($effect`Lack of Body-Building`),
-        () => ensureEffect($effect`Ham-Fisted`),
+        () => {
+			if(have($item`vial of hamethyst juice`)){
+				ensureEffect($effect`Ham-Fisted`);
+			}
+		},
         () => ensureInnerElf(),
     ]) {
         if (musclePredictor() > 1) increaser();
@@ -67,15 +85,49 @@ const mystPredictor = () =>
     60 - Math.floor((1 / 30) * (myBuffedstat($stat`mysticality`) - myBasestat($stat`mysticality`)));
 
 function mystbuffs() {
+	if (inMusClass()){
+		ensureEffect($effect`stabilizing oiliness`);
+	}
+	else if (inMoxClass()){
+		ensureEffect($effect`slippery oiliness`);
+	}
+	if (myClass() !== $class`turtle tamer`) {
+		ensureEffect($effect`Disdain of She-Who-Was`);
+	}
+	else {
+		ensureEffect($effect`Blessing of She-Who-Was`);
+	}
+
     ensureEffect($effect`Feeling Excited`);
+	BeachComb.tryHead($effect`We're All Made of Starfish`);
+	//ensureEffect($effect`Uncucumbered`);
+	ensureEffect($effect`Glittering Eyelashes`);
 
 	if (myClass() === $class`turtle tamer`){
 		ensureEffect($effect`Blessing of the Bird`);
 	}
+
+
 }
 
 function mystTestPrep() {
     mysticalityOutfit();
+
+	for (const increaser of [
+		() => {
+			if (have($item`pressurized potion of perspicacity`)){
+				use($item`pressurized potion of perspicacity`);
+			}
+		},
+		() => {
+			if (have($item`flask of baconstone juice`)){
+				use($item`flask of baconstone juice`);
+			}
+		},
+        () => ensureInnerElf(),
+    ]) {
+        if (mystPredictor() > 1) increaser();
+    }
 }
 
 export function mystTest(): number {
@@ -98,7 +150,15 @@ function moxBuffs() {
         eat(1, $item`magical sausage`);
     }
     ensureEffect($effect`Feeling Excited`);
-    useSkill(1, $skill`Bind Penne Dreadful`);
+	if (myClass() === $class`pastamancer`){
+		useSkill(1, $skill`Bind Penne Dreadful`);
+	}
+    else if (myClass() === $class`sauceror`){
+		ensureEffect($effect`expert oiliness`);
+	}
+	else if (inMusClass()){
+		ensureEffect($effect`stabilizing oiliness`);
+	}
     ensureEffect($effect`Pomp & Circumsands`);
 
     
@@ -123,6 +183,11 @@ function moxTestPrep() {
 		() => {
 			if (!have($effect`Unrunnable Face`)) {
 				tryUse(1, $item`runproof mascara`);
+			}
+		},
+		() => {
+			if (have($item`eyedrops of newt`)){
+				use($item`eyedrops of newt`);
 			}
 		},
 		() => {
@@ -158,7 +223,12 @@ function hpBuffs() {
     ensureEffect($effect`Song of Starch`);
     ensureEffect($effect`Rage of the Reindeer`);
     ensureEffect($effect`Quiet Determination`);
-    ensureEffect($effect`Disdain of the War Snapper`);
+    if (myClass() !== $class`turtle tamer`) {
+		ensureEffect($effect`Disdain of the War Snapper`);
+	}
+	else {
+		ensureEffect($effect`Blessing of the War Snapper`);
+	}
     ensureEffect($effect`Feeling Excited`);
     ensureEffect($effect`The Power of LOV`);
     if (!have($effect`Go Get 'Em, Tiger!`)) {
