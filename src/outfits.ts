@@ -157,7 +157,7 @@ export function hpOutfit(): void {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
-            [$slot`hat`, $item`extra-wide head candle, wad of used tape`],
+            [$slot`hat`, $items`extra-wide head candle, wad of used tape`],
             [$slot`weapon`, $item`dented scepter`],
             [$slot`off-hand`, $item`Fourth of May Cosplay Saber`],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
@@ -226,7 +226,7 @@ export function itemOutfit(): void {
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
 			[$slot`weapon`, $items`extra-large utility candle, runed taper candle, novelty sparkling candle`],
-            [$slot`off-hand`, $item`Kramco Sausage-o-Matic™`],
+            [$slot`off-hand`, $item`Kramco Sausage-o-Matic™`], //TODO Add Cursed Magnifying Glass once implemented in Mafia
             [$slot`back`, $items`vampyric cloake, protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
             [$slot`acc2`, $item`gold detective badge`],
