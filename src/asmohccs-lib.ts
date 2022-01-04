@@ -143,7 +143,7 @@ export function synthMysExp(): void {
 			if (item.candyType !== 'complex') {
 				continue;
 			}
-			if (mod === 4){
+			if (mod === 4 && item !== fudge){ 
 				if(fudges >= 1){
 					sweetSynthesis(fudge, item);
 					break;
@@ -155,7 +155,7 @@ export function synthMysExp(): void {
 					break;
 				}
 			}
-			else if (mod === 0){
+			else if (mod === 0){ 
 				if( barks >= 1){
 					sweetSynthesis(bark, item);
 					break;
@@ -200,9 +200,9 @@ export function synthMusExp(): void {
         sweetSynthesis(bark, fudge);
     } else if (fudges < 3) {
         if (twists < 2) {
-			create((2-twists), $item`peppermint twist`);
+			create((2-twists), twist);
         } 
-        sweetSynthesis(bark, $item`peppermint sprout`);
+        sweetSynthesis(twist, twist);
 
     } else {
 		gingerCandy(); //Section below stolen from Bean (with edits)
@@ -238,10 +238,13 @@ export function synthMusExp(): void {
 					break;
 				}
 			}
-			else if (mod === 1){
-				if (twists < 1 && sprouts >= 1) {
-					create(1, twist);
+			else if (mod === 1 && item !== twist){
+				if (twists >=1 || sprouts >= 1){
+					if (twists < 1 && sprouts >= 1) {
+						create(1, twist);
+					}
 					sweetSynthesis(twist, item);
+					break;
 				}
 			}
 		  }
@@ -285,14 +288,15 @@ export function synthMoxExp(): void {
 	const twist = $item`peppermint twist`;
 	const twists = availableAmount(twist);
 	const sprout = $item`peppermint sprout`;
+	const sprouts = availableAmount(sprout);
 	//const sprouts = availableAmount(sprout);
     if (fudges >= 1) {
         sweetSynthesis(fudge, sprout);
-    } else if (barks >= 1) {
-        if (twists < 1) {
+    } else if (barks >= 1 && (twists+sprouts) >= 1) {
+        if (twists < 1 && sprouts >= 1) {
 			create(1, twist);
-            sweetSynthesis(twist, bark);
         }
+		sweetSynthesis(twist, bark);
 	} else if (have($item`bag of many confections`) && pecans >=1){
             sweetSynthesis(pecan, $item`bag of many confections`);
     } else {
