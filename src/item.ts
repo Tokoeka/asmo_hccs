@@ -96,7 +96,10 @@ function ninjaTot() {
     mapMacro(
     	$location`The Haiku Dungeon`,
         $monster`amateur ninja`,
-        Macro.if_(
+        Macro.externalIf(
+			have($item`cosmic bowling ball`),
+			Macro.skill($skill`Bowl Straight Up`)
+		  ).if_(
             `monsterid ${$monster`amateur ninja`.id}`,
             Macro.skill($skill`Gingerbread Mob Hit`)
         ).step("abort")

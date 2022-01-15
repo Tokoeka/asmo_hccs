@@ -461,12 +461,7 @@ function acquireFruit() {
 }
 
 function sauceCraft() {
-    
 
-	//TODO - map/wish for Lemon for Muscle Classes ???
-	//TODO - Wish to fight Evil Olive for olive for Moxie Classes - needs to be done to get a Jumbo Olive anyway
-
-	
 
     /*if (have($item`magical sausage casing`) || have($item`magical sausage`)) {
         cliExecute("eat magic sausage");
@@ -639,7 +634,9 @@ function NEP() {
     useDefaultFamiliar();
     advMacroAA(
         $location`The Neverending Party`,
-        Macro.step(delevel).trySkill("feel pride").trySkill($skill`%fn, spit on me!`).step(easyFight).attack().repeat(),
+		
+        Macro.step(delevel).if_("!hasskill Bowl Sideways && hasskill Feel Pride", Macro.skill("Feel Pride"))
+		.trySkill("Bowl Sideways").trySkill($skill`%fn, spit on me!`).step(easyFight).attack().repeat(),
         () => {
             return get("_neverendingPartyFreeTurns") < 10;
         },
