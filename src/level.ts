@@ -634,7 +634,7 @@ function NEP() {
     useDefaultFamiliar();
     advMacroAA(
         $location`The Neverending Party`,
-		
+
         Macro.step(delevel).if_("!hasskill Bowl Sideways && hasskill Feel Pride", Macro.skill("Feel Pride"))
 		.trySkill("Bowl Sideways").trySkill($skill`%fn, spit on me!`).step(easyFight).attack().repeat(),
         () => {
@@ -662,7 +662,7 @@ function NEP() {
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return (get("_shatteringPunchUsed") < 3 && myLevel() < 15);
+            return (get("_shatteringPunchUsed") < 3);
         },
         () => {
             heal();
@@ -687,7 +687,7 @@ function NEP() {
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return (get("_chestXRayUsed") < 3 && myLevel() < 15);
+            return (get("_chestXRayUsed") < 3);
         },
         () => {
             heal();
