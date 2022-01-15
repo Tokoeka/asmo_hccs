@@ -13,7 +13,8 @@ import {
     myLevel,
     myName,
     mySpleenUse,
-    pullsRemaining,
+    storageAmount,
+	takeStorage,
     retrieveItem,
     runChoice,
     use,
@@ -222,17 +223,33 @@ function horsery() {
     }
 }
 
-function softcorePulls() {
-	//return true; //TODO - pull Stick-Knife of Loathing, Snow Suit, Corrupted Marrow
-	if (pullsRemaining() > 4){
-		pullIfPossible(1, $item`stick-knife of loathing`, 100);
-		pullIfPossible(1, $item`snow suit`, 100);
-		pullIfPossible(1, $item`corrupted marrow`, 5000);
-	}
+function doPulls() {
+    if (inHardcore()) return;
+
+    const pulls: (Item | Item[])[] = [
+        $items`repaid diaper, Great Wolf's beastly trousers`,
+        $items`snow suit, meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
+        $item`Stick-Knife of Loathing`,
+        $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
+        $item`corrupted marrow`,
+    ];
+
+    for (const pull of pulls) {
+        if (
+            (Array.isArray(pull) && pull.some((item) => itemAmount(item) > 0)) ||
+            (!Array.isArray(pull) && itemAmount(pull) > 0)
+        ) {
+            continue;
+        }
+        const pullItem = Array.isArray(pull) ? pull.find((pull) => storageAmount(pull) > 0) : pull;
+        if (pullItem) takeStorage(pullItem, 1);
+    }
 }
 
 
+
 export function runStart(): void {
+	doPulls();
     setSettings();
     toot();
     getTurns();
