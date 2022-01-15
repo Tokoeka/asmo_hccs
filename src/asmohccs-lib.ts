@@ -978,11 +978,11 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
 }
 
 const moonBonus = [
-	["weapon damage percent", "mongoose", "20"],
-	["spell damage percent", "wallaby", "20"],
-	["familiar weight", "platypus", "5"],
-	["meat drop", "wombat", "20"],
-	["item drop", "packrat", "10"]
+	["weapon damage percent", "Mongoose", "20"],
+	["spell damage percent", "Wallaby", "20"],
+	["familiar weight", "Platypus", "5"],
+	["meat drop", "Wombat", "20"],
+	["item drop", "Packrat", "10"]
 ];
 
 export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
@@ -997,13 +997,13 @@ export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
 	  cliExecute(`pull ${quantityPull} ${it.name}`);
 	  return true;
 	} else return false;
-  }
+}
   
-  export function ensurePullEffect(ef: Effect, it: Item) {
+export function ensurePullEffect(ef: Effect, it: Item) {
 	if (haveEffect(ef) === 0) {
 	  if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) ensureEffect(ef);
 	}
-  }
+}
 
 export function modTraceList(modifier: string) {
 	let totalVal = 0;
