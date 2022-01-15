@@ -1071,7 +1071,7 @@ export function modTraceList(modifier: string) {
 			const mod = line[0];
 			const moon = line[1];
 			const bonus = line[2];
-			if (modifier.includes(mod) && myMoon === moon){
+			if (modifier === mod && myMoon === moon){
 				totalVal = totalVal + parseInt(bonus);
 				print("MOON " + myMoon + " : " + bonus)
 			}
