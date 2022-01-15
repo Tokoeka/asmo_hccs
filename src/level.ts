@@ -15,6 +15,7 @@ import {
     knollAvailable,
     maximize,
     mpCost,
+	myBasestat,
 	myClass,
     myGardenType,
     myInebriety,
@@ -44,11 +45,13 @@ import {
     $skill,
     $skills,
     $slot,
+	$stat,
 	BeachComb,
 	ChateauMantegna,
 	DNALab,
     get,
     have,
+    haveInCampground,
     Macro,
     SourceTerminal,
     TunnelOfLove,
@@ -62,7 +65,6 @@ import {
     ensureEffect,
     ensureInnerElf,
     ensureMp,
-    geneTonic,
     heal,
     horse,
 	inMoxClass,
@@ -72,17 +74,20 @@ import {
     multiFightAutoAttack,
     questStep,
     setChoice,
+	tryUse,
+    useDefaultFamiliar,
+} from "./asmohccs-lib";
+import { universalWeightBuffs, universalWeightEffects } from "./familiarweight";
+import {
 	synthMoxExp,
 	synthMusExp,
     synthMysExp,
 	synthMox,
 	synthMus,
     synthMyst,
-	tryUse,
-    useDefaultFamiliar,
-} from "./asmohccs-lib";
-import { universalWeightBuffs, universalWeightEffects } from "./familiarweight";
+} from "./synthesis";
 import uniform from "./outfits";
+import {geneTonic,} from "./worksheds";
 
 function initialExp() {
 	if (!have($effect`That's Just Cloud-Talk, Man`)) {
@@ -588,19 +593,21 @@ function snojo() {
 		}
         
     }
-    advMacroAA(
-        $location`The X-32-F Combat Training Snowman`,
-        Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
-        () => {
-            return get(`dnaSyringe`) !== $phylum`construct`;
-        },
-        () => {
-            heal();
-            useDefaultFamiliar();
-            geneTonic($phylum`construct`);
-			ensureEffect($effect`Human-Machine Hybrid`);
-        }
-    );
+	if (haveInCampground($item`Little Geneticist DNA-Splicing Lab`)){
+		advMacroAA(
+			$location`The X-32-F Combat Training Snowman`,
+			Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
+			() => {
+				return get(`dnaSyringe`) !== $phylum`construct`;
+			},
+			() => {
+				heal();
+				useDefaultFamiliar();
+				geneTonic($phylum`construct`);
+				ensureEffect($effect`Human-Machine Hybrid`);
+			}
+		);
+	}
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
         Macro.step(delevel).step(easyFight).attack().repeat(),
@@ -665,7 +672,7 @@ function NEP() {
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return (get("_shatteringPunchUsed") < 3 && myLevel() < 15);
+            return (get("_shatteringPunchUsed") < 3); //Lvl 15 checkhere if wanted
         },
         () => {
             heal();
@@ -690,7 +697,7 @@ function NEP() {
                 .trySkill("chest x-ray")
         ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
         () => {
-            return (get("_chestXRayUsed") < 3 && myLevel() < 15);
+            return (get("_chestXRayUsed") < 3); //lvl 15 check here if wanted
         },
         () => {
             heal();

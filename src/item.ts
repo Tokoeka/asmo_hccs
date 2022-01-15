@@ -37,15 +37,14 @@ import uniform, { itemOutfit } from "./outfits";
 import {
     advMacroAA,
     ensureEffect,
-    fuelUp,
-    geneTonic,
     horse,
 	mapMacro,
 	modTraceList,
-    synthItem,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
+import { fuelUp, geneTonic,} from "./worksheds";
+import { synthItem, } from "./synthesis";
 
 const predictor = () =>
     60 -

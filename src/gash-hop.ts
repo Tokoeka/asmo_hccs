@@ -29,28 +29,30 @@ const timespinnerTargets = [
     safariTargets.shift();
 }*/
 
-prepareAscension(
-    {
-        workshed: $item`Little Geneticist DNA-Splicing Lab`,
-        garden: $item`Peppermint Pip Packet`,
-        eudora: $item`Our Daily Candles™ order form`,
-    },
-    {
-        desk: $item`continental juice bar`,
-        nightstand: $item`foreign language tapes`,
-        ceiling: $item`ceiling fan`,
-    }
-);
-
-const pet = have($familiar`Baby Bugged Bugbear`)
-    ? $item`astral chapeau`
-    : $item`astral pet sweater`;
-
-ascend(
-    Paths.CommunityService,
-    $class`Pastamancer`,
-    Lifestyle.hardcore,
-    "knoll",
-    $item`astral six-pack`,
-    pet
-);
+export function main(): void {
+	prepareAscension(
+		{
+			workshed: $item`Little Geneticist DNA-Splicing Lab`,
+			garden: $item`Peppermint Pip Packet`,
+			eudora: $item`Our Daily Candles™ order form`,
+		},
+		{
+			desk: $item`continental juice bar`,
+			nightstand: $item`foreign language tapes`,
+			ceiling: $item`ceiling fan`,
+		}
+	);
+	
+	const pet = have($familiar`Baby Bugged Bugbear`)
+		? $item`astral chapeau`
+		: $item`astral pet sweater`;
+	
+	ascend(
+		Paths.CommunityService,
+		$class`Pastamancer`,
+		Lifestyle.hardcore,
+		"knoll",
+		$item`astral six-pack`,
+		pet
+	);
+}

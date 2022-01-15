@@ -35,7 +35,6 @@ import {
     ensureEffect,
     ensureInnerElf,
     fax,
-    geneTonic,
     horse,
     horsery,
 	modTraceList,
@@ -45,6 +44,7 @@ import {
 } from "./asmohccs-lib";
 import uniform, { weaponOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
+import {geneTonic,} from "./worksheds";
 
 const predictor = () =>
     60 -
