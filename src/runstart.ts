@@ -10,9 +10,11 @@ import {
     inHardcore,
     itemAmount,
     myClass,
+	myGardenType,
     myLevel,
     myName,
     mySpleenUse,
+	print,
     storageAmount,
 	takeStorage,
     retrieveItem,
@@ -39,6 +41,14 @@ function toot() {
     autosell( itemAmount($item`porquoise`) -2, $item`porquoise`);
     if (!have($item`toy accordion`)) {
         buy(1, $item`toy accordion`);
+    }
+
+	if (myGardenType() === "peppermint") {
+        cliExecute("garden pick");
+    } else {
+        print(
+          "WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
+        );
     }
 }
 
