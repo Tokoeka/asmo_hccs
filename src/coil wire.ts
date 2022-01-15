@@ -11,18 +11,15 @@ import {
 	useFamiliar, 
 	useSkill, 
 	visitUrl } from "kolmafia";
-import { $class, $classes, $effect, $familiar, $item, $location, $monster, $skill, $slot, get, have, Macro, Witchess } from "libram";
+import { $class, $classes, $effect, $familiar, $item, $items, $location, $monster, $skill, $slot, get, have, Macro, Witchess } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { advMacro, burnLibrams, ensureMp, fightSausageIfAble, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
 import { runStart, grimoires } from "./runstart";
 
 function firstFights() {
-    uniform();
-    equip($slot`back`, $item`protonic accelerator pack`);
-    if (!have($item`makeshiftgarbage shirt`)) cliExecute("fold makeshift garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`)
-    equip($slot`off-hand`, $item`latte lovers member's mug`)
+	if (!have($item`makeshiftgarbage shirt`)) cliExecute("fold makeshift garbage shirt");
+    uniform(...$items`protonic accelerator pack, latte lovers member's mug, makeshift garbage shirt`);
 	if ($classes`sauceror`.includes(myClass())){
 		equip($slot`hat`, $item`Daylight Shavings Helmet`);
 	}
@@ -58,7 +55,7 @@ function firstFights() {
         );
     }
 
-    equip($item`Kramco Sausage-o-Matic&trade;`);
+	uniform(...$items`Kramco Sausage-o-Matic&trade;, makeshift garbage shirt`);
 	//added attempting to get Chili for the latte back in, but only for classes that don't have the metal meteoroid
 	if( !get('latteUnlocks').includes('chili') && $classes`turtle tamer, disco bandit, accordion thief`.includes(myClass()) ){
         useFamiliar($familiar`Left-Hand Man`);
@@ -113,7 +110,6 @@ Inital Setup & Prep
 Fight a witchess Bishop with latte in offhand for MP
 Fight Proto-Ghost (with latte in offhand?)
 Fight a Sausage Goblin (in kitchen with latte in lefty?)
-Map and Insta-kill Ninja for tot equip
 MP Regen Outfit
 Use Love Potion if Shitty
 */

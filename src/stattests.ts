@@ -1,12 +1,8 @@
 import {
     availableAmount,
-	cliExecute,
     create,
     eat,
-    equip,
-    haveEffect,
     itemAmount,
-    maximize,
     myBasestat,
     myBuffedstat,
 	myClass,
@@ -16,12 +12,14 @@ import {
     useFamiliar,
     useSkill,
 } from "kolmafia";
-import { $class, $classes, $effect, $familiar, $item, $skill, $stat, $slot, BeachComb, get, getModifier, have } from "libram";
+import { $class, $classes, $effect, $familiar, $item, $skill, $stat, $slot, BeachComb, have } from "libram";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, inMysClass, modTraceList, tryUse } from "./asmohccs-lib";
 
 const musclePredictor = () =>
-    60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - myBasestat($stat`mysticality`)));
+    60 - Math.floor((1 / 30) * (myBuffedstat($stat`muscle`) - 
+	((myClass() === $class`Pastamancer`) ? myBasestat($stat`mysticality`) : myBasestat($stat`muscle`))
+	));
 
 function musclebuffs() {
 	if (myClass() === $class`pastamancer`){

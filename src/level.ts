@@ -1,27 +1,23 @@
 import {
-    adv1,
     availableAmount,
     buy,
     cliExecute,
-    containsText,
     create,
     drink,
     eat,
     equip,
     getCounters,
+    getWorkshed,
     haveEffect,
     haveEquipped,
-    haveSkill,
     knollAvailable,
     maximize,
     mpCost,
 	myClass,
-    myGardenType,
     myInebriety,
     myLevel,
     myMp,
     numericModifier,
-    print,
 	retrieveItem,
     runChoice,
     runCombat,
@@ -38,6 +34,7 @@ import {
 	$effect,
     $familiar,
     $item,
+	$items,
     $location,
     $monster,
 	$phylum,
@@ -53,6 +50,7 @@ import {
     SourceTerminal,
     TunnelOfLove,
     Witchess,
+	withProperty,
 } from "libram";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import {
@@ -81,7 +79,7 @@ import {
 	tryUse,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
-import { universalWeightBuffs, universalWeightEffects } from "./familiarweight";
+import { universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
 
 function initialExp() {
@@ -89,15 +87,6 @@ function initialExp() {
         visitUrl("place.php?whichplace=campaway&action=campaway_sky");
     }
 
-    
-
-    if (myGardenType() === "peppermint") {
-        cliExecute("garden pick");
-      } else {
-        print(
-          "WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
-        );
-      }
 	
 	if(inMysClass()){
 		ensureEffect($effect`Inscrutable Gaze`);
@@ -180,6 +169,14 @@ function buffMainstat() {
 				use(1, lovePotion);
 			}
 		}
+
+		if (
+			get("yourFavoriteBirdMods")
+				.split(",")
+				.some((mod) => mod.includes("Mysticality Percent: +"))
+		) {
+			useSkill($skill`Visit your Favorite Bird`);
+		}
 	}
 	else if (inMusClass()){
 		BeachComb.tryHead($effect`Lack of Body-Building`);
@@ -206,6 +203,14 @@ function buffMainstat() {
 			) {
 				use(1, lovePotion);
 			}
+		}
+
+		if (
+			get("yourFavoriteBirdMods")
+				.split(",")
+				.some((mod) => mod.includes("Muscle Percent: +"))
+		) {
+			useSkill($skill`Visit your Favorite Bird`);
 		}
 	}
 	else if (inMoxClass()){
@@ -237,13 +242,23 @@ function buffMainstat() {
 				use(1, lovePotion);
 			}
 		}
+
+		if (
+			get("yourFavoriteBirdMods")
+				.split(",")
+				.some((mod) => mod.includes("Moxie Percent: +"))
+		) {
+			useSkill($skill`Visit your Favorite Bird`);
+		}
 	}
 
 
     if (!get("_lyleFavored")) ensureEffect($effect`Favored by Lyle`);
     if (!get("telescopeLookedHigh")) ensureEffect($effect`Starry-Eyed`);
 
-    ensureEffect($effect`Broad-Spectrum Vaccine`);
+    if (get("spacegateVaccine2") && get("spaceGateAlways") && !get("_spacegateVaccine")) {
+        cliExecute("spacegate vaccine 2");
+    }
 
     if (!get("_streamsCrossed")) {
         cliExecute("crossstreams");
@@ -262,8 +277,9 @@ function buffMainstat() {
 }
 
 function castBuffs() {
-    useFamiliar($familiar`Left-Hand Man`);
-    maximize("mp", false);
+    /*useFamiliar($familiar`Left-Hand Man`);
+    maximize("mp", false);*/
+	uniform($item`Abracandalabra`);
 
     if (get("_sausagesEaten") === 0) {
         cliExecute("eat 1 magic sausage");
@@ -271,6 +287,11 @@ function castBuffs() {
         useSkill(1, $skill`Advanced Cocktailcrafting`);
         useSkill(1, $skill`Acquire Rhinestones`);
         useSkill(1, $skill`Prevent Scurvy and Sobriety`);
+    }
+
+	if (!have($item`blue rocket`) && !have($effect`Glowing Blue`)) {
+        visitUrl("clan_viplounge.php?action=fwshop&whichfloor=2");
+        buy(1, $item`blue rocket`);
     }
 
 	if (have($item`Napalm In The Morning™ candle`)) use($item`Napalm In The Morning™ candle`);
@@ -303,7 +324,7 @@ function castBuffs() {
 	universalWeightEffects();
 }
 
-function getYoked() {
+function getYoked() { //I Don't get Yoked due to my Test Order
     uniform();
     useFamiliar($familiar`Ghost of Crimbo Carols`);
     if (get("snojoSetting") === "NONE") {
@@ -325,14 +346,12 @@ function witchGhostAgent() {
         visitUrl("shop.php?whichshop=armory&action=talk");
         runChoice(1);
     }
-    uniform();
-    equip($slot`back`, $item`protonic accelerator pack`);
     cliExecute("fold makeshift garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
+    uniform(...$items`protonic accelerator pack, makeshift garbage shirt`);
     heal();
     useDefaultFamiliar();
     ensureMp(100);
-    Macro.skill("curse of weaksauce").skill("micrometeor").attack().repeat().setAutoAttack();
+    Macro.skill("curse of weaksauce").skill("Micrometeorite").step(defaultKill).repeat().setAutoAttack();
     if (!have($item`battle broom`)) {
         Witchess.fightPiece($monster`Witchess Witch`);
     }
@@ -344,7 +363,7 @@ function witchGhostAgent() {
         SourceTerminal.educate($skill`Portscan`);
         equip($slot`off-hand`, $item`familiar scrapbook`);
 
-		if ($classes`sauceror, pastamancer`.includes(myClass())){
+		if (inMysClass()){
 			equip($slot`hat`, $item`Daylight Shavings Helmet`);
 		}
 
@@ -353,25 +372,31 @@ function witchGhostAgent() {
             ghostLocation,
             Macro.step(delevel)
                 .step(easyFight)
-                .skill("portscan")
-                .skill("shoot ghost")
-                .skill("shoot ghost")
-                .skill("shoot ghost")
-                .skill("trap ghost")
+                .trySkill($skill`Portscan`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Shoot Ghost`)
+                .trySkill($skill`Trap Ghost`)
         );
     }
     if (!have($item`government`) && !have($item`government cheese`)) {
         equip($slot`back`, $item`vampyric cloake`);
         useDefaultFamiliar();
-        equip($slot`acc2`, $item`gold detective badge`);
-        equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-        equip($slot`off-hand`, $item`familiar scrapbook`);
+		uniform(
+            $item`vampyric cloake`,
+            [$item`gold detective badge`, $slot`acc2`],
+            [$item`Lil' Doctor™ bag`, $slot`acc3`]
+        );
         advMacroAA(
             $location`Noob Cave`,
-            Macro.step(delevel).skill("otoscope").skill("become a bat").skill("chest x-ray"),
+            Macro.step(delevel)
+			.trySkill($skill`Otoscope`)
+			.trySkill($skill`Become a Bat`)
+			.trySkill($skill`Chest X-Ray`),
             () => {
                 return getCounters("Portscan", 0, 0) !== "";
-            }
+            },
+			() => () => ensureMp(30)
         );
         const desertAccessItem = knollAvailable()
             ? $item`bitchin' meatcar`
@@ -384,10 +409,8 @@ function witchGhostAgent() {
 }
 
 function lov() {
-    uniform();
-    equip($slot`back`, $item`vampyric cloake`);
     cliExecute("fold makeshift garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
+    uniform(...$items`vampyric cloake, makeshift garbage shirt`);
     heal();
     useDefaultFamiliar();
     Macro.if_("monstername LOV enforcer", Macro.attack().repeat())
@@ -397,7 +420,7 @@ function lov() {
         )
         .if_(
             "monstername LOV equivocator",
-            Macro.step(delevel).step(easyFight).trySkill($skill`Become a Wolf`).step(candyblast).attack().repeat()
+            Macro.step(delevel).step(easyFight).trySkill($skill`Become a Wolf`).step(candyblast).step(defaultKill).repeat()
         )
         .setAutoAttack();
     if (!get("_loveTunnelUsed") && inMysClass()) {
@@ -406,26 +429,21 @@ function lov() {
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-        use(1, $item`LOV Extraterrestrial Chocolate`);
-        burnLibrams();
     } else if (!get("_loveTunnelUsed") && inMusClass()) {
         TunnelOfLove.fightAll(
             "LOV Eardigan",
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-        use(1, $item`LOV Extraterrestrial Chocolate`);
-        burnLibrams();
     } else if (!get("_loveTunnelUsed") && inMoxClass()) {
         TunnelOfLove.fightAll(
             "LOV Earring",
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-        use(1, $item`LOV Extraterrestrial Chocolate`);
-        burnLibrams();
     }
-    
+	use(1, $item`LOV Extraterrestrial Chocolate`);
+	burnLibrams();
 }
 
 function acquireFruit() {
@@ -550,13 +568,12 @@ function sauceCraft() {
 function godLob() {
     if (get("_godLobsterFights") === 0) {
         Macro.step(delevel).step(easyFight).attack().repeat().setAutoAttack();
-        uniform();
-        equip($slot`shirt`, $item`makeshift garbage shirt`);
+        uniform($item`makeshift garbage shirt`);
         heal();
         useFamiliar($familiar`God Lobster`);
         setChoice(1310, 1);
         visitUrl("main.php?fightgodlobster=1");
-        runCombat(Macro.step(delevel).step(easyFight).attack().repeat().toString());
+        runCombat(Macro.step(delevel).step(easyFight).step(defaultKill).repeat().toString());
         multiFightAutoAttack();
         runChoice(-1);
         equip($slot`familiar`, $item`God Lobster's Scepter`);
@@ -583,19 +600,22 @@ function snojo() {
 		}
         
     }
-    advMacroAA(
-        $location`The X-32-F Combat Training Snowman`,
-        Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
-        () => {
-            return get(`dnaSyringe`) !== $phylum`construct`;
-        },
-        () => {
-            heal();
-            useDefaultFamiliar();
-            geneTonic($phylum`construct`);
-			ensureEffect($effect`Human-Machine Hybrid`);
-        }
-    );
+    if (getWorkshed() === $item`Little Geneticist DNA-Splicing Lab`){
+		advMacroAA(
+			$location`The X-32-F Combat Training Snowman`,
+			Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
+			() => {
+				return get(`dnaSyringe`) !== $phylum`construct`;
+			},
+			() => {
+				heal();
+				useDefaultFamiliar();
+				geneTonic($phylum`construct`);
+				ensureEffect($effect`Human-Machine Hybrid`);
+			}
+		);
+	}
+	
     advMacroAA(
         $location`The X-32-F Combat Training Snowman`,
         Macro.step(delevel).step(easyFight).attack().repeat(),
@@ -605,9 +625,23 @@ function snojo() {
         () => {
             heal();
             useDefaultFamiliar();
+			ensureMp(30);
         }
     );
     cliExecute("hottub");
+}
+
+function tentacle(): void {
+    if (!have($skill`Evoke Eldritch Horror`)) return;
+    withProperty("autoAbortThreshold", -0.05, () => {
+        uniform();
+        useDefaultFamiliar();
+        const macro = Macro.step(delevel).step(candyblast).step(defaultKill).repeat();
+        macro.setAutoAttack();
+        useSkill($skill`Evoke Eldritch Horror`);
+        runCombat(macro.toString());
+        if (have($effect`Beaten Up`)) cliExecute("soak");
+    });
 }
 
 function NEP() {
@@ -628,9 +662,7 @@ function NEP() {
         }
     }
 
-    uniform();
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
-    equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
+    uniform($item`makeshift garbage shirt`, $item`Kramco Sausage-o-Matic™`);
     useDefaultFamiliar();
     advMacroAA(
         $location`The Neverending Party`,
@@ -652,22 +684,23 @@ function NEP() {
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
                 ensureInnerElf();
             }
+			ensureMp(30);
         }
     );
     advMacroAA(
         $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
-            Macro.trySkill("shattering punch")
-                .trySkill("chest x-ray")
-        ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
+            Macro.trySkill($skill`Shattering Punch`)
+				.trySkill($skill`Chest X-Ray`)
+        ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).step(defaultKill).repeat()),
         () => {
             return (get("_shatteringPunchUsed") < 3);
         },
         () => {
             heal();
             useDefaultFamiliar();
-            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
                 equip($slot`off-hand`, $item`familiar scrapbook`);
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
@@ -676,6 +709,7 @@ function NEP() {
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
                 ensureInnerElf();
             }
+			ensureMp(30);
         }
     );
     equip($slot`acc3`, $item`Lil' Doctor™ bag`);
@@ -683,16 +717,16 @@ function NEP() {
         $location`The Neverending Party`,
         Macro.if_(
             "!monstername sausage goblin",
-            Macro.trySkill("shattering punch")
-                .trySkill("chest x-ray")
-        ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).attack().repeat()),
+            Macro.trySkill($skill`Shattering Punch`)
+			.trySkill($skill`Chest X-Ray`)
+        ).if_("monstername sausage goblin", Macro.step(delevel).step(candyblast).step(defaultKill).repeat()),
         () => {
             return (get("_chestXRayUsed") < 3);
         },
         () => {
             heal();
             useDefaultFamiliar();
-            if (get("_sausageFights") > 3 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
+            if (get("_sausageFights") > 4 && haveEquipped($item`Kramco Sausage-o-Matic™`)) {
                 equip($slot`off-hand`, $item`familiar scrapbook`);
             }
             if (get("choiceAdventure1324") !== 5 && questStep("_questPartyFair") > 0) {
@@ -701,14 +735,14 @@ function NEP() {
             if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
                 ensureInnerElf();
             }
+			ensureMp(30);
         }
     );
 }
 
 function mElfLeveling() {
-    uniform();
     cliExecute("fold garbage shirt");
-    equip($slot`shirt`, $item`makeshift garbage shirt`);
+    uniform($item`makeshift garbage shirt`);
     useFamiliar($familiar`Machine Elf`);
     advMacroAA(
         $location`The Deep Machine Tunnels`,
@@ -722,7 +756,7 @@ function mElfLeveling() {
 
 function royalty() {
     if (!have($item`very pointy crown`)) {
-        Macro.tryItem("jam band flyer")
+        Macro.tryItem("jam band bootlg")
             .tryItem("gas can")
             .tryItem("time-spinner")
             .attack()
@@ -743,7 +777,7 @@ function royalty() {
 }
 
 function restAndBuff() {
-	ChateauMantegna.changeNightstand($item`foreign language tapes`);
+	ChateauMantegna.changeNightstand(inMysClass() ? $item`foreign language tapes` : inMoxClass() ? $item`bowl of potpourri` : $item`electric muscle stimulator`);
     while (get("timesRested") < totalFreeRests()) {
         burnLibrams();
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
@@ -782,7 +816,10 @@ function digitwinked() {
     
 }
 
-function hybridize() {
+function hybridize(): void {
+	if (getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`){
+		return;
+	}
     // become a human fish hybrid
     if (!DNALab.isHybridized($phylum`fish`) && get("dnaSyringe") !== $phylum`fish`) {
         useFamiliar($familiar`ms puck man`);
@@ -848,12 +885,11 @@ export default function levelUp(): void {
     initialExp();
     hybridize();
 	acquireFruit();
-    sauceCraft();
-    //getYoked();
-    //digitwinked();
+    sauceCraft(); //GetYoked and or DigitWinked would go in here
     witchGhostAgent();
     godLob();
     snojo();
+	tentacle();
 
     restAndBuff();
 

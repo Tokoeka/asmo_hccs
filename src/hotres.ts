@@ -73,8 +73,7 @@ function castBuffs() {
 
 function thisFireIsOutOfControl() { //Don't need to spend a Map for High-Temp Mining Mask when we can Foam ourselves
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
-        uniform();
-        equip($slot`off-hand`, $item`industrial fire extinguisher`);
+        uniform([$item`industrial fire extinguisher`, $slot`off-hand`]);
         useFamiliar($familiar`Ms. Puck Man`);
 		horse(`dark`);
         advMacroAA(
