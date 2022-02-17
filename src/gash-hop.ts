@@ -1,27 +1,25 @@
-import { useSkill } from "kolmafia";
+import { retrieveItem } from "kolmafia";
 import {
-    $class,
-    $familiar,
-    $item,
-    $skill,
-    ascend,
-    get,
-    have,
-    Lifestyle,
-    Paths,
-    prepareAscension,
+  $class,
+  $classes,
+  $familiar,
+  $item,
+  ascend,
+  have,
+  Lifestyle,
+  Paths,
+  prepareAscension,
 } from "libram";
 
 const timespinnerTargets = [
-    "Phillammon",
-    "Busta_Rhymes",
-    "Manendra",
-    "Gausie",
-    "Beldur",
-    "worthawholebean",
-    "ReverKiller",
-    "phreddrickv2",
-    "The Dictator",
+  "Busta_Rhymes",
+  "Manendra",
+  "Gausie",
+  "Beldur",
+  "worthawholebean",
+  "ReverKiller",
+  "phreddrickv2",
+  "The Dictator",
 ];
 
 /*while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets.length) {
@@ -29,28 +27,41 @@ const timespinnerTargets = [
     safariTargets.shift();
 }*/
 
-prepareAscension(
-    {
-        workshed: $item`Little Geneticist DNA-Splicing Lab`,
-        garden: $item`Peppermint Pip Packet`,
-        eudora: $item`Our Daily Candles™ order form`,
-    },
-    {
-        desk: $item`continental juice bar`,
-        nightstand: $item`foreign language tapes`,
-        ceiling: $item`ceiling fan`,
-    }
-);
+export function main(args = ""): void {
+  const newClass = args.includes(`sc`)
+    ? $class`Seal Clubber`
+    : args.includes(`tt`)
+    ? $class`Turtle Tamer`
+    : args.includes(`sr`)
+    ? $class`Sauceror`
+    : args.includes(`db`)
+    ? $class`Disco Bandit`
+    : args.includes(`at`)
+    ? $class`Accordion Thief`
+    : $class`Pastamancer`;
 
-const pet = have($familiar`Baby Bugged Bugbear`)
+  prepareAscension({
+    workshed: `Little Geneticist DNA-Splicing Lab`,
+    garden: `Peppermint Pip Packet`,
+    eudora: `Our Daily Candles™ order form`,
+    chateau: {
+      desk: `continental juice bar`,
+      nightstand: $classes`Seal Clubber, Turtle Tamer`.includes(newClass)
+        ? `electric muscle stimulator`
+        : $classes`Disco Bandit, Accordion Thief`.includes(newClass)
+        ? `bowl of potpourri`
+        : `foreign language tapes`,
+      ceiling: `ceiling fan`,
+    },
+  });
+
+  const pet = have($familiar`Baby Bugged Bugbear`)
     ? $item`astral chapeau`
     : $item`astral pet sweater`;
 
-ascend(
-    Paths.CommunityService,
-    $class`Pastamancer`,
-    Lifestyle.hardcore,
-    "knoll",
-    $item`astral six-pack`,
-    pet
-);
+  const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
+
+  if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
+
+  ascend(Paths.CommunityService, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
+}
