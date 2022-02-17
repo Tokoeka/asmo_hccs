@@ -40,8 +40,14 @@ export function main(args = ""): void {
     ? $class`Accordion Thief`
     : $class`Pastamancer`;
 
+  const shed = args.includes(`asdon`)
+    ? "Asdon Martin keyfob"
+    : args.includes(`pizza`)
+    ? "diabolic pizza cube"
+    : "Little Geneticist DNA-Splicing Lab";
+
   prepareAscension({
-    workshed: `Little Geneticist DNA-Splicing Lab`,
+    workshed: shed,
     garden: `Peppermint Pip Packet`,
     eudora: `Our Daily Candles™ order form`,
     chateau: {
