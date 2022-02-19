@@ -29,12 +29,7 @@ import {
 } from "libram";
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
-import {
-  advMacro,
-  burnLibrams,
-  fightSausageIfAble,
-  useDefaultFamiliar,
-} from "./asmohccs-lib";
+import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./asmohccs-lib";
 import { runStart, grimoires } from "./runstart";
 
 function firstFights() {
