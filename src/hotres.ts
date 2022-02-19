@@ -24,20 +24,13 @@ import {
   Macro,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import {
-  advMacroAA,
-  ensureEffect,
-  horse,
-  modTraceList,
-} from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, modTraceList } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
 
 function castBuffs() {
   universalWeightBuffs();
-
-  BeachComb.tryHead($effect`Hot-Headed`);
 
   /*if (!have($item`tenderizing hammer`)) {
         buy(1, $item`tenderizing hammer`);
@@ -121,6 +114,7 @@ function testPrep() {
         use($item`rainbow glitter candle`);
       }
     },
+    () => BeachComb.tryHead($effect`Hot-Headed`),
   ];
   for (const improvement of improvements) {
     if (predictor() > 1) improvement();
