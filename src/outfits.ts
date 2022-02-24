@@ -365,7 +365,7 @@ export function weaponOutfit(): void {
       [$slot`off-hand`, $item`dented scepter`],
       [$slot`acc1`, $item`Brutal brogues`],
       [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
-      [$slot`acc3`, $item`meteorite ring, Powerful Glove`],
+      [$slot`acc3`, $items`meteorite ring, Powerful Glove`],
       [$slot`familiar`, $items`stick-knife of loathing, fish hatchet, mutant arm`],
     ]), //CHECK THIS
     $familiar`Disembodied Hand`
@@ -380,7 +380,7 @@ export function spellOutfit(): void {
       [$slot`familiar`, $items`stick-knife of loathing, wrench`],
       [$slot`off-hand`, $item`abracandalabra`],
       //[$slot`pants`, $item`pantogram pants`],
-      [$slot`acc1`, $item`meteorite necklace, Kremlin's Greatest Briefcase`],
+      [$slot`acc1`, $items`meteorite necklace, Kremlin's Greatest Briefcase`],
       [$slot`acc2`, $item`powerful glove`],
       [$slot`acc3`, $item`battle broom`],
     ]),
