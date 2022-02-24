@@ -574,7 +574,7 @@ function godLob() {
 function snojo() {
   uniform();
   useDefaultFamiliar();
-  if (get("snojoSetting") === "NONE") {
+  if (get("snojoSetting") === "NONE" || get(`snojoSetting`) === null) {
     visitUrl("place.php?whichplace=snojo&action=snojo_controller");
     if (inMysClass()) {
       runChoice(2);
