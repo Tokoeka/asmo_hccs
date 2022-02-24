@@ -10367,6 +10367,10 @@ function NEP() {
       ensureInnerElf();
     }
 
+    if ((0,external_kolmafia_namespaceObject.myMeat)() >= 1000 && !property_get("hasRange")) {
+      sauceCraft();
+    }
+
     ensureMp(30);
   });
   asmohccs_lib_advMacroAA(template_string_$location(level_templateObject189 || (level_templateObject189 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.trySkill($skill(level_templateObject190 || (level_templateObject190 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill($skill(level_templateObject191 || (level_templateObject191 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(defaultKill).repeat()), () => {
@@ -10543,7 +10547,8 @@ function levelUp() {
   mElfLeveling();
   sauceCraft(); //done twice in case not enough meat for Dramatic Range when first run
 
-  NEP();
+  NEP(); //sauceCraft(); //done thrice in case not enough meat for Dramatic Range when first run
+
   prelude();
 }
 ;// CONCATENATED MODULE: ./src/noncombat.ts

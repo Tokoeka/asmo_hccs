@@ -677,6 +677,9 @@ function NEP() {
       if (myLevel() >= 13 && !have($effect`Inner Elf`)) {
         ensureInnerElf();
       }
+      if (myMeat() >= 1000 && !get("hasRange")){
+        sauceCraft();
+      }
       ensureMp(30);
     }
   );
@@ -902,5 +905,6 @@ export default function levelUp(): void {
   mElfLeveling();
   sauceCraft(); //done twice in case not enough meat for Dramatic Range when first run
   NEP();
+  //sauceCraft(); //done thrice in case not enough meat for Dramatic Range when first run
   prelude();
 }
