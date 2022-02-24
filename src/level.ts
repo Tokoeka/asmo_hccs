@@ -10,11 +10,13 @@ import {
   getWorkshed,
   haveEffect,
   haveEquipped,
+  holiday,
   knollAvailable,
   mpCost,
   myClass,
   myInebriety,
   myLevel,
+  myMeat,
   myMp,
   numericModifier,
   retrieveItem,
@@ -302,6 +304,19 @@ function castBuffs() {
       useSkill(1, buff);
     }
   });
+
+  if (holiday() == `Dependence Day` && myMeat() >= 400) {
+    if (inMoxClass()) {
+      buy($item`snake`, 1, 300);
+      use($item`snake`);
+    } else if (inMusClass()) {
+      buy($item`M-242`, 1, 300);
+      use($item`M-242`);
+    } else {
+      buy($item`sparkler`, 1, 300);
+      use($item`sparkler`);
+    }
+  }
 
   universalWeightEffects();
 }
