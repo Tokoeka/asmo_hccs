@@ -753,7 +753,7 @@ function mElfLeveling() {
 
 function royalty() {
   if (!have($item`very pointy crown`)) {
-    Macro.tryItem("jam band bootlg")
+    Macro.tryItem("jam band bootleg")
       .tryItem("gas can")
       .tryItem("time-spinner")
       .attack()

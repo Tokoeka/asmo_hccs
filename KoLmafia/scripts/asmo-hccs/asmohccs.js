@@ -10282,7 +10282,7 @@ function snojo() {
   outfits_uniform();
   asmohccs_lib_useDefaultFamiliar();
 
-  if (property_get("snojoSetting") === "NONE") {
+  if (property_get("snojoSetting") === "NONE" || property_get("snojoSetting") === null) {
     (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=snojo&action=snojo_controller");
 
     if (inMysClass()) {
@@ -10423,7 +10423,7 @@ function mElfLeveling() {
 
 function royalty() {
   if (!lib_have(template_string_$item(level_templateObject208 || (level_templateObject208 = level_taggedTemplateLiteral(["very pointy crown"]))))) {
-    combat_Macro.tryItem("jam band bootlg").tryItem("gas can").tryItem("time-spinner").attack().repeat().setAutoAttack();
+    combat_Macro.tryItem("jam band bootleg").tryItem("gas can").tryItem("time-spinner").attack().repeat().setAutoAttack();
     outfits_uniform();
     asmohccs_lib_useDefaultFamiliar();
     asmohccs_lib_heal();
