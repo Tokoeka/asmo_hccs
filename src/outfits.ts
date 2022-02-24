@@ -376,7 +376,7 @@ export function spellOutfit(): void {
   Outfit.doYourBest(
     new Map<Slot, Item | Item[]>([
       [$slot`hat`, $items`sugar chapeau, astral chapeau, Hollandaise helmet`],
-      [$slot`weapon`, $items`Staff of Kichen Royalty, weeping willow wand`],
+      [$slot`weapon`, $items`Staff of Kitchen Royalty, weeping willow wand`],
       [$slot`familiar`, $items`stick-knife of loathing, wrench`],
       [$slot`off-hand`, $item`abracandalabra`],
       //[$slot`pants`, $item`pantogram pants`],
