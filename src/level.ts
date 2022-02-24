@@ -349,9 +349,7 @@ function witchGhostAgent() {
   heal();
   useDefaultFamiliar();
   ensureMp(100);
-  Macro.step(defaultKill)
-    .repeat()
-    .setAutoAttack();
+  Macro.step(defaultKill).repeat().setAutoAttack();
   if (!have($item`battle broom`)) {
     Witchess.fightPiece($monster`Witchess Witch`);
   }
@@ -430,7 +428,9 @@ function lov() {
   } else if (!get("_loveTunnelUsed") && inMoxClass()) {
     TunnelOfLove.fightAll("LOV Earring", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
   }
-  use(1, $item`LOV Extraterrestrial Chocolate`);
+  if (get(`_loveChocolatesUsed`) === 0) {
+    use(1, $item`LOV Extraterrestrial Chocolate`);
+  }
   burnLibrams();
 }
 
@@ -817,7 +817,10 @@ function digitwinked() {
 }
 
 function hybridize(): void {
-  if (getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`) {
+  if (
+    getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab` ||
+    DNALab.isHybridized($phylum`fish`)
+  ) {
     return;
   }
   // become a human fish hybrid
