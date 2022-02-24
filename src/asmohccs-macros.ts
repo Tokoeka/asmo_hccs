@@ -1,7 +1,7 @@
 import { Macro } from "libram";
 
-export const delevel = Macro.skill("curse of weaksauce")
-  .skill("micrometeor")
+export const delevel = Macro.trySkill("curse of weaksauce")
+  .trySkill("micrometeorite")
   .tryItem("time-spinner")
   .skill("summon love gnats");
 

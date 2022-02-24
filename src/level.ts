@@ -349,9 +349,7 @@ function witchGhostAgent() {
   heal();
   useDefaultFamiliar();
   ensureMp(100);
-  Macro.skill("curse of weaksauce")
-    .skill("Micrometeorite")
-    .step(defaultKill)
+  Macro.step(defaultKill)
     .repeat()
     .setAutoAttack();
   if (!have($item`battle broom`)) {
