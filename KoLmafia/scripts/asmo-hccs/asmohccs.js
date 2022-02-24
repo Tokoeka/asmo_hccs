@@ -9476,9 +9476,10 @@ function thisFireIsOutOfControl() {
     outfits_uniform([template_string_$item(hotres_templateObject13 || (hotres_templateObject13 = hotres_taggedTemplateLiteral(["industrial fire extinguisher"]))), template_string_$slot(hotres_templateObject14 || (hotres_templateObject14 = hotres_taggedTemplateLiteral(["off-hand"])))]);
     (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(hotres_templateObject15 || (hotres_templateObject15 = hotres_taggedTemplateLiteral(["Ms. Puck Man"]))));
     horse("dark");
-    asmohccs_lib_advMacroAA(template_string_$location(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["Noob Cave"]))), combat_Macro.skill($skill(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill($skill(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => (0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))) < 1 && property_get("_saberForceUses") < 3, () => {
+    setChoice(1387, 3);
+    asmohccs_lib_advMacroAA(template_string_$location(hotres_templateObject16 || (hotres_templateObject16 = hotres_taggedTemplateLiteral(["The Dire Warren"]))), combat_Macro.skill($skill(hotres_templateObject17 || (hotres_templateObject17 = hotres_taggedTemplateLiteral(["Fire Extinguisher: Foam Yourself"])))).skill($skill(hotres_templateObject18 || (hotres_templateObject18 = hotres_taggedTemplateLiteral(["Use the Force"])))), () => (0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(hotres_templateObject19 || (hotres_templateObject19 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"])))) < 1 && property_get("_saberForceUses") < 3, () => {
       (0,external_kolmafia_namespaceObject.visitUrl)("choice.php");
-      (0,external_kolmafia_namespaceObject.runChoice)(3);
+      (0,external_kolmafia_namespaceObject.runChoice)(-1);
 
       if (!(0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(hotres_templateObject20 || (hotres_templateObject20 = hotres_taggedTemplateLiteral(["Fireproof Foam Suit"]))))) {
         throw "failed to Get Fireproof Foam Suit, please Help";

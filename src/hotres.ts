@@ -24,7 +24,7 @@ import {
   Macro,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, horse, modTraceList } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, modTraceList, setChoice } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 const predictor = () => 60 - numericModifier("hot resistance");
@@ -83,13 +83,14 @@ function thisFireIsOutOfControl() {
     uniform([$item`industrial fire extinguisher`, $slot`off-hand`]);
     useFamiliar($familiar`Ms. Puck Man`);
     horse(`dark`);
+    setChoice(1387, 3);
     advMacroAA(
-      $location`Noob Cave`,
+      $location`The Dire Warren`,
       Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
       () => haveEffect($effect`Fireproof Foam Suit`) < 1 && get(`_saberForceUses`) < 3,
       () => {
         visitUrl("choice.php");
-        runChoice(3);
+        runChoice(-1);
         if (!haveEffect($effect`Fireproof Foam Suit`)) {
           throw "failed to Get Fireproof Foam Suit, please Help";
         }
