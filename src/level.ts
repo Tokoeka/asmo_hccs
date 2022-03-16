@@ -417,7 +417,7 @@ function lov() {
         .step(easyFight)
         .trySkill($skill`Become a Wolf`)
         .step(candyblast)
-        .step(defaultKill)
+        .attack()
         .repeat()
     )
     .setAutoAttack();
@@ -624,7 +624,7 @@ function tentacle(): void {
   withProperty("autoAbortThreshold", -0.05, () => {
     uniform();
     useDefaultFamiliar();
-    const macro = Macro.step(delevel).step(candyblast).step(defaultKill).repeat();
+    const macro = Macro.step(delevel).step(candyblast).step(easyFight).attack().repeat();
     macro.setAutoAttack();
     useSkill($skill`Evoke Eldritch Horror`);
     runCombat(macro.toString());
@@ -690,7 +690,7 @@ function NEP() {
       Macro.trySkill($skill`Shattering Punch`).trySkill($skill`Chest X-Ray`)
     ).if_(
       "monstername sausage goblin",
-      Macro.step(delevel).step(candyblast).step(defaultKill).repeat()
+      Macro.step(delevel).step(candyblast).step(easyFight).repeat()
     ),
     () => {
       return get("_shatteringPunchUsed") < 3;
@@ -718,7 +718,7 @@ function NEP() {
       Macro.trySkill($skill`Shattering Punch`).trySkill($skill`Chest X-Ray`)
     ).if_(
       "monstername sausage goblin",
-      Macro.step(delevel).step(candyblast).step(defaultKill).repeat()
+      Macro.step(delevel).step(candyblast).step(easyFight).repeat()
     ),
     () => {
       return get("_chestXRayUsed") < 3;

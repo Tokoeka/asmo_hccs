@@ -10129,7 +10129,7 @@ function lov() {
   outfits_uniform.apply(void 0, level_toConsumableArray(template_string_$items(level_templateObject121 || (level_templateObject121 = level_taggedTemplateLiteral(["vampyric cloake, makeshift garbage shirt"])))));
   asmohccs_lib_heal();
   asmohccs_lib_useDefaultFamiliar();
-  combat_Macro.if_("monstername LOV enforcer", combat_Macro.attack().repeat()).if_("monstername LOV Engineer", combat_Macro.step(asmohccs_macros_candyblast).skill("saucegeyser").repeat()).if_("monstername LOV equivocator", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_easyFight).trySkill($skill(level_templateObject122 || (level_templateObject122 = level_taggedTemplateLiteral(["Become a Wolf"])))).step(asmohccs_macros_candyblast).step(defaultKill).repeat()).setAutoAttack();
+  combat_Macro.if_("monstername LOV enforcer", combat_Macro.attack().repeat()).if_("monstername LOV Engineer", combat_Macro.step(asmohccs_macros_candyblast).skill("saucegeyser").repeat()).if_("monstername LOV equivocator", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_easyFight).trySkill($skill(level_templateObject122 || (level_templateObject122 = level_taggedTemplateLiteral(["Become a Wolf"])))).step(asmohccs_macros_candyblast).attack().repeat()).setAutoAttack();
 
   if (!property_get("_loveTunnelUsed") && inMysClass()) {
     fightAll("LOV Epaulettes", "Open Heart Surgery", "LOV Extraterrestrial Chocolate");
@@ -10321,7 +10321,7 @@ function tentacle() {
   withProperty("autoAbortThreshold", -0.05, () => {
     outfits_uniform();
     asmohccs_lib_useDefaultFamiliar();
-    var macro = combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(defaultKill).repeat();
+    var macro = combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(asmohccs_macros_easyFight).attack().repeat();
     macro.setAutoAttack();
     (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject179 || (level_templateObject179 = level_taggedTemplateLiteral(["Evoke Eldritch Horror"]))));
     (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
@@ -10374,7 +10374,7 @@ function NEP() {
 
     ensureMp(30);
   });
-  asmohccs_lib_advMacroAA(template_string_$location(level_templateObject189 || (level_templateObject189 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.trySkill($skill(level_templateObject190 || (level_templateObject190 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill($skill(level_templateObject191 || (level_templateObject191 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(defaultKill).repeat()), () => {
+  asmohccs_lib_advMacroAA(template_string_$location(level_templateObject189 || (level_templateObject189 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.trySkill($skill(level_templateObject190 || (level_templateObject190 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill($skill(level_templateObject191 || (level_templateObject191 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(asmohccs_macros_easyFight).repeat()), () => {
     return property_get("_shatteringPunchUsed") < 3;
   }, () => {
     asmohccs_lib_heal();
@@ -10395,7 +10395,7 @@ function NEP() {
     ensureMp(30);
   });
   (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(level_templateObject196 || (level_templateObject196 = level_taggedTemplateLiteral(["acc3"]))), template_string_$item(level_templateObject197 || (level_templateObject197 = level_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"]))));
-  asmohccs_lib_advMacroAA(template_string_$location(level_templateObject198 || (level_templateObject198 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.trySkill($skill(level_templateObject199 || (level_templateObject199 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill($skill(level_templateObject200 || (level_templateObject200 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(defaultKill).repeat()), () => {
+  asmohccs_lib_advMacroAA(template_string_$location(level_templateObject198 || (level_templateObject198 = level_taggedTemplateLiteral(["The Neverending Party"]))), combat_Macro.if_("!monstername sausage goblin", combat_Macro.trySkill($skill(level_templateObject199 || (level_templateObject199 = level_taggedTemplateLiteral(["Shattering Punch"])))).trySkill($skill(level_templateObject200 || (level_templateObject200 = level_taggedTemplateLiteral(["Chest X-Ray"]))))).if_("monstername sausage goblin", combat_Macro.step(asmohccs_macros_delevel).step(asmohccs_macros_candyblast).step(asmohccs_macros_easyFight).repeat()), () => {
     return property_get("_chestXRayUsed") < 3;
   }, () => {
     asmohccs_lib_heal();
