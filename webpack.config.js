@@ -12,6 +12,7 @@ module.exports = {
     // Point "entry" to scripts you want to be CLI-eligible.
     asmohccs: "./src/index.ts",
     hccsAscend: "./src/gash-hop.ts",
+	aftercoreCS: "./src/aftercore-cs.ts"
 	//modList: "./src/mod-list.ts",
   },
   // Turns on tree-shaking and minification in the default Terser minifier

@@ -1,0 +1,87 @@
+import {
+    adv1,
+    cliExecute,
+    mallPrice,
+    myAscensions,
+    mySign,
+    myTurncount,
+    refreshStatus,
+    retrieveItem,
+    runChoice,
+    setAutoAttack,
+    takeStorage,
+    toInt,
+    use,
+    useFamiliar,
+    visitUrl,
+} from "kolmafia";
+import {
+    $familiar,
+    $item,
+    $items,
+    $location,
+    $skill,
+    AsdonMartin,
+    get,
+    getSaleValue,
+    Macro,
+    set,
+} from "libram";
+import { advMacro, advMacroAA, unequip } from "./asmohccs-lib";
+
+cliExecute(`hagnk all`);
+cliExecute(`refresh all`);
+cliExecute(`call login.ash`);
+
+if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
+    useFamiliar($familiar`machine elf`);
+    const dupeItems = $items`very fancy whiskey, bottle of Greedy Dog, Daily Affirmation: Always be Collecting, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma`;
+    const dupeVals = Array.from(dupeItems.values()).map((dupe) => {
+        return {
+            dupeIt: dupe,
+            value: mallPrice(dupe),
+        };
+    });
+    const best = dupeVals.sort((a, b) => b.value - a.value)[0];
+    set(`choiceAdventure1125`, "1&iid=" + toInt(best.dupeIt));
+    adv1($location`the deep machine tunnels`);
+}
+
+if (mySign() !== "Platypus" && !get("moonTuned")) {
+    unequip($item`hewn moon-rune spoon`);
+    visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
+}
+
+useFamiliar($familiar`Ms. Puck Man`);
+visitUrl(`place.php?whichplace=airport_spooky&action=airport2_radio`);
+if (
+    [
+        `questESpEVE`,
+        `questESpFakeMedium`,
+        `questESpGore`,
+        `questESpOutOfOrder`,
+        `questESpSerum`,
+        `questESpSmokes`,
+    ].includes(get(`_questESp`))
+) {
+    runChoice(1);
+} else {
+    runChoice(6);
+}
+
+retrieveItem($item`heat-resistant sheet metal`, 20);
+
+const calderaTurns = myTurncount();
+advMacro(
+    $location`the bubblin' caldera`,
+    Macro.skill($skill`curse of weaksauce`)
+        .skill($skill`micrometeorite`)
+        .while_(`!times 3`, Macro.skill($skill`saucestorm`))
+        .skill($skill`shrap`),
+    () => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 8
+);
+cliExecute(`soak`);
+
+if (!AsdonMartin.installed()) {
+    use($item`asdon martin keyfob`);
+}
