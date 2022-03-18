@@ -46,12 +46,12 @@ const startTime = gametimeToInt();
 try {
     assertCompleted(CommunityService.CoilWire.run(coilWire, false, 60), "Failed to Coil Wire");
     if (myLevel() < 15) levelUp(); //want to make sure levelling script completes if it breaks mid-script
-    assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
-    assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
     assertCompleted(
         CommunityService.Muscle.run(muscleTest, false, 1),
         "Failed to cap Muscle test!"
     );
+	assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
+	assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
     assertCompleted(
         CommunityService.Mysticality.run(mystTest, false, 1),
         "Failed to cap Mysticality test!"
