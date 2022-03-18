@@ -58,34 +58,48 @@ if (mySign() !== "Platypus" && !get("moonTuned")) {
 }
 
 useFamiliar($familiar`Ms. Puck Man`);
-visitUrl(`place.php?whichplace=airport_spooky&action=airport2_radio`);
-if (
-    [
-        `questESpEVE`,
-        `questESpFakeMedium`,
-        `questESpGore`,
-        `questESpOutOfOrder`,
-        `questESpSerum`,
-        `questESpSmokes`,
-    ].includes(get(`_questESp`))
-) {
-    runChoice(1);
-} else {
-    runChoice(6);
+if (get(`_questESp`) == ""){
+    visitUrl(`place.php?whichplace=airport_spooky&action=airport2_radio`);
+    if (
+        [
+            `questESpEVE`,
+            `questESpFakeMedium`,
+            `questESpGore`,
+            `questESpOutOfOrder`,
+            `questESpSerum`,
+            `questESpSmokes`,
+        ].includes(get(`_questESp`))
+    ) {
+        runChoice(1);
+    } else {
+        runChoice(6);
+    }
 }
 
-retrieveItem($item`heat-resistant sheet metal`, 20);
+if (get(`lastEncounter`) !== `Lava Dogs`){
+    retrieveItem($item`heat-resistant sheet metal`, 20);
+    set(`mpAutoRecoveryTarget`, 0.7);
+    set(`mpAutoRecovery`, 0.5);
 
-const calderaTurns = myTurncount();
-advMacro(
-    $location`the bubblin' caldera`,
-    Macro.skill($skill`curse of weaksauce`)
-        .skill($skill`micrometeorite`)
-        .while_(`!times 3`, Macro.skill($skill`saucestorm`))
-        .skill($skill`shrap`),
-    () => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 8
-);
-cliExecute(`soak`);
+    if(get(`_calderaStart`) == ""){
+        set(`_calderaStart`, myTurncount());
+    }
+
+    const calderaTurns = get(`_calderaStart`, myTurncount());
+
+
+    advMacro(
+        $location`the bubblin' caldera`,
+        Macro.skill($skill`curse of weaksauce`)
+            .skill($skill`micrometeorite`)
+            .while_(`!times 3`, Macro.skill($skill`saucestorm`))
+            .skill($skill`shrap`),
+        () => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 7
+    );
+    cliExecute(`soak`);
+    set(`mpAutoRecoveryTarget`, 0.25);
+    set(`mpAutoRecovery`, 0.05);
+}
 
 if (!AsdonMartin.installed()) {
     use($item`asdon martin keyfob`);
