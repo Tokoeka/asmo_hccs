@@ -168,7 +168,7 @@ function fingies() {
 
 function shower() {
     useFamiliar($familiar`ms. puck man`);
-    if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
+    /*if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
         uniform();
         setChoice(1387, 3);
 
@@ -180,6 +180,22 @@ function shower() {
         if (handlingChoice()) runChoice(-1);
         set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
         set("mappingMonsters", false);
+    }*/
+	if ( //No longer need Lava-proof Pants /  heat-resitant gloves to cap hot res test
+        get("_meteorShowerUses") < 5 &&
+        !have($effect`Meteor Showered`) &&
+        get(`_saberForceUses`) < 5
+    ) {
+        advMacroAA(
+            $location`The Dire Warren`,
+            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
+            1,
+            () => {
+                visitUrl("choice.php");
+                runChoice(3);
+            }
+        );
+        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
     }
 }
 
