@@ -8807,7 +8807,7 @@ function tonicsLeft() {
   return clamp(3 - property_get("_dnaPotionsMade"), 0, 3);
 }
 ;// CONCATENATED MODULE: ./src/asmohccs-lib.ts
-var asmohccs_lib_templateObject, asmohccs_lib_templateObject2, asmohccs_lib_templateObject3, asmohccs_lib_templateObject4, asmohccs_lib_templateObject5, asmohccs_lib_templateObject6, asmohccs_lib_templateObject7, asmohccs_lib_templateObject8, asmohccs_lib_templateObject9, asmohccs_lib_templateObject10, asmohccs_lib_templateObject11, asmohccs_lib_templateObject12, asmohccs_lib_templateObject13, asmohccs_lib_templateObject14, asmohccs_lib_templateObject15, asmohccs_lib_templateObject16, asmohccs_lib_templateObject17, asmohccs_lib_templateObject18, asmohccs_lib_templateObject19, asmohccs_lib_templateObject20, asmohccs_lib_templateObject21, asmohccs_lib_templateObject22, asmohccs_lib_templateObject23, asmohccs_lib_templateObject24, asmohccs_lib_templateObject25, asmohccs_lib_templateObject26, asmohccs_lib_templateObject27, asmohccs_lib_templateObject28, asmohccs_lib_templateObject29, asmohccs_lib_templateObject30, asmohccs_lib_templateObject31, asmohccs_lib_templateObject32, asmohccs_lib_templateObject33, asmohccs_lib_templateObject34, asmohccs_lib_templateObject35, asmohccs_lib_templateObject36, asmohccs_lib_templateObject37, asmohccs_lib_templateObject38, asmohccs_lib_templateObject39, asmohccs_lib_templateObject40, asmohccs_lib_templateObject41, asmohccs_lib_templateObject42, asmohccs_lib_templateObject43, asmohccs_lib_templateObject44, asmohccs_lib_templateObject45, asmohccs_lib_templateObject46, asmohccs_lib_templateObject47, asmohccs_lib_templateObject48, asmohccs_lib_templateObject49, asmohccs_lib_templateObject50, asmohccs_lib_templateObject51, asmohccs_lib_templateObject52, asmohccs_lib_templateObject53, asmohccs_lib_templateObject54, asmohccs_lib_templateObject55, asmohccs_lib_templateObject56, asmohccs_lib_templateObject57, asmohccs_lib_templateObject58, asmohccs_lib_templateObject59, asmohccs_lib_templateObject60, asmohccs_lib_templateObject61, asmohccs_lib_templateObject62, asmohccs_lib_templateObject63, asmohccs_lib_templateObject64, asmohccs_lib_templateObject65, asmohccs_lib_templateObject66, asmohccs_lib_templateObject67, asmohccs_lib_templateObject68, asmohccs_lib_templateObject69, asmohccs_lib_templateObject70, asmohccs_lib_templateObject71, asmohccs_lib_templateObject72, asmohccs_lib_templateObject73, asmohccs_lib_templateObject74, asmohccs_lib_templateObject75, asmohccs_lib_templateObject76, asmohccs_lib_templateObject77, asmohccs_lib_templateObject78, asmohccs_lib_templateObject79, asmohccs_lib_templateObject80, asmohccs_lib_templateObject81, asmohccs_lib_templateObject82, asmohccs_lib_templateObject83, asmohccs_lib_templateObject84, asmohccs_lib_templateObject85, asmohccs_lib_templateObject86, asmohccs_lib_templateObject87, _templateObject88, _templateObject89, _templateObject90, _templateObject91, _templateObject92, _templateObject93, _templateObject94, _templateObject95, _templateObject96, _templateObject97, _templateObject98, _templateObject99, _templateObject100, _templateObject101, _templateObject102, _templateObject103, _templateObject104, _templateObject105, _templateObject106, _templateObject107, _templateObject108, _templateObject109, _templateObject110, _templateObject111, _templateObject112, _templateObject113, _templateObject114, _templateObject115, _templateObject116, _templateObject117, _templateObject118, _templateObject119, _templateObject120, _templateObject121, _templateObject122, _templateObject123, _templateObject124, _templateObject125, _templateObject126, _templateObject127, _templateObject128, _templateObject129, _templateObject130, _templateObject131, _templateObject132, _templateObject133, _templateObject134, _templateObject135, _templateObject136, _templateObject137, _templateObject138, _templateObject139, _templateObject140, _templateObject141, _templateObject142, _templateObject143, _templateObject144, _templateObject145, _templateObject146, _templateObject147, _templateObject148, _templateObject149, _templateObject150, _templateObject151, _templateObject152, _templateObject153, _templateObject154, _templateObject155, _templateObject156, _ref, _templateObject157, _templateObject158, _templateObject159, _templateObject160, _templateObject161, _templateObject162, _templateObject163, _templateObject164, _templateObject165, _templateObject166, _templateObject167, _templateObject168, _templateObject169, _templateObject170, _templateObject171, _templateObject172, _templateObject173, _templateObject174, _templateObject175, _templateObject176, _templateObject177, _templateObject178, _templateObject179, _templateObject180, _templateObject181, _templateObject182, _templateObject183, _templateObject184, _templateObject185, _templateObject186, _templateObject187, _templateObject188;
+var asmohccs_lib_templateObject, asmohccs_lib_templateObject2, asmohccs_lib_templateObject3, asmohccs_lib_templateObject4, asmohccs_lib_templateObject5, asmohccs_lib_templateObject6, asmohccs_lib_templateObject7, asmohccs_lib_templateObject8, asmohccs_lib_templateObject9, asmohccs_lib_templateObject10, asmohccs_lib_templateObject11, asmohccs_lib_templateObject12, asmohccs_lib_templateObject13, asmohccs_lib_templateObject14, asmohccs_lib_templateObject15, asmohccs_lib_templateObject16, asmohccs_lib_templateObject17, asmohccs_lib_templateObject18, asmohccs_lib_templateObject19, asmohccs_lib_templateObject20, asmohccs_lib_templateObject21, asmohccs_lib_templateObject22, asmohccs_lib_templateObject23, asmohccs_lib_templateObject24, asmohccs_lib_templateObject25, asmohccs_lib_templateObject26, asmohccs_lib_templateObject27, asmohccs_lib_templateObject28, asmohccs_lib_templateObject29, asmohccs_lib_templateObject30, asmohccs_lib_templateObject31, asmohccs_lib_templateObject32, asmohccs_lib_templateObject33, asmohccs_lib_templateObject34, asmohccs_lib_templateObject35, asmohccs_lib_templateObject36, asmohccs_lib_templateObject37, asmohccs_lib_templateObject38, asmohccs_lib_templateObject39, asmohccs_lib_templateObject40, asmohccs_lib_templateObject41, asmohccs_lib_templateObject42, asmohccs_lib_templateObject43, asmohccs_lib_templateObject44, asmohccs_lib_templateObject45, asmohccs_lib_templateObject46, asmohccs_lib_templateObject47, asmohccs_lib_templateObject48, asmohccs_lib_templateObject49, asmohccs_lib_templateObject50, asmohccs_lib_templateObject51, asmohccs_lib_templateObject52, asmohccs_lib_templateObject53, asmohccs_lib_templateObject54, asmohccs_lib_templateObject55, asmohccs_lib_templateObject56, asmohccs_lib_templateObject57, asmohccs_lib_templateObject58, asmohccs_lib_templateObject59, asmohccs_lib_templateObject60, asmohccs_lib_templateObject61, asmohccs_lib_templateObject62, asmohccs_lib_templateObject63, asmohccs_lib_templateObject64, asmohccs_lib_templateObject65, asmohccs_lib_templateObject66, asmohccs_lib_templateObject67, asmohccs_lib_templateObject68, asmohccs_lib_templateObject69, asmohccs_lib_templateObject70, asmohccs_lib_templateObject71, asmohccs_lib_templateObject72, asmohccs_lib_templateObject73, asmohccs_lib_templateObject74, asmohccs_lib_templateObject75, asmohccs_lib_templateObject76, asmohccs_lib_templateObject77, asmohccs_lib_templateObject78, asmohccs_lib_templateObject79, asmohccs_lib_templateObject80, asmohccs_lib_templateObject81, asmohccs_lib_templateObject82, asmohccs_lib_templateObject83, asmohccs_lib_templateObject84, asmohccs_lib_templateObject85, asmohccs_lib_templateObject86, asmohccs_lib_templateObject87, _templateObject88, _templateObject89, _templateObject90, _templateObject91, _templateObject92, _templateObject93, _templateObject94, _templateObject95, _templateObject96, _templateObject97, _templateObject98, _templateObject99, _templateObject100, _templateObject101, _templateObject102, _templateObject103, _templateObject104, _templateObject105, _templateObject106, _templateObject107, _templateObject108, _templateObject109, _templateObject110, _templateObject111, _templateObject112, _templateObject113, _templateObject114, _templateObject115, _templateObject116, _templateObject117, _templateObject118, _templateObject119, _templateObject120, _templateObject121, _templateObject122, _templateObject123, _templateObject124, _templateObject125, _templateObject126, _templateObject127, _templateObject128, _templateObject129, _templateObject130, _templateObject131, _templateObject132, _templateObject133, _templateObject134, _templateObject135, _templateObject136, _templateObject137, _templateObject138, _templateObject139, _templateObject140, _templateObject141, _templateObject142, _templateObject143, _templateObject144, _templateObject145, _templateObject146, _templateObject147, _templateObject148, _templateObject149, _templateObject150, _templateObject151, _templateObject152, _templateObject153, _templateObject154, _templateObject155, _templateObject156, _templateObject157, _ref, _templateObject158, _templateObject159, _templateObject160, _templateObject161, _templateObject162, _templateObject163, _templateObject164, _templateObject165, _templateObject166, _templateObject167, _templateObject168, _templateObject169, _templateObject170, _templateObject171, _templateObject172, _templateObject173, _templateObject174, _templateObject175, _templateObject176, _templateObject177, _templateObject178, _templateObject179, _templateObject180, _templateObject181, _templateObject182, _templateObject183, _templateObject184, _templateObject185, _templateObject186, _templateObject187, _templateObject188, _templateObject189;
 
 function asmohccs_lib_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -9400,16 +9400,22 @@ function ensureInnerElf() {
     try {
       withOutfit(new Outfit(new Map([[template_string_$slot(_templateObject144 || (_templateObject144 = asmohccs_lib_taggedTemplateLiteral(["acc3"]))), template_string_$item(_templateObject145 || (_templateObject145 = asmohccs_lib_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))]]), template_string_$familiar(_templateObject146 || (_templateObject146 = asmohccs_lib_taggedTemplateLiteral(["Machine Elf"])))), () => {
         asmohccs_lib_ensureEffect(template_string_$effect(_templateObject147 || (_templateObject147 = asmohccs_lib_taggedTemplateLiteral(["Blood Bubble"]))));
+        setChoice(326, 1);
+        if (property_get("_kgbTranquilizerDartUses") >= 3) ensureMp(50);
         advMacro(template_string_$location(_templateObject148 || (_templateObject148 = asmohccs_lib_taggedTemplateLiteral(["The Slime Tube"]))), combat_Macro.trySkill($skill(_templateObject149 || (_templateObject149 = asmohccs_lib_taggedTemplateLiteral(["KGB tranquilizer dart"])))).trySkill($skill(_templateObject150 || (_templateObject150 = asmohccs_lib_taggedTemplateLiteral(["Snokebomb"])))));
       });
     } finally {
       setClan(property_get("asmocs_mainClan", "Alliance From Heck"));
     }
+
+    if (!lib_have(template_string_$effect(_templateObject151 || (_templateObject151 = asmohccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
+      throw "Failed to get effect Inner Elf from Mother Slime.";
+    }
   }
 }
 function fightSausageIfAble(location, macro) {
   if (kramcoCheck()) {
-    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(_templateObject151 || (_templateObject151 = asmohccs_lib_taggedTemplateLiteral(["off-hand"]))), template_string_$item(_templateObject152 || (_templateObject152 = asmohccs_lib_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(_templateObject152 || (_templateObject152 = asmohccs_lib_taggedTemplateLiteral(["off-hand"]))), template_string_$item(_templateObject153 || (_templateObject153 = asmohccs_lib_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
     var sausages = property_get("_sausageFights");
     asmohccs_lib_advMacroAA(location, macro, () => {
       return sausages === property_get("_sausageFights");
@@ -9426,7 +9432,7 @@ function shrug(ef) {
   }
 } // We have Stevedave's, Ur-Kel's on at all times during leveling (managed via mood); third and fourth slots are variable.
 
-var songSlots = [$effects(_templateObject153 || (_templateObject153 = asmohccs_lib_taggedTemplateLiteral(["Stevedave's Shanty of Superiority"]))), $effects(_templateObject154 || (_templateObject154 = asmohccs_lib_taggedTemplateLiteral(["Ur-Kel's Aria of Annoyance"]))), $effects(_templateObject155 || (_templateObject155 = asmohccs_lib_taggedTemplateLiteral(["Power Ballad of the Arrowsmith, The Magical Mojomuscular Melody, The Moxious Madrigal, Ode to Booze, Jackasses' Symphony of Destruction"]))), $effects(_templateObject156 || (_templateObject156 = asmohccs_lib_taggedTemplateLiteral(["Carlweather's Cantata of Confrontation, The Sonata of Sneakiness, Fat Leon's Phat Loot Lyric, Polka of Plenty"])))];
+var songSlots = [$effects(_templateObject154 || (_templateObject154 = asmohccs_lib_taggedTemplateLiteral(["Stevedave's Shanty of Superiority"]))), $effects(_templateObject155 || (_templateObject155 = asmohccs_lib_taggedTemplateLiteral(["Ur-Kel's Aria of Annoyance"]))), $effects(_templateObject156 || (_templateObject156 = asmohccs_lib_taggedTemplateLiteral(["Power Ballad of the Arrowsmith, The Magical Mojomuscular Melody, The Moxious Madrigal, Ode to Booze, Jackasses' Symphony of Destruction"]))), $effects(_templateObject157 || (_templateObject157 = asmohccs_lib_taggedTemplateLiteral(["Carlweather's Cantata of Confrontation, The Sonata of Sneakiness, Fat Leon's Phat Loot Lyric, Polka of Plenty"])))];
 
 var allKnownSongs = (_ref = []).concat.apply(_ref, songSlots);
 
@@ -9598,9 +9604,9 @@ function advMacro(location, macro) {
 }
 function mapMacro(location, monster, macro) {
   macro.setAutoAttack();
-  (0,external_kolmafia_namespaceObject.useSkill)($skill(_templateObject157 || (_templateObject157 = asmohccs_lib_taggedTemplateLiteral(["Map the Monsters"]))));
+  (0,external_kolmafia_namespaceObject.useSkill)($skill(_templateObject158 || (_templateObject158 = asmohccs_lib_taggedTemplateLiteral(["Map the Monsters"]))));
   if (!property_get("mappingMonsters")) throw "I am not actually mapping anything. Weird!";else {
-    while (property_get("mappingMonsters") && !lib_have(template_string_$effect(_templateObject158 || (_templateObject158 = asmohccs_lib_taggedTemplateLiteral(["Meteor Showered"]))))) {
+    while (property_get("mappingMonsters") && !lib_have(template_string_$effect(_templateObject159 || (_templateObject159 = asmohccs_lib_taggedTemplateLiteral(["Meteor Showered"]))))) {
       (0,external_kolmafia_namespaceObject.visitUrl)((0,external_kolmafia_namespaceObject.toUrl)(location));
       (0,external_kolmafia_namespaceObject.runChoice)(1, "heyscriptswhatsupwinkwink=".concat(monster.id));
       (0,external_kolmafia_namespaceObject.runCombat)(macro.toString());
@@ -9657,18 +9663,18 @@ function ensureMp(mp) {
   if ((0,external_kolmafia_namespaceObject.myMp)() > mp) return;
   if (mp > (0,external_kolmafia_namespaceObject.myMaxmp)()) throw "Insufficient maximum mp!";
 
-  while (lib_have(template_string_$item(_templateObject159 || (_templateObject159 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"])))) || lib_have(template_string_$item(_templateObject160 || (_templateObject160 = asmohccs_lib_taggedTemplateLiteral(["magical sausage casing"])))) && (0,external_kolmafia_namespaceObject.myMp)() < mp && property_get("_sausagesEaten") < 23) {
-    (0,external_kolmafia_namespaceObject.retrieveItem)(template_string_$item(_templateObject161 || (_templateObject161 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
-    (0,external_kolmafia_namespaceObject.eat)(template_string_$item(_templateObject162 || (_templateObject162 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
+  while (lib_have(template_string_$item(_templateObject160 || (_templateObject160 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"])))) || lib_have(template_string_$item(_templateObject161 || (_templateObject161 = asmohccs_lib_taggedTemplateLiteral(["magical sausage casing"])))) && (0,external_kolmafia_namespaceObject.myMp)() < mp && property_get("_sausagesEaten") < 23) {
+    (0,external_kolmafia_namespaceObject.retrieveItem)(template_string_$item(_templateObject162 || (_templateObject162 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
+    (0,external_kolmafia_namespaceObject.eat)(template_string_$item(_templateObject163 || (_templateObject163 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
   }
 
-  while (lib_have(template_string_$item(_templateObject163 || (_templateObject163 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && (0,external_kolmafia_namespaceObject.myMp)() < mp) {
-    (0,external_kolmafia_namespaceObject.use)(template_string_$item(_templateObject164 || (_templateObject164 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
+  while (lib_have(template_string_$item(_templateObject164 || (_templateObject164 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && (0,external_kolmafia_namespaceObject.myMp)() < mp) {
+    (0,external_kolmafia_namespaceObject.use)(template_string_$item(_templateObject165 || (_templateObject165 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
   }
 
   if ((0,external_kolmafia_namespaceObject.myMp)() < mp) (0,external_kolmafia_namespaceObject.restoreMp)(mp);
 }
-var maximizeFamiliar = lib_have(template_string_$familiar(_templateObject165 || (_templateObject165 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? template_string_$familiar(_templateObject166 || (_templateObject166 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"]))) : template_string_$familiar(_templateObject167 || (_templateObject167 = asmohccs_lib_taggedTemplateLiteral(["Left-Hand Man"]))); // Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
+var maximizeFamiliar = lib_have(template_string_$familiar(_templateObject166 || (_templateObject166 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? template_string_$familiar(_templateObject167 || (_templateObject167 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"]))) : template_string_$familiar(_templateObject168 || (_templateObject168 = asmohccs_lib_taggedTemplateLiteral(["Left-Hand Man"]))); // Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
 
 function geneTonic(ph) {
   if (tonicsLeft() < 1) throw "You can't make any more tonics";
@@ -9694,15 +9700,15 @@ function canCastLibrams() {
 }
 
 function burnLibrams() {
-  if (!$skills(_templateObject168 || (_templateObject168 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Taffy, Summon Love Song"]))).some(skill => lib_have(skill))) return;
+  if (!$skills(_templateObject169 || (_templateObject169 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Taffy, Summon Love Song"]))).some(skill => lib_have(skill))) return;
 
   while (canCastLibrams()) {
     var testsDone = property_get("csServicesPerformed").split(",");
 
-    if ((!testsDone.includes("Breed More Collies") && !lib_have(template_string_$item(_templateObject169 || (_templateObject169 = asmohccs_lib_taggedTemplateLiteral(["green candy heart"])))) || !testsDone.includes("Make Margaritas") && !lib_have(template_string_$item(_templateObject170 || (_templateObject170 = asmohccs_lib_taggedTemplateLiteral(["lavender candy heart"]))))) && lib_have($skill(_templateObject171 || (_templateObject171 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))))) {
-      (0,external_kolmafia_namespaceObject.useSkill)($skill(_templateObject172 || (_templateObject172 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
-    } else if (!testsDone.includes("Breed More Collies") && !lib_have(template_string_$item(_templateObject173 || (_templateObject173 = asmohccs_lib_taggedTemplateLiteral(["love song of icy revenge"]))), 4) && lib_have($skill(_templateObject174 || (_templateObject174 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))))) {
-      (0,external_kolmafia_namespaceObject.useSkill)($skill(_templateObject175 || (_templateObject175 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))));
+    if ((!testsDone.includes("Breed More Collies") && !lib_have(template_string_$item(_templateObject170 || (_templateObject170 = asmohccs_lib_taggedTemplateLiteral(["green candy heart"])))) || !testsDone.includes("Make Margaritas") && !lib_have(template_string_$item(_templateObject171 || (_templateObject171 = asmohccs_lib_taggedTemplateLiteral(["lavender candy heart"]))))) && lib_have($skill(_templateObject172 || (_templateObject172 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))))) {
+      (0,external_kolmafia_namespaceObject.useSkill)($skill(_templateObject173 || (_templateObject173 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
+    } else if (!testsDone.includes("Breed More Collies") && !lib_have(template_string_$item(_templateObject174 || (_templateObject174 = asmohccs_lib_taggedTemplateLiteral(["love song of icy revenge"]))), 4) && lib_have($skill(_templateObject175 || (_templateObject175 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))))) {
+      (0,external_kolmafia_namespaceObject.useSkill)($skill(_templateObject176 || (_templateObject176 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))));
     }
     /*else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
       useSkill($skill`Summon BRICKOs`);
@@ -9713,7 +9719,7 @@ function burnLibrams() {
       useSkill($skill`Summon Taffy`);
     }*/
     else {
-      var summonSkill = $skills(_templateObject176 || (_templateObject176 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Love Song"]))).find(skill => lib_have(skill));
+      var summonSkill = $skills(_templateObject177 || (_templateObject177 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Love Song"]))).find(skill => lib_have(skill));
       if (!summonSkill) return;
       (0,external_kolmafia_namespaceObject.useSkill)(summonSkill);
     }
@@ -9755,7 +9761,7 @@ function modTraceList(modifier) {
     }
   }
 
-  var _iterator4 = asmohccs_lib_createForOfIteratorHelper($slots(_templateObject180 || (_templateObject180 = asmohccs_lib_taggedTemplateLiteral([""])))),
+  var _iterator4 = asmohccs_lib_createForOfIteratorHelper($slots(_templateObject181 || (_templateObject181 = asmohccs_lib_taggedTemplateLiteral([""])))),
       _step4;
 
   try {
@@ -9763,7 +9769,7 @@ function modTraceList(modifier) {
       var slot = _step4.value;
       var it = (0,external_kolmafia_namespaceObject.equippedItem)(slot);
 
-      if ((0,external_kolmafia_namespaceObject.numericModifier)(it, modifier) != 0 && ((0,external_kolmafia_namespaceObject.haveEquipped)(it) || (0,external_kolmafia_namespaceObject.haveEquipped)(template_string_$item(_templateObject181 || (_templateObject181 = asmohccs_lib_taggedTemplateLiteral(["your cowboy boots"])))) && $slots(_templateObject182 || (_templateObject182 = asmohccs_lib_taggedTemplateLiteral(["bootspur, bootskin"]))).includes(slot))) {
+      if ((0,external_kolmafia_namespaceObject.numericModifier)(it, modifier) != 0 && ((0,external_kolmafia_namespaceObject.haveEquipped)(it) || (0,external_kolmafia_namespaceObject.haveEquipped)(template_string_$item(_templateObject182 || (_templateObject182 = asmohccs_lib_taggedTemplateLiteral(["your cowboy boots"])))) && $slots(_templateObject183 || (_templateObject183 = asmohccs_lib_taggedTemplateLiteral(["bootspur, bootskin"]))).includes(slot))) {
         totalVal = totalVal + (0,external_kolmafia_namespaceObject.numericModifier)(it, modifier);
         (0,external_kolmafia_namespaceObject.print)("SLOT " + slot + " ITEM " + it + " : " + (0,external_kolmafia_namespaceObject.numericModifier)(it, modifier));
       }
@@ -9774,14 +9780,14 @@ function modTraceList(modifier) {
     _iterator4.f();
   }
 
-  var famMod = (0,external_kolmafia_namespaceObject.numericModifier)((0,external_kolmafia_namespaceObject.myFamiliar)(), modifier, (0,external_kolmafia_namespaceObject.familiarWeight)((0,external_kolmafia_namespaceObject.myFamiliar)()) + (0,external_kolmafia_namespaceObject.weightAdjustment)(), template_string_$item(_templateObject177 || (_templateObject177 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
+  var famMod = (0,external_kolmafia_namespaceObject.numericModifier)((0,external_kolmafia_namespaceObject.myFamiliar)(), modifier, (0,external_kolmafia_namespaceObject.familiarWeight)((0,external_kolmafia_namespaceObject.myFamiliar)()) + (0,external_kolmafia_namespaceObject.weightAdjustment)(), template_string_$item(_templateObject178 || (_templateObject178 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
 
   if (famMod != 0) {
     totalVal = totalVal + famMod;
     (0,external_kolmafia_namespaceObject.print)("FAMILIAR " + (0,external_kolmafia_namespaceObject.myFamiliar)() + " : " + famMod);
   }
 
-  var _iterator5 = asmohccs_lib_createForOfIteratorHelper($skills(_templateObject183 || (_templateObject183 = asmohccs_lib_taggedTemplateLiteral([""])))),
+  var _iterator5 = asmohccs_lib_createForOfIteratorHelper($skills(_templateObject184 || (_templateObject184 = asmohccs_lib_taggedTemplateLiteral([""])))),
       _step5;
 
   try {
@@ -9839,8 +9845,8 @@ function modTraceList(modifier) {
     }
   }
 
-  var squint = template_string_$effect(_templateObject178 || (_templateObject178 = asmohccs_lib_taggedTemplateLiteral(["Steely-Eyed Squint"])));
-  var swagger = template_string_$effect(_templateObject179 || (_templateObject179 = asmohccs_lib_taggedTemplateLiteral(["Bow-Legged Swagger"])));
+  var squint = template_string_$effect(_templateObject179 || (_templateObject179 = asmohccs_lib_taggedTemplateLiteral(["Steely-Eyed Squint"])));
+  var swagger = template_string_$effect(_templateObject180 || (_templateObject180 = asmohccs_lib_taggedTemplateLiteral(["Bow-Legged Swagger"])));
 
   if (modifier === "item drop" && (0,external_kolmafia_namespaceObject.haveEffect)(squint)) {
     (0,external_kolmafia_namespaceObject.print)("EFFECT " + squint + " : " + totalVal);
@@ -9856,21 +9862,21 @@ function modTraceList(modifier) {
   (0,external_kolmafia_namespaceObject.print)("");
 }
 function inMysClass() {
-  if ($classes(_templateObject184 || (_templateObject184 = asmohccs_lib_taggedTemplateLiteral(["Sauceror, Pastamancer"]))).includes((0,external_kolmafia_namespaceObject.myClass)())) {
+  if ($classes(_templateObject185 || (_templateObject185 = asmohccs_lib_taggedTemplateLiteral(["Sauceror, Pastamancer"]))).includes((0,external_kolmafia_namespaceObject.myClass)())) {
     return true;
   } else {
     return false;
   }
 }
 function inMoxClass() {
-  if ($classes(_templateObject185 || (_templateObject185 = asmohccs_lib_taggedTemplateLiteral(["Accordion Thief, Disco Bandit"]))).includes((0,external_kolmafia_namespaceObject.myClass)())) {
+  if ($classes(_templateObject186 || (_templateObject186 = asmohccs_lib_taggedTemplateLiteral(["Accordion Thief, Disco Bandit"]))).includes((0,external_kolmafia_namespaceObject.myClass)())) {
     return true;
   } else {
     return false;
   }
 }
 function inMusClass() {
-  if ($classes(_templateObject186 || (_templateObject186 = asmohccs_lib_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer"]))).includes((0,external_kolmafia_namespaceObject.myClass)())) {
+  if ($classes(_templateObject187 || (_templateObject187 = asmohccs_lib_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer"]))).includes((0,external_kolmafia_namespaceObject.myClass)())) {
     return true;
   } else {
     return false;
@@ -9880,12 +9886,12 @@ function unequip(item) {
   while ((0,external_kolmafia_namespaceObject.equippedAmount)(item) > 0) {
     var slot = external_kolmafia_namespaceObject.Slot.all().find(equipmentSlot => (0,external_kolmafia_namespaceObject.equippedItem)(equipmentSlot) === item);
     if (!slot) return;
-    (0,external_kolmafia_namespaceObject.equip)(slot, template_string_$item(_templateObject187 || (_templateObject187 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
+    (0,external_kolmafia_namespaceObject.equip)(slot, template_string_$item(_templateObject188 || (_templateObject188 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
   }
 }
-var chefstaves = template_string_$items(_templateObject188 || (_templateObject188 = asmohccs_lib_taggedTemplateLiteral(["Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth"])));
+var chefstaves = template_string_$items(_templateObject189 || (_templateObject189 = asmohccs_lib_taggedTemplateLiteral(["Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth"])));
 ;// CONCATENATED MODULE: ./src/outfits.ts
-var outfits_templateObject, outfits_templateObject2, outfits_templateObject3, outfits_templateObject4, outfits_templateObject5, outfits_templateObject6, outfits_templateObject7, outfits_templateObject8, outfits_templateObject9, outfits_templateObject10, outfits_templateObject11, outfits_templateObject12, outfits_templateObject13, outfits_templateObject14, outfits_templateObject15, outfits_templateObject16, outfits_templateObject17, outfits_templateObject18, outfits_templateObject19, outfits_templateObject20, outfits_templateObject21, outfits_templateObject22, outfits_templateObject23, outfits_templateObject24, outfits_templateObject25, outfits_templateObject26, outfits_templateObject27, outfits_templateObject28, outfits_templateObject29, outfits_templateObject30, outfits_templateObject31, outfits_templateObject32, outfits_templateObject33, outfits_templateObject34, outfits_templateObject35, outfits_templateObject36, outfits_templateObject37, outfits_templateObject38, outfits_templateObject39, outfits_templateObject40, outfits_templateObject41, outfits_templateObject42, outfits_templateObject43, outfits_templateObject44, outfits_templateObject45, outfits_templateObject46, outfits_templateObject47, outfits_templateObject48, outfits_templateObject49, outfits_templateObject50, outfits_templateObject51, outfits_templateObject52, outfits_templateObject53, outfits_templateObject54, outfits_templateObject55, outfits_templateObject56, outfits_templateObject57, outfits_templateObject58, outfits_templateObject59, outfits_templateObject60, outfits_templateObject61, outfits_templateObject62, outfits_templateObject63, outfits_templateObject64, outfits_templateObject65, outfits_templateObject66, outfits_templateObject67, outfits_templateObject68, outfits_templateObject69, outfits_templateObject70, outfits_templateObject71, outfits_templateObject72, outfits_templateObject73, outfits_templateObject74, outfits_templateObject75, outfits_templateObject76, outfits_templateObject77, outfits_templateObject78, outfits_templateObject79, outfits_templateObject80, outfits_templateObject81, outfits_templateObject82, outfits_templateObject83, outfits_templateObject84, outfits_templateObject85, outfits_templateObject86, outfits_templateObject87, outfits_templateObject88, outfits_templateObject89, outfits_templateObject90, outfits_templateObject91, outfits_templateObject92, outfits_templateObject93, outfits_templateObject94, outfits_templateObject95, outfits_templateObject96, outfits_templateObject97, outfits_templateObject98, outfits_templateObject99, outfits_templateObject100, outfits_templateObject101, outfits_templateObject102, outfits_templateObject103, outfits_templateObject104, outfits_templateObject105, outfits_templateObject106, outfits_templateObject107, outfits_templateObject108, outfits_templateObject109, outfits_templateObject110, outfits_templateObject111, outfits_templateObject112, outfits_templateObject113, outfits_templateObject114, outfits_templateObject115, outfits_templateObject116, outfits_templateObject117, outfits_templateObject118, outfits_templateObject119, outfits_templateObject120, outfits_templateObject121, outfits_templateObject122, outfits_templateObject123, outfits_templateObject124, outfits_templateObject125, outfits_templateObject126, outfits_templateObject127, outfits_templateObject128, outfits_templateObject129, outfits_templateObject130, outfits_templateObject131, outfits_templateObject132, outfits_templateObject133, outfits_templateObject134, outfits_templateObject135, outfits_templateObject136, outfits_templateObject137, outfits_templateObject138, outfits_templateObject139, outfits_templateObject140, outfits_templateObject141, outfits_templateObject142, outfits_templateObject143, outfits_templateObject144, outfits_templateObject145, outfits_templateObject146, outfits_templateObject147, outfits_templateObject148, outfits_templateObject149, outfits_templateObject150, outfits_templateObject151, outfits_templateObject152, outfits_templateObject153, outfits_templateObject154, outfits_templateObject155, outfits_templateObject156, outfits_templateObject157, outfits_templateObject158, outfits_templateObject159, outfits_templateObject160, outfits_templateObject161, outfits_templateObject162, outfits_templateObject163, outfits_templateObject164, outfits_templateObject165, outfits_templateObject166, outfits_templateObject167, outfits_templateObject168, outfits_templateObject169, outfits_templateObject170, outfits_templateObject171, outfits_templateObject172, outfits_templateObject173, outfits_templateObject174, outfits_templateObject175, outfits_templateObject176, outfits_templateObject177, outfits_templateObject178, outfits_templateObject179, outfits_templateObject180, outfits_templateObject181, outfits_templateObject182, outfits_templateObject183, outfits_templateObject184, outfits_templateObject185, outfits_templateObject186, outfits_templateObject187, outfits_templateObject188, _templateObject189, _templateObject190, _templateObject191, _templateObject192, _templateObject193, _templateObject194, _templateObject195, _templateObject196, _templateObject197, _templateObject198, _templateObject199, _templateObject200, _templateObject201, _templateObject202, _templateObject203, _templateObject204, _templateObject205, _templateObject206, _templateObject207, _templateObject208, _templateObject209, _templateObject210, _templateObject211, _templateObject212, _templateObject213, _templateObject214, _templateObject215, _templateObject216, _templateObject217, _templateObject218, _templateObject219, _templateObject220, _templateObject221, _templateObject222, _templateObject223, _templateObject224, _templateObject225, _templateObject226, _templateObject227, _templateObject228, _templateObject229, _templateObject230, _templateObject231, _templateObject232, _templateObject233, _templateObject234, _templateObject235, _templateObject236, _templateObject237, _templateObject238, _templateObject239, _templateObject240;
+var outfits_templateObject, outfits_templateObject2, outfits_templateObject3, outfits_templateObject4, outfits_templateObject5, outfits_templateObject6, outfits_templateObject7, outfits_templateObject8, outfits_templateObject9, outfits_templateObject10, outfits_templateObject11, outfits_templateObject12, outfits_templateObject13, outfits_templateObject14, outfits_templateObject15, outfits_templateObject16, outfits_templateObject17, outfits_templateObject18, outfits_templateObject19, outfits_templateObject20, outfits_templateObject21, outfits_templateObject22, outfits_templateObject23, outfits_templateObject24, outfits_templateObject25, outfits_templateObject26, outfits_templateObject27, outfits_templateObject28, outfits_templateObject29, outfits_templateObject30, outfits_templateObject31, outfits_templateObject32, outfits_templateObject33, outfits_templateObject34, outfits_templateObject35, outfits_templateObject36, outfits_templateObject37, outfits_templateObject38, outfits_templateObject39, outfits_templateObject40, outfits_templateObject41, outfits_templateObject42, outfits_templateObject43, outfits_templateObject44, outfits_templateObject45, outfits_templateObject46, outfits_templateObject47, outfits_templateObject48, outfits_templateObject49, outfits_templateObject50, outfits_templateObject51, outfits_templateObject52, outfits_templateObject53, outfits_templateObject54, outfits_templateObject55, outfits_templateObject56, outfits_templateObject57, outfits_templateObject58, outfits_templateObject59, outfits_templateObject60, outfits_templateObject61, outfits_templateObject62, outfits_templateObject63, outfits_templateObject64, outfits_templateObject65, outfits_templateObject66, outfits_templateObject67, outfits_templateObject68, outfits_templateObject69, outfits_templateObject70, outfits_templateObject71, outfits_templateObject72, outfits_templateObject73, outfits_templateObject74, outfits_templateObject75, outfits_templateObject76, outfits_templateObject77, outfits_templateObject78, outfits_templateObject79, outfits_templateObject80, outfits_templateObject81, outfits_templateObject82, outfits_templateObject83, outfits_templateObject84, outfits_templateObject85, outfits_templateObject86, outfits_templateObject87, outfits_templateObject88, outfits_templateObject89, outfits_templateObject90, outfits_templateObject91, outfits_templateObject92, outfits_templateObject93, outfits_templateObject94, outfits_templateObject95, outfits_templateObject96, outfits_templateObject97, outfits_templateObject98, outfits_templateObject99, outfits_templateObject100, outfits_templateObject101, outfits_templateObject102, outfits_templateObject103, outfits_templateObject104, outfits_templateObject105, outfits_templateObject106, outfits_templateObject107, outfits_templateObject108, outfits_templateObject109, outfits_templateObject110, outfits_templateObject111, outfits_templateObject112, outfits_templateObject113, outfits_templateObject114, outfits_templateObject115, outfits_templateObject116, outfits_templateObject117, outfits_templateObject118, outfits_templateObject119, outfits_templateObject120, outfits_templateObject121, outfits_templateObject122, outfits_templateObject123, outfits_templateObject124, outfits_templateObject125, outfits_templateObject126, outfits_templateObject127, outfits_templateObject128, outfits_templateObject129, outfits_templateObject130, outfits_templateObject131, outfits_templateObject132, outfits_templateObject133, outfits_templateObject134, outfits_templateObject135, outfits_templateObject136, outfits_templateObject137, outfits_templateObject138, outfits_templateObject139, outfits_templateObject140, outfits_templateObject141, outfits_templateObject142, outfits_templateObject143, outfits_templateObject144, outfits_templateObject145, outfits_templateObject146, outfits_templateObject147, outfits_templateObject148, outfits_templateObject149, outfits_templateObject150, outfits_templateObject151, outfits_templateObject152, outfits_templateObject153, outfits_templateObject154, outfits_templateObject155, outfits_templateObject156, outfits_templateObject157, outfits_templateObject158, outfits_templateObject159, outfits_templateObject160, outfits_templateObject161, outfits_templateObject162, outfits_templateObject163, outfits_templateObject164, outfits_templateObject165, outfits_templateObject166, outfits_templateObject167, outfits_templateObject168, outfits_templateObject169, outfits_templateObject170, outfits_templateObject171, outfits_templateObject172, outfits_templateObject173, outfits_templateObject174, outfits_templateObject175, outfits_templateObject176, outfits_templateObject177, outfits_templateObject178, outfits_templateObject179, outfits_templateObject180, outfits_templateObject181, outfits_templateObject182, outfits_templateObject183, outfits_templateObject184, outfits_templateObject185, outfits_templateObject186, outfits_templateObject187, outfits_templateObject188, outfits_templateObject189, _templateObject190, _templateObject191, _templateObject192, _templateObject193, _templateObject194, _templateObject195, _templateObject196, _templateObject197, _templateObject198, _templateObject199, _templateObject200, _templateObject201, _templateObject202, _templateObject203, _templateObject204, _templateObject205, _templateObject206, _templateObject207, _templateObject208, _templateObject209, _templateObject210, _templateObject211, _templateObject212, _templateObject213, _templateObject214, _templateObject215, _templateObject216, _templateObject217, _templateObject218, _templateObject219, _templateObject220, _templateObject221, _templateObject222, _templateObject223, _templateObject224, _templateObject225, _templateObject226, _templateObject227, _templateObject228, _templateObject229, _templateObject230, _templateObject231, _templateObject232, _templateObject233, _templateObject234, _templateObject235, _templateObject236, _templateObject237, _templateObject238, _templateObject239, _templateObject240;
 
 function outfits_toConsumableArray(arr) { return outfits_arrayWithoutHoles(arr) || outfits_iterableToArray(arr) || outfits_unsupportedIterableToArray(arr) || outfits_nonIterableSpread(); }
 
@@ -10170,7 +10176,7 @@ function famweightOutfit() {
     fam: template_string_$familiar(outfits_templateObject186 || (outfits_templateObject186 = outfits_taggedTemplateLiteral(["Exotic Parrot"]))),
     equip: template_string_$item(outfits_templateObject187 || (outfits_templateObject187 = outfits_taggedTemplateLiteral(["cracker"])))
   } : lib_have(template_string_$familiar(outfits_templateObject188 || (outfits_templateObject188 = outfits_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? {
-    fam: template_string_$familiar(_templateObject189 || (_templateObject189 = outfits_taggedTemplateLiteral(["Baby Bugged Bugbear"]))),
+    fam: template_string_$familiar(outfits_templateObject189 || (outfits_templateObject189 = outfits_taggedTemplateLiteral(["Baby Bugged Bugbear"]))),
     equip: template_string_$item(_templateObject190 || (_templateObject190 = outfits_taggedTemplateLiteral(["bugged beanie"])))
   } : {
     fam: template_string_$familiar(_templateObject191 || (_templateObject191 = outfits_taggedTemplateLiteral(["Blood-Faced Volleyball"]))),
@@ -11645,6 +11651,10 @@ function witchGhostAgent() {
 }
 
 function lov() {
+  if (property_get("_loveTunnelUsed")) {
+    return;
+  }
+
   (0,external_kolmafia_namespaceObject.cliExecute)("fold makeshift garbage shirt");
   outfits_uniform.apply(void 0, level_toConsumableArray(template_string_$items(level_templateObject121 || (level_templateObject121 = level_taggedTemplateLiteral(["vampyric cloake, makeshift garbage shirt"])))));
   asmohccs_lib_heal();
@@ -11800,6 +11810,10 @@ function godLob() {
 }
 
 function snojo() {
+  if (property_get("_snojoFreeFights") >= 10) {
+    return;
+  }
+
   outfits_uniform();
   asmohccs_lib_useDefaultFamiliar();
 
@@ -12073,7 +12087,7 @@ function levelUp() {
   prelude();
 }
 ;// CONCATENATED MODULE: ./src/noncombat.ts
-var noncombat_templateObject, noncombat_templateObject2, noncombat_templateObject3, noncombat_templateObject4, noncombat_templateObject5, noncombat_templateObject6, noncombat_templateObject7, noncombat_templateObject8, noncombat_templateObject9, noncombat_templateObject10, noncombat_templateObject11, noncombat_templateObject12, noncombat_templateObject13, noncombat_templateObject14, noncombat_templateObject15, noncombat_templateObject16, noncombat_templateObject17, noncombat_templateObject18, noncombat_templateObject19, noncombat_templateObject20, noncombat_templateObject21, noncombat_templateObject22, noncombat_templateObject23, noncombat_templateObject24, noncombat_templateObject25, noncombat_templateObject26, noncombat_templateObject27, noncombat_templateObject28, noncombat_templateObject29, noncombat_templateObject30, noncombat_templateObject31, noncombat_templateObject32, noncombat_templateObject33, noncombat_templateObject34, noncombat_templateObject35, noncombat_templateObject36;
+var noncombat_templateObject, noncombat_templateObject2, noncombat_templateObject3, noncombat_templateObject4, noncombat_templateObject5, noncombat_templateObject6, noncombat_templateObject7, noncombat_templateObject8, noncombat_templateObject9, noncombat_templateObject10, noncombat_templateObject11, noncombat_templateObject12, noncombat_templateObject13, noncombat_templateObject14, noncombat_templateObject15, noncombat_templateObject16, noncombat_templateObject17, noncombat_templateObject18, noncombat_templateObject19, noncombat_templateObject20, noncombat_templateObject21, noncombat_templateObject22, noncombat_templateObject23, noncombat_templateObject24, noncombat_templateObject25, noncombat_templateObject26, noncombat_templateObject27, noncombat_templateObject28, noncombat_templateObject29, noncombat_templateObject30, noncombat_templateObject31, noncombat_templateObject32, noncombat_templateObject33, noncombat_templateObject34, noncombat_templateObject35, noncombat_templateObject36, noncombat_templateObject37;
 
 function noncombat_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -12144,7 +12158,13 @@ function noncombat_testPrep() {
     if ((0,external_kolmafia_namespaceObject.itemAmount)(template_string_$item(noncombat_templateObject26 || (noncombat_templateObject26 = noncombat_taggedTemplateLiteral(["squeaky toy rose"])))) > 0) {
       (0,external_kolmafia_namespaceObject.use)(template_string_$item(noncombat_templateObject27 || (noncombat_templateObject27 = noncombat_taggedTemplateLiteral(["squeaky toy rose"]))));
     }
-  }, () => (0,external_kolmafia_namespaceObject.use)(template_string_$item(noncombat_templateObject28 || (noncombat_templateObject28 = noncombat_taggedTemplateLiteral(["shady shades"]))))];
+  }, () => (0,external_kolmafia_namespaceObject.use)(template_string_$item(noncombat_templateObject28 || (noncombat_templateObject28 = noncombat_taggedTemplateLiteral(["shady shades"])))), () => {
+    if (!property_get("_floundryItemCreated")) {
+      setClan(property_get("asmocs_fishClan", "Alliance From Heck"));
+      (0,external_kolmafia_namespaceObject.cliExecute)("acquire fish hatchet");
+      (0,external_kolmafia_namespaceObject.equip)(template_string_$item(noncombat_templateObject29 || (noncombat_templateObject29 = noncombat_taggedTemplateLiteral(["fish hatchet"]))));
+    }
+  }];
 
   for (var _i = 0, _improvements = improvements; _i < _improvements.length; _i++) {
     var improvement = _improvements[_i];
@@ -12154,7 +12174,7 @@ function noncombat_testPrep() {
 
 function moonTune() {
   // Tune moon sign to Platypus
-  var desertAccessItem = (0,external_kolmafia_namespaceObject.knollAvailable)() ? template_string_$item(noncombat_templateObject29 || (noncombat_templateObject29 = noncombat_taggedTemplateLiteral(["bitchin' meatcar"]))) : template_string_$item(noncombat_templateObject30 || (noncombat_templateObject30 = noncombat_taggedTemplateLiteral(["Desert Bus pass"])));
+  var desertAccessItem = (0,external_kolmafia_namespaceObject.knollAvailable)() ? template_string_$item(noncombat_templateObject30 || (noncombat_templateObject30 = noncombat_taggedTemplateLiteral(["bitchin' meatcar"]))) : template_string_$item(noncombat_templateObject31 || (noncombat_templateObject31 = noncombat_taggedTemplateLiteral(["Desert Bus pass"])));
 
   if (!lib_have(desertAccessItem)) {
     (0,external_kolmafia_namespaceObject.cliExecute)("acquire ".concat(desertAccessItem.name));
@@ -12168,9 +12188,9 @@ function moonTune() {
     } // Unequip spoon.
 
 
-    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(noncombat_templateObject31 || (noncombat_templateObject31 = noncombat_taggedTemplateLiteral(["acc1"]))), template_string_$item(noncombat_templateObject32 || (noncombat_templateObject32 = noncombat_taggedTemplateLiteral(["Eight Days a Week Pill Keeper"]))));
-    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(noncombat_templateObject33 || (noncombat_templateObject33 = noncombat_taggedTemplateLiteral(["acc2"]))), template_string_$item(noncombat_templateObject34 || (noncombat_templateObject34 = noncombat_taggedTemplateLiteral(["Powerful Glove"]))));
-    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(noncombat_templateObject35 || (noncombat_templateObject35 = noncombat_taggedTemplateLiteral(["acc3"]))), template_string_$item(noncombat_templateObject36 || (noncombat_templateObject36 = noncombat_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"])))); // Actually tune the moon.
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(noncombat_templateObject32 || (noncombat_templateObject32 = noncombat_taggedTemplateLiteral(["acc1"]))), template_string_$item(noncombat_templateObject33 || (noncombat_templateObject33 = noncombat_taggedTemplateLiteral(["Eight Days a Week Pill Keeper"]))));
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(noncombat_templateObject34 || (noncombat_templateObject34 = noncombat_taggedTemplateLiteral(["acc2"]))), template_string_$item(noncombat_templateObject35 || (noncombat_templateObject35 = noncombat_taggedTemplateLiteral(["Powerful Glove"]))));
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(noncombat_templateObject36 || (noncombat_templateObject36 = noncombat_taggedTemplateLiteral(["acc3"]))), template_string_$item(noncombat_templateObject37 || (noncombat_templateObject37 = noncombat_taggedTemplateLiteral(["Lil' Doctor\u2122 bag"])))); // Actually tune the moon.
 
     (0,external_kolmafia_namespaceObject.visitUrl)("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
   }
