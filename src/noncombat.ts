@@ -29,7 +29,7 @@ import {
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
-import { ensureEffect, fuelUp, heal, horse, modTraceList, setChoice } from "./asmohccs-lib";
+import { ensureEffect, fuelUp, heal, horse, modTraceList, setChoice, setClan } from "./asmohccs-lib";
 import uniform, { noncombatOutfit } from "./outfits";
 
 const predictor = () => CommunityService.Noncombat.prediction;
@@ -97,6 +97,13 @@ function testPrep() {
             }
         },
         () => use($item`shady shades`),
+		() => {
+			if (!get("_floundryItemCreated")) {
+				setClan(get("asmocs_fishClan", "Alliance From Heck"));
+				cliExecute("acquire fish hatchet");
+				equip($item`fish hatchet`);
+			}
+		},
     ];
 
     for (const improvement of improvements) {
