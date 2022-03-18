@@ -407,7 +407,10 @@ function witchGhostAgent() {
     }
 }
 
-function lov() {
+function lov(): void {
+	if (get("_loveTunnelUsed")){
+		return;
+	}
     cliExecute("fold makeshift garbage shirt");
     uniform(...$items`vampyric cloake, makeshift garbage shirt`);
     heal();
@@ -586,7 +589,10 @@ function godLob() {
     }
 }
 
-function snojo() {
+function snojo(): void {
+	if (get("_snojoFreeFights") >= 10){
+		return;
+	}
     uniform();
     useDefaultFamiliar();
     if (get("snojoSetting") === "NONE" || get(`snojoSetting`) === null) {
