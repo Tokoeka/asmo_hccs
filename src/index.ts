@@ -56,7 +56,14 @@ try {
         CommunityService.Mysticality.run(mystTest, false, 1),
         "Failed to cap Mysticality test!"
     );
-    assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
+	assertCompleted(
+        CommunityService.WeaponDamage.run(weaponTest, false, 1),
+        "Failed to cap Weapon Damage test!"
+    );
+    assertCompleted(
+        CommunityService.SpellDamage.run(spellTest, false, 30),
+        "Failed to perform Spell Damage test!"
+    );
     assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
     assertCompleted(
         CommunityService.Noncombat.run(noncombatTest, false, 1),
@@ -66,14 +73,8 @@ try {
         CommunityService.FamiliarWeight.run(familiarTest, false, 30),
         "Failed to perform Familiar test!"
     );
-    assertCompleted(
-        CommunityService.WeaponDamage.run(weaponTest, false, 1),
-        "Failed to cap Weapon Damage test!"
-    );
-    assertCompleted(
-        CommunityService.SpellDamage.run(spellTest, false, 30),
-        "Failed to perform Spell Damage test!"
-    );
+	assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
+    
 } finally {
     for (const [name, { predictedTurns, turnCost }] of Object.entries(CommunityService.log)) {
         const truePrediction = name === "Make Sausage" ? predictedTurns + 1 : predictedTurns;
