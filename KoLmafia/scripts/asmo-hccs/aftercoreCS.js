@@ -13991,18 +13991,18 @@ function AsdonMartin_have() {
 var fuelSkiplist = template_string_$items(AsdonMartin_templateObject3 || (AsdonMartin_templateObject3 = AsdonMartin_taggedTemplateLiteral(["cup of \"tea\", thermos of \"whiskey\", Lucky Lindy, Bee's Knees, Sockdollager, Ish Kabibble, Hot Socks, Phonus Balonus, Flivver, Sloppy Jalopy, glass of \"milk\""])));
 
 function priceTooOld(item) {
-  return historicalPrice(item) === 0 || historicalAge(item) >= 7;
+  return (0,external_kolmafia_namespaceObject.historicalPrice)(item) === 0 || (0,external_kolmafia_namespaceObject.historicalAge)(item) >= 7;
 } // Return mall max if historicalPrice returns -1.
 
 
 function historicalPriceOrMax(item) {
-  var historical = historicalPrice(item);
+  var historical = (0,external_kolmafia_namespaceObject.historicalPrice)(item);
   return historical < 0 ? 999999999 : historical;
 } // Return mall max if mallPrice returns -1.
 
 
 function mallPriceOrMax(item) {
-  var mall = mallPrice(item);
+  var mall = (0,external_kolmafia_namespaceObject.mallPrice)(item);
   return mall < 0 ? 999999999 : mall;
 }
 
@@ -14029,22 +14029,22 @@ function inventoryItems() {
 
 function calculateFuelUnitCost(it, targetUnits) {
   var priceAge = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : PriceAge.RECENT;
-  var units = getAverageAdventures(it);
+  var units = lib_getAverageAdventures(it);
   return price(it, priceAge) / Math.min(targetUnits, units);
 }
 
 function isFuelItem(it) {
-  return !isNpcItem(it) && it.fullness + it.inebriety > 0 && getAverageAdventures(it) > 0 && it.tradeable && it.discardable && !fuelSkiplist.includes(it);
+  return !(0,external_kolmafia_namespaceObject.isNpcItem)(it) && it.fullness + it.inebriety > 0 && lib_getAverageAdventures(it) > 0 && it.tradeable && it.discardable && !fuelSkiplist.includes(it);
 }
 
 function getBestFuel(targetUnits) {
   // Three stages.
   // 1. Filter to reasonable items using historical cost (within 5x of historical best).
-  var allFuel = $items(AsdonMartin_templateObject4 || (AsdonMartin_templateObject4 = AsdonMartin_taggedTemplateLiteral([""]))).filter(isFuelItem);
+  var allFuel = template_string_$items(AsdonMartin_templateObject4 || (AsdonMartin_templateObject4 = AsdonMartin_taggedTemplateLiteral([""]))).filter(isFuelItem);
 
-  if (allFuel.filter(item => historicalPrice(item) === 0).length > 100) {
-    mallPrices("food");
-    mallPrices("booze");
+  if (allFuel.filter(item => (0,external_kolmafia_namespaceObject.historicalPrice)(item) === 0).length > 100) {
+    (0,external_kolmafia_namespaceObject.mallPrices)("food");
+    (0,external_kolmafia_namespaceObject.mallPrices)("booze");
   }
 
   var keyHistorical = item => calculateFuelUnitCost(item, targetUnits, PriceAge.HISTORICAL);
@@ -14055,11 +14055,11 @@ function getBestFuel(targetUnits) {
   var potentialFuel = firstBadIndex > 0 ? allFuel.slice(0, firstBadIndex) : allFuel; // 2. Filter to top 10 candidates using prices at most a week old.
 
   if (potentialFuel.filter(item => priceTooOld(item)).length > 100) {
-    mallPrices("food");
-    mallPrices("booze");
+    (0,external_kolmafia_namespaceObject.mallPrices)("food");
+    (0,external_kolmafia_namespaceObject.mallPrices)("booze");
   }
 
-  var key1 = item => -getAverageAdventures(item);
+  var key1 = item => -lib_getAverageAdventures(item);
 
   var key2 = item => calculateFuelUnitCost(item, targetUnits, PriceAge.RECENT);
 
@@ -14088,7 +14088,7 @@ function getBestFuel(targetUnits) {
 
 function insertFuel(it) {
   var quantity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
-  var result = visitUrl("campground.php?action=fuelconvertor&pwd&qty=".concat(quantity, "&iid=").concat(toInt(it), "&go=Convert%21"));
+  var result = (0,external_kolmafia_namespaceObject.visitUrl)("campground.php?action=fuelconvertor&pwd&qty=".concat(quantity, "&iid=").concat((0,external_kolmafia_namespaceObject.toInt)(it), "&go=Convert%21"));
   return result.includes("The display updates with a");
 }
 /**
@@ -14100,20 +14100,20 @@ function insertFuel(it) {
 function fillTo(targetUnits) {
   if (!installed()) return false;
 
-  while (getFuel() < targetUnits) {
-    var remaining = targetUnits - getFuel(); // if in Hardcore/ronin, skip the price calculation and just use soda bread
+  while ((0,external_kolmafia_namespaceObject.getFuel)() < targetUnits) {
+    var remaining = targetUnits - (0,external_kolmafia_namespaceObject.getFuel)(); // if in Hardcore/ronin, skip the price calculation and just use soda bread
 
     var fuel = void 0;
-    if (canInteract()) fuel = getBestFuel(remaining);else fuel = $item(AsdonMartin_templateObject5 || (AsdonMartin_templateObject5 = AsdonMartin_taggedTemplateLiteral(["loaf of soda bread"])));
-    var count = Math.ceil(targetUnits / getAverageAdventures(fuel));
-    retrieveItem(count, fuel);
+    if ((0,external_kolmafia_namespaceObject.canInteract)()) fuel = getBestFuel(remaining);else fuel = template_string_$item(AsdonMartin_templateObject5 || (AsdonMartin_templateObject5 = AsdonMartin_taggedTemplateLiteral(["loaf of soda bread"])));
+    var count = Math.ceil(targetUnits / lib_getAverageAdventures(fuel));
+    (0,external_kolmafia_namespaceObject.retrieveItem)(count, fuel);
 
     if (!insertFuel(fuel, count)) {
       throw new Error("Failed to fuel Asdon Martin.");
     }
   }
 
-  return getFuel() >= targetUnits;
+  return (0,external_kolmafia_namespaceObject.getFuel)() >= targetUnits;
 }
 
 function fillWithBestInventoryItem(targetUnits) {
@@ -15580,7 +15580,7 @@ function aftercore_cs_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = st
 
 if (property_get("encountersUntilDMTChoice") === 0 && property_get("lastDMTDuplication") < (0,external_kolmafia_namespaceObject.myAscensions)()) {
   (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject || (aftercore_cs_templateObject = aftercore_cs_taggedTemplateLiteral(["machine elf"]))));
-  var dupeItems = template_string_$items(aftercore_cs_templateObject2 || (aftercore_cs_templateObject2 = aftercore_cs_taggedTemplateLiteral(["very fancy whiskey, bottle of Greedy Dog, Daily Affirmation: Always be Collecting, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma"])));
+  var dupeItems = template_string_$items(aftercore_cs_templateObject2 || (aftercore_cs_templateObject2 = aftercore_cs_taggedTemplateLiteral(["very fancy whiskey, \n\t\tbottle of Greedy Dog, \n\t\tDaily Affirmation: Always be Collecting, \n\t\thuge Crimbo cookie, green-iced sweet roll, \n\t\tbottle of Race Car Red, warbear gyro, \n\t\tkarma shawarma"])));
   var dupeVals = Array.from(dupeItems.values()).map(dupe => {
     return {
       dupeIt: dupe,
@@ -15613,6 +15613,7 @@ advMacro(template_string_$location(aftercore_cs_templateObject7 || (aftercore_cs
 
 if (!installed()) {
   (0,external_kolmafia_namespaceObject.use)(template_string_$item(aftercore_cs_templateObject12 || (aftercore_cs_templateObject12 = aftercore_cs_taggedTemplateLiteral(["asdon martin keyfob"]))));
+  fillTo(200);
 }
 })();
 

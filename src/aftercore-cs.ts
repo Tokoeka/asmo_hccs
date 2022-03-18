@@ -35,7 +35,12 @@ cliExecute(`call login.ash`);
 
 if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
     useFamiliar($familiar`machine elf`);
-    const dupeItems = $items`very fancy whiskey, bottle of Greedy Dog, Daily Affirmation: Always be Collecting, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma`;
+    const dupeItems = $items`very fancy whiskey, 
+		bottle of Greedy Dog, 
+		Daily Affirmation: Always be Collecting, 
+		huge Crimbo cookie, green-iced sweet roll, 
+		bottle of Race Car Red, warbear gyro, 
+		karma shawarma`;
     const dupeVals = Array.from(dupeItems.values()).map((dupe) => {
         return {
             dupeIt: dupe,
@@ -84,4 +89,5 @@ cliExecute(`soak`);
 
 if (!AsdonMartin.installed()) {
     use($item`asdon martin keyfob`);
+	AsdonMartin.fillTo(200);
 }
