@@ -82,6 +82,10 @@ function godLobster() {
 }
 
 function testPrep() {
+	if (!get("_floundryItemCreated")) {
+		setClan(get("asmocs_fishClan", "Alliance From Heck"));
+		cliExecute("acquire fish hatchet");
+	}
     noncombatOutfit();
     const improvements = [
         () => {
@@ -97,13 +101,6 @@ function testPrep() {
             }
         },
         () => use($item`shady shades`),
-		() => {
-			if (!get("_floundryItemCreated")) {
-				setClan(get("asmocs_fishClan", "Alliance From Heck"));
-				cliExecute("acquire fish hatchet");
-				equip($item`fish hatchet`);
-			}
-		},
     ];
 
     for (const improvement of improvements) {

@@ -319,7 +319,7 @@ export function noncombatOutfit(): void {
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`very pointy crown`],
             [$slot`back`, $item`protonic accelerator pack`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
+            [$slot`weapon`, $items`fish hatchet, Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $items`rope, burning paper crane, familiar scrapbook`],
             //[$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
