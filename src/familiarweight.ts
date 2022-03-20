@@ -1,13 +1,9 @@
 import {
     cliExecute,
     create,
-    familiarWeight,
-    myFamiliar,
     runChoice,
-    use,
     useFamiliar,
     visitUrl,
-    weightAdjustment,
 } from "kolmafia";
 import {
     $effect,
@@ -24,8 +20,9 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./asmohccs-macros";
-import { advMacroAA, ensureEffect, horse, modTraceList, setChoice } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import uniform, { famweightOutfit } from "./outfits";
+import { modTraceList } from "./modtrace";
 
 export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);

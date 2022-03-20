@@ -1,12 +1,8 @@
 import {
-    adv1,
     availableAmount,
     cliExecute,
-    containsText,
     create,
     eat,
-    equip,
-    handlingChoice,
     haveEffect,
     inHardcore,
     maximize,
@@ -25,7 +21,6 @@ import {
 	canEquip,
 	storageAmount,
 	itemAmount,
-	takeShop,
 	takeStorage,
 } from "kolmafia";
 import {
@@ -36,11 +31,9 @@ import {
     $item,
     $items,
     $location,
-    $monster,
     $skill,
     CommunityService,
     get,
-    getSaleValue,
     have,
     Macro,
     set,
@@ -52,13 +45,12 @@ import {
     ensureInnerElf,
     fightSausageIfAble,
     horse,
-    mapMacro,
-    modTraceList,
     setChoice,
     unequip,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { delevel, easyFight } from "./asmohccs-macros";
+import { modTraceList } from "./modtrace";
 import uniform, { spellOutfit } from "./outfits";
 
 const predictor = () => CommunityService.SpellDamage.prediction;

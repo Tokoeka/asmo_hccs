@@ -61,7 +61,6 @@ import {
     ensureEffect,
     ensureInnerElf,
     ensureMp,
-    geneTonic,
     heal,
     horse,
     inMoxClass,
@@ -71,17 +70,13 @@ import {
     multiFightAutoAttack,
     questStep,
     setChoice,
-    synthMoxExp,
-    synthMusExp,
-    synthMysExp,
-    synthMox,
-    synthMus,
-    synthMyst,
     tryUse,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
+import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
+import { geneTonic } from "./workshed";
 
 function initialExp() {
     if (!have($effect`That's Just Cloud-Talk, Man`)) {

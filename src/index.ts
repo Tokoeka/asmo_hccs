@@ -12,7 +12,6 @@ import {
     print,
     setAutoAttack,
     toItem,
-    use,
     visitUrl,
 } from "kolmafia";
 import { $item, CommunityService, get } from "libram";

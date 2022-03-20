@@ -29,8 +29,10 @@ import {
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
-import { ensureEffect, fuelUp, heal, horse, modTraceList, setChoice, setClan } from "./asmohccs-lib";
+import { ensureEffect, heal, horse, setChoice, setClan } from "./asmohccs-lib";
 import uniform, { noncombatOutfit } from "./outfits";
+import { modTraceList } from "./modtrace";
+import { fuelUp } from "./workshed";
 
 const predictor = () => CommunityService.Noncombat.prediction;
 

@@ -4,10 +4,8 @@ import {
     handlingChoice,
     inHardcore,
     myClass,
-    numericModifier,
     retrieveItem,
     runChoice,
-    runCombat,
     use,
     useFamiliar,
     useSkill,
@@ -35,9 +33,6 @@ import {
 import {
     ensureEffect,
     ensureInnerElf,
-    fax,
-    geneTonic,
-    modTraceList,
     setChoice,
     setClan,
     unequip,
@@ -45,6 +40,8 @@ import {
 } from "./asmohccs-lib";
 import uniform, { weaponOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
+import { geneTonic } from "./workshed";
+import { modTraceList } from "./modtrace";
 
 const predictor = () => CommunityService.WeaponDamage.prediction;
 

@@ -25,9 +25,10 @@ import {
     CommunityService,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, horse, modTraceList, setChoice } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
+import { modTraceList } from "./modtrace";
 const predictor = () => CommunityService.HotRes.prediction;
 
 function castBuffs() {

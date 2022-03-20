@@ -5,11 +5,8 @@ import {
     myAscensions,
     mySign,
     myTurncount,
-    refreshStatus,
     retrieveItem,
     runChoice,
-    setAutoAttack,
-    takeStorage,
     toInt,
     use,
     useFamiliar,
@@ -23,11 +20,10 @@ import {
     $skill,
     AsdonMartin,
     get,
-    getSaleValue,
     Macro,
     set,
 } from "libram";
-import { advMacro, advMacroAA, unequip } from "./asmohccs-lib";
+import { advMacro, unequip } from "./asmohccs-lib";
 
 cliExecute(`hagnk all`);
 cliExecute(`refresh all`);

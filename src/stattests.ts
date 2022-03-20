@@ -30,9 +30,9 @@ import {
     ensureInnerElf,
     inMoxClass,
     inMusClass,
-    modTraceList,
     tryUse,
 } from "./asmohccs-lib";
+import { modTraceList } from "./modtrace";
 
 const musclePredictor = () => CommunityService.Muscle.prediction;
 

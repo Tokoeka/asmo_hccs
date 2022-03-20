@@ -1,8 +1,6 @@
 import {
     availableAmount,
     cliExecute,
-    create,
-    eat,
     haveEffect,
     equip,
     myClass,

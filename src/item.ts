@@ -31,14 +31,13 @@ import uniform, { itemOutfit } from "./outfits";
 import {
     advMacroAA,
     ensureEffect,
-    fuelUp,
-    geneTonic,
     mapMacro,
-    modTraceList,
-    synthItem,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
+import { synthItem } from "./synthesis";
+import { fuelUp, geneTonic } from "./workshed";
+import { modTraceList } from "./modtrace";
 
 const predictor = () => CommunityService.BoozeDrop.prediction;
 

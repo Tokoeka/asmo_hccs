@@ -37,7 +37,7 @@ import {
     set,
     SourceTerminal,
 } from "libram";
-import { ensureSong, ensureEffect, setClan, tryUse, pullIfPossible } from "./asmohccs-lib";
+import { ensureSong, ensureEffect, setClan, tryUse } from "./asmohccs-lib";
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
