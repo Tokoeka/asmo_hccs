@@ -1,5 +1,22 @@
-import { equippedItem, familiarWeight, haveEffect, haveEquipped, haveSkill, inMoxieSign, inMuscleSign, inMysticalitySign, myEffects, myFamiliar, mySign, numericModifier, print, toEffect, weightAdjustment } from "kolmafia";
-import { $effect, $item, $skills, $slots, get } from "libram";
+import {
+    equippedItem,
+    familiarWeight,
+    haveEffect,
+    haveEquipped,
+    haveSkill,
+    inMoxieSign,
+    inMuscleSign,
+    inMysticalitySign,
+    myEffects,
+    myFamiliar,
+    mySign,
+    numericModifier,
+    print,
+    toEffect,
+    toInt,
+    weightAdjustment,
+} from "kolmafia";
+import { $effect, $item, $skills, $slot, $slots, get } from "libram";
 import { horse, horsery } from "./asmohccs-lib";
 
 const moonBonus = [
@@ -38,11 +55,58 @@ export function modTraceList(modifier: string) {
             numericModifier(it, modifier) != 0 &&
             (haveEquipped(it) ||
                 (haveEquipped($item`your cowboy boots`) &&
-                    $slots`bootspur, bootskin`.includes(slot)))
+                    $slots`bootspur, bootskin`.includes(slot)) ||
+                (haveEquipped($item`over-the-shoulder folder holder`) &&
+                    slot.toString().includes("folder")) ||
+                ((haveEquipped($item`scratch 'n' sniff sword`) ||
+                    haveEquipped($item`scratch 'n' sniff crossbow`)) &&
+                    slot.toString().includes("sticker")))
         ) {
             totalVal = totalVal + numericModifier(it, modifier);
             print("SLOT " + slot + " ITEM " + it + " : " + numericModifier(it, modifier));
         }
+		if (equippedItem($slot`back`) == $item`unwrapped knock-off retro superhero cape`){
+			const capeForm = get(`retroCapeSuperhero`).toLowerCase();
+			const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
+			if (capeForm === "vampire") {
+				if ([
+					"hot resistance",
+					"cold resistance",
+					"sleaze resistance",
+					"spooky resistance",
+					"stench resistance",
+				].includes(modifier) && capeWash === "hold"){
+					totalVal = totalVal + 3;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 3);
+				}
+				else if (modifier === "muscle percent"){
+					totalVal = totalVal + 30;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+				}
+				else if (modifier === "maximum hp"){
+					totalVal = totalVal + 50;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+				}
+			} else if (capeForm === "heck") {
+				if (modifier === "mysticality percent"){
+					totalVal = totalVal + 30;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+				}
+				else if (modifier === "maximum mp"){
+					totalVal = totalVal + 50;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+				}
+			} else if (capeForm === "robot") {
+				if (modifier === "moxie percent"){
+					totalVal = totalVal + 30;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+				}
+				else if (["maximum hp", "maximum mp"].includes(modifier)){
+					totalVal = totalVal + 25;
+        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 25);
+				}
+			}
+		}
     }
     const famMod = numericModifier(
         myFamiliar(),
@@ -72,21 +136,18 @@ export function modTraceList(modifier: string) {
         } else if (modifier.includes("moxie") && inMoxieSign()) {
             totalVal = totalVal + 10;
             print("MOON " + myMoon + " : " + 10);
+        } else if (modifier.includes("damage percent")) {
+            if (modifier.includes("weapon") && myMoon === "Mongoose") {
+                totalVal = totalVal + 20;
+                print("MOON " + myMoon + " : " + 20);
+            } else if (modifier.includes("spell") && myMoon === "Wallaby") {
+                totalVal = totalVal + 20;
+                print("MOON " + myMoon + " : " + 20);
+            }
+        } else if (modifier === "familiar weight" && myMoon === "Platypus") {
+            totalVal = totalVal + 5;
+            print("MOON " + myMoon + " : " + 5);
         }
-    	else if (modifier.includes("damage percent")){
-			if (modifier.includes("weapon") && myMoon === "Mongoose"){
-				totalVal = totalVal + 20;
-				print("MOON " + myMoon + " : " + 20);			
-			}
-			else if (modifier.includes("spell") && myMoon === "Wallaby"){
-				totalVal = totalVal + 20;
-				print("MOON " + myMoon + " : " + 20);	
-			}
-		}
-		else if (modifier === "familiar weight" && myMoon === "Platypus"){
-			totalVal = totalVal + 5;
-			print("MOON " + myMoon + " : " + 5);	
-		}
         /*for (const line in moonBonus) {
             const mod = line[0];
             const moon = line[1];
@@ -98,25 +159,37 @@ export function modTraceList(modifier: string) {
         }*/
     }
 
-	if (horsery() !== "" && get(`horseryAvailable`)){
-		const myHorse = horsery();
-		if (modifier.includes("init") && myHorse.includes("normal")){
-			totalVal = totalVal + 10;
-			print("HORSERY " + myHorse + " : " + 10);
-		}
-		else if (modifier.includes("combat") && myHorse.includes("dark")){
-			totalVal = totalVal - 5;
-			print("HORSERY " + myHorse + " : -5");
-		}
-		else if (modifier.includes("resistance") && myHorse.includes("pale")){
-			totalVal = totalVal + 1;
-			print("HORSERY " + myHorse + " : " + 1);
-		}
-		else if (modifier.includes("moxie") && myHorse.includes("pale")){
-			totalVal = totalVal + 1;
-			print("HORSERY " + myHorse + " : " + 1);
-		}
-	}
+    if (horsery() !== "" && get(`horseryAvailable`)) {
+        const myHorse = horsery();
+        if (modifier.includes("init") && myHorse.includes("normal")) {
+            totalVal = totalVal + 10;
+            print("HORSERY " + myHorse + " : " + 10);
+        } else if (modifier.includes("combat") && myHorse.includes("dark")) {
+            totalVal = totalVal - 5;
+            print("HORSERY " + myHorse + " : -5");
+        } else if (
+            [
+                "hot resistance",
+                "cold resistance",
+                "sleaze resistance",
+                "spooky resistance",
+                "stench resistance",
+            ].includes(modifier) &&
+            myHorse.includes("pale")
+        ) {
+            totalVal = totalVal + 1;
+            print("HORSERY " + myHorse + " : " + 1);
+        } else if (modifier === "moxie" && myHorse.includes("crazy")) {
+            totalVal = totalVal + toInt(get(`_horseryCrazyMox`));
+            print("HORSERY " + myHorse + " : " + get(`_horseryCrazyMox`));
+        } else if (modifier === "muscle" && myHorse.includes("crazy")) {
+            totalVal = totalVal + toInt(get(`_horseryCrazyMus`));
+            print("HORSERY " + myHorse + " : " + get(`_horseryCrazyMus`));
+        } else if (modifier === "mysticality" && myHorse.includes("crazy")) {
+            totalVal = totalVal + toInt(get(`_horseryCrazyMys`));
+            print("HORSERY " + myHorse + " : " + get(`_horseryCrazyMys`));
+        }
+    }
 
     const squint = $effect`Steely-Eyed Squint`;
     const swagger = $effect`Bow-Legged Swagger`;
