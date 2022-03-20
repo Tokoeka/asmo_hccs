@@ -99,7 +99,8 @@ function thisFireIsOutOfControl() {
             }
         );
         set(`_fireExtinguisherCharge`, 90);
-		//TODO - change cloake skill use count? (if needed)
+		const curFormCasts = get(`_vampyreCloakeFormUses`);
+		set(`_vampyreCloakeFormUses`, curFormCasts + 1);
     }
 }
 
