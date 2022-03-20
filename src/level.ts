@@ -77,6 +77,9 @@ import { universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
 import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
 import { geneTonic } from "./workshed";
+import { ResourceTracker } from "./resources";
+
+const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
 
 function initialExp() {
     if (!have($effect`That's Just Cloud-Talk, Man`)) {
@@ -877,9 +880,7 @@ function prelude() {
     if (have($effect`The Magical Mojomuscular Melody`))
         cliExecute("shrug The Magical Mojomuscular Melody");
     useSkill($skill`The Ode to Booze`);
-    while (myInebriety() < 5) {
-        drink(1, $item`astral pilsner`);
-    }
+    resources.consumeTo(5, $item`astral pilsner`);
 }
 
 /*

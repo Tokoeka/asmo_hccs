@@ -14,7 +14,7 @@ import {
     toItem,
     visitUrl,
 } from "kolmafia";
-import { $item, CommunityService, get } from "libram";
+import { $item, CommunityService, get, set } from "libram";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
@@ -25,6 +25,9 @@ import { convertMilliseconds, PropertyManager } from "./asmohccs-lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
+import { ResourceTracker } from "./resources";
+
+const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
 
 const assertCompleted = (action: string, warning: string) => {
     if (action === "failed") throw new Error(warning);
@@ -49,13 +52,13 @@ try {
         CommunityService.Muscle.run(muscleTest, false, 1),
         "Failed to cap Muscle test!"
     );
-	assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
-	assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
+    assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
+    assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
     assertCompleted(
         CommunityService.Mysticality.run(mystTest, false, 1),
         "Failed to cap Mysticality test!"
     );
-	assertCompleted(
+    assertCompleted(
         CommunityService.WeaponDamage.run(weaponTest, false, 1),
         "Failed to cap Weapon Damage test!"
     );
@@ -67,13 +70,12 @@ try {
         CommunityService.Noncombat.run(noncombatTest, false, 1),
         "Failed to cap NC test!"
     );
-	assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
+    assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
     assertCompleted(
         CommunityService.FamiliarWeight.run(familiarTest, false, 30),
         "Failed to perform Familiar test!"
     );
-	assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
-    
+    assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
 } finally {
     for (const [name, { predictedTurns, turnCost }] of Object.entries(CommunityService.log)) {
         const truePrediction = name === "Make Sausage" ? predictedTurns + 1 : predictedTurns;
@@ -84,20 +86,21 @@ try {
             "blue"
         );
     }
+    set("_hccs_resourceTracker", resources.serialize());
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime
         )}, assuming it ran contiguously, for a 1 day, ` +
-		(myTurncount()) +
-		` turn HCCS run. Organ use was ` +
-		myFullness() +
-		`/` +
-		myInebriety() +
-		`/` +
-		mySpleenUse() +
-		`. I drank ` +
-		(6 - availableAmount($item`astral pilsner`)) +
-		` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
+            myTurncount() +
+            ` turn HCCS run. Organ use was ` +
+            myFullness() +
+            `/` +
+            myInebriety() +
+            `/` +
+            mySpleenUse() +
+            `. I drank ` +
+            (6 - availableAmount($item`astral pilsner`)) +
+            ` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
     if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
@@ -106,6 +109,7 @@ try {
             `Gerald/ine wants ${partyFairInfo[0]} ${toItem(partyFairInfo[1]).plural}, please!`,
             "red"
         );
+        resources.summarize();
     }
 
     CommunityService.donate();

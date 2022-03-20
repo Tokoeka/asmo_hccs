@@ -38,6 +38,9 @@ import {
     SourceTerminal,
 } from "libram";
 import { ensureSong, ensureEffect, setClan, tryUse } from "./asmohccs-lib";
+import { ResourceTracker } from "./resources";
+
+const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -106,7 +109,7 @@ function getTurns() {
     }
     if (!get("_borrowedTimeUsed")) {
         if (!have($item`borrowed time`)) {
-            create(1, $item`borrowed time`);
+            resources.tome($item`borrowed time`);
         }
         use(1, $item`borrowed time`);
     }
@@ -198,10 +201,10 @@ function vote() {
 
 function deck() {
     if (!get("_deckCardsDrawn")) {
-        if (!inHardcore()) {
-            cliExecute(`cheat rope`); //Don't get Wrench in Softcore as we can pull the Stick-Knife
-        } else {
-            cliExecute("cheat wrench; cheat rope");
+		//resources.deck("1952"); TODO - Add getting 1952 Card if need meat?
+		resources.deck("rope");
+        if (inHardcore()) { //Don't get Wrench in Softcore as we can pull the Stick-Knife
+			resources.deck("wrench");
         }
     }
 }
