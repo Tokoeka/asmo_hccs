@@ -81,13 +81,13 @@ function castBuffs() {
 function thisFireIsOutOfControl() {
     //Don't need to spend a Map for High-Temp Mining Mask when we can Foam ourselves
     if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
-        uniform([$item`industrial fire extinguisher`, $slot`off-hand`]);
+        uniform([$item`industrial fire extinguisher`, $slot`off-hand`], $item`vampyric cloake`);
         useFamiliar($familiar`Ms. Puck Man`);
         horse(`dark`);
         setChoice(1387, 3);
         advMacroAA(
             $location`The Dire Warren`,
-            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`Use the Force`),
+            Macro.skill($skill`Fire Extinguisher: Foam Yourself`).skill($skill`become a cloud of mist`).skill($skill`Use the Force`),
             () => haveEffect($effect`Fireproof Foam Suit`) < 1 && get(`_saberForceUses`) < 3,
             () => {
                 visitUrl("choice.php");
@@ -98,6 +98,7 @@ function thisFireIsOutOfControl() {
             }
         );
         set(`_fireExtinguisherCharge`, 90);
+		//TODO - change cloake skill use count? (if needed)
     }
 }
 

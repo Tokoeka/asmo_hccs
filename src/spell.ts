@@ -71,10 +71,10 @@ function castBuffs() {
     );
 
     if (
-        !get("_cargoPocketEmptied") &&
+        !get("_cargoPocketEmptied") /*&&
         !$items`sizzling desk bell, frost-rimed desk bell, uncanny desk bell, nasty desk bell, greasy desk bell`.some(
             (item) => getSaleValue(item) > 4 * get("valueOfAdventure")
-        )
+        )*/
     ) {
         cliExecute("cargo 177");
         ensureEffect($effect`Sigils of Yeg`);

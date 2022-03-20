@@ -64,11 +64,11 @@ try {
         CommunityService.SpellDamage.run(spellTest, false, 30),
         "Failed to perform Spell Damage test!"
     );
-    assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
     assertCompleted(
         CommunityService.Noncombat.run(noncombatTest, false, 1),
         "Failed to cap NC test!"
     );
+	assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
     assertCompleted(
         CommunityService.FamiliarWeight.run(familiarTest, false, 30),
         "Failed to perform Familiar test!"
@@ -88,7 +88,17 @@ try {
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime
-        )}, assuming it ran contiguously. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
+        )}, assuming it ran contiguously, for a 1 day, ` +
+		(myTurncount()) +
+		` turn HCCS run. Organ use was ` +
+		myFullness() +
+		`/` +
+		myInebriety() +
+		`/` +
+		mySpleenUse() +
+		`. I drank ` +
+		(6 - availableAmount($item`astral pilsner`)) +
+		` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
     if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
