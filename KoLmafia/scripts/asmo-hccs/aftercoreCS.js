@@ -11883,7 +11883,7 @@ var getNumber = createPropertyGetter(value => Number(value));
 var getBounty = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Bounty, external_kolmafia_namespaceObject.toBounty);
 var getClass = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Class, external_kolmafia_namespaceObject.toClass);
 var getCoinmaster = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Coinmaster, external_kolmafia_namespaceObject.toCoinmaster);
-var property_getEffect = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Effect, external_kolmafia_namespaceObject.toEffect);
+var getEffect = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Effect, external_kolmafia_namespaceObject.toEffect);
 var getElement = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Element, external_kolmafia_namespaceObject.toElement);
 var getFamiliar = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Familiar, external_kolmafia_namespaceObject.toFamiliar);
 var getItem = createMafiaClassPropertyGetter(external_kolmafia_namespaceObject.Item, external_kolmafia_namespaceObject.toItem);
@@ -14483,7 +14483,7 @@ function spellOutfit() {
   [$slot(_templateObject234 || (_templateObject234 = outfits_taggedTemplateLiteral(["acc1"]))), $items(_templateObject235 || (_templateObject235 = outfits_taggedTemplateLiteral(["meteorite necklace, Kremlin's Greatest Briefcase"])))], [$slot(_templateObject236 || (_templateObject236 = outfits_taggedTemplateLiteral(["acc2"]))), $item(_templateObject237 || (_templateObject237 = outfits_taggedTemplateLiteral(["powerful glove"])))], [$slot(_templateObject238 || (_templateObject238 = outfits_taggedTemplateLiteral(["acc3"]))), $item(_templateObject239 || (_templateObject239 = outfits_taggedTemplateLiteral(["battle broom"])))]]), $familiar(_templateObject240 || (_templateObject240 = outfits_taggedTemplateLiteral(["Disembodied Hand"])))).dress();
 }
 ;// CONCATENATED MODULE: ./src/asmohccs-lib.ts
-var asmohccs_lib_templateObject, asmohccs_lib_templateObject2, asmohccs_lib_templateObject3, asmohccs_lib_templateObject4, asmohccs_lib_templateObject5, asmohccs_lib_templateObject6, asmohccs_lib_templateObject7, asmohccs_lib_templateObject8, asmohccs_lib_templateObject9, asmohccs_lib_templateObject10, asmohccs_lib_templateObject11, asmohccs_lib_templateObject12, asmohccs_lib_templateObject13, asmohccs_lib_templateObject14, asmohccs_lib_templateObject15, asmohccs_lib_templateObject16, asmohccs_lib_templateObject17, asmohccs_lib_templateObject18, asmohccs_lib_templateObject19, asmohccs_lib_templateObject20, asmohccs_lib_templateObject21, asmohccs_lib_templateObject22, asmohccs_lib_templateObject23, asmohccs_lib_templateObject24, asmohccs_lib_templateObject25, asmohccs_lib_templateObject26, asmohccs_lib_templateObject27, asmohccs_lib_templateObject28, asmohccs_lib_templateObject29, asmohccs_lib_templateObject30, asmohccs_lib_templateObject31, asmohccs_lib_templateObject32, asmohccs_lib_templateObject33, asmohccs_lib_templateObject34, asmohccs_lib_templateObject35, asmohccs_lib_templateObject36, asmohccs_lib_templateObject37, asmohccs_lib_templateObject38, asmohccs_lib_templateObject39, asmohccs_lib_templateObject40, asmohccs_lib_templateObject41, asmohccs_lib_templateObject42, asmohccs_lib_templateObject43, asmohccs_lib_templateObject44, asmohccs_lib_templateObject45, asmohccs_lib_templateObject46, asmohccs_lib_templateObject47, asmohccs_lib_templateObject48, asmohccs_lib_templateObject49, asmohccs_lib_templateObject50, asmohccs_lib_templateObject51, asmohccs_lib_templateObject52, asmohccs_lib_templateObject53, asmohccs_lib_templateObject54, asmohccs_lib_templateObject55, asmohccs_lib_templateObject56, asmohccs_lib_templateObject57, asmohccs_lib_templateObject58, asmohccs_lib_templateObject59, asmohccs_lib_templateObject60, asmohccs_lib_templateObject61, asmohccs_lib_templateObject62, asmohccs_lib_templateObject63, asmohccs_lib_templateObject64, asmohccs_lib_templateObject65, asmohccs_lib_templateObject66, asmohccs_lib_templateObject67, asmohccs_lib_templateObject68, asmohccs_lib_templateObject69, asmohccs_lib_templateObject70, asmohccs_lib_templateObject71, asmohccs_lib_templateObject72, asmohccs_lib_templateObject73, asmohccs_lib_templateObject74, asmohccs_lib_templateObject75, asmohccs_lib_templateObject76, asmohccs_lib_templateObject77, asmohccs_lib_templateObject78, asmohccs_lib_templateObject79, asmohccs_lib_templateObject80, asmohccs_lib_templateObject81, asmohccs_lib_templateObject82, asmohccs_lib_templateObject83, asmohccs_lib_templateObject84, asmohccs_lib_templateObject85, asmohccs_lib_templateObject86, asmohccs_lib_templateObject87, asmohccs_lib_templateObject88, asmohccs_lib_templateObject89, asmohccs_lib_templateObject90, asmohccs_lib_templateObject91, asmohccs_lib_templateObject92, asmohccs_lib_templateObject93, asmohccs_lib_templateObject94, asmohccs_lib_templateObject95, asmohccs_lib_templateObject96, asmohccs_lib_templateObject97, asmohccs_lib_templateObject98, asmohccs_lib_templateObject99, asmohccs_lib_templateObject100, asmohccs_lib_templateObject101, asmohccs_lib_templateObject102, asmohccs_lib_templateObject103, asmohccs_lib_templateObject104, asmohccs_lib_templateObject105, asmohccs_lib_templateObject106, asmohccs_lib_templateObject107, asmohccs_lib_templateObject108, asmohccs_lib_templateObject109, asmohccs_lib_templateObject110, asmohccs_lib_templateObject111, asmohccs_lib_templateObject112, asmohccs_lib_templateObject113, asmohccs_lib_templateObject114, asmohccs_lib_templateObject115, asmohccs_lib_templateObject116, asmohccs_lib_templateObject117, asmohccs_lib_templateObject118, asmohccs_lib_templateObject119, asmohccs_lib_templateObject120, asmohccs_lib_templateObject121, asmohccs_lib_templateObject122, asmohccs_lib_templateObject123, asmohccs_lib_templateObject124, asmohccs_lib_templateObject125, asmohccs_lib_templateObject126, asmohccs_lib_templateObject127, asmohccs_lib_templateObject128, asmohccs_lib_templateObject129, asmohccs_lib_templateObject130, asmohccs_lib_templateObject131, asmohccs_lib_templateObject132, asmohccs_lib_templateObject133, asmohccs_lib_templateObject134, asmohccs_lib_templateObject135, asmohccs_lib_templateObject136, asmohccs_lib_templateObject137, asmohccs_lib_templateObject138, asmohccs_lib_templateObject139, asmohccs_lib_templateObject140, asmohccs_lib_templateObject141, asmohccs_lib_templateObject142, asmohccs_lib_templateObject143, asmohccs_lib_templateObject144, asmohccs_lib_templateObject145, asmohccs_lib_templateObject146, asmohccs_lib_templateObject147, asmohccs_lib_templateObject148, asmohccs_lib_templateObject149, asmohccs_lib_templateObject150, asmohccs_lib_templateObject151, asmohccs_lib_templateObject152, asmohccs_lib_templateObject153, asmohccs_lib_templateObject154, asmohccs_lib_templateObject155, asmohccs_lib_templateObject156, asmohccs_lib_templateObject157, _ref, asmohccs_lib_templateObject158, asmohccs_lib_templateObject159, asmohccs_lib_templateObject160, asmohccs_lib_templateObject161, asmohccs_lib_templateObject162, asmohccs_lib_templateObject163, asmohccs_lib_templateObject164, asmohccs_lib_templateObject165, asmohccs_lib_templateObject166, asmohccs_lib_templateObject167, asmohccs_lib_templateObject168, asmohccs_lib_templateObject169, asmohccs_lib_templateObject170, asmohccs_lib_templateObject171, asmohccs_lib_templateObject172, asmohccs_lib_templateObject173, asmohccs_lib_templateObject174, asmohccs_lib_templateObject175, asmohccs_lib_templateObject176, asmohccs_lib_templateObject177, asmohccs_lib_templateObject178, asmohccs_lib_templateObject179, asmohccs_lib_templateObject180, asmohccs_lib_templateObject181, asmohccs_lib_templateObject182, asmohccs_lib_templateObject183, asmohccs_lib_templateObject184, asmohccs_lib_templateObject185, asmohccs_lib_templateObject186, asmohccs_lib_templateObject187, asmohccs_lib_templateObject188, asmohccs_lib_templateObject189;
+var asmohccs_lib_templateObject, asmohccs_lib_templateObject2, asmohccs_lib_templateObject3, asmohccs_lib_templateObject4, asmohccs_lib_templateObject5, asmohccs_lib_templateObject6, asmohccs_lib_templateObject7, asmohccs_lib_templateObject8, asmohccs_lib_templateObject9, asmohccs_lib_templateObject10, asmohccs_lib_templateObject11, asmohccs_lib_templateObject12, asmohccs_lib_templateObject13, asmohccs_lib_templateObject14, asmohccs_lib_templateObject15, asmohccs_lib_templateObject16, asmohccs_lib_templateObject17, asmohccs_lib_templateObject18, asmohccs_lib_templateObject19, asmohccs_lib_templateObject20, asmohccs_lib_templateObject21, asmohccs_lib_templateObject22, asmohccs_lib_templateObject23, asmohccs_lib_templateObject24, asmohccs_lib_templateObject25, asmohccs_lib_templateObject26, asmohccs_lib_templateObject27, asmohccs_lib_templateObject28, asmohccs_lib_templateObject29, asmohccs_lib_templateObject30, _ref, asmohccs_lib_templateObject31, asmohccs_lib_templateObject32, asmohccs_lib_templateObject33, asmohccs_lib_templateObject34, asmohccs_lib_templateObject35, asmohccs_lib_templateObject36, asmohccs_lib_templateObject37, asmohccs_lib_templateObject38, asmohccs_lib_templateObject39, asmohccs_lib_templateObject40, asmohccs_lib_templateObject41, asmohccs_lib_templateObject42, asmohccs_lib_templateObject43, asmohccs_lib_templateObject44, asmohccs_lib_templateObject45, asmohccs_lib_templateObject46, asmohccs_lib_templateObject47, asmohccs_lib_templateObject48, asmohccs_lib_templateObject49, asmohccs_lib_templateObject50, asmohccs_lib_templateObject51, asmohccs_lib_templateObject52, asmohccs_lib_templateObject53, asmohccs_lib_templateObject54, asmohccs_lib_templateObject55;
 
 function asmohccs_lib_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -14494,7 +14494,6 @@ function asmohccs_lib_unsupportedIterableToArray(o, minLen) { if (!o) return; if
 function asmohccs_lib_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
 function asmohccs_lib_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 
 
 
@@ -14510,509 +14509,6 @@ function gingerCandy() {
     set("_asmo_gingercity", true);
   }
 }
-function fuelUp() {
-  buy(1, $item(asmohccs_lib_templateObject4 || (asmohccs_lib_templateObject4 = asmohccs_lib_taggedTemplateLiteral(["all-purpose flower"]))));
-  use(1, $item(asmohccs_lib_templateObject5 || (asmohccs_lib_templateObject5 = asmohccs_lib_taggedTemplateLiteral(["all-purpose flower"]))));
-  buy(availableAmount($item(asmohccs_lib_templateObject6 || (asmohccs_lib_templateObject6 = asmohccs_lib_taggedTemplateLiteral(["wad of dough"])))), $item(asmohccs_lib_templateObject7 || (asmohccs_lib_templateObject7 = asmohccs_lib_taggedTemplateLiteral(["soda water"]))));
-  create(availableAmount($item(asmohccs_lib_templateObject8 || (asmohccs_lib_templateObject8 = asmohccs_lib_taggedTemplateLiteral(["wad of dough"])))), $item(asmohccs_lib_templateObject9 || (asmohccs_lib_templateObject9 = asmohccs_lib_taggedTemplateLiteral(["loaf of soda bread"]))));
-  cliExecute("asdonmartin fuel ".concat(availableAmount($item(asmohccs_lib_templateObject10 || (asmohccs_lib_templateObject10 = asmohccs_lib_taggedTemplateLiteral(["loaf of soda bread"])))), " soda bread"));
-}
-function synthMysExp() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject11 || (asmohccs_lib_templateObject11 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  }
-
-  var fudge = $item(asmohccs_lib_templateObject12 || (asmohccs_lib_templateObject12 = asmohccs_lib_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = $item(asmohccs_lib_templateObject13 || (asmohccs_lib_templateObject13 = asmohccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = $item(asmohccs_lib_templateObject14 || (asmohccs_lib_templateObject14 = asmohccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"])));
-  var fudges = availableAmount(fudge);
-  var pecans = availableAmount(pecan);
-  var barks = availableAmount(bark);
-
-  if (fudges >= 2) {
-    sweetSynthesis(fudge, fudge);
-  } else if (barks >= 1) {
-    if (pecans >= 1) {
-      sweetSynthesis(pecan, bark);
-    } else {
-      sweetSynthesis(bark, $item(asmohccs_lib_templateObject15 || (asmohccs_lib_templateObject15 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
-    }
-  } else {
-    gingerCandy(); //Section below stolen from Bean (with edits)
-
-    var inventory = getInventory();
-
-    for (var _i = 0, _Object$keys = Object.keys(inventory); _i < _Object$keys.length; _i++) {
-      var itemName = _Object$keys[_i];
-      var item = Item.get(itemName);
-      var count = inventory[itemName];
-      var mod = toInt(Item.get(itemName)) % 5;
-
-      if (item.candyType !== "complex") {
-        continue;
-      }
-
-      if (mod === 4 && item !== fudge) {
-        if (fudges >= 1) {
-          sweetSynthesis(fudge, item);
-          break;
-        }
-      } else if (mod === 3) {
-        if (pecans >= 1) {
-          sweetSynthesis(pecan, item);
-          break;
-        }
-      } else if (mod === 0) {
-        if (barks >= 1) {
-          sweetSynthesis(bark, item);
-          break;
-        }
-      }
-    }
-
-    if (!have($effect(asmohccs_lib_templateObject16 || (asmohccs_lib_templateObject16 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
-      if (!have($item(asmohccs_lib_templateObject17 || (asmohccs_lib_templateObject17 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))))) {
-        if (!have($item(asmohccs_lib_templateObject18 || (asmohccs_lib_templateObject18 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))))) create(1, $item(asmohccs_lib_templateObject19 || (asmohccs_lib_templateObject19 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))));
-        create(1, $item(asmohccs_lib_templateObject20 || (asmohccs_lib_templateObject20 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))));
-      }
-
-      if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(asmohccs_lib_templateObject21 || (asmohccs_lib_templateObject21 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))));
-      } else {
-        sweetSynthesis($item(asmohccs_lib_templateObject22 || (asmohccs_lib_templateObject22 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))), $item(asmohccs_lib_templateObject23 || (asmohccs_lib_templateObject23 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
-      }
-    }
-  }
-
-  if (!have($effect(asmohccs_lib_templateObject24 || (asmohccs_lib_templateObject24 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
-  }
-}
-function synthMusExp() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject25 || (asmohccs_lib_templateObject25 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  }
-
-  var fudge = $item(asmohccs_lib_templateObject26 || (asmohccs_lib_templateObject26 = asmohccs_lib_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = $item(asmohccs_lib_templateObject27 || (asmohccs_lib_templateObject27 = asmohccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = $item(asmohccs_lib_templateObject28 || (asmohccs_lib_templateObject28 = asmohccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"])));
-  var fudges = availableAmount(fudge);
-  var pecans = availableAmount(pecan);
-  var barks = availableAmount(bark);
-  var twist = $item(asmohccs_lib_templateObject29 || (asmohccs_lib_templateObject29 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"])));
-  var twists = availableAmount(twist);
-  var sprout = $item(asmohccs_lib_templateObject30 || (asmohccs_lib_templateObject30 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"])));
-  var sprouts = availableAmount(sprout);
-
-  if (fudges >= 1 && barks >= 1) {
-    sweetSynthesis(bark, fudge);
-  } else if (fudges < 3) {
-    if (twists < 2) {
-      create(2 - twists, twist);
-    }
-
-    sweetSynthesis(twist, twist);
-  } else {
-    gingerCandy(); //Section below stolen from Bean (with edits)
-
-    var inventory = getInventory();
-
-    for (var _i2 = 0, _Object$keys2 = Object.keys(inventory); _i2 < _Object$keys2.length; _i2++) {
-      var itemName = _Object$keys2[_i2];
-      var item = Item.get(itemName);
-      var count = inventory[itemName];
-      var mod = toInt(Item.get(itemName)) % 5;
-
-      if (item.candyType !== "complex") {
-        continue;
-      }
-
-      if (mod === 3) {
-        if (fudges >= 1) {
-          sweetSynthesis(fudge, item);
-          break;
-        }
-      } else if (mod === 4) {
-        if (barks >= 1) {
-          sweetSynthesis(bark, item);
-          break;
-        }
-      } else if (mod === 2) {
-        if (pecans >= 1) {
-          sweetSynthesis(pecan, item);
-          break;
-        } else if (sprouts >= 1) {
-          sweetSynthesis(sprout, item);
-          break;
-        }
-      } else if (mod === 1 && item !== twist) {
-        if (twists >= 1 || sprouts >= 1) {
-          if (twists < 1 && sprouts >= 1) {
-            create(1, twist);
-          }
-
-          sweetSynthesis(twist, item);
-          break;
-        }
-      }
-    }
-
-    if (!have($effect(asmohccs_lib_templateObject31 || (asmohccs_lib_templateObject31 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Movement"]))))) {
-      if (fudges >= 1) {
-        if (!have($item(asmohccs_lib_templateObject32 || (asmohccs_lib_templateObject32 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))))) {
-          if (!have($item(asmohccs_lib_templateObject33 || (asmohccs_lib_templateObject33 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))))) create(1, $item(asmohccs_lib_templateObject34 || (asmohccs_lib_templateObject34 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))));
-          create(1, $item(asmohccs_lib_templateObject35 || (asmohccs_lib_templateObject35 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))));
-        }
-
-        sweetSynthesis(fudge, $item(asmohccs_lib_templateObject36 || (asmohccs_lib_templateObject36 = asmohccs_lib_taggedTemplateLiteral(["sugar shotgun"]))));
-      }
-
-      if (!have($item(asmohccs_lib_templateObject37 || (asmohccs_lib_templateObject37 = asmohccs_lib_taggedTemplateLiteral(["sugar shorts"]))))) {
-        if (!have($item(asmohccs_lib_templateObject38 || (asmohccs_lib_templateObject38 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))))) create(1, $item(asmohccs_lib_templateObject39 || (asmohccs_lib_templateObject39 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))));
-        create(1, $item(asmohccs_lib_templateObject40 || (asmohccs_lib_templateObject40 = asmohccs_lib_taggedTemplateLiteral(["sugar shorts"]))));
-      }
-
-      if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(asmohccs_lib_templateObject41 || (asmohccs_lib_templateObject41 = asmohccs_lib_taggedTemplateLiteral(["sugar shorts"]))));
-      } else {
-        sweetSynthesis($item(asmohccs_lib_templateObject42 || (asmohccs_lib_templateObject42 = asmohccs_lib_taggedTemplateLiteral(["sugar shorts"]))), sprout);
-      }
-    }
-  }
-
-  if (!have($effect(asmohccs_lib_templateObject43 || (asmohccs_lib_templateObject43 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Movement"]))))) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize movement. Help? :c.";
-  }
-}
-function synthMoxExp() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject44 || (asmohccs_lib_templateObject44 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  }
-
-  var fudge = $item(asmohccs_lib_templateObject45 || (asmohccs_lib_templateObject45 = asmohccs_lib_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = $item(asmohccs_lib_templateObject46 || (asmohccs_lib_templateObject46 = asmohccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = $item(asmohccs_lib_templateObject47 || (asmohccs_lib_templateObject47 = asmohccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"])));
-  var fudges = availableAmount(fudge);
-  var pecans = availableAmount(pecan);
-  var barks = availableAmount(bark);
-  var twist = $item(asmohccs_lib_templateObject48 || (asmohccs_lib_templateObject48 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"])));
-  var twists = availableAmount(twist);
-  var sprout = $item(asmohccs_lib_templateObject49 || (asmohccs_lib_templateObject49 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"])));
-  var sprouts = availableAmount(sprout); //const sprouts = availableAmount(sprout);
-
-  if (fudges >= 1) {
-    sweetSynthesis(fudge, sprout);
-  } else if (barks >= 1 && twists + sprouts >= 1) {
-    if (twists < 1 && sprouts >= 1) {
-      create(1, twist);
-    }
-
-    sweetSynthesis(twist, bark);
-  } else if (have($item(asmohccs_lib_templateObject50 || (asmohccs_lib_templateObject50 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"])))) && pecans >= 1) {
-    sweetSynthesis(pecan, $item(asmohccs_lib_templateObject51 || (asmohccs_lib_templateObject51 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-  } else {
-    gingerCandy(); //Section below stolen from Bean (with edits)
-
-    var inventory = getInventory();
-
-    for (var _i3 = 0, _Object$keys3 = Object.keys(inventory); _i3 < _Object$keys3.length; _i3++) {
-      var itemName = _Object$keys3[_i3];
-      var item = Item.get(itemName);
-      var count = inventory[itemName];
-      var mod = toInt(Item.get(itemName)) % 5;
-
-      if (item.candyType !== "complex") {
-        continue;
-      }
-
-      if (mod === 0) {
-        if (fudges >= 1) {
-          sweetSynthesis(fudge, item);
-          break;
-        }
-      } else if (mod === 4) {
-        if (pecans >= 1) {
-          sweetSynthesis(pecan, item);
-          break;
-        }
-      } else if (mod === 1) {
-        if (barks >= 1) {
-          sweetSynthesis(bark, item);
-          break;
-        }
-      }
-    }
-
-    if (!have($effect(asmohccs_lib_templateObject52 || (asmohccs_lib_templateObject52 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Style"]))))) {
-      if (!have($item(asmohccs_lib_templateObject53 || (asmohccs_lib_templateObject53 = asmohccs_lib_taggedTemplateLiteral(["sugar shillelagh"]))))) {
-        if (!have($item(asmohccs_lib_templateObject54 || (asmohccs_lib_templateObject54 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))))) create(1, $item(asmohccs_lib_templateObject55 || (asmohccs_lib_templateObject55 = asmohccs_lib_taggedTemplateLiteral(["sugar sheet"]))));
-        create(1, $item(asmohccs_lib_templateObject56 || (asmohccs_lib_templateObject56 = asmohccs_lib_taggedTemplateLiteral(["sugar shillelagh"]))));
-      }
-
-      if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(asmohccs_lib_templateObject57 || (asmohccs_lib_templateObject57 = asmohccs_lib_taggedTemplateLiteral(["sugar shillelagh"]))));
-      } else {
-        sweetSynthesis($item(asmohccs_lib_templateObject58 || (asmohccs_lib_templateObject58 = asmohccs_lib_taggedTemplateLiteral(["sugar shillelagh"]))), $item(asmohccs_lib_templateObject59 || (asmohccs_lib_templateObject59 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
-      }
-    }
-  }
-
-  if (!have($effect(asmohccs_lib_templateObject60 || (asmohccs_lib_templateObject60 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Style"]))))) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize style.  ¯_(ツ)_/¯";
-  }
-}
-function synthItem() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject61 || (asmohccs_lib_templateObject61 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  }
-
-  var fudge = $item(asmohccs_lib_templateObject62 || (asmohccs_lib_templateObject62 = asmohccs_lib_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = $item(asmohccs_lib_templateObject63 || (asmohccs_lib_templateObject63 = asmohccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = $item(asmohccs_lib_templateObject64 || (asmohccs_lib_templateObject64 = asmohccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"])));
-  var fudges = availableAmount(fudge);
-  var pecans = availableAmount(pecan);
-  var barks = availableAmount(bark);
-
-  if (asmohccs_lib_inMysClass()) {
-    if (barks > 2) {
-      sweetSynthesis(bark, bark);
-    } else {
-      if (!have($item(asmohccs_lib_templateObject65 || (asmohccs_lib_templateObject65 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(asmohccs_lib_templateObject66 || (asmohccs_lib_templateObject66 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-
-      if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(asmohccs_lib_templateObject67 || (asmohccs_lib_templateObject67 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      } else {
-        sweetSynthesis($item(asmohccs_lib_templateObject68 || (asmohccs_lib_templateObject68 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))), $item(asmohccs_lib_templateObject69 || (asmohccs_lib_templateObject69 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-    }
-  } else if (asmohccs_lib_inMusClass()) {
-    if (barks >= 2 && fudges == 0) {
-      sweetSynthesis(bark, bark);
-    } else {
-      if (!have($item(asmohccs_lib_templateObject70 || (asmohccs_lib_templateObject70 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(asmohccs_lib_templateObject71 || (asmohccs_lib_templateObject71 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-
-      if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(asmohccs_lib_templateObject72 || (asmohccs_lib_templateObject72 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      } else {
-        sweetSynthesis($item(asmohccs_lib_templateObject73 || (asmohccs_lib_templateObject73 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))), $item(asmohccs_lib_templateObject74 || (asmohccs_lib_templateObject74 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-    }
-  } else if (asmohccs_lib_inMoxClass()) {
-    if (barks >= 2 && pecans == 0) {
-      sweetSynthesis(bark, bark);
-    } else {
-      if (!have($item(asmohccs_lib_templateObject75 || (asmohccs_lib_templateObject75 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(asmohccs_lib_templateObject76 || (asmohccs_lib_templateObject76 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-
-      if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(asmohccs_lib_templateObject77 || (asmohccs_lib_templateObject77 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      } else {
-        sweetSynthesis($item(asmohccs_lib_templateObject78 || (asmohccs_lib_templateObject78 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))), $item(asmohccs_lib_templateObject79 || (asmohccs_lib_templateObject79 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-    }
-  }
-
-  if (!have($effect(asmohccs_lib_templateObject80 || (asmohccs_lib_templateObject80 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Collection"]))))) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
-  }
-}
-function synthMyst() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject81 || (asmohccs_lib_templateObject81 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  } //const fudge = $item`Crimbo fudge`;
-  //const pecan = $item`Crimbo candied pecan`;
-  //const bark = $item`Crimbo peppermint bark`;
-  //const fudges = availableAmount(fudge);
-  //const pecans = availableAmount(pecan);
-  //const barks = availableAmount(bark);
-
-
-  if (have($item(asmohccs_lib_templateObject82 || (asmohccs_lib_templateObject82 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))))) {
-    if (!get("_chubbyAndPlumpUsed")) {
-      useSkill(1, $skill(asmohccs_lib_templateObject83 || (asmohccs_lib_templateObject83 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump"]))));
-    }
-
-    sweetSynthesis($item(asmohccs_lib_templateObject84 || (asmohccs_lib_templateObject84 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"]))), $item(asmohccs_lib_templateObject85 || (asmohccs_lib_templateObject85 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-  } else {
-    var mint = $item(asmohccs_lib_templateObject86 || (asmohccs_lib_templateObject86 = asmohccs_lib_taggedTemplateLiteral(["Senior Mints"])));
-    var mints = availableAmount(mint);
-    var orangeHeart = $item(asmohccs_lib_templateObject87 || (asmohccs_lib_templateObject87 = asmohccs_lib_taggedTemplateLiteral(["orange candy heart"])));
-
-    var orangeHearts = () => availableAmount(orangeHeart);
-
-    var pinkHeart = $item(asmohccs_lib_templateObject88 || (asmohccs_lib_templateObject88 = asmohccs_lib_taggedTemplateLiteral(["pink candy heart"])));
-
-    var pinkHearts = () => availableAmount($item(asmohccs_lib_templateObject89 || (asmohccs_lib_templateObject89 = asmohccs_lib_taggedTemplateLiteral(["pink candy heart"]))));
-
-    var n = 0;
-
-    while (mints + orangeHearts() + pinkHearts() === 0 && n < 11) {
-      useSkill(1, $skill(asmohccs_lib_templateObject90 || (asmohccs_lib_templateObject90 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
-      n++;
-    }
-
-    if (mints + orangeHearts() + pinkHearts() === 0) {
-      throw "Failed to summon hearts in a timely manner";
-    }
-
-    if (mints >= 1) {
-      sweetSynthesis(mint, $item(asmohccs_lib_templateObject91 || (asmohccs_lib_templateObject91 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
-    } else if (orangeHearts() >= 1) {
-      sweetSynthesis(orangeHeart, $item(asmohccs_lib_templateObject92 || (asmohccs_lib_templateObject92 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
-    } else if (pinkHearts() >= 1) {
-      if (!have($item(asmohccs_lib_templateObject93 || (asmohccs_lib_templateObject93 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(asmohccs_lib_templateObject94 || (asmohccs_lib_templateObject94 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-      }
-
-      sweetSynthesis(pinkHeart, $item(asmohccs_lib_templateObject95 || (asmohccs_lib_templateObject95 = asmohccs_lib_taggedTemplateLiteral(["peppermint twist"]))));
-    }
-  }
-
-  if (haveEffect($effect(asmohccs_lib_templateObject96 || (asmohccs_lib_templateObject96 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Smart"])))) === 0) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize smart. Pwease fix me :c.";
-  }
-}
-function synthMus() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject97 || (asmohccs_lib_templateObject97 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  } //const fudge = $item`Crimbo fudge`;
-  //const pecan = $item`Crimbo candied pecan`;
-
-
-  var bark = $item(asmohccs_lib_templateObject98 || (asmohccs_lib_templateObject98 = asmohccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"]))); //const fudges = availableAmount(fudge);
-  //const pecans = availableAmount(pecan);
-
-  var barks = availableAmount(bark);
-
-  if (!get("_chubbyAndPlumpUsed")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject99 || (asmohccs_lib_templateObject99 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump"]))));
-  }
-
-  if (have($item(asmohccs_lib_templateObject100 || (asmohccs_lib_templateObject100 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"])))) && barks >= 2) {
-    sweetSynthesis($item(asmohccs_lib_templateObject101 || (asmohccs_lib_templateObject101 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"]))), bark);
-  } else if (have($item(asmohccs_lib_templateObject102 || (asmohccs_lib_templateObject102 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))))) {
-    var mint = $item(asmohccs_lib_templateObject103 || (asmohccs_lib_templateObject103 = asmohccs_lib_taggedTemplateLiteral(["Senior Mints"])));
-    var mints = availableAmount(mint);
-    var orangeHeart = $item(asmohccs_lib_templateObject104 || (asmohccs_lib_templateObject104 = asmohccs_lib_taggedTemplateLiteral(["orange candy heart"])));
-
-    var orangeHearts = () => availableAmount(orangeHeart);
-
-    var pinkHeart = $item(asmohccs_lib_templateObject105 || (asmohccs_lib_templateObject105 = asmohccs_lib_taggedTemplateLiteral(["pink candy heart"])));
-
-    var pinkHearts = () => availableAmount($item(asmohccs_lib_templateObject106 || (asmohccs_lib_templateObject106 = asmohccs_lib_taggedTemplateLiteral(["pink candy heart"]))));
-
-    var n = 0;
-
-    while (mints + orangeHearts() === 0 && n < 11) {
-      useSkill(1, $skill(asmohccs_lib_templateObject107 || (asmohccs_lib_templateObject107 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
-      n++;
-    }
-
-    if (mints + orangeHearts() + pinkHearts() === 0) {
-      throw "Failed to summon hearts in a timely manner";
-    }
-
-    if (mints >= 1) {
-      sweetSynthesis(mint, $item(asmohccs_lib_templateObject108 || (asmohccs_lib_templateObject108 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-    } else if (orangeHearts() >= 1) {
-      sweetSynthesis(orangeHeart, $item(asmohccs_lib_templateObject109 || (asmohccs_lib_templateObject109 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-    } else if (pinkHearts() >= 1) {
-      sweetSynthesis(pinkHeart, $item(asmohccs_lib_templateObject110 || (asmohccs_lib_templateObject110 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))));
-    }
-  }
-
-  if (haveEffect($effect(asmohccs_lib_templateObject111 || (asmohccs_lib_templateObject111 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Strong"])))) === 0) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize strong. You're on your own pal.";
-  }
-}
-function synthMox() {
-  if (get("harvestGardenHardcore") === "none") {
-    visitUrl("campground.php?action=garden");
-  }
-
-  if (!get("_candySummons")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject112 || (asmohccs_lib_templateObject112 = asmohccs_lib_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
-  }
-
-  var fudge = $item(asmohccs_lib_templateObject113 || (asmohccs_lib_templateObject113 = asmohccs_lib_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = $item(asmohccs_lib_templateObject114 || (asmohccs_lib_templateObject114 = asmohccs_lib_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = $item(asmohccs_lib_templateObject115 || (asmohccs_lib_templateObject115 = asmohccs_lib_taggedTemplateLiteral(["Crimbo peppermint bark"])));
-  var fudges = availableAmount(fudge);
-  var pecans = availableAmount(pecan);
-  var barks = availableAmount(bark);
-
-  if (!get("_chubbyAndPlumpUsed")) {
-    useSkill(1, $skill(asmohccs_lib_templateObject116 || (asmohccs_lib_templateObject116 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump"]))));
-  }
-
-  if (pecans >= 1) {
-    sweetSynthesis($item(asmohccs_lib_templateObject117 || (asmohccs_lib_templateObject117 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"]))), pecan);
-  } else if (fudges > 1 && have($item(asmohccs_lib_templateObject118 || (asmohccs_lib_templateObject118 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))))) {
-    var taffy = $item(asmohccs_lib_templateObject119 || (asmohccs_lib_templateObject119 = asmohccs_lib_taggedTemplateLiteral(["Daffy Taffy"])));
-    var taffys = availableAmount(taffy);
-    var candy = $item(asmohccs_lib_templateObject120 || (asmohccs_lib_templateObject120 = asmohccs_lib_taggedTemplateLiteral(["Cold Hots candy"])));
-    var candys = availableAmount(candy);
-    var yellowHeart = $item(asmohccs_lib_templateObject121 || (asmohccs_lib_templateObject121 = asmohccs_lib_taggedTemplateLiteral(["yellow candy heart"])));
-
-    var yellowHearts = () => availableAmount(yellowHeart);
-
-    var n = 0;
-
-    while (taffys + yellowHearts() + candys === 0 && n < 11) {
-      useSkill(1, $skill(asmohccs_lib_templateObject122 || (asmohccs_lib_templateObject122 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
-      n++;
-    }
-
-    if (taffys + yellowHearts() + candys === 0) {
-      throw "Failed to summon hearts in a timely manner";
-    }
-
-    if (taffys >= 1) {
-      sweetSynthesis(taffy, $item(asmohccs_lib_templateObject123 || (asmohccs_lib_templateObject123 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-    } else if (yellowHearts() >= 1) {
-      sweetSynthesis(yellowHeart, $item(asmohccs_lib_templateObject124 || (asmohccs_lib_templateObject124 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-    } else if (candys >= 1) {
-      sweetSynthesis(candy, $item(asmohccs_lib_templateObject125 || (asmohccs_lib_templateObject125 = asmohccs_lib_taggedTemplateLiteral(["bag of many confections"]))));
-    } else {
-      sweetSynthesis($item(asmohccs_lib_templateObject126 || (asmohccs_lib_templateObject126 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))), $item(asmohccs_lib_templateObject127 || (asmohccs_lib_templateObject127 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"]))));
-    }
-  } else if (barks >= 1) {
-    sweetSynthesis($item(asmohccs_lib_templateObject128 || (asmohccs_lib_templateObject128 = asmohccs_lib_taggedTemplateLiteral(["peppermint sprout"]))), $item(asmohccs_lib_templateObject129 || (asmohccs_lib_templateObject129 = asmohccs_lib_taggedTemplateLiteral(["Chubby and Plump bar"]))));
-  }
-
-  if (haveEffect($effect(asmohccs_lib_templateObject130 || (asmohccs_lib_templateObject130 = asmohccs_lib_taggedTemplateLiteral(["Synthesis: Cool"])))) === 0) {
-    throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize cool. Good Luck Buster.";
-  }
-}
 function kramcoCheck() {
   var kramcoNumber = 5 + 3 * get("_sausageFights") + Math.pow(Math.max(0, get("_sausageFights") - 5), 3);
   return totalTurnsPlayed() - get("_lastSausageMonsterTurn") + 1 >= kramcoNumber;
@@ -15021,16 +14517,16 @@ function useDefaultFamiliar() {
   var canAttack = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 
   if (!get("_bagOfCandy") && canAttack) {
-    useFamiliar($familiar(asmohccs_lib_templateObject131 || (asmohccs_lib_templateObject131 = asmohccs_lib_taggedTemplateLiteral(["Stocking Mimic"]))));
-  } else if (!haveEffect($effect(asmohccs_lib_templateObject132 || (asmohccs_lib_templateObject132 = asmohccs_lib_taggedTemplateLiteral(["Spit Upon"])))) && !get("csServicesPerformed").split(",").includes("Reduce Gazelle Population")) {
-    useFamiliar($familiar(asmohccs_lib_templateObject133 || (asmohccs_lib_templateObject133 = asmohccs_lib_taggedTemplateLiteral(["Melodramedary"]))));
-    equip($slot(asmohccs_lib_templateObject134 || (asmohccs_lib_templateObject134 = asmohccs_lib_taggedTemplateLiteral(["familiar"]))), $item(asmohccs_lib_templateObject135 || (asmohccs_lib_templateObject135 = asmohccs_lib_taggedTemplateLiteral(["dromedary drinking helmet"]))));
-  } else if (canAttack && !have($item(asmohccs_lib_templateObject136 || (asmohccs_lib_templateObject136 = asmohccs_lib_taggedTemplateLiteral(["short stack of pancakes"])))) && !have($effect(asmohccs_lib_templateObject137 || (asmohccs_lib_templateObject137 = asmohccs_lib_taggedTemplateLiteral(["Shortly Stacked"])))) && !get("csServicesPerformed").split(",").includes("Breed More Collies")) {
-    useFamiliar($familiar(asmohccs_lib_templateObject138 || (asmohccs_lib_templateObject138 = asmohccs_lib_taggedTemplateLiteral(["Shorter-Order Cook"]))));
-  } else if (!have($item(asmohccs_lib_templateObject139 || (asmohccs_lib_templateObject139 = asmohccs_lib_taggedTemplateLiteral(["burning newspaper"])))) && !have($item(asmohccs_lib_templateObject140 || (asmohccs_lib_templateObject140 = asmohccs_lib_taggedTemplateLiteral(["burning paper crane"]))))) {
-    useFamiliar($familiar(asmohccs_lib_templateObject141 || (asmohccs_lib_templateObject141 = asmohccs_lib_taggedTemplateLiteral(["Garbage Fire"]))));
+    useFamiliar($familiar(asmohccs_lib_templateObject4 || (asmohccs_lib_templateObject4 = asmohccs_lib_taggedTemplateLiteral(["Stocking Mimic"]))));
+  } else if (!haveEffect($effect(asmohccs_lib_templateObject5 || (asmohccs_lib_templateObject5 = asmohccs_lib_taggedTemplateLiteral(["Spit Upon"])))) && !get("csServicesPerformed").split(",").includes("Reduce Gazelle Population")) {
+    useFamiliar($familiar(asmohccs_lib_templateObject6 || (asmohccs_lib_templateObject6 = asmohccs_lib_taggedTemplateLiteral(["Melodramedary"]))));
+    equip($slot(asmohccs_lib_templateObject7 || (asmohccs_lib_templateObject7 = asmohccs_lib_taggedTemplateLiteral(["familiar"]))), $item(asmohccs_lib_templateObject8 || (asmohccs_lib_templateObject8 = asmohccs_lib_taggedTemplateLiteral(["dromedary drinking helmet"]))));
+  } else if (canAttack && !have($item(asmohccs_lib_templateObject9 || (asmohccs_lib_templateObject9 = asmohccs_lib_taggedTemplateLiteral(["short stack of pancakes"])))) && !have($effect(asmohccs_lib_templateObject10 || (asmohccs_lib_templateObject10 = asmohccs_lib_taggedTemplateLiteral(["Shortly Stacked"])))) && !get("csServicesPerformed").split(",").includes("Breed More Collies")) {
+    useFamiliar($familiar(asmohccs_lib_templateObject11 || (asmohccs_lib_templateObject11 = asmohccs_lib_taggedTemplateLiteral(["Shorter-Order Cook"]))));
+  } else if (!have($item(asmohccs_lib_templateObject12 || (asmohccs_lib_templateObject12 = asmohccs_lib_taggedTemplateLiteral(["burning newspaper"])))) && !have($item(asmohccs_lib_templateObject13 || (asmohccs_lib_templateObject13 = asmohccs_lib_taggedTemplateLiteral(["burning paper crane"]))))) {
+    useFamiliar($familiar(asmohccs_lib_templateObject14 || (asmohccs_lib_templateObject14 = asmohccs_lib_taggedTemplateLiteral(["Garbage Fire"]))));
   } else {
-    useFamiliar($familiar(asmohccs_lib_templateObject142 || (asmohccs_lib_templateObject142 = asmohccs_lib_taggedTemplateLiteral(["Puck Man"]))));
+    useFamiliar($familiar(asmohccs_lib_templateObject15 || (asmohccs_lib_templateObject15 = asmohccs_lib_taggedTemplateLiteral(["Puck Man"]))));
   }
 }
 var Test;
@@ -15070,28 +14566,28 @@ function doTest(testNum) {
 }
 function ensureInnerElf() {
   //stolen merely mostly from bean
-  if (!have($effect(asmohccs_lib_templateObject143 || (asmohccs_lib_templateObject143 = asmohccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
+  if (!have($effect(asmohccs_lib_templateObject16 || (asmohccs_lib_templateObject16 = asmohccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
     setClan(get("asmocs_elfClan", "Hobopolis Vacation Home"));
 
     try {
-      withOutfit(new Outfit(new Map([[$slot(asmohccs_lib_templateObject144 || (asmohccs_lib_templateObject144 = asmohccs_lib_taggedTemplateLiteral(["acc3"]))), $item(asmohccs_lib_templateObject145 || (asmohccs_lib_templateObject145 = asmohccs_lib_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))]]), $familiar(asmohccs_lib_templateObject146 || (asmohccs_lib_templateObject146 = asmohccs_lib_taggedTemplateLiteral(["Machine Elf"])))), () => {
-        asmohccs_lib_ensureEffect($effect(asmohccs_lib_templateObject147 || (asmohccs_lib_templateObject147 = asmohccs_lib_taggedTemplateLiteral(["Blood Bubble"]))));
+      withOutfit(new Outfit(new Map([[$slot(asmohccs_lib_templateObject17 || (asmohccs_lib_templateObject17 = asmohccs_lib_taggedTemplateLiteral(["acc3"]))), $item(asmohccs_lib_templateObject18 || (asmohccs_lib_templateObject18 = asmohccs_lib_taggedTemplateLiteral(["Kremlin's Greatest Briefcase"])))]]), $familiar(asmohccs_lib_templateObject19 || (asmohccs_lib_templateObject19 = asmohccs_lib_taggedTemplateLiteral(["Machine Elf"])))), () => {
+        asmohccs_lib_ensureEffect($effect(asmohccs_lib_templateObject20 || (asmohccs_lib_templateObject20 = asmohccs_lib_taggedTemplateLiteral(["Blood Bubble"]))));
         setChoice(326, 1);
         if (get("_kgbTranquilizerDartUses") >= 3) ensureMp(50);
-        advMacro($location(asmohccs_lib_templateObject148 || (asmohccs_lib_templateObject148 = asmohccs_lib_taggedTemplateLiteral(["The Slime Tube"]))), Macro.trySkill($skill(asmohccs_lib_templateObject149 || (asmohccs_lib_templateObject149 = asmohccs_lib_taggedTemplateLiteral(["KGB tranquilizer dart"])))).trySkill($skill(asmohccs_lib_templateObject150 || (asmohccs_lib_templateObject150 = asmohccs_lib_taggedTemplateLiteral(["Snokebomb"])))));
+        advMacro($location(asmohccs_lib_templateObject21 || (asmohccs_lib_templateObject21 = asmohccs_lib_taggedTemplateLiteral(["The Slime Tube"]))), Macro.trySkill($skill(asmohccs_lib_templateObject22 || (asmohccs_lib_templateObject22 = asmohccs_lib_taggedTemplateLiteral(["KGB tranquilizer dart"])))).trySkill($skill(asmohccs_lib_templateObject23 || (asmohccs_lib_templateObject23 = asmohccs_lib_taggedTemplateLiteral(["Snokebomb"])))));
       });
     } finally {
       setClan(get("asmocs_mainClan", "Alliance From Heck"));
     }
 
-    if (!have($effect(asmohccs_lib_templateObject151 || (asmohccs_lib_templateObject151 = asmohccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
+    if (!have($effect(asmohccs_lib_templateObject24 || (asmohccs_lib_templateObject24 = asmohccs_lib_taggedTemplateLiteral(["Inner Elf"]))))) {
       throw "Failed to get effect Inner Elf from Mother Slime.";
     }
   }
 }
 function fightSausageIfAble(location, macro) {
   if (kramcoCheck()) {
-    equip($slot(asmohccs_lib_templateObject152 || (asmohccs_lib_templateObject152 = asmohccs_lib_taggedTemplateLiteral(["off-hand"]))), $item(asmohccs_lib_templateObject153 || (asmohccs_lib_templateObject153 = asmohccs_lib_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
+    equip($slot(asmohccs_lib_templateObject25 || (asmohccs_lib_templateObject25 = asmohccs_lib_taggedTemplateLiteral(["off-hand"]))), $item(asmohccs_lib_templateObject26 || (asmohccs_lib_templateObject26 = asmohccs_lib_taggedTemplateLiteral(["Kramco Sausage-o-Matic\u2122"]))));
     var sausages = get("_sausageFights");
     advMacroAA(location, macro, () => {
       return sausages === get("_sausageFights");
@@ -15108,7 +14604,7 @@ function shrug(ef) {
   }
 } // We have Stevedave's, Ur-Kel's on at all times during leveling (managed via mood); third and fourth slots are variable.
 
-var songSlots = [$effects(asmohccs_lib_templateObject154 || (asmohccs_lib_templateObject154 = asmohccs_lib_taggedTemplateLiteral(["Stevedave's Shanty of Superiority"]))), $effects(asmohccs_lib_templateObject155 || (asmohccs_lib_templateObject155 = asmohccs_lib_taggedTemplateLiteral(["Ur-Kel's Aria of Annoyance"]))), $effects(asmohccs_lib_templateObject156 || (asmohccs_lib_templateObject156 = asmohccs_lib_taggedTemplateLiteral(["Power Ballad of the Arrowsmith, The Magical Mojomuscular Melody, The Moxious Madrigal, Ode to Booze, Jackasses' Symphony of Destruction"]))), $effects(asmohccs_lib_templateObject157 || (asmohccs_lib_templateObject157 = asmohccs_lib_taggedTemplateLiteral(["Carlweather's Cantata of Confrontation, The Sonata of Sneakiness, Fat Leon's Phat Loot Lyric, Polka of Plenty"])))];
+var songSlots = [$effects(asmohccs_lib_templateObject27 || (asmohccs_lib_templateObject27 = asmohccs_lib_taggedTemplateLiteral(["Stevedave's Shanty of Superiority"]))), $effects(asmohccs_lib_templateObject28 || (asmohccs_lib_templateObject28 = asmohccs_lib_taggedTemplateLiteral(["Ur-Kel's Aria of Annoyance"]))), $effects(asmohccs_lib_templateObject29 || (asmohccs_lib_templateObject29 = asmohccs_lib_taggedTemplateLiteral(["Power Ballad of the Arrowsmith, The Magical Mojomuscular Melody, The Moxious Madrigal, Ode to Booze, Jackasses' Symphony of Destruction"]))), $effects(asmohccs_lib_templateObject30 || (asmohccs_lib_templateObject30 = asmohccs_lib_taggedTemplateLiteral(["Carlweather's Cantata of Confrontation, The Sonata of Sneakiness, Fat Leon's Phat Loot Lyric, Polka of Plenty"])))];
 
 var allKnownSongs = (_ref = []).concat.apply(_ref, songSlots);
 
@@ -15280,9 +14776,9 @@ function advMacro(location, macro) {
 }
 function mapMacro(location, monster, macro) {
   macro.setAutoAttack();
-  useSkill($skill(asmohccs_lib_templateObject158 || (asmohccs_lib_templateObject158 = asmohccs_lib_taggedTemplateLiteral(["Map the Monsters"]))));
+  useSkill($skill(asmohccs_lib_templateObject31 || (asmohccs_lib_templateObject31 = asmohccs_lib_taggedTemplateLiteral(["Map the Monsters"]))));
   if (!get("mappingMonsters")) throw "I am not actually mapping anything. Weird!";else {
-    while (get("mappingMonsters") && !have($effect(asmohccs_lib_templateObject159 || (asmohccs_lib_templateObject159 = asmohccs_lib_taggedTemplateLiteral(["Meteor Showered"]))))) {
+    while (get("mappingMonsters") && !have($effect(asmohccs_lib_templateObject32 || (asmohccs_lib_templateObject32 = asmohccs_lib_taggedTemplateLiteral(["Meteor Showered"]))))) {
       visitUrl(toUrl(location));
       runChoice(1, "heyscriptswhatsupwinkwink=".concat(monster.id));
       runCombat(macro.toString());
@@ -15339,35 +14835,18 @@ function ensureMp(mp) {
   if (myMp() > mp) return;
   if (mp > myMaxmp()) throw "Insufficient maximum mp!";
 
-  while (have($item(asmohccs_lib_templateObject160 || (asmohccs_lib_templateObject160 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"])))) || have($item(asmohccs_lib_templateObject161 || (asmohccs_lib_templateObject161 = asmohccs_lib_taggedTemplateLiteral(["magical sausage casing"])))) && myMp() < mp && get("_sausagesEaten") < 23) {
-    retrieveItem($item(asmohccs_lib_templateObject162 || (asmohccs_lib_templateObject162 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
-    eat($item(asmohccs_lib_templateObject163 || (asmohccs_lib_templateObject163 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
+  while (have($item(asmohccs_lib_templateObject33 || (asmohccs_lib_templateObject33 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"])))) || have($item(asmohccs_lib_templateObject34 || (asmohccs_lib_templateObject34 = asmohccs_lib_taggedTemplateLiteral(["magical sausage casing"])))) && myMp() < mp && get("_sausagesEaten") < 23) {
+    retrieveItem($item(asmohccs_lib_templateObject35 || (asmohccs_lib_templateObject35 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
+    eat($item(asmohccs_lib_templateObject36 || (asmohccs_lib_templateObject36 = asmohccs_lib_taggedTemplateLiteral(["magical sausage"]))));
   }
 
-  while (have($item(asmohccs_lib_templateObject164 || (asmohccs_lib_templateObject164 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && myMp() < mp) {
-    use($item(asmohccs_lib_templateObject165 || (asmohccs_lib_templateObject165 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
+  while (have($item(asmohccs_lib_templateObject37 || (asmohccs_lib_templateObject37 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"])))) && myMp() < mp) {
+    use($item(asmohccs_lib_templateObject38 || (asmohccs_lib_templateObject38 = asmohccs_lib_taggedTemplateLiteral(["psychokinetic energy blob"]))));
   }
 
   if (myMp() < mp) restoreMp(mp);
 }
-var maximizeFamiliar = lib_have(template_string_$familiar(asmohccs_lib_templateObject166 || (asmohccs_lib_templateObject166 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? template_string_$familiar(asmohccs_lib_templateObject167 || (asmohccs_lib_templateObject167 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"]))) : template_string_$familiar(asmohccs_lib_templateObject168 || (asmohccs_lib_templateObject168 = asmohccs_lib_taggedTemplateLiteral(["Left-Hand Man"]))); // Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
-
-function geneTonic(ph) {
-  if (tonicsLeft() < 1) throw "You can't make any more tonics";
-
-  if (!have(getEffect(ph)) && !have(getTonic(ph))) {
-    if (get("dnaSyringe") !== ph) throw "You have the wrong DNA in your syringe";
-    makeTonic();
-
-    if (!have(getTonic(ph))) {
-      throw "something went wrong getting your gene tonic";
-    } else {
-      print("successfully created ".concat(getTonic(ph).name));
-    }
-  } else {
-    print("You already have ".concat(ph, " DNA"));
-  }
-}
+var maximizeFamiliar = lib_have(template_string_$familiar(asmohccs_lib_templateObject39 || (asmohccs_lib_templateObject39 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"])))) ? template_string_$familiar(asmohccs_lib_templateObject40 || (asmohccs_lib_templateObject40 = asmohccs_lib_taggedTemplateLiteral(["Disembodied Hand"]))) : template_string_$familiar(asmohccs_lib_templateObject41 || (asmohccs_lib_templateObject41 = asmohccs_lib_taggedTemplateLiteral(["Left-Hand Man"])));
 
 function canCastLibrams() {
   var summonNumber = 1 + get("libramSummons");
@@ -15376,15 +14855,15 @@ function canCastLibrams() {
 }
 
 function burnLibrams() {
-  if (!$skills(asmohccs_lib_templateObject169 || (asmohccs_lib_templateObject169 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Taffy, Summon Love Song"]))).some(skill => have(skill))) return;
+  if (!$skills(asmohccs_lib_templateObject42 || (asmohccs_lib_templateObject42 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Taffy, Summon Love Song"]))).some(skill => have(skill))) return;
 
   while (canCastLibrams()) {
     var testsDone = get("csServicesPerformed").split(",");
 
-    if ((!testsDone.includes("Breed More Collies") && !have($item(asmohccs_lib_templateObject170 || (asmohccs_lib_templateObject170 = asmohccs_lib_taggedTemplateLiteral(["green candy heart"])))) || !testsDone.includes("Make Margaritas") && !have($item(asmohccs_lib_templateObject171 || (asmohccs_lib_templateObject171 = asmohccs_lib_taggedTemplateLiteral(["lavender candy heart"]))))) && have($skill(asmohccs_lib_templateObject172 || (asmohccs_lib_templateObject172 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))))) {
-      useSkill($skill(asmohccs_lib_templateObject173 || (asmohccs_lib_templateObject173 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
-    } else if (!testsDone.includes("Breed More Collies") && !have($item(asmohccs_lib_templateObject174 || (asmohccs_lib_templateObject174 = asmohccs_lib_taggedTemplateLiteral(["love song of icy revenge"]))), 4) && have($skill(asmohccs_lib_templateObject175 || (asmohccs_lib_templateObject175 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))))) {
-      useSkill($skill(asmohccs_lib_templateObject176 || (asmohccs_lib_templateObject176 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))));
+    if ((!testsDone.includes("Breed More Collies") && !have($item(asmohccs_lib_templateObject43 || (asmohccs_lib_templateObject43 = asmohccs_lib_taggedTemplateLiteral(["green candy heart"])))) || !testsDone.includes("Make Margaritas") && !have($item(asmohccs_lib_templateObject44 || (asmohccs_lib_templateObject44 = asmohccs_lib_taggedTemplateLiteral(["lavender candy heart"]))))) && have($skill(asmohccs_lib_templateObject45 || (asmohccs_lib_templateObject45 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))))) {
+      useSkill($skill(asmohccs_lib_templateObject46 || (asmohccs_lib_templateObject46 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart"]))));
+    } else if (!testsDone.includes("Breed More Collies") && !have($item(asmohccs_lib_templateObject47 || (asmohccs_lib_templateObject47 = asmohccs_lib_taggedTemplateLiteral(["love song of icy revenge"]))), 4) && have($skill(asmohccs_lib_templateObject48 || (asmohccs_lib_templateObject48 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))))) {
+      useSkill($skill(asmohccs_lib_templateObject49 || (asmohccs_lib_templateObject49 = asmohccs_lib_taggedTemplateLiteral(["Summon Love Song"]))));
     }
     /*else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
       useSkill($skill`Summon BRICKOs`);
@@ -15395,13 +14874,12 @@ function burnLibrams() {
       useSkill($skill`Summon Taffy`);
     }*/
     else {
-      var summonSkill = $skills(asmohccs_lib_templateObject177 || (asmohccs_lib_templateObject177 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Love Song"]))).find(skill => have(skill));
+      var summonSkill = $skills(asmohccs_lib_templateObject50 || (asmohccs_lib_templateObject50 = asmohccs_lib_taggedTemplateLiteral(["Summon Candy Heart, Summon Love Song"]))).find(skill => have(skill));
       if (!summonSkill) return;
       useSkill(summonSkill);
     }
   }
 }
-var moonBonus = (/* unused pure expression or super */ null && ([["weapon damage percent", "Mongoose", "20"], ["spell damage percent", "Wallaby", "20"], ["familiar weight", "Platypus", "5"], ["meat drop", "Wombat", "20"], ["item drop", "Packrat", "10"]]));
 function pullIfPossible(quantity, it, maxPrice) {
   if (pullsRemaining() > 0) {
     var quantityPull = Math.max(0, quantity - availableAmount(it));
@@ -15423,136 +14901,22 @@ function ensurePullEffect(ef, it) {
     if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) asmohccs_lib_ensureEffect(ef);
   }
 }
-function modTraceList(modifier) {
-  var totalVal = 0;
-  print("");
-  print("MOD TRACE: " + modifier, "red");
-
-  for (var effect in myEffects()) {
-    var ef = toEffect(effect);
-
-    if (numericModifier(ef, modifier) != 0) {
-      totalVal = totalVal + numericModifier(ef, modifier);
-      print("EFFECT " + ef + " : " + numericModifier(ef, modifier) + " " + modifier + " for " + haveEffect(ef) + " more turns");
-    }
-  }
-
-  var _iterator4 = asmohccs_lib_createForOfIteratorHelper($slots(asmohccs_lib_templateObject181 || (asmohccs_lib_templateObject181 = asmohccs_lib_taggedTemplateLiteral([""])))),
-      _step4;
-
-  try {
-    for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-      var slot = _step4.value;
-      var it = equippedItem(slot);
-
-      if (numericModifier(it, modifier) != 0 && (haveEquipped(it) || haveEquipped($item(asmohccs_lib_templateObject182 || (asmohccs_lib_templateObject182 = asmohccs_lib_taggedTemplateLiteral(["your cowboy boots"])))) && $slots(asmohccs_lib_templateObject183 || (asmohccs_lib_templateObject183 = asmohccs_lib_taggedTemplateLiteral(["bootspur, bootskin"]))).includes(slot))) {
-        totalVal = totalVal + numericModifier(it, modifier);
-        print("SLOT " + slot + " ITEM " + it + " : " + numericModifier(it, modifier));
-      }
-    }
-  } catch (err) {
-    _iterator4.e(err);
-  } finally {
-    _iterator4.f();
-  }
-
-  var famMod = numericModifier(myFamiliar(), modifier, familiarWeight(myFamiliar()) + weightAdjustment(), $item(asmohccs_lib_templateObject178 || (asmohccs_lib_templateObject178 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
-
-  if (famMod != 0) {
-    totalVal = totalVal + famMod;
-    print("FAMILIAR " + myFamiliar() + " : " + famMod);
-  }
-
-  var _iterator5 = asmohccs_lib_createForOfIteratorHelper($skills(asmohccs_lib_templateObject184 || (asmohccs_lib_templateObject184 = asmohccs_lib_taggedTemplateLiteral([""])))),
-      _step5;
-
-  try {
-    for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-      var sk = _step5.value;
-
-      if (haveSkill(sk) && numericModifier(sk, modifier) != 0) {
-        totalVal = totalVal + numericModifier(sk, modifier);
-        print("SKILL " + sk + " : " + numericModifier(sk, modifier));
-      }
-    }
-  } catch (err) {
-    _iterator5.e(err);
-  } finally {
-    _iterator5.f();
-  }
-
-  var myMoon = mySign();
-
-  if (modifier.includes("experience percent")) {
-    if (modifier.includes("muscle") && inMuscleSign()) {
-      totalVal = totalVal + 10;
-      print("MOON " + myMoon + " : " + 10);
-    } else if (modifier.includes("mysticality") && inMysticalitySign()) {
-      totalVal = totalVal + 10;
-      print("MOON " + myMoon + " : " + 10);
-    } else if (modifier.includes("moxie") && inMoxieSign()) {
-      totalVal = totalVal + 10;
-      print("MOON " + myMoon + " : " + 10);
-    }
-  } else {
-    /*else if (modifier.includes("damage percent")){
-    if (modifier.includes("weapon") && myMoon === "Mongoose"){
-    totalVal = totalVal + 20;
-    print("MOON " + myMoon + " : " + 20);			
-    }
-    else if (modifier.includes("spell") && myMoon === "Wallaby"){
-    totalVal = totalVal + 20;
-    print("MOON " + myMoon + " : " + 20);	
-    }
-    }
-    else if (modifier === "familiar weight" && myMoon === "Platypus"){
-    totalVal = totalVal + 5;
-    print("MOON " + myMoon + " : " + 5);	
-    }*/
-    for (var line in moonBonus) {
-      var mod = line[0];
-      var moon = line[1];
-      var bonus = line[2];
-
-      if (modifier === mod && myMoon === moon) {
-        totalVal = totalVal + parseInt(bonus);
-        print("MOON " + myMoon + " : " + bonus);
-      }
-    }
-  }
-
-  var squint = $effect(asmohccs_lib_templateObject179 || (asmohccs_lib_templateObject179 = asmohccs_lib_taggedTemplateLiteral(["Steely-Eyed Squint"])));
-  var swagger = $effect(asmohccs_lib_templateObject180 || (asmohccs_lib_templateObject180 = asmohccs_lib_taggedTemplateLiteral(["Bow-Legged Swagger"])));
-
-  if (modifier === "item drop" && haveEffect(squint)) {
-    print("EFFECT " + squint + " : " + totalVal);
-    totalVal = totalVal * 2;
-  }
-
-  if (haveEffect(swagger) && ["weapon damage", "weapon damage percent", "initiative"].includes(modifier)) {
-    print("EFFECT " + swagger + " : " + totalVal);
-    totalVal = totalVal * 2;
-  }
-
-  print("Total " + modifier + ": " + totalVal, "purple");
-  print("");
-}
 function asmohccs_lib_inMysClass() {
-  if ($classes(asmohccs_lib_templateObject185 || (asmohccs_lib_templateObject185 = asmohccs_lib_taggedTemplateLiteral(["Sauceror, Pastamancer"]))).includes(myClass())) {
+  if ($classes(asmohccs_lib_templateObject51 || (asmohccs_lib_templateObject51 = asmohccs_lib_taggedTemplateLiteral(["Sauceror, Pastamancer"]))).includes(myClass())) {
     return true;
   } else {
     return false;
   }
 }
 function asmohccs_lib_inMoxClass() {
-  if ($classes(asmohccs_lib_templateObject186 || (asmohccs_lib_templateObject186 = asmohccs_lib_taggedTemplateLiteral(["Accordion Thief, Disco Bandit"]))).includes(myClass())) {
+  if ($classes(asmohccs_lib_templateObject52 || (asmohccs_lib_templateObject52 = asmohccs_lib_taggedTemplateLiteral(["Accordion Thief, Disco Bandit"]))).includes(myClass())) {
     return true;
   } else {
     return false;
   }
 }
 function asmohccs_lib_inMusClass() {
-  if ($classes(asmohccs_lib_templateObject187 || (asmohccs_lib_templateObject187 = asmohccs_lib_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer"]))).includes(myClass())) {
+  if ($classes(asmohccs_lib_templateObject53 || (asmohccs_lib_templateObject53 = asmohccs_lib_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer"]))).includes(myClass())) {
     return true;
   } else {
     return false;
@@ -15562,10 +14926,10 @@ function unequip(item) {
   while ((0,external_kolmafia_namespaceObject.equippedAmount)(item) > 0) {
     var slot = external_kolmafia_namespaceObject.Slot.all().find(equipmentSlot => (0,external_kolmafia_namespaceObject.equippedItem)(equipmentSlot) === item);
     if (!slot) return;
-    (0,external_kolmafia_namespaceObject.equip)(slot, template_string_$item(asmohccs_lib_templateObject188 || (asmohccs_lib_templateObject188 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
+    (0,external_kolmafia_namespaceObject.equip)(slot, template_string_$item(asmohccs_lib_templateObject54 || (asmohccs_lib_templateObject54 = asmohccs_lib_taggedTemplateLiteral(["none"]))));
   }
 }
-var chefstaves = template_string_$items(asmohccs_lib_templateObject189 || (asmohccs_lib_templateObject189 = asmohccs_lib_taggedTemplateLiteral(["Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth"])));
+var chefstaves = template_string_$items(asmohccs_lib_templateObject55 || (asmohccs_lib_templateObject55 = asmohccs_lib_taggedTemplateLiteral(["Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth"])));
 ;// CONCATENATED MODULE: ./src/aftercore-cs.ts
 var aftercore_cs_templateObject, aftercore_cs_templateObject2, aftercore_cs_templateObject3, aftercore_cs_templateObject4, aftercore_cs_templateObject5, aftercore_cs_templateObject6, aftercore_cs_templateObject7, aftercore_cs_templateObject8, aftercore_cs_templateObject9, aftercore_cs_templateObject10, aftercore_cs_templateObject11, aftercore_cs_templateObject12;
 

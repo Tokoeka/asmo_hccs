@@ -65,48 +65,47 @@ export function modTraceList(modifier: string) {
             totalVal = totalVal + numericModifier(it, modifier);
             print("SLOT " + slot + " ITEM " + it + " : " + numericModifier(it, modifier));
         }
-		if (equippedItem($slot`back`) == $item`unwrapped knock-off retro superhero cape`){
-			const capeForm = get(`retroCapeSuperhero`).toLowerCase();
-			const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
-			if (capeForm === "vampire") {
-				if ([
-					"hot resistance",
-					"cold resistance",
-					"sleaze resistance",
-					"spooky resistance",
-					"stench resistance",
-				].includes(modifier) && capeWash === "hold"){
-					totalVal = totalVal + 3;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 3);
-				}
-				else if (modifier === "muscle percent"){
-					totalVal = totalVal + 30;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
-				}
-				else if (modifier === "maximum hp"){
-					totalVal = totalVal + 50;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
-				}
-			} else if (capeForm === "heck") {
-				if (modifier === "mysticality percent"){
-					totalVal = totalVal + 30;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
-				}
-				else if (modifier === "maximum mp"){
-					totalVal = totalVal + 50;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
-				}
-			} else if (capeForm === "robot") {
-				if (modifier === "moxie percent"){
-					totalVal = totalVal + 30;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
-				}
-				else if (["maximum hp", "maximum mp"].includes(modifier)){
-					totalVal = totalVal + 25;
-        			print("RETROCAPE " + capeForm + " " + capeWash + " : " + 25);
-				}
-			}
-		}
+        if (equippedItem($slot`back`) == $item`unwrapped knock-off retro superhero cape`) {
+            const capeForm = get(`retroCapeSuperhero`).toLowerCase();
+            const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
+            if (capeForm === "vampire") {
+                if (
+                    [
+                        "hot resistance",
+                        "cold resistance",
+                        "sleaze resistance",
+                        "spooky resistance",
+                        "stench resistance",
+                    ].includes(modifier) &&
+                    capeWash === "hold"
+                ) {
+                    totalVal = totalVal + 3;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 3);
+                } else if (modifier === "muscle percent") {
+                    totalVal = totalVal + 30;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+                } else if (modifier === "maximum hp") {
+                    totalVal = totalVal + 50;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+                }
+            } else if (capeForm === "heck") {
+                if (modifier === "mysticality percent") {
+                    totalVal = totalVal + 30;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+                } else if (modifier === "maximum mp") {
+                    totalVal = totalVal + 50;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+                }
+            } else if (capeForm === "robot") {
+                if (modifier === "moxie percent") {
+                    totalVal = totalVal + 30;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+                } else if (["maximum hp", "maximum mp"].includes(modifier)) {
+                    totalVal = totalVal + 25;
+                    print("RETROCAPE " + capeForm + " " + capeWash + " : " + 25);
+                }
+            }
+        }
     }
     const famMod = numericModifier(
         myFamiliar(),
