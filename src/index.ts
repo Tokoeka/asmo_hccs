@@ -109,8 +109,8 @@ try {
             `Gerald/ine wants ${partyFairInfo[0]} ${toItem(partyFairInfo[1]).plural}, please!`,
             "red"
         );
-        resources.summarize();
     }
+	resources.summarize();
 
     CommunityService.donate();
     setAutoAttack(0);
