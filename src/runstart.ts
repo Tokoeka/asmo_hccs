@@ -246,10 +246,10 @@ function doPulls() {
 
     const pulls: (Item | Item[])[] = [
         $items`repaid diaper, Great Wolf's beastly trousers`,
-        $items`snow suit, meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
+        $items`tiny costume wardrobe, snow suit`,
         $item`Stick-Knife of Loathing`,
         $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
-        $item`corrupted marrow`,
+        //$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
     ];
 
     for (const pull of pulls) {
