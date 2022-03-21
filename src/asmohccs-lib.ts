@@ -25,9 +25,6 @@ import {
     myMaxhp,
     myMaxmp,
     myMp,
-    mySign,
-    myTurncount,
-    Phylum,
     print,
     pullsRemaining,
     restoreHp,
@@ -41,29 +38,17 @@ import {
     Skill,
     Slot,
     storageAmount,
-    sweetSynthesis,
     takeShop,
     totalTurnsPlayed,
     toString as toStringAsh,
     toEffect,
-    toInt,
     toUrl,
     use,
     useFamiliar,
     useSkill,
     visitUrl,
     wait,
-    myEffects,
-    numericModifier,
     equippedAmount,
-    haveEquipped,
-    myFamiliar,
-    familiarWeight,
-    weightAdjustment,
-    haveSkill,
-    inMuscleSign,
-    inMysticalitySign,
-    inMoxieSign,
 } from "kolmafia";
 import {
     $classes,
@@ -76,7 +61,6 @@ import {
     $skill,
     $skills,
     $slot,
-    $slots,
     get,
     have,
     Macro,
@@ -85,8 +69,6 @@ import {
     set,
 } from "libram";
 import { Outfit, withOutfit } from "./outfits";
-import { error } from "libram/dist/console";
-import { getEffect, getTonic, makeTonic, tonicsLeft } from "libram/dist/resources/2014/DNALab";
 
 export const PropertyManager = new PropertiesManager();
 
