@@ -20,11 +20,11 @@ import { $effect, $item, $skills, $slot, $slots, get } from "libram";
 import { horse, horsery } from "./asmohccs-lib";
 
 const moonBonus = [
-    ["weapon damage percent", "Mongoose", "20"],
-    ["spell damage percent", "Wallaby", "20"],
-    ["familiar weight", "Platypus", "5"],
-    ["meat drop", "Wombat", "20"],
-    ["item drop", "Packrat", "10"],
+    ["weapon damage percent", "mongoose", "20"],
+    ["spell damage percent", "wallaby", "20"],
+    ["familiar weight", "platypus", "5"],
+    ["meat drop", "wombat", "20"],
+    ["item drop", "packrat", "10"],
 ];
 
 export function modTraceList(modifier: string) {
@@ -66,47 +66,47 @@ export function modTraceList(modifier: string) {
             print("SLOT " + slot + " ITEM " + it + " : " + numericModifier(it, modifier));
         }
     }
-	if (equippedItem($slot`back`) == $item`unwrapped knock-off retro superhero cape`) {
-		const capeForm = get(`retroCapeSuperhero`).toLowerCase();
-		const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
-		if (capeForm === "vampire") {
-			if (
-				[
-					"hot resistance",
-					"cold resistance",
-					"sleaze resistance",
-					"spooky resistance",
-					"stench resistance",
-				].includes(modifier) &&
-				capeWash === "hold"
-			) {
-				totalVal = totalVal + 3;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 3);
-			} else if (modifier === "muscle percent") {
-				totalVal = totalVal + 30;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
-			} else if (modifier === "maximum hp") {
-				totalVal = totalVal + 50;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
-			}
-		} else if (capeForm === "heck") {
-			if (modifier === "mysticality percent") {
-				totalVal = totalVal + 30;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
-			} else if (modifier === "maximum mp") {
-				totalVal = totalVal + 50;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
-			}
-		} else if (capeForm === "robot") {
-			if (modifier === "moxie percent") {
-				totalVal = totalVal + 30;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
-			} else if (["maximum hp", "maximum mp"].includes(modifier)) {
-				totalVal = totalVal + 25;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 25);
-			}
-		}
-	}
+    if (equippedItem($slot`back`) == $item`unwrapped knock-off retro superhero cape`) {
+        const capeForm = get(`retroCapeSuperhero`).toLowerCase();
+        const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
+        if (capeForm === "vampire") {
+            if (
+                [
+                    "hot resistance",
+                    "cold resistance",
+                    "sleaze resistance",
+                    "spooky resistance",
+                    "stench resistance",
+                ].includes(modifier) &&
+                capeWash === "hold"
+            ) {
+                totalVal = totalVal + 3;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 3);
+            } else if (modifier === "muscle percent") {
+                totalVal = totalVal + 30;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+            } else if (modifier === "maximum hp") {
+                totalVal = totalVal + 50;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+            }
+        } else if (capeForm === "heck") {
+            if (modifier === "mysticality percent") {
+                totalVal = totalVal + 30;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+            } else if (modifier === "maximum mp") {
+                totalVal = totalVal + 50;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+            }
+        } else if (capeForm === "robot") {
+            if (modifier === "moxie percent") {
+                totalVal = totalVal + 30;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+            } else if (["maximum hp", "maximum mp"].includes(modifier)) {
+                totalVal = totalVal + 25;
+                print("RETROCAPE " + capeForm + " " + capeWash + " : " + 25);
+            }
+        }
+    }
 
     const famMod = numericModifier(
         myFamiliar(),
@@ -125,7 +125,7 @@ export function modTraceList(modifier: string) {
         }
     }
 
-    const myMoon = mySign();
+    const myMoon = mySign().toLowerCase();
     if (modifier.includes("experience percent")) {
         if (modifier.includes("muscle") && inMuscleSign()) {
             totalVal = totalVal + 10;
@@ -136,28 +136,28 @@ export function modTraceList(modifier: string) {
         } else if (modifier.includes("moxie") && inMoxieSign()) {
             totalVal = totalVal + 10;
             print("MOON " + myMoon + " : " + 10);
-        } else if (modifier.includes("damage percent")) {
-            if (modifier.includes("weapon") && myMoon === "Mongoose") {
-                totalVal = totalVal + 20;
-                print("MOON " + myMoon + " : " + 20);
-            } else if (modifier.includes("spell") && myMoon === "Wallaby") {
-                totalVal = totalVal + 20;
-                print("MOON " + myMoon + " : " + 20);
-            }
-        } else if (modifier === "familiar weight" && myMoon === "Platypus") {
-            totalVal = totalVal + 5;
-            print("MOON " + myMoon + " : " + 5);
         }
-        /*for (const line in moonBonus) {
+    } else if (modifier.includes("damage percent")) {
+        if (modifier.includes("weapon") && myMoon === "mongoose") {
+            totalVal = totalVal + 20;
+            print("MOON " + myMoon + " : " + 20);
+        } else if (modifier.includes("spell") && myMoon === "wallaby") {
+            totalVal = totalVal + 20;
+            print("MOON " + myMoon + " : " + 20);
+        }
+    } else if (modifier === "familiar weight" && myMoon === "platypus") {
+        totalVal = totalVal + 5;
+        print("MOON " + myMoon + " : " + 5);
+    }
+    /*for (const line in moonBonus) {
             const mod = line[0];
             const moon = line[1];
             const bonus = line[2];
-            if (modifier === mod && myMoon === moon) {
+            if (modifier === mod && myMoon.toLowerCase() === moon) {
                 totalVal = totalVal + parseInt(bonus);
                 print("MOON " + myMoon + " : " + bonus);
             }
         }*/
-    }
 
     if (horsery() !== "" && get(`horseryAvailable`)) {
         const myHorse = horsery();
