@@ -6,6 +6,7 @@ import {
     equippedAmount,
     equippedItem,
     Familiar,
+    haveFamiliar,
     inHardcore,
     Item,
     myFamiliar,
@@ -199,7 +200,8 @@ export function moxieOutfit(): void {
             [$slot`hat`, $item`very pointy crown`],
             [$slot`shirt`, $items`shoe ad T-shirt, fresh coat of paint`],
             [$slot`back`, $item`unwrapped knock-off retro superhero cape`],
-            [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
+            [$slot`weapon`, $items`Staff of Kitchen Royalty, dented scepter`],
+			[$slot`off-hand`, $item`Fourth of May Cosplay Saber`],
             [$slot`pants`, $item`Cargo Cultist Shorts`],
             [$slot`acc1`, $item`Beach Comb`],
             [$slot`acc2`, $items`your cowboy boots, "I Voted!" sticker`],
@@ -285,7 +287,7 @@ export function itemOutfit(): void {
                 $slot`weapon`,
                 $items`extra-large utility candle, runed taper candle, novelty sparkling candle`,
             ],
-            [$slot`off-hand`, $items`Cursed Magnifying Glass, Kramco Sausage-o-Matic™`], //TODO Add Cursed Magnifying Glass once implemented in Mafia
+            [$slot`off-hand`, $items`Cursed Magnifying Glass, Kramco Sausage-o-Matic™`],
             [$slot`back`, $items`vampyric cloake, protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
             [$slot`acc2`, $item`gold detective badge`],
@@ -321,7 +323,7 @@ export function noncombatOutfit(): void {
             [$slot`back`, $item`protonic accelerator pack`],
             [$slot`weapon`, $items`fish hatchet, Fourth of May Cosplay Saber`],
             [$slot`off-hand`, $items`rope, burning paper crane, familiar scrapbook`],
-            //[$slot`pants`, $item`pantogram pants`],
+            [$slot`pants`, $items`repaid diaper, Great Wolf's beastly trousers, pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`Brutal brogues`],
@@ -331,7 +333,9 @@ export function noncombatOutfit(): void {
 }
 
 export function famweightOutfit(): void {
-    const familiarAndEquip = !inHardcore()
+    const familiarAndEquip = (have($familiar`Doppelshifter`) && !inHardcore())
+        ? { fam: $familiar`Doppelshifter`, equip: $item`tiny costume wardrobe` }
+        : (have($item`snow suit`) && !inHardcore())
         ? { fam: $familiar`Exotic Parrot`, equip: $item`snow suit` }
         : have($item`cracker`)
         ? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
@@ -366,6 +370,7 @@ export function weaponOutfit(): void {
             [$slot`hat`, $items`extra-wide head candle, seal-skull helmet`],
             [$slot`weapon`, $item`broken champagne bottle`],
             [$slot`off-hand`, $item`dented scepter`],
+			[$slot`pants`, $item`Great Wolf's beastly trousers`],
             [$slot`acc1`, $item`Brutal brogues`],
             [$slot`acc2`, $item`Kremlin's Greatest Briefcase`],
             [$slot`acc3`, $items`meteorite ring, Powerful Glove`],
@@ -380,12 +385,12 @@ export function spellOutfit(): void {
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $items`sugar chapeau, astral chapeau, Hollandaise helmet`],
             [$slot`weapon`, $items`Staff of Kitchen Royalty, weeping willow wand`],
-            [$slot`familiar`, $items`stick-knife of loathing, wrench`],
             [$slot`off-hand`, $item`abracandalabra`],
             //[$slot`pants`, $item`pantogram pants`],
             [$slot`acc1`, $items`meteorite necklace, Kremlin's Greatest Briefcase`],
             [$slot`acc2`, $item`powerful glove`],
             [$slot`acc3`, $item`battle broom`],
+			[$slot`familiar`, $items`stick-knife of loathing, wrench`],
         ]),
         $familiar`Disembodied Hand`
     ).dress();
