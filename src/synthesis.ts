@@ -49,7 +49,7 @@ export function synthMysExp(): void {
 			const count = inventory[itemName];
 			const mod = (toInt(Item.get(itemName)) % 5)
 
-			if (item.candyType !== 'complex') {
+			if (item.candyType !== 'complex' || item === $item`Ultra Mega Sour Ball`) {
 				continue;
 			}
 			if (mod === 4 && item !== fudge){ 
@@ -121,7 +121,7 @@ export function synthMusExp(): void {
 			const count = inventory[itemName];
 			const mod = (toInt(Item.get(itemName)) % 5)
 
-			if (item.candyType !== 'complex') {
+			if (item.candyType !== 'complex' || item === $item`Ultra Mega Sour Ball`) {
 				continue;
 			}
 			if (mod === 3){
@@ -216,7 +216,7 @@ export function synthMoxExp(): void {
 			const count = inventory[itemName];
 			const mod = (toInt(Item.get(itemName)) % 5)
 
-			if (item.candyType !== 'complex') {
+			if (item.candyType !== 'complex' || item === $item`Ultra Mega Sour Ball`) {
 				continue;
 			}
 			if (mod === 0){
