@@ -137,6 +137,8 @@ function pirateDNA() {
     // get pirate DNA and make a gene tonic
     if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
         equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
+		useFamiliar($familiar`Ms. Puck man`);
+		equip($slot`familiar`, $item`none`); //ensure Fam is not wearing TCW
         advMacroAA(
             $location`Pirates of the Garbage Barges`,
             Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
