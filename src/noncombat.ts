@@ -84,10 +84,6 @@ function godLobster() {
 }
 
 function testPrep() {
-	if (!get("_floundryItemCreated")) {
-		setClan(get("asmocs_fishClan", "Alliance From Heck"));
-		cliExecute("acquire fish hatchet");
-	}
     noncombatOutfit();
     const improvements = [
         () => {
@@ -102,7 +98,19 @@ function testPrep() {
                 use($item`squeaky toy rose`);
             }
         },
+		() => {
+			if (itemAmount($item`worst candy`) > 0){
+				ensureEffect($effect`Predjudicetidigitation`);
+			}
+		},
         () => use($item`shady shades`),
+		() => {
+			if (!get("_floundryItemCreated")) {
+				setClan(get("asmocs_fishClan", "Alliance From Heck"));
+				cliExecute("acquire fish hatchet");
+				noncombatOutfit();
+			}
+		}
     ];
 
     for (const improvement of improvements) {
