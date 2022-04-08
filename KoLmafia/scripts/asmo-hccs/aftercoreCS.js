@@ -11781,6 +11781,265 @@ __webpack_require__.r(__webpack_exports__);
 
 ;// CONCATENATED MODULE: external "kolmafia"
 const external_kolmafia_namespaceObject = require("kolmafia");
+;// CONCATENATED MODULE: ./node_modules/libram/dist/template-string.js
+
+
+var concatTemplateString = function concatTemplateString(literals) {
+  for (var _len = arguments.length, placeholders = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    placeholders[_key - 1] = arguments[_key];
+  }
+
+  return literals.reduce((acc, literal, i) => acc + literal + (placeholders[i] || ""), "");
+};
+
+var createSingleConstant = Type => function (literals) {
+  for (var _len2 = arguments.length, placeholders = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+    placeholders[_key2 - 1] = arguments[_key2];
+  }
+
+  var input = concatTemplateString.apply(void 0, [literals].concat(placeholders));
+  return Type.get(input);
+};
+
+var createPluralConstant = Type => function (literals) {
+  for (var _len3 = arguments.length, placeholders = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+    placeholders[_key3 - 1] = arguments[_key3];
+  }
+
+  var input = concatTemplateString.apply(void 0, [literals].concat(placeholders));
+
+  if (input === "") {
+    return Type.all();
+  }
+
+  return Type.get(input.split(/\s*,\s*/));
+};
+/**
+ * A Bounty specified by name.
+ *
+ * @category In-game constant
+ */
+
+
+var $bounty = createSingleConstant(external_kolmafia_namespaceObject.Bounty);
+/**
+ * A list of Bounties specified by a comma-separated list of names.
+ * For a list of all possible Bounties, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $bounties = createPluralConstant(external_kolmafia_namespaceObject.Bounty);
+/**
+ * A Class specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$class = createSingleConstant(external_kolmafia_namespaceObject.Class);
+/**
+ * A list of Classes specified by a comma-separated list of names.
+ * For a list of all possible Classes, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$classes = createPluralConstant(external_kolmafia_namespaceObject.Class);
+/**
+ * A Coinmaster specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $coinmaster = createSingleConstant(external_kolmafia_namespaceObject.Coinmaster);
+/**
+ * A list of Coinmasters specified by a comma-separated list of names.
+ * For a list of all possible Coinmasters, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $coinmasters = createPluralConstant(external_kolmafia_namespaceObject.Coinmaster);
+/**
+ * An Effect specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$effect = createSingleConstant(external_kolmafia_namespaceObject.Effect);
+/**
+ * A list of Effects specified by a comma-separated list of names.
+ * For a list of all possible Effects, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $effects = createPluralConstant(external_kolmafia_namespaceObject.Effect);
+/**
+ * An Element specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $element = createSingleConstant(external_kolmafia_namespaceObject.Element);
+/**
+ * A list of Elements specified by a comma-separated list of names.
+ * For a list of all possible Elements, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $elements = createPluralConstant(external_kolmafia_namespaceObject.Element);
+/**
+ * A Familiar specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$familiar = createSingleConstant(external_kolmafia_namespaceObject.Familiar);
+/**
+ * A list of Familiars specified by a comma-separated list of names.
+ * For a list of all possible Familiars, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $familiars = createPluralConstant(external_kolmafia_namespaceObject.Familiar);
+/**
+ * An Item specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$item = createSingleConstant(external_kolmafia_namespaceObject.Item);
+/**
+ * A list of Items specified by a comma-separated list of names.
+ * For a list of all possible Items, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$items = createPluralConstant(external_kolmafia_namespaceObject.Item);
+/**
+ * A Location specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$location = createSingleConstant(external_kolmafia_namespaceObject.Location);
+/**
+ * A list of Locations specified by a comma-separated list of names.
+ * For a list of all possible Locations, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $locations = createPluralConstant(external_kolmafia_namespaceObject.Location);
+/**
+ * A Monster specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $monster = createSingleConstant(external_kolmafia_namespaceObject.Monster);
+/**
+ * A list of Monsters specified by a comma-separated list of names.
+ * For a list of all possible Monsters, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $monsters = createPluralConstant(external_kolmafia_namespaceObject.Monster);
+/**
+ * A Phylum specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $phylum = createSingleConstant(external_kolmafia_namespaceObject.Phylum);
+/**
+ * A list of Phyla specified by a comma-separated list of names.
+ * For a list of all possible Phyla, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $phyla = createPluralConstant(external_kolmafia_namespaceObject.Phylum);
+/**
+ * A Servant specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $servant = createSingleConstant(external_kolmafia_namespaceObject.Servant);
+/**
+ * A list of Servants specified by a comma-separated list of names.
+ * For a list of all possible Servants, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $servants = createPluralConstant(external_kolmafia_namespaceObject.Servant);
+/**
+ * A Skill specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$skill = createSingleConstant(external_kolmafia_namespaceObject.Skill);
+/**
+ * A list of Skills specified by a comma-separated list of names.
+ * For a list of all possible Skills, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$skills = createPluralConstant(external_kolmafia_namespaceObject.Skill);
+/**
+ * A Slot specified by name.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$slot = createSingleConstant(external_kolmafia_namespaceObject.Slot);
+/**
+ * A list of Slots specified by a comma-separated list of names.
+ * For a list of all possible Slots, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var template_string_$slots = createPluralConstant(external_kolmafia_namespaceObject.Slot);
+/**
+ * A Stat specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $stat = createSingleConstant(external_kolmafia_namespaceObject.Stat);
+/**
+ * A list of Stats specified by a comma-separated list of names.
+ * For a list of all possible Stats, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $stats = createPluralConstant(external_kolmafia_namespaceObject.Stat);
+/**
+ * A Thrall specified by name.
+ *
+ * @category In-game constant
+ */
+
+var $thrall = createSingleConstant(external_kolmafia_namespaceObject.Thrall);
+/**
+ * A list of Thralls specified by a comma-separated list of names.
+ * For a list of all possible Thralls, leave the template string blank.
+ *
+ * @category In-game constant
+ */
+
+var $thralls = createPluralConstant(external_kolmafia_namespaceObject.Thrall);
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/modules/es.object.entries.js
 var es_object_entries = __webpack_require__(4875);
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/modules/es.object.from-entries.js
@@ -12135,265 +12394,6 @@ var PropertiesManager = /*#__PURE__*/function () {
 
   return PropertiesManager;
 }();
-;// CONCATENATED MODULE: ./node_modules/libram/dist/template-string.js
-
-
-var concatTemplateString = function concatTemplateString(literals) {
-  for (var _len = arguments.length, placeholders = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    placeholders[_key - 1] = arguments[_key];
-  }
-
-  return literals.reduce((acc, literal, i) => acc + literal + (placeholders[i] || ""), "");
-};
-
-var createSingleConstant = Type => function (literals) {
-  for (var _len2 = arguments.length, placeholders = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-    placeholders[_key2 - 1] = arguments[_key2];
-  }
-
-  var input = concatTemplateString.apply(void 0, [literals].concat(placeholders));
-  return Type.get(input);
-};
-
-var createPluralConstant = Type => function (literals) {
-  for (var _len3 = arguments.length, placeholders = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-    placeholders[_key3 - 1] = arguments[_key3];
-  }
-
-  var input = concatTemplateString.apply(void 0, [literals].concat(placeholders));
-
-  if (input === "") {
-    return Type.all();
-  }
-
-  return Type.get(input.split(/\s*,\s*/));
-};
-/**
- * A Bounty specified by name.
- *
- * @category In-game constant
- */
-
-
-var $bounty = createSingleConstant(external_kolmafia_namespaceObject.Bounty);
-/**
- * A list of Bounties specified by a comma-separated list of names.
- * For a list of all possible Bounties, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $bounties = createPluralConstant(external_kolmafia_namespaceObject.Bounty);
-/**
- * A Class specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$class = createSingleConstant(external_kolmafia_namespaceObject.Class);
-/**
- * A list of Classes specified by a comma-separated list of names.
- * For a list of all possible Classes, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var template_string_$classes = createPluralConstant(external_kolmafia_namespaceObject.Class);
-/**
- * A Coinmaster specified by name.
- *
- * @category In-game constant
- */
-
-var $coinmaster = createSingleConstant(external_kolmafia_namespaceObject.Coinmaster);
-/**
- * A list of Coinmasters specified by a comma-separated list of names.
- * For a list of all possible Coinmasters, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $coinmasters = createPluralConstant(external_kolmafia_namespaceObject.Coinmaster);
-/**
- * An Effect specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$effect = createSingleConstant(external_kolmafia_namespaceObject.Effect);
-/**
- * A list of Effects specified by a comma-separated list of names.
- * For a list of all possible Effects, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $effects = createPluralConstant(external_kolmafia_namespaceObject.Effect);
-/**
- * An Element specified by name.
- *
- * @category In-game constant
- */
-
-var $element = createSingleConstant(external_kolmafia_namespaceObject.Element);
-/**
- * A list of Elements specified by a comma-separated list of names.
- * For a list of all possible Elements, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $elements = createPluralConstant(external_kolmafia_namespaceObject.Element);
-/**
- * A Familiar specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$familiar = createSingleConstant(external_kolmafia_namespaceObject.Familiar);
-/**
- * A list of Familiars specified by a comma-separated list of names.
- * For a list of all possible Familiars, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $familiars = createPluralConstant(external_kolmafia_namespaceObject.Familiar);
-/**
- * An Item specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$item = createSingleConstant(external_kolmafia_namespaceObject.Item);
-/**
- * A list of Items specified by a comma-separated list of names.
- * For a list of all possible Items, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var template_string_$items = createPluralConstant(external_kolmafia_namespaceObject.Item);
-/**
- * A Location specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$location = createSingleConstant(external_kolmafia_namespaceObject.Location);
-/**
- * A list of Locations specified by a comma-separated list of names.
- * For a list of all possible Locations, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $locations = createPluralConstant(external_kolmafia_namespaceObject.Location);
-/**
- * A Monster specified by name.
- *
- * @category In-game constant
- */
-
-var $monster = createSingleConstant(external_kolmafia_namespaceObject.Monster);
-/**
- * A list of Monsters specified by a comma-separated list of names.
- * For a list of all possible Monsters, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $monsters = createPluralConstant(external_kolmafia_namespaceObject.Monster);
-/**
- * A Phylum specified by name.
- *
- * @category In-game constant
- */
-
-var $phylum = createSingleConstant(external_kolmafia_namespaceObject.Phylum);
-/**
- * A list of Phyla specified by a comma-separated list of names.
- * For a list of all possible Phyla, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $phyla = createPluralConstant(external_kolmafia_namespaceObject.Phylum);
-/**
- * A Servant specified by name.
- *
- * @category In-game constant
- */
-
-var $servant = createSingleConstant(external_kolmafia_namespaceObject.Servant);
-/**
- * A list of Servants specified by a comma-separated list of names.
- * For a list of all possible Servants, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $servants = createPluralConstant(external_kolmafia_namespaceObject.Servant);
-/**
- * A Skill specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$skill = createSingleConstant(external_kolmafia_namespaceObject.Skill);
-/**
- * A list of Skills specified by a comma-separated list of names.
- * For a list of all possible Skills, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var template_string_$skills = createPluralConstant(external_kolmafia_namespaceObject.Skill);
-/**
- * A Slot specified by name.
- *
- * @category In-game constant
- */
-
-var template_string_$slot = createSingleConstant(external_kolmafia_namespaceObject.Slot);
-/**
- * A list of Slots specified by a comma-separated list of names.
- * For a list of all possible Slots, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var template_string_$slots = createPluralConstant(external_kolmafia_namespaceObject.Slot);
-/**
- * A Stat specified by name.
- *
- * @category In-game constant
- */
-
-var $stat = createSingleConstant(external_kolmafia_namespaceObject.Stat);
-/**
- * A list of Stats specified by a comma-separated list of names.
- * For a list of all possible Stats, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $stats = createPluralConstant(external_kolmafia_namespaceObject.Stat);
-/**
- * A Thrall specified by name.
- *
- * @category In-game constant
- */
-
-var $thrall = createSingleConstant(external_kolmafia_namespaceObject.Thrall);
-/**
- * A list of Thralls specified by a comma-separated list of names.
- * For a list of all possible Thralls, leave the template string blank.
- *
- * @category In-game constant
- */
-
-var $thralls = createPluralConstant(external_kolmafia_namespaceObject.Thrall);
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/features/array/flat.js
 var flat = __webpack_require__(2580);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/lib.js
@@ -14932,7 +14932,7 @@ function unequip(item) {
 }
 var chefstaves = template_string_$items(asmohccs_lib_templateObject55 || (asmohccs_lib_templateObject55 = asmohccs_lib_taggedTemplateLiteral(["Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth"])));
 ;// CONCATENATED MODULE: ./src/aftercore-cs.ts
-var aftercore_cs_templateObject, aftercore_cs_templateObject2, aftercore_cs_templateObject3, aftercore_cs_templateObject4, aftercore_cs_templateObject5, aftercore_cs_templateObject6, aftercore_cs_templateObject7, aftercore_cs_templateObject8, aftercore_cs_templateObject9, aftercore_cs_templateObject10, aftercore_cs_templateObject11, aftercore_cs_templateObject12;
+var aftercore_cs_templateObject, aftercore_cs_templateObject2, aftercore_cs_templateObject3, aftercore_cs_templateObject4, aftercore_cs_templateObject5, aftercore_cs_templateObject6, aftercore_cs_templateObject7, aftercore_cs_templateObject8, aftercore_cs_templateObject9, aftercore_cs_templateObject10, aftercore_cs_templateObject11, aftercore_cs_templateObject12, aftercore_cs_templateObject13;
 
 function aftercore_cs_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -14942,10 +14942,11 @@ function aftercore_cs_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = st
 (0,external_kolmafia_namespaceObject.cliExecute)("hagnk all");
 (0,external_kolmafia_namespaceObject.cliExecute)("refresh all");
 (0,external_kolmafia_namespaceObject.cliExecute)("call login.ash");
+var duped = template_string_$item(aftercore_cs_templateObject || (aftercore_cs_templateObject = aftercore_cs_taggedTemplateLiteral(["none"])));
 
 if (property_get("encountersUntilDMTChoice") === 0 && property_get("lastDMTDuplication") < (0,external_kolmafia_namespaceObject.myAscensions)()) {
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject || (aftercore_cs_templateObject = aftercore_cs_taggedTemplateLiteral(["machine elf"]))));
-  var dupeItems = template_string_$items(aftercore_cs_templateObject2 || (aftercore_cs_templateObject2 = aftercore_cs_taggedTemplateLiteral(["very fancy whiskey, \n\t\tbottle of Greedy Dog, \n\t\tDaily Affirmation: Always be Collecting, \n\t\thuge Crimbo cookie, green-iced sweet roll, \n\t\tbottle of Race Car Red, warbear gyro, \n\t\tkarma shawarma"])));
+  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject2 || (aftercore_cs_templateObject2 = aftercore_cs_taggedTemplateLiteral(["machine elf"]))));
+  var dupeItems = template_string_$items(aftercore_cs_templateObject3 || (aftercore_cs_templateObject3 = aftercore_cs_taggedTemplateLiteral(["very fancy whiskey, \n\t\tbottle of Greedy Dog, \n\t\tDaily Affirmation: Always be Collecting, \n\t\thuge Crimbo cookie, green-iced sweet roll, \n\t\tbottle of Race Car Red, warbear gyro, \n\t\tkarma shawarma"])));
   var dupeVals = Array.from(dupeItems.values()).map(dupe => {
     return {
       dupeIt: dupe,
@@ -14953,16 +14954,17 @@ if (property_get("encountersUntilDMTChoice") === 0 && property_get("lastDMTDupli
     };
   });
   var best = dupeVals.sort((a, b) => b.value - a.value)[0];
+  duped = best.dupeIt;
   _set("choiceAdventure1125", "1&iid=" + (0,external_kolmafia_namespaceObject.toInt)(best.dupeIt));
-  (0,external_kolmafia_namespaceObject.adv1)(template_string_$location(aftercore_cs_templateObject3 || (aftercore_cs_templateObject3 = aftercore_cs_taggedTemplateLiteral(["the deep machine tunnels"]))));
+  (0,external_kolmafia_namespaceObject.adv1)(template_string_$location(aftercore_cs_templateObject4 || (aftercore_cs_templateObject4 = aftercore_cs_taggedTemplateLiteral(["the deep machine tunnels"]))));
 }
 
 if ((0,external_kolmafia_namespaceObject.mySign)() !== "Platypus" && !property_get("moonTuned")) {
-  unequip(template_string_$item(aftercore_cs_templateObject4 || (aftercore_cs_templateObject4 = aftercore_cs_taggedTemplateLiteral(["hewn moon-rune spoon"]))));
+  unequip(template_string_$item(aftercore_cs_templateObject5 || (aftercore_cs_templateObject5 = aftercore_cs_taggedTemplateLiteral(["hewn moon-rune spoon"]))));
   (0,external_kolmafia_namespaceObject.visitUrl)("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
 }
 
-(0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject5 || (aftercore_cs_templateObject5 = aftercore_cs_taggedTemplateLiteral(["Ms. Puck Man"]))));
+(0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject6 || (aftercore_cs_templateObject6 = aftercore_cs_taggedTemplateLiteral(["Ms. Puck Man"]))));
 
 if (property_get("_questESp") == "") {
   (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=airport_spooky&action=airport2_radio");
@@ -14975,7 +14977,7 @@ if (property_get("_questESp") == "") {
 }
 
 if (property_get("lastEncounter") !== "Lava Dogs") {
-  (0,external_kolmafia_namespaceObject.retrieveItem)(template_string_$item(aftercore_cs_templateObject6 || (aftercore_cs_templateObject6 = aftercore_cs_taggedTemplateLiteral(["heat-resistant sheet metal"]))), 20);
+  (0,external_kolmafia_namespaceObject.retrieveItem)(template_string_$item(aftercore_cs_templateObject7 || (aftercore_cs_templateObject7 = aftercore_cs_taggedTemplateLiteral(["heat-resistant sheet metal"]))), 20);
   _set("mpAutoRecoveryTarget", 0.7);
   _set("mpAutoRecovery", 0.5);
 
@@ -14984,14 +14986,14 @@ if (property_get("lastEncounter") !== "Lava Dogs") {
   }
 
   var calderaTurns = property_get("_calderaStart", (0,external_kolmafia_namespaceObject.myTurncount)());
-  advMacro(template_string_$location(aftercore_cs_templateObject7 || (aftercore_cs_templateObject7 = aftercore_cs_taggedTemplateLiteral(["the bubblin' caldera"]))), combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject8 || (aftercore_cs_templateObject8 = aftercore_cs_taggedTemplateLiteral(["curse of weaksauce"])))).skill(template_string_$skill(aftercore_cs_templateObject9 || (aftercore_cs_templateObject9 = aftercore_cs_taggedTemplateLiteral(["micrometeorite"])))).while_("!times 3", combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject10 || (aftercore_cs_templateObject10 = aftercore_cs_taggedTemplateLiteral(["saucestorm"]))))).skill(template_string_$skill(aftercore_cs_templateObject11 || (aftercore_cs_templateObject11 = aftercore_cs_taggedTemplateLiteral(["shrap"])))), () => property_get("lastEncounter") !== "Lava Dogs" && (0,external_kolmafia_namespaceObject.myTurncount)() - calderaTurns < 7);
+  advMacro(template_string_$location(aftercore_cs_templateObject8 || (aftercore_cs_templateObject8 = aftercore_cs_taggedTemplateLiteral(["the bubblin' caldera"]))), combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject9 || (aftercore_cs_templateObject9 = aftercore_cs_taggedTemplateLiteral(["curse of weaksauce"])))).skill(template_string_$skill(aftercore_cs_templateObject10 || (aftercore_cs_templateObject10 = aftercore_cs_taggedTemplateLiteral(["micrometeorite"])))).while_("!times 3", combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject11 || (aftercore_cs_templateObject11 = aftercore_cs_taggedTemplateLiteral(["saucestorm"]))))).skill(template_string_$skill(aftercore_cs_templateObject12 || (aftercore_cs_templateObject12 = aftercore_cs_taggedTemplateLiteral(["shrap"])))), () => property_get("lastEncounter") !== "Lava Dogs" && (0,external_kolmafia_namespaceObject.myTurncount)() - calderaTurns < 7);
   (0,external_kolmafia_namespaceObject.cliExecute)("soak");
   _set("mpAutoRecoveryTarget", 0.25);
   _set("mpAutoRecovery", 0.05);
 }
 
 if (!installed()) {
-  (0,external_kolmafia_namespaceObject.use)(template_string_$item(aftercore_cs_templateObject12 || (aftercore_cs_templateObject12 = aftercore_cs_taggedTemplateLiteral(["asdon martin keyfob"]))));
+  (0,external_kolmafia_namespaceObject.use)(template_string_$item(aftercore_cs_templateObject13 || (aftercore_cs_templateObject13 = aftercore_cs_taggedTemplateLiteral(["asdon martin keyfob"]))));
   fillTo(200);
 }
 })();

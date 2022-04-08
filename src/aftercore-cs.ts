@@ -29,6 +29,8 @@ cliExecute(`hagnk all`);
 cliExecute(`refresh all`);
 cliExecute(`call login.ash`);
 
+let duped = $item`none`;
+
 if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
     useFamiliar($familiar`machine elf`);
     const dupeItems = $items`very fancy whiskey, 
@@ -44,6 +46,7 @@ if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscen
         };
     });
     const best = dupeVals.sort((a, b) => b.value - a.value)[0];
+	duped = best.dupeIt;
     set(`choiceAdventure1125`, "1&iid=" + toInt(best.dupeIt));
     adv1($location`the deep machine tunnels`);
 }

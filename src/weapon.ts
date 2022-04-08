@@ -100,10 +100,10 @@ function kungFuMeteors() {
 function testPrep() {
     if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
     if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
-    if (!get("_floundryItemCreated")) {
+    /*if (!get("_floundryItemCreated")) {
         setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire fish hatchet");
-    }
+    }*/
 	if (!inHardcore()) {
         const meteor = $items`meteorite necklace, meteorite fragment, meteorite earring`.find(
             (item) => have(item)
