@@ -151,10 +151,10 @@ function prepGear() {
         }
     }
 
-    if (!get("_floundryItemCreated")) {
+    /*if (!get("_floundryItemCreated")) {
         setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire codpiece");
-    }
+    }*/
 
     // Get flimsy hardwood scraps.
     //TODO Change depending on class???
@@ -172,6 +172,7 @@ function prepGear() {
     }
 
     cliExecute("briefcase enchantment weapon -combat");
+	if (get("umbrellaState") !== "broken") cliExecute("umbrella ml");
 }
 
 function vote() {

@@ -23,7 +23,7 @@
     "babel-loader": "^8.2.2",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-libram": "^0.2.0",
+    "eslint-plugin-libram": "^0.2.11",
     "prettier": "^2.3.2",
     "typescript": "^4.4.2",
     "webpack": "^5.51.1",
@@ -33,7 +33,7 @@
     "ansi-regex": "^5.0.1",
     "core-js": "^3.16.4",
     "kolmafia": "^2.1.1",
-    "libram": "^0.6.8",
+    "libram": "^0.6.9",
     "set-value": "^4.0.1"
   },
   "author": "Tokoeka",
