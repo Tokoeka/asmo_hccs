@@ -803,6 +803,22 @@ function restAndBuff() {
             ? `bowl of potpourri`
             : `electric muscle stimulator`
     );
+	if (inMysClass()) {
+        ensureEffect($effect`Inscrutable Gaze`);
+        ensureEffect($effect`Thaumodynamic`);
+        if (!have($effect`Synthesis: Learning`)) synthMysExp();
+        equip($item`LOV Epaulettes`, $slot`back`);
+    } else if (inMusClass()) {
+        ensureEffect($effect`Muscle Unbound`);
+        if (!have($effect`Synthesis: Movement`)) synthMusExp();
+        equip($item`LOV Eardigan`, $slot`shirt`);
+    } else if (inMoxClass()) {
+        ensureEffect($effect`So Fresh and So Clean`);
+        if (!have($effect`Synthesis: Style`)) synthMoxExp();
+        equip($item`LOV Earrings`, $slot`acc1`);
+    }
+
+    equip($item`familiar scrapbook`, $slot`off-hand`);
     while (get("timesRested") < totalFreeRests()) {
         burnLibrams();
         visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
