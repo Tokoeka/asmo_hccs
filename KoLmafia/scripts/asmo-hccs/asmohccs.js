@@ -11963,7 +11963,7 @@ function changeNightstand(nightstand) {
   return getNightstand() === nightstand;
 }
 ;// CONCATENATED MODULE: ./src/level.ts
-var level_templateObject, level_templateObject2, level_templateObject3, level_templateObject4, level_templateObject5, level_templateObject6, level_templateObject7, level_templateObject8, level_templateObject9, level_templateObject10, level_templateObject11, level_templateObject12, level_templateObject13, level_templateObject14, level_templateObject15, level_templateObject16, level_templateObject17, level_templateObject18, level_templateObject19, level_templateObject20, level_templateObject21, level_templateObject22, level_templateObject23, level_templateObject24, level_templateObject25, level_templateObject26, level_templateObject27, level_templateObject28, level_templateObject29, level_templateObject30, level_templateObject31, level_templateObject32, level_templateObject33, level_templateObject34, level_templateObject35, level_templateObject36, level_templateObject37, level_templateObject38, level_templateObject39, level_templateObject40, level_templateObject41, level_templateObject42, level_templateObject43, level_templateObject44, level_templateObject45, level_templateObject46, level_templateObject47, level_templateObject48, level_templateObject49, level_templateObject50, level_templateObject51, level_templateObject52, level_templateObject53, level_templateObject54, level_templateObject55, level_templateObject56, level_templateObject57, level_templateObject58, level_templateObject59, level_templateObject60, level_templateObject61, level_templateObject62, level_templateObject63, level_templateObject64, level_templateObject65, level_templateObject66, level_templateObject67, level_templateObject68, level_templateObject69, level_templateObject70, level_templateObject71, level_templateObject72, level_templateObject73, level_templateObject74, level_templateObject75, level_templateObject76, level_templateObject77, level_templateObject78, level_templateObject79, level_templateObject80, level_templateObject81, level_templateObject82, level_templateObject83, level_templateObject84, level_templateObject85, level_templateObject86, level_templateObject87, level_templateObject88, level_templateObject89, level_templateObject90, level_templateObject91, level_templateObject92, level_templateObject93, level_templateObject94, level_templateObject95, level_templateObject96, level_templateObject97, level_templateObject98, level_templateObject99, level_templateObject100, level_templateObject101, level_templateObject102, level_templateObject103, level_templateObject104, level_templateObject105, level_templateObject106, level_templateObject107, level_templateObject108, level_templateObject109, level_templateObject110, level_templateObject111, level_templateObject112, level_templateObject113, level_templateObject114, level_templateObject115, level_templateObject116, level_templateObject117, level_templateObject118, level_templateObject119, level_templateObject120, level_templateObject121, level_templateObject122, level_templateObject123, level_templateObject124, level_templateObject125, level_templateObject126, level_templateObject127, level_templateObject128, level_templateObject129, level_templateObject130, level_templateObject131, level_templateObject132, level_templateObject133, level_templateObject134, level_templateObject135, level_templateObject136, level_templateObject137, level_templateObject138, level_templateObject139, level_templateObject140, level_templateObject141, level_templateObject142, level_templateObject143, level_templateObject144, level_templateObject145, level_templateObject146, level_templateObject147, level_templateObject148, level_templateObject149, level_templateObject150, level_templateObject151, level_templateObject152, level_templateObject153, level_templateObject154, level_templateObject155, level_templateObject156, level_templateObject157, level_templateObject158, level_templateObject159, level_templateObject160, level_templateObject161, level_templateObject162, level_templateObject163, level_templateObject164, level_templateObject165, level_templateObject166, level_templateObject167, level_templateObject168, level_templateObject169, level_templateObject170, level_templateObject171, level_templateObject172, level_templateObject173, level_templateObject174, level_templateObject175, level_templateObject176, level_templateObject177, level_templateObject178, level_templateObject179, level_templateObject180, level_templateObject181, level_templateObject182, level_templateObject183, level_templateObject184, level_templateObject185, level_templateObject186, level_templateObject187, level_templateObject188, level_templateObject189, level_templateObject190, level_templateObject191, level_templateObject192, level_templateObject193, level_templateObject194, level_templateObject195, level_templateObject196, level_templateObject197, level_templateObject198, level_templateObject199, level_templateObject200, level_templateObject201, level_templateObject202, level_templateObject203, level_templateObject204, level_templateObject205, level_templateObject206, level_templateObject207, level_templateObject208, level_templateObject209, level_templateObject210, level_templateObject211, level_templateObject212, level_templateObject213, level_templateObject214, level_templateObject215, level_templateObject216, level_templateObject217, level_templateObject218, level_templateObject219, level_templateObject220, level_templateObject221, level_templateObject222, level_templateObject223, level_templateObject224, level_templateObject225, level_templateObject226, level_templateObject227, level_templateObject228, level_templateObject229, level_templateObject230, level_templateObject231, level_templateObject232, level_templateObject233, level_templateObject234, level_templateObject235;
+var level_templateObject, level_templateObject2, level_templateObject3, level_templateObject4, level_templateObject5, level_templateObject6, level_templateObject7, level_templateObject8, level_templateObject9, level_templateObject10, level_templateObject11, level_templateObject12, level_templateObject13, level_templateObject14, level_templateObject15, level_templateObject16, level_templateObject17, level_templateObject18, level_templateObject19, level_templateObject20, level_templateObject21, level_templateObject22, level_templateObject23, level_templateObject24, level_templateObject25, level_templateObject26, level_templateObject27, level_templateObject28, level_templateObject29, level_templateObject30, level_templateObject31, level_templateObject32, level_templateObject33, level_templateObject34, level_templateObject35, level_templateObject36, level_templateObject37, level_templateObject38, level_templateObject39, level_templateObject40, level_templateObject41, level_templateObject42, level_templateObject43, level_templateObject44, level_templateObject45, level_templateObject46, level_templateObject47, level_templateObject48, level_templateObject49, level_templateObject50, level_templateObject51, level_templateObject52, level_templateObject53, level_templateObject54, level_templateObject55, level_templateObject56, level_templateObject57, level_templateObject58, level_templateObject59, level_templateObject60, level_templateObject61, level_templateObject62, level_templateObject63, level_templateObject64, level_templateObject65, level_templateObject66, level_templateObject67, level_templateObject68, level_templateObject69, level_templateObject70, level_templateObject71, level_templateObject72, level_templateObject73, level_templateObject74, level_templateObject75, level_templateObject76, level_templateObject77, level_templateObject78, level_templateObject79, level_templateObject80, level_templateObject81, level_templateObject82, level_templateObject83, level_templateObject84, level_templateObject85, level_templateObject86, level_templateObject87, level_templateObject88, level_templateObject89, level_templateObject90, level_templateObject91, level_templateObject92, level_templateObject93, level_templateObject94, level_templateObject95, level_templateObject96, level_templateObject97, level_templateObject98, level_templateObject99, level_templateObject100, level_templateObject101, level_templateObject102, level_templateObject103, level_templateObject104, level_templateObject105, level_templateObject106, level_templateObject107, level_templateObject108, level_templateObject109, level_templateObject110, level_templateObject111, level_templateObject112, level_templateObject113, level_templateObject114, level_templateObject115, level_templateObject116, level_templateObject117, level_templateObject118, level_templateObject119, level_templateObject120, level_templateObject121, level_templateObject122, level_templateObject123, level_templateObject124, level_templateObject125, level_templateObject126, level_templateObject127, level_templateObject128, level_templateObject129, level_templateObject130, level_templateObject131, level_templateObject132, level_templateObject133, level_templateObject134, level_templateObject135, level_templateObject136, level_templateObject137, level_templateObject138, level_templateObject139, level_templateObject140, level_templateObject141, level_templateObject142, level_templateObject143, level_templateObject144, level_templateObject145, level_templateObject146, level_templateObject147, level_templateObject148, level_templateObject149, level_templateObject150, level_templateObject151, level_templateObject152, level_templateObject153, level_templateObject154, level_templateObject155, level_templateObject156, level_templateObject157, level_templateObject158, level_templateObject159, level_templateObject160, level_templateObject161, level_templateObject162, level_templateObject163, level_templateObject164, level_templateObject165, level_templateObject166, level_templateObject167, level_templateObject168, level_templateObject169, level_templateObject170, level_templateObject171, level_templateObject172, level_templateObject173, level_templateObject174, level_templateObject175, level_templateObject176, level_templateObject177, level_templateObject178, level_templateObject179, level_templateObject180, level_templateObject181, level_templateObject182, level_templateObject183, level_templateObject184, level_templateObject185, level_templateObject186, level_templateObject187, level_templateObject188, level_templateObject189, level_templateObject190, level_templateObject191, level_templateObject192, level_templateObject193, level_templateObject194, level_templateObject195, level_templateObject196, level_templateObject197, level_templateObject198, level_templateObject199, level_templateObject200, level_templateObject201, level_templateObject202, level_templateObject203, level_templateObject204, level_templateObject205, level_templateObject206, level_templateObject207, level_templateObject208, level_templateObject209, level_templateObject210, level_templateObject211, level_templateObject212, level_templateObject213, level_templateObject214, level_templateObject215, level_templateObject216, level_templateObject217, level_templateObject218, level_templateObject219, level_templateObject220, level_templateObject221, level_templateObject222, level_templateObject223, level_templateObject224, level_templateObject225, level_templateObject226, level_templateObject227, level_templateObject228, level_templateObject229, level_templateObject230, level_templateObject231, level_templateObject232, level_templateObject233, level_templateObject234, level_templateObject235, level_templateObject236, level_templateObject237, level_templateObject238, level_templateObject239, level_templateObject240, level_templateObject241, level_templateObject242, level_templateObject243, level_templateObject244, level_templateObject245, level_templateObject246, level_templateObject247, level_templateObject248, level_templateObject249, level_templateObject250, _templateObject251;
 
 function level_toConsumableArray(arr) { return level_arrayWithoutHoles(arr) || level_iterableToArray(arr) || level_unsupportedIterableToArray(arr) || level_nonIterableSpread(); }
 
@@ -12221,7 +12221,7 @@ function witchGhostAgent() {
   }
 
   (0,external_kolmafia_namespaceObject.cliExecute)("fold makeshift garbage shirt");
-  outfits_uniform.apply(void 0, level_toConsumableArray(template_string_$items(level_templateObject91 || (level_templateObject91 = level_taggedTemplateLiteral(["protonic accelerator pack, makeshift garbage shirt"])))));
+  outfits_uniform.apply(void 0, level_toConsumableArray(template_string_$items(level_templateObject91 || (level_templateObject91 = level_taggedTemplateLiteral(["protonic accelerator pack, makeshift garbage shirt, familiar scrapbook"])))));
   asmohccs_lib_heal();
   asmohccs_lib_useDefaultFamiliar();
   ensureMp(100);
@@ -12577,23 +12577,40 @@ function mElfLeveling() {
 function royalty() {
   if (!lib_have(template_string_$item(level_templateObject208 || (level_templateObject208 = level_taggedTemplateLiteral(["very pointy crown"]))))) {
     combat_Macro.tryItem("jam band bootleg").tryItem("gas can").tryItem("time-spinner").attack().repeat().setAutoAttack();
-    outfits_uniform();
+    outfits_uniform.apply(void 0, level_toConsumableArray(template_string_$items(level_templateObject209 || (level_templateObject209 = level_taggedTemplateLiteral(["makeshift garbage shirt, familiar scrapbook"])))));
     asmohccs_lib_useDefaultFamiliar();
     asmohccs_lib_heal();
-    fightPiece($monster(level_templateObject209 || (level_templateObject209 = level_taggedTemplateLiteral(["Witchess Queen"]))));
+    fightPiece($monster(level_templateObject210 || (level_templateObject210 = level_taggedTemplateLiteral(["Witchess Queen"]))));
   }
 
-  if (!lib_have(template_string_$item(level_templateObject210 || (level_templateObject210 = level_taggedTemplateLiteral(["dented scepter"]))))) {
+  if (!lib_have(template_string_$item(level_templateObject211 || (level_templateObject211 = level_taggedTemplateLiteral(["dented scepter"]))))) {
     combat_Macro.step(asmohccs_macros_delevel).attack().repeat().setAutoAttack();
     outfits_uniform();
     asmohccs_lib_useDefaultFamiliar();
     asmohccs_lib_heal();
-    fightPiece($monster(level_templateObject211 || (level_templateObject211 = level_taggedTemplateLiteral(["Witchess King"]))));
+    fightPiece($monster(level_templateObject212 || (level_templateObject212 = level_taggedTemplateLiteral(["Witchess King"]))));
   }
 }
 
 function restAndBuff() {
   changeNightstand(inMysClass() ? "foreign language tapes" : inMoxClass() ? "bowl of potpourri" : "electric muscle stimulator");
+
+  if (inMysClass()) {
+    asmohccs_lib_ensureEffect(template_string_$effect(level_templateObject213 || (level_templateObject213 = level_taggedTemplateLiteral(["Inscrutable Gaze"]))));
+    asmohccs_lib_ensureEffect(template_string_$effect(level_templateObject214 || (level_templateObject214 = level_taggedTemplateLiteral(["Thaumodynamic"]))));
+    if (!lib_have(template_string_$effect(level_templateObject215 || (level_templateObject215 = level_taggedTemplateLiteral(["Synthesis: Learning"]))))) synthMysExp();
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$item(level_templateObject216 || (level_templateObject216 = level_taggedTemplateLiteral(["LOV Epaulettes"]))), template_string_$slot(level_templateObject217 || (level_templateObject217 = level_taggedTemplateLiteral(["back"]))));
+  } else if (inMusClass()) {
+    asmohccs_lib_ensureEffect(template_string_$effect(level_templateObject218 || (level_templateObject218 = level_taggedTemplateLiteral(["Muscle Unbound"]))));
+    if (!lib_have(template_string_$effect(level_templateObject219 || (level_templateObject219 = level_taggedTemplateLiteral(["Synthesis: Movement"]))))) synthMusExp();
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$item(level_templateObject220 || (level_templateObject220 = level_taggedTemplateLiteral(["LOV Eardigan"]))), template_string_$slot(level_templateObject221 || (level_templateObject221 = level_taggedTemplateLiteral(["shirt"]))));
+  } else if (inMoxClass()) {
+    asmohccs_lib_ensureEffect(template_string_$effect(level_templateObject222 || (level_templateObject222 = level_taggedTemplateLiteral(["So Fresh and So Clean"]))));
+    if (!lib_have(template_string_$effect(level_templateObject223 || (level_templateObject223 = level_taggedTemplateLiteral(["Synthesis: Style"]))))) synthMoxExp();
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$item(level_templateObject224 || (level_templateObject224 = level_taggedTemplateLiteral(["LOV Earrings"]))), template_string_$slot(level_templateObject225 || (level_templateObject225 = level_taggedTemplateLiteral(["acc1"]))));
+  }
+
+  (0,external_kolmafia_namespaceObject.equip)(template_string_$item(level_templateObject226 || (level_templateObject226 = level_taggedTemplateLiteral(["familiar scrapbook"]))), template_string_$slot(level_templateObject227 || (level_templateObject227 = level_taggedTemplateLiteral(["off-hand"]))));
 
   while (property_get("timesRested") < (0,external_kolmafia_namespaceObject.totalFreeRests)()) {
     burnLibrams();
@@ -12606,33 +12623,33 @@ function digitwinked() {
   useDefaultFamiliar();
 
   if (!get("latteUnlocks").includes("chili")) {
-    equip($slot(level_templateObject212 || (level_templateObject212 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject213 || (level_templateObject213 = level_taggedTemplateLiteral(["latte lovers member's mug"]))));
+    equip($slot(level_templateObject228 || (level_templateObject228 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject229 || (level_templateObject229 = level_taggedTemplateLiteral(["latte lovers member's mug"]))));
   }
 
-  advMacroAA($location(level_templateObject214 || (level_templateObject214 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
+  advMacroAA($location(level_templateObject230 || (level_templateObject230 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
     return getCounters("Digitize", 0, 0).trim() !== "";
   });
   uniform();
 
   if (get("latteUnlocks").includes("chili")) {
-    equip($slot(level_templateObject215 || (level_templateObject215 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject216 || (level_templateObject216 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
+    equip($slot(level_templateObject231 || (level_templateObject231 = level_taggedTemplateLiteral(["off-hand"]))), $item(level_templateObject232 || (level_templateObject232 = level_taggedTemplateLiteral(["familiar scrapbook"]))));
   }
 
-  advMacroAA($location(level_templateObject217 || (level_templateObject217 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
+  advMacroAA($location(level_templateObject233 || (level_templateObject233 = level_taggedTemplateLiteral(["the haunted kitchen"]))), Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(), () => {
     return getCounters("Romantic Monster window end", 0, 0).trim() !== "";
   });
 }
 
 function level_hybridize() {
-  if ((0,external_kolmafia_namespaceObject.getWorkshed)() !== template_string_$item(level_templateObject218 || (level_templateObject218 = level_taggedTemplateLiteral(["Little Geneticist DNA-Splicing Lab"]))) || isHybridized($phylum(level_templateObject219 || (level_templateObject219 = level_taggedTemplateLiteral(["fish"]))))) {
+  if ((0,external_kolmafia_namespaceObject.getWorkshed)() !== template_string_$item(level_templateObject234 || (level_templateObject234 = level_taggedTemplateLiteral(["Little Geneticist DNA-Splicing Lab"]))) || isHybridized($phylum(level_templateObject235 || (level_templateObject235 = level_taggedTemplateLiteral(["fish"]))))) {
     return;
   } // become a human fish hybrid
 
 
-  if (!isHybridized($phylum(level_templateObject220 || (level_templateObject220 = level_taggedTemplateLiteral(["fish"])))) && property_get("dnaSyringe") !== $phylum(level_templateObject221 || (level_templateObject221 = level_taggedTemplateLiteral(["fish"])))) {
-    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(level_templateObject222 || (level_templateObject222 = level_taggedTemplateLiteral(["ms puck man"]))));
-    asmohccs_lib_advMacroAA(template_string_$location(level_templateObject223 || (level_templateObject223 = level_taggedTemplateLiteral(["The Bubblin' Caldera"]))), combat_Macro.while_("!monstername lava lamprey", combat_Macro.trySkill($skill(level_templateObject224 || (level_templateObject224 = level_taggedTemplateLiteral(["Extract"])))).trySkill($skill(level_templateObject225 || (level_templateObject225 = level_taggedTemplateLiteral(["Macrometeorite"]))))).if_("monstername lava lamprey", combat_Macro.trySkill($skill(level_templateObject226 || (level_templateObject226 = level_taggedTemplateLiteral(["Extract"])))).item(template_string_$item(level_templateObject227 || (level_templateObject227 = level_taggedTemplateLiteral(["DNA extraction syringe"])))).skill($skill(level_templateObject228 || (level_templateObject228 = level_taggedTemplateLiteral(["Feel Hatred"]))))), () => {
-      return property_get("dnaSyringe") !== $phylum(level_templateObject229 || (level_templateObject229 = level_taggedTemplateLiteral(["fish"])));
+  if (!isHybridized($phylum(level_templateObject236 || (level_templateObject236 = level_taggedTemplateLiteral(["fish"])))) && property_get("dnaSyringe") !== $phylum(level_templateObject237 || (level_templateObject237 = level_taggedTemplateLiteral(["fish"])))) {
+    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(level_templateObject238 || (level_templateObject238 = level_taggedTemplateLiteral(["ms puck man"]))));
+    asmohccs_lib_advMacroAA(template_string_$location(level_templateObject239 || (level_templateObject239 = level_taggedTemplateLiteral(["The Bubblin' Caldera"]))), combat_Macro.while_("!monstername lava lamprey", combat_Macro.trySkill($skill(level_templateObject240 || (level_templateObject240 = level_taggedTemplateLiteral(["Extract"])))).trySkill($skill(level_templateObject241 || (level_templateObject241 = level_taggedTemplateLiteral(["Macrometeorite"]))))).if_("monstername lava lamprey", combat_Macro.trySkill($skill(level_templateObject242 || (level_templateObject242 = level_taggedTemplateLiteral(["Extract"])))).item(template_string_$item(level_templateObject243 || (level_templateObject243 = level_taggedTemplateLiteral(["DNA extraction syringe"])))).skill($skill(level_templateObject244 || (level_templateObject244 = level_taggedTemplateLiteral(["Feel Hatred"]))))), () => {
+      return property_get("dnaSyringe") !== $phylum(level_templateObject245 || (level_templateObject245 = level_taggedTemplateLiteral(["fish"])));
     });
   }
 
@@ -12642,17 +12659,17 @@ function level_hybridize() {
 
   asmohccs_lib_useDefaultFamiliar();
 
-  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(level_templateObject230 || (level_templateObject230 = level_taggedTemplateLiteral(["Drenched in Lava"]))))) {
+  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(level_templateObject246 || (level_templateObject246 = level_taggedTemplateLiteral(["Drenched in Lava"]))))) {
     (0,external_kolmafia_namespaceObject.cliExecute)("hottub");
   }
 }
 
 function prelude() {
   horse("dark");
-  if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(level_templateObject231 || (level_templateObject231 = level_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(level_templateObject232 || (level_templateObject232 = level_taggedTemplateLiteral(["astral six-pack"]))));
-  if (lib_have(template_string_$effect(level_templateObject233 || (level_templateObject233 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("shrug The Magical Mojomuscular Melody");
-  (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject234 || (level_templateObject234 = level_taggedTemplateLiteral(["The Ode to Booze"]))));
-  level_resources.consumeTo(5, template_string_$item(level_templateObject235 || (level_templateObject235 = level_taggedTemplateLiteral(["astral pilsner"]))));
+  if ((0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(level_templateObject247 || (level_templateObject247 = level_taggedTemplateLiteral(["astral six-pack"])))) !== 0) (0,external_kolmafia_namespaceObject.use)(1, template_string_$item(level_templateObject248 || (level_templateObject248 = level_taggedTemplateLiteral(["astral six-pack"]))));
+  if (lib_have(template_string_$effect(level_templateObject249 || (level_templateObject249 = level_taggedTemplateLiteral(["The Magical Mojomuscular Melody"]))))) (0,external_kolmafia_namespaceObject.cliExecute)("shrug The Magical Mojomuscular Melody");
+  (0,external_kolmafia_namespaceObject.useSkill)($skill(level_templateObject250 || (level_templateObject250 = level_taggedTemplateLiteral(["The Ode to Booze"]))));
+  level_resources.consumeTo(5, template_string_$item(_templateObject251 || (_templateObject251 = level_taggedTemplateLiteral(["astral pilsner"]))));
 }
 /*
 Buff Up
