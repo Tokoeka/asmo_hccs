@@ -67,7 +67,5 @@ export function main(args = ""): void {
 
     const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
 
-    if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
-
     ascend(Paths.CommunityService, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
 }
