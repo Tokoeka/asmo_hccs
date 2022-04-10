@@ -344,7 +344,7 @@ function witchGhostAgent() {
         runChoice(1);
     }
     cliExecute("fold makeshift garbage shirt");
-    uniform(...$items`protonic accelerator pack, makeshift garbage shirt`);
+    uniform(...$items`protonic accelerator pack, makeshift garbage shirt, familiar scrapbook`);
     heal();
     useDefaultFamiliar();
     ensureMp(100);
@@ -781,7 +781,7 @@ function royalty() {
             .attack()
             .repeat()
             .setAutoAttack();
-        uniform();
+			uniform(...$items`makeshift garbage shirt, familiar scrapbook`);
         useDefaultFamiliar();
         heal();
         Witchess.fightPiece($monster`Witchess Queen`);
