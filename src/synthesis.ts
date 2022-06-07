@@ -1,24 +1,17 @@
 import {
     availableAmount,
     create,
-	getInventory,
+    getInventory,
     haveEffect,
-	sweetSynthesis,
+    sweetSynthesis,
     toString as toStringAsh,
     toInt,
     useSkill,
     visitUrl,
-	Item,
+    Item,
 } from "kolmafia";
-import {
-	$effect,
-    $item,
-    $skill,
-    get,
-    have,
-} from "libram";
-import { gingerCandy, inMysClass, inMoxClass, inMusClass, } from "./asmohccs-lib";
-
+import { $effect, $item, $items, $skill, get, have } from "libram";
+import { gingerCandy, inMysClass, inMoxClass, inMusClass } from "./asmohccs-lib";
 
 export function synthMysExp(): void {
     if (get("harvestGardenHardcore") === "none") {
@@ -42,48 +35,79 @@ export function synthMysExp(): void {
             sweetSynthesis(bark, $item`peppermint sprout`);
         }
     } else {
-		gingerCandy(); //Section below stolen from Bean (with edits)
-		const inventory = getInventory();
-		for (const itemName of Object.keys(inventory)) {
-			const item = Item.get(itemName);
-			const count = inventory[itemName];
-			const mod = (toInt(Item.get(itemName)) % 5)
+        gingerCandy(); //Section below stolen from Bean (with edits)
+        const inventory = getInventory();
+        for (const itemName of Object.keys(inventory)) {
+            const item = Item.get(itemName);
+            const count = inventory[itemName];
+            const mod = toInt(Item.get(itemName)) % 5;
 
-			if (item.candyType !== 'complex' || item === $item`Ultra Mega Sour Ball`) {
-				continue;
-			}
-			if (mod === 4 && item !== fudge){ 
-				if(fudges >= 1){
-					sweetSynthesis(fudge, item);
-					break;
-				}
-			}
-			else if (mod === 3){
-				if( pecans >= 1){
-					sweetSynthesis(pecan, item);
-					break;
-				}
-			}
-			else if (mod === 0){ 
-				if( barks >= 1){
-					sweetSynthesis(bark, item);
-					break;
-				}
-			}
-		  }
-		if (!have($effect`Synthesis: Learning`)){
-			if (!have($item`sugar shotgun`)) {
-				if (!have($item`sugar sheet`)) {
-					create(1, $item`sugar sheet`);
-				}
-				create(1, $item`sugar shotgun`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`sugar shotgun`);
-			} else {
-				sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
-			}
-		}
+            if (item.candyType !== "complex" || item === $item`Ultra Mega Sour Ball`) {
+                continue;
+            }
+            if (mod === 4 && item !== fudge) {
+                if (fudges >= 1) {
+                    sweetSynthesis(fudge, item);
+                    break;
+                }
+            } else if (mod === 3) {
+                if (pecans >= 1) {
+                    sweetSynthesis(pecan, item);
+                    break;
+                }
+            } else if (mod === 0) {
+                if (barks >= 1) {
+                    sweetSynthesis(bark, item);
+                    break;
+                }
+            }
+        }
+        for (const itemName0 of Object.keys(inventory)) {
+            const item0 = Item.get(itemName0);
+            const count = inventory[itemName0];
+            const mod0 = toInt(Item.get(itemName0)) % 5;
+            if (
+                item0.candyType !== "complex" ||
+                $items`Ultra Mega Sour Ball, Crimbo fudge, crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
+                    item0
+                )
+            ) {
+                continue;
+            }
+            for (const itemName1 of Object.keys(inventory)) {
+                const item1 = Item.get(itemName1);
+                const mod1 = toInt(Item.get(itemName1)) % 5;
+                if (
+                    item1.candyType !== "complex" ||
+                    $items`Ultra Mega Sour Ball, Crimbo fudge, crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
+                        item1
+                    ) ||
+                    (item1 === item0 && count <= 1)
+                ) {
+                    continue;
+                }
+                if ((mod0 + mod1) % 5 === 3) {
+                    sweetSynthesis(item0, item1);
+                    break;
+                }
+            }
+            if (haveEffect($effect`Synthesis: Learning`)) {
+                break;
+            }
+        }
+        if (!have($effect`Synthesis: Learning`)) {
+            if (!have($item`sugar shotgun`)) {
+                if (!have($item`sugar sheet`)) {
+                    create(1, $item`sugar sheet`);
+                }
+                create(1, $item`sugar shotgun`);
+            }
+            if (pecans >= 1) {
+                sweetSynthesis(pecan, $item`sugar shotgun`);
+            } else {
+                sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
+            }
+        }
     }
     if (!have($effect`Synthesis: Learning`)) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
@@ -103,80 +127,74 @@ export function synthMusExp(): void {
     const fudges = availableAmount(fudge);
     const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
-	const twist = $item`peppermint twist`;
-	const twists = availableAmount(twist);
-	const sprout = $item`peppermint sprout`;
-	const sprouts = availableAmount(sprout);
+    const twist = $item`peppermint twist`;
+    const twists = availableAmount(twist);
+    const sprout = $item`peppermint sprout`;
+    const sprouts = availableAmount(sprout);
     if (fudges >= 1 && barks >= 1) {
         sweetSynthesis(bark, fudge);
     } else if (fudges < 3) {
         if (twists < 2) {
-			create((2-twists), twist);
-        } 
+            create(2 - twists, twist);
+        }
         sweetSynthesis(twist, twist);
-
     } else {
-		gingerCandy(); //Section below stolen from Bean (with edits)
-		const inventory = getInventory();
-		for (const itemName of Object.keys(inventory)) {
-			const item = Item.get(itemName);
-			const count = inventory[itemName];
-			const mod = (toInt(Item.get(itemName)) % 5)
+        gingerCandy(); //Section below stolen from Bean (with edits)
+        const inventory = getInventory();
+        for (const itemName of Object.keys(inventory)) {
+            const item = Item.get(itemName);
+            const count = inventory[itemName];
+            const mod = toInt(Item.get(itemName)) % 5;
 
-			if (item.candyType !== 'complex' || item === $item`Ultra Mega Sour Ball`) {
-				continue;
-			}
-			if (mod === 3){
-				if(fudges >= 1){
-					sweetSynthesis(fudge, item);
-					break;
-				}
-			}
-			else if (mod === 4){
-				if( barks >= 1){
-					sweetSynthesis(bark, item);
-					break;
-				}
-
-			}
-			else if (mod === 2){
-				if( pecans >= 1){
-					sweetSynthesis(pecan, item);
-					break;
-				} 
-				else if (sprouts >= 1){
-					sweetSynthesis(sprout, item);
-					break;
-				}
-			}
-			else if (mod === 1 && item !== twist){
-				if (twists >=1 || sprouts >= 1){
-					if (twists < 1 && sprouts >= 1) {
-						create(1, twist);
-					}
-					sweetSynthesis(twist, item);
-					break;
-				}
-			}
-		  }
-		if (!have($effect`Synthesis: Movement`)){
-			if (fudges >= 1) {
-				if (!have($item`sugar shotgun`)) {
-					if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-					create(1, $item`sugar shotgun`);
-				}
-				sweetSynthesis(fudge, $item`sugar shotgun`);
-			}
-			if (!have($item`sugar shorts`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-				create(1, $item`sugar shorts`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`sugar shorts`);
-			} else {
-				sweetSynthesis($item`sugar shorts`,sprout);
-			}
-		}
+            if (item.candyType !== "complex" || item === $item`Ultra Mega Sour Ball`) {
+                continue;
+            }
+            if (mod === 3) {
+                if (fudges >= 1) {
+                    sweetSynthesis(fudge, item);
+                    break;
+                }
+            } else if (mod === 4) {
+                if (barks >= 1) {
+                    sweetSynthesis(bark, item);
+                    break;
+                }
+            } else if (mod === 2) {
+                if (pecans >= 1) {
+                    sweetSynthesis(pecan, item);
+                    break;
+                } else if (sprouts >= 1) {
+                    sweetSynthesis(sprout, item);
+                    break;
+                }
+            } else if (mod === 1 && item !== twist) {
+                if (twists >= 1 || sprouts >= 1) {
+                    if (twists < 1 && sprouts >= 1) {
+                        create(1, twist);
+                    }
+                    sweetSynthesis(twist, item);
+                    break;
+                }
+            }
+        }
+        if (!have($effect`Synthesis: Movement`)) {
+            if (fudges >= 1) {
+                if (!have($item`sugar shotgun`)) {
+                    if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+                    create(1, $item`sugar shotgun`);
+                }
+                sweetSynthesis(fudge, $item`sugar shotgun`);
+            }
+            if (!have($item`sugar shorts`)) {
+                if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+                create(1, $item`sugar shorts`);
+            }
+            if (pecans >= 1) {
+                sweetSynthesis(pecan, $item`sugar shorts`);
+            } else {
+                sweetSynthesis($item`sugar shorts`, sprout);
+            }
+        }
     }
     if (!have($effect`Synthesis: Movement`)) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize movement. Help? :c.";
@@ -196,64 +214,62 @@ export function synthMoxExp(): void {
     const fudges = availableAmount(fudge);
     const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
-	const twist = $item`peppermint twist`;
-	const twists = availableAmount(twist);
-	const sprout = $item`peppermint sprout`;
-	const sprouts = availableAmount(sprout);
-	//const sprouts = availableAmount(sprout);
+    const twist = $item`peppermint twist`;
+    const twists = availableAmount(twist);
+    const sprout = $item`peppermint sprout`;
+    const sprouts = availableAmount(sprout);
+    //const sprouts = availableAmount(sprout);
     if (fudges >= 1) {
         sweetSynthesis(fudge, sprout);
-    } else if (barks >= 1 && (twists+sprouts) >= 1) {
+    } else if (barks >= 1 && twists + sprouts >= 1) {
         if (twists < 1 && sprouts >= 1) {
-			create(1, twist);
+            create(1, twist);
         }
-		sweetSynthesis(twist, bark);
-	} else if (have($item`bag of many confections`) && pecans >=1){
-            sweetSynthesis(pecan, $item`bag of many confections`);
+        sweetSynthesis(twist, bark);
+    } else if (have($item`bag of many confections`) && pecans >= 1) {
+        sweetSynthesis(pecan, $item`bag of many confections`);
     } else {
-		gingerCandy(); //Section below stolen from Bean (with edits)
-		const inventory = getInventory();
-		for (const itemName of Object.keys(inventory)) {
-			const item = Item.get(itemName);
-			const count = inventory[itemName];
-			const mod = (toInt(Item.get(itemName)) % 5)
+        gingerCandy(); //Section below stolen from Bean (with edits)
+        const inventory = getInventory();
+        for (const itemName of Object.keys(inventory)) {
+            const item = Item.get(itemName);
+            const count = inventory[itemName];
+            const mod = toInt(Item.get(itemName)) % 5;
 
-			if (item.candyType !== 'complex' || item === $item`Ultra Mega Sour Ball`) {
-				continue;
-			}
-			if (mod === 0){
-				if(fudges >= 1){
-					sweetSynthesis(fudge, item);
-					break;
-				}
-			}
-			else if (mod === 4){
-				if( pecans >= 1){
-					sweetSynthesis(pecan, item);
-					break;
-				}
-			}
-			else if (mod === 1){
-				if( barks >= 1){
-					sweetSynthesis(bark, item);
-					break;
-				}
-			}
-		  }
-		if (!have($effect`Synthesis: Style`)){
-			if (!have($item`sugar shillelagh`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-				create(1, $item`sugar shillelagh`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`sugar shillelagh`);
-			} else {
-				sweetSynthesis($item`sugar shillelagh`, $item`peppermint sprout`);
-			}
-		}
+            if (item.candyType !== "complex" || item === $item`Ultra Mega Sour Ball`) {
+                continue;
+            }
+            if (mod === 0) {
+                if (fudges >= 1) {
+                    sweetSynthesis(fudge, item);
+                    break;
+                }
+            } else if (mod === 4) {
+                if (pecans >= 1) {
+                    sweetSynthesis(pecan, item);
+                    break;
+                }
+            } else if (mod === 1) {
+                if (barks >= 1) {
+                    sweetSynthesis(bark, item);
+                    break;
+                }
+            }
+        }
+        if (!have($effect`Synthesis: Style`)) {
+            if (!have($item`sugar shillelagh`)) {
+                if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+                create(1, $item`sugar shillelagh`);
+            }
+            if (pecans >= 1) {
+                sweetSynthesis(pecan, $item`sugar shillelagh`);
+            } else {
+                sweetSynthesis($item`sugar shillelagh`, $item`peppermint sprout`);
+            }
+        }
     }
     if (!have($effect`Synthesis: Style`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize style.  ¯\_(ツ)_/¯";
+        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize style.  ¯_(ツ)_/¯";
     }
 }
 
@@ -271,47 +287,47 @@ export function synthItem(): void {
     const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
 
-	if (inMysClass()) {
-		if (barks > 2) {
-			sweetSynthesis(bark, bark);
-		} else {
-			if (!have($item`peppermint twist`)) {
-				create(1, $item`peppermint twist`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`peppermint twist`);
-			} else {
-				sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-			}
-		}
-	} else if (inMusClass()) {
-		if (barks >= 2 && fudges == 0) {
-			sweetSynthesis(bark, bark);
-		} else {
-			if (!have($item`peppermint twist`)) {
-				create(1, $item`peppermint twist`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`peppermint twist`);
-			} else {
-				sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-			}
-		}
-	} else if (inMoxClass()) {
-		if (barks >= 2 && pecans == 0) {
-			sweetSynthesis(bark, bark);
-		} else {
-			if (!have($item`peppermint twist`)) {
-				create(1, $item`peppermint twist`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`peppermint twist`);
-			} else {
-				sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-			}
-		}
-	}
-    
+    if (inMysClass()) {
+        if (barks > 2) {
+            sweetSynthesis(bark, bark);
+        } else {
+            if (!have($item`peppermint twist`)) {
+                create(1, $item`peppermint twist`);
+            }
+            if (pecans >= 1) {
+                sweetSynthesis(pecan, $item`peppermint twist`);
+            } else {
+                sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
+            }
+        }
+    } else if (inMusClass()) {
+        if (barks >= 2 && fudges == 0) {
+            sweetSynthesis(bark, bark);
+        } else {
+            if (!have($item`peppermint twist`)) {
+                create(1, $item`peppermint twist`);
+            }
+            if (pecans >= 1) {
+                sweetSynthesis(pecan, $item`peppermint twist`);
+            } else {
+                sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
+            }
+        }
+    } else if (inMoxClass()) {
+        if (barks >= 2 && pecans == 0) {
+            sweetSynthesis(bark, bark);
+        } else {
+            if (!have($item`peppermint twist`)) {
+                create(1, $item`peppermint twist`);
+            }
+            if (pecans >= 1) {
+                sweetSynthesis(pecan, $item`peppermint twist`);
+            } else {
+                sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
+            }
+        }
+    }
+
     if (!have($effect`Synthesis: Collection`)) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
     }
@@ -379,9 +395,9 @@ export function synthMus(): void {
     //const fudges = availableAmount(fudge);
     //const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
-	if (!get("_chubbyAndPlumpUsed")) {
-		useSkill(1, $skill`Chubby and Plump`);
-	}
+    if (!get("_chubbyAndPlumpUsed")) {
+        useSkill(1, $skill`Chubby and Plump`);
+    }
     if (have($item`Chubby and Plump bar`) && barks >= 2) {
         sweetSynthesis($item`Chubby and Plump bar`, bark);
     } else if (have($item`bag of many confections`)) {
@@ -425,15 +441,15 @@ export function synthMox(): void {
     const fudges = availableAmount(fudge);
     const pecans = availableAmount(pecan);
     const barks = availableAmount(bark);
-	if (!get("_chubbyAndPlumpUsed")) {
-		useSkill(1, $skill`Chubby and Plump`);
-	}
-    if (pecans >=1) {
+    if (!get("_chubbyAndPlumpUsed")) {
+        useSkill(1, $skill`Chubby and Plump`);
+    }
+    if (pecans >= 1) {
         sweetSynthesis($item`Chubby and Plump bar`, pecan);
-    } else if (fudges > 1 && have($item`bag of many confections`)){
+    } else if (fudges > 1 && have($item`bag of many confections`)) {
         const taffy = $item`Daffy Taffy`;
         const taffys = availableAmount(taffy);
-		const candy = $item`Cold Hots candy`;
+        const candy = $item`Cold Hots candy`;
         const candys = availableAmount(candy);
         const yellowHeart = $item`yellow candy heart`;
         const yellowHearts = () => availableAmount(yellowHeart);
@@ -452,11 +468,11 @@ export function synthMox(): void {
         } else if (candys >= 1) {
             sweetSynthesis(candy, $item`bag of many confections`);
         } else {
-			sweetSynthesis($item`peppermint sprout`, $item`Chubby and Plump bar`)
-		}
+            sweetSynthesis($item`peppermint sprout`, $item`Chubby and Plump bar`);
+        }
     } else if (barks >= 1) {
-		sweetSynthesis($item`peppermint sprout`, $item`Chubby and Plump bar`)
-	}
+        sweetSynthesis($item`peppermint sprout`, $item`Chubby and Plump bar`);
+    }
     if (haveEffect($effect`Synthesis: Cool`) === 0) {
         throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize cool. Good Luck Buster.";
     }

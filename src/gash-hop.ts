@@ -27,6 +27,8 @@ const timespinnerTargets = [
     safariTargets.shift();
 }*/
 
+
+
 export function main(args = ""): void {
     const newClass = args.includes(`sc`)
         ? $class`Seal Clubber`
