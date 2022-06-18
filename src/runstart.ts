@@ -37,10 +37,8 @@ import {
 	set,
 	SourceTerminal,
 } from "libram";
+import { resources } from ".";
 import { ensureEffect, ensureSong, setClan, tryUse } from "./asmohccs-lib";
-import { ResourceTracker } from "./resources";
-
-const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
 
 function juiceBar() {
 	visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -65,6 +63,7 @@ function toot() {
 			"WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
 		);
 	}
+	if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
 }
 
 export function grimoires() {

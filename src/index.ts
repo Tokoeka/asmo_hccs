@@ -27,7 +27,7 @@ import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
 import { ResourceTracker } from "./resources";
 
-const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
+export const resources = new ResourceTracker();
 
 const assertCompleted = (action: string, warning: string) => {
 	if (action === "failed") throw new Error(warning);
@@ -80,7 +80,7 @@ try {
 			"blue"
 		);
 	}
-	set("_hccs_resourceTracker", resources.serialize());
+	//set("_hccs_resourceTracker", resources.serialize());
 	print(
 		`This loop took ${convertMilliseconds(
 			gametimeToInt() - startTime

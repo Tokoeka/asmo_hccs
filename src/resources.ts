@@ -16,7 +16,6 @@ import {
 	pullsRemaining,
 	retrieveItem,
 	Skill,
-	toInt,
 	toItem,
 	toSkill,
 	use,

@@ -75,9 +75,8 @@ import { universalWeightEffects } from "./familiarweight";
 import uniform from "./outfits";
 import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
 import { geneTonic } from "./workshed";
-import { ResourceTracker } from "./resources";
+import { resources } from ".";
 
-const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
 
 function initialExp() {
 	if (!have($effect`That's Just Cloud-Talk, Man`)) {
@@ -587,6 +586,9 @@ function godLob() {
 function snojo(): void {
 	if (get("_snojoFreeFights") >= 10) {
 		return;
+	}
+	if (get("_discoKnife") === false) {
+		useSkill($skill`that's not a knife`);
 	}
 	uniform();
 	useDefaultFamiliar();

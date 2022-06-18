@@ -2,7 +2,9 @@ import {
 	availableAmount,
 	canEquip,
 	cliExecute,
+	count,
 	create,
+	drink,
 	eat,
 	haveEffect,
 	inHardcore,
@@ -217,6 +219,10 @@ function testPrep() {
 		}
 	}
 	spellOutfit();
+	if (availableAmount($item`astral pilsner`) > 1){
+		ensureEffect($effect`ode to booze`);
+		drink($item`astral pilsner`, availableAmount($item`astral pilsner`)-1);
+	}
 }
 
 function getToxic() {
