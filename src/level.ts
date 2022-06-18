@@ -408,7 +408,10 @@ function witchGhostAgent() {
     }
 }
 
-function lov() {
+function lov(): void {
+	if (get("_loveTunnelUsed")){
+		return;
+	}
     cliExecute("fold makeshift garbage shirt");
     uniform(...$items`vampyric cloake, makeshift garbage shirt`);
     heal();
@@ -423,19 +426,19 @@ function lov() {
             Macro.step(delevel).step(easyFight).trySkill($skill`Become a Wolf`).step(candyblast).step(defaultKill).repeat()
         )
         .setAutoAttack();
-    if (!get("_loveTunnelUsed") && inMysClass()) {
+    if (inMysClass()) {
         TunnelOfLove.fightAll(
             "LOV Epaulettes",
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-    } else if (!get("_loveTunnelUsed") && inMusClass()) {
+    } else if (inMusClass()) {
         TunnelOfLove.fightAll(
             "LOV Eardigan",
             "Open Heart Surgery",
             "LOV Extraterrestrial Chocolate"
         );
-    } else if (!get("_loveTunnelUsed") && inMoxClass()) {
+    } else if (inMoxClass()) {
         TunnelOfLove.fightAll(
             "LOV Earring",
             "Open Heart Surgery",
@@ -586,7 +589,10 @@ function godLob() {
     }
 }
 
-function snojo() {
+function snojo(): void {
+	if (get("_snojoFreeFights") == 10){
+		return;
+	}
     uniform();
     useDefaultFamiliar();
     if (get("snojoSetting") === "NONE") {
@@ -600,7 +606,7 @@ function snojo() {
 		}
         
     }
-    if (getWorkshed() === $item`Little Geneticist DNA-Splicing Lab`){
+    if (getWorkshed() === $item`Little Geneticist DNA-Splicing Lab` && !haveEffect($effect`Human-Machine Hybrid`)){
 		advMacroAA(
 			$location`The X-32-F Combat Training Snowman`,
 			Macro.item($item`DNA extraction syringe`).step(delevel).step(easyFight).attack().repeat(),
@@ -632,7 +638,7 @@ function snojo() {
 }
 
 function tentacle(): void {
-    if (!have($skill`Evoke Eldritch Horror`)) return;
+    if (!have($skill`Evoke Eldritch Horror`) || get(`_eldritchHorrorEvoked`)) return;
     withProperty("autoAbortThreshold", -0.05, () => {
         uniform();
         useDefaultFamiliar();
@@ -756,9 +762,9 @@ function mElfLeveling() {
 
 function royalty() {
     if (!have($item`very pointy crown`)) {
-        Macro.tryItem("jam band bootlg")
-            .tryItem("gas can")
-            .tryItem("time-spinner")
+        Macro.tryItem($item`jam band bootleg`)
+			.tryItem($item`gas can`)
+			.tryItem($item`Time-Spinner`)
             .attack()
             .repeat()
             .setAutoAttack();
@@ -817,7 +823,7 @@ function digitwinked() {
 }
 
 function hybridize(): void {
-	if (getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`){
+	if (getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab` || DNALab.isHybridized($phylum`fish`)){
 		return;
 	}
     // become a human fish hybrid
