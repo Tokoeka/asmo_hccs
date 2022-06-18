@@ -11,19 +11,27 @@ import {
     myTurncount,
     print,
     setAutoAttack,
+    toItem,
     visitUrl,
 } from "kolmafia";
-import { $item, $location, $monster, $skill, $slot, get, have, set, Macro } from "libram";
+import { $item, CommunityService, get, set } from "libram";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";
 import itemTest from "./item";
 import levelUp from "./level";
 import noncombatTest from "./noncombat";
-import { convertMilliseconds, PropertyManager, Test, tests, testWrapper } from "./asmohccs-lib";
+import { convertMilliseconds, PropertyManager } from "./asmohccs-lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";
+import { ResourceTracker } from "./resources";
+
+const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
+
+const assertCompleted = (action: string, warning: string) => {
+    if (action === "failed") throw new Error(warning);
+};
 
 //preamble
 if (myPathId() !== 25) abort();
@@ -35,46 +43,76 @@ PropertyManager.set({
     battleAction: "custom combat script",
     dontStopForCounters: true,
     //logPreferenceChange: false,
-    
 });
 const startTime = gametimeToInt();
 try {
-    testWrapper("wire-coiling", Test.COIL_WIRE, coilWire);
+    assertCompleted(CommunityService.CoilWire.run(coilWire, false, 60), "Failed to Coil Wire");
     if (myLevel() < 15) levelUp(); //want to make sure levelling script completes if it breaks mid-script
-    testWrapper("muscle", Test.MUS, muscleTest);
-    testWrapper("moxie", Test.MOX, moxTest);
-    testWrapper("HP", Test.HP, HPTest);
-    testWrapper("mysticality", Test.MYS, mystTest);
-    testWrapper("weapon damage", Test.WEAPON, weaponTest);
-    testWrapper("spell damage", Test.SPELL, spellTest);
-	testWrapper("noncombat", Test.NONCOMBAT, noncombatTest);
-    testWrapper("hot res", Test.HOT_RES, hotTest); 
-    testWrapper("familiar", Test.FAMILIAR, familiarTest); 
-    testWrapper("item", Test.ITEM, itemTest);
+    assertCompleted(
+        CommunityService.Muscle.run(muscleTest, false, 1),
+        "Failed to cap Muscle test!"
+    );
+    assertCompleted(CommunityService.Moxie.run(moxTest, false, 1), "Failed to cap moxie test!");
+    assertCompleted(CommunityService.HP.run(HPTest, false, 1), "Failed to cap HP test!");
+    assertCompleted(
+        CommunityService.Mysticality.run(mystTest, false, 1),
+        "Failed to cap Mysticality test!"
+    );
+    assertCompleted(
+        CommunityService.WeaponDamage.run(weaponTest, false, 1),
+        "Failed to cap Weapon Damage test!"
+    );
+    assertCompleted(
+        CommunityService.SpellDamage.run(spellTest, false, 30),
+        "Failed to perform Spell Damage test!"
+    );
+    assertCompleted(
+        CommunityService.Noncombat.run(noncombatTest, false, 1),
+        "Failed to cap NC test!"
+    );
+    assertCompleted(CommunityService.HotRes.run(hotTest, false, 1), "Failed to cap Hot Res test!");
+    assertCompleted(
+        CommunityService.FamiliarWeight.run(familiarTest, false, 30),
+        "Failed to perform Familiar test!"
+    );
+    assertCompleted(CommunityService.BoozeDrop.run(itemTest, false, 1), "Failed to cap Item test!");
 } finally {
-    tests.forEach((testDuration) => {
+    for (const [name, { predictedTurns, turnCost }] of Object.entries(CommunityService.log)) {
+        const truePrediction = name === "Make Sausage" ? predictedTurns + 1 : predictedTurns;
         print(
-            `We expected the ${testDuration.testName} test to take ${testDuration.turnPrediction} turns, and it cost ${testDuration.turnCost} turns.`,
+            `It took us ${
+                turnCost ? `${turnCost} turns ` : ""
+            }to do ${name}, and we predicted it would take ${truePrediction} turns.`,
             "blue"
         );
-    });
+    }
+    set("_hccs_resourceTracker", resources.serialize());
     print(
         `This loop took ${convertMilliseconds(
             gametimeToInt() - startTime
         )}, assuming it ran contiguously, for a 1 day, ` +
-        (myTurncount() - 1) +
-        ` turn HCCS run. Organ use was ` +
-        myFullness() +
-        `/` +
-        myInebriety() +
-        `/` +
-        mySpleenUse() +
-        `. I drank ` +
-        (6 - availableAmount($item`astral pilsner`)) +
-        ` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
+            myTurncount() +
+            ` turn HCCS run. Organ use was ` +
+            myFullness() +
+            `/` +
+            myInebriety() +
+            `/` +
+            mySpleenUse() +
+            `. I drank ` +
+            (6 - availableAmount($item`astral pilsner`)) +
+            ` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
         "red"
     );
+    if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
+        const partyFairInfo = get("_questPartyFairProgress").split(" ");
+        print(
+            `Gerald/ine wants ${partyFairInfo[0]} ${toItem(partyFairInfo[1]).plural}, please!`,
+            "red"
+        );
+    }
+	resources.summarize();
 
+    CommunityService.donate();
     setAutoAttack(0);
     PropertyManager.resetAll();
 }

@@ -1,11 +1,10 @@
-import { useSkill } from "kolmafia";
+import { retrieveItem } from "kolmafia";
 import {
     $class,
+    $classes,
     $familiar,
     $item,
-    $skill,
     ascend,
-    get,
     have,
     Lifestyle,
     Paths,
@@ -13,7 +12,6 @@ import {
 } from "libram";
 
 const timespinnerTargets = [
-    "Phillammon",
     "Busta_Rhymes",
     "Manendra",
     "Gausie",
@@ -29,28 +27,47 @@ const timespinnerTargets = [
     safariTargets.shift();
 }*/
 
-prepareAscension(
-    {
-        workshed: $item`Little Geneticist DNA-Splicing Lab`,
-        garden: $item`Peppermint Pip Packet`,
-        eudora: $item`Our Daily Candles™ order form`,
-    },
-    {
-        desk: $item`continental juice bar`,
-        nightstand: $item`foreign language tapes`,
-        ceiling: $item`ceiling fan`,
-    }
-);
+export function main(args = ""): void {
+    const newClass = args.includes(`sc`)
+        ? $class`Seal Clubber`
+        : args.includes(`tt`)
+        ? $class`Turtle Tamer`
+        : args.includes(`sr`)
+        ? $class`Sauceror`
+        : args.includes(`db`)
+        ? $class`Disco Bandit`
+        : args.includes(`at`)
+        ? $class`Accordion Thief`
+        : $class`Pastamancer`;
 
-const pet = have($familiar`Baby Bugged Bugbear`)
-    ? $item`astral chapeau`
-    : $item`astral pet sweater`;
+    const shed = args.includes(`asdon`)
+        ? "Asdon Martin keyfob"
+        : args.includes(`pizza`)
+        ? "diabolic pizza cube"
+        : "Little Geneticist DNA-Splicing Lab";
 
-ascend(
-    Paths.CommunityService,
-    $class`Pastamancer`,
-    Lifestyle.hardcore,
-    "knoll",
-    $item`astral six-pack`,
-    pet
-);
+    prepareAscension({
+        workshed: shed,
+        garden: `Peppermint Pip Packet`,
+        eudora: `Our Daily Candles™ order form`,
+        chateau: {
+            desk: `continental juice bar`,
+            nightstand: $classes`Seal Clubber, Turtle Tamer`.includes(newClass)
+                ? `electric muscle stimulator`
+                : $classes`Disco Bandit, Accordion Thief`.includes(newClass)
+                ? `bowl of potpourri`
+                : `foreign language tapes`,
+            ceiling: `ceiling fan`,
+        },
+    });
+
+    const pet = have($familiar`Baby Bugged Bugbear`)
+        ? $item`astral chapeau`
+        : $item`astral pet sweater`;
+
+    const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
+
+    if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
+
+    ascend(Paths.CommunityService, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
+}

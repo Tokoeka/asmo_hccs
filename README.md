@@ -68,6 +68,7 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
  * Gingerbread City
  * Horsery
  * Ms. Puck Man
+ * Combat Lover's Locket
  
  It also really appreciates it if you have:
   * Disembodied Hand
@@ -76,6 +77,11 @@ At present, Asmo-HCCS requires the following iotms/expensive old items/skills to
   * Pulled Taffy
   * Haunted Doghouse
   * Daylight Shavings Helmet
+  * Doppelshifter
+  * Tiny Costume Wardrobe
+  * Cursed Magnifying Glass
+  * Stick Knife of Loathing
+  * Staff of Kitchen Royalty
 
   
 

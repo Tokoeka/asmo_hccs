@@ -3,28 +3,30 @@ import {
     adv1,
     availableAmount,
     buy,
-	buyUsingStorage,
+    buyUsingStorage,
     chatPrivate,
     choiceFollowsFight,
     cliExecute,
     containsText,
     create,
     eat,
+    Effect,
     equip,
-	equippedItem,
+    equippedItem,
     getClanName,
-	getInventory,
+    getInventory,
     getProperty,
     haveEffect,
     inMultiFight,
-	myClass,
+    Item,
+    Location,
+    Monster,
+    myClass,
     myMaxhp,
     myMaxmp,
     myMp,
-	mySign,
-    myTurncount,
     print,
-	pullsRemaining,
+    pullsRemaining,
     restoreHp,
     restoreMp,
     retrieveItem,
@@ -32,522 +34,52 @@ import {
     runCombat,
     setAutoAttack,
     setProperty,
-	shopAmount,
-	storageAmount,
-    sweetSynthesis,
-	takeShop,
+    shopAmount,
+    Skill,
+    Slot,
+    storageAmount,
+    takeShop,
     totalTurnsPlayed,
     toString as toStringAsh,
     toEffect,
-    toInt,
-	toItem,
-	toSkill,
-	toSlot,
     toUrl,
     use,
     useFamiliar,
     useSkill,
     visitUrl,
     wait,
-	myEffects,
-	numericModifier,
-	equippedAmount,
-	haveEquipped,
-	myFamiliar,
-	familiarWeight,
-	weightAdjustment,
-	haveSkill,
-	inMuscleSign,
-	inMysticalitySign,
-	inMoxieSign,
+    equippedAmount,
 } from "kolmafia";
 import {
-    $class,
-	$classes,
-	$effect,
+    $classes,
+    $effect,
     $effects,
     $familiar,
     $item,
+    $items,
     $location,
-	$phylum,
     $skill,
     $skills,
     $slot,
-	$slots,
     get,
     have,
     Macro,
     PropertiesManager,
     property,
-	set,
+    set,
 } from "libram";
 import { Outfit, withOutfit } from "./outfits";
-import { error } from "libram/dist/console";
-import {
-	getEffect,
-	getTonic,
-	makeTonic,
-	tonicsLeft,
-  } from "libram/dist/resources/2014/DNALab";
 
 export const PropertyManager = new PropertiesManager();
 
 export function gingerCandy(): void {
-	if (!get(`_asmo_gingercity`)){
-		useFamiliar($familiar`Pair of Stomping Boots`);
-		set(`choiceAdventure1215`, 1);
-		set(`choiceAdventure1204`, 1);
-		advMacroAA($location`Gingerbread Civic Center`, Macro.step(`runaway`), 1);
-		advMacroAA($location`Gingerbread Train Station`, Macro.step(`runaway`), 4);
-		set(`_asmo_gingercity`, true)
-	}
-}
-
-export function fuelUp(): void {
-    buy(1, $item`all-purpose flower`);
-    use(1, $item`all-purpose flower`);
-    buy(availableAmount($item`wad of dough`), $item`soda water`);
-    create(availableAmount($item`wad of dough`), $item`loaf of soda bread`);
-    cliExecute(`asdonmartin fuel ${availableAmount($item`loaf of soda bread`)} soda bread`);
-}
-
-export function synthMysExp(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-    if (fudges >= 2) {
-        sweetSynthesis(fudge, fudge);
-    } else if (barks >= 1) {
-        if (pecans >= 1) {
-            sweetSynthesis(pecan, bark);
-        } else {
-            sweetSynthesis(bark, $item`peppermint sprout`);
-        }
-    } else {
-		gingerCandy(); //Section below stolen from Bean (with edits)
-		const inventory = getInventory();
-		for (const itemName of Object.keys(inventory)) {
-			const item = Item.get(itemName);
-			const count = inventory[itemName];
-			const mod = (toInt(Item.get(itemName)) % 5)
-
-			if (item.candyType !== 'complex') {
-				continue;
-			}
-			if (mod === 4 && item !== fudge){ 
-				if(fudges >= 1){
-					sweetSynthesis(fudge, item);
-					break;
-				}
-			}
-			else if (mod === 3){
-				if( pecans >= 1){
-					sweetSynthesis(pecan, item);
-					break;
-				}
-			}
-			else if (mod === 0){ 
-				if( barks >= 1){
-					sweetSynthesis(bark, item);
-					break;
-				}
-			}
-		  }
-		if (!have($effect`Synthesis: Learning`)){
-			if (!have($item`sugar shotgun`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-				create(1, $item`sugar shotgun`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`sugar shotgun`);
-			} else {
-				sweetSynthesis($item`sugar shotgun`, $item`peppermint sprout`);
-			}
-		}
-    }
-    if (!have($effect`Synthesis: Learning`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
-    }
-}
-
-export function synthMusExp(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-	const twist = $item`peppermint twist`;
-	const twists = availableAmount(twist);
-	const sprout = $item`peppermint sprout`;
-	const sprouts = availableAmount(sprout);
-    if (fudges >= 1 && barks >= 1) {
-        sweetSynthesis(bark, fudge);
-    } else if (fudges < 3) {
-        if (twists < 2) {
-			create((2-twists), twist);
-        } 
-        sweetSynthesis(twist, twist);
-
-    } else {
-		gingerCandy(); //Section below stolen from Bean (with edits)
-		const inventory = getInventory();
-		for (const itemName of Object.keys(inventory)) {
-			const item = Item.get(itemName);
-			const count = inventory[itemName];
-			const mod = (toInt(Item.get(itemName)) % 5)
-
-			if (item.candyType !== 'complex') {
-				continue;
-			}
-			if (mod === 3){
-				if(fudges >= 1){
-					sweetSynthesis(fudge, item);
-					break;
-				}
-			}
-			else if (mod === 4){
-				if( barks >= 1){
-					sweetSynthesis(bark, item);
-					break;
-				}
-
-			}
-			else if (mod === 2){
-				if( pecans >= 1){
-					sweetSynthesis(pecan, item);
-					break;
-				} 
-				else if (sprouts >= 1){
-					sweetSynthesis(sprout, item);
-					break;
-				}
-			}
-			else if (mod === 1 && item !== twist){
-				if (twists >=1 || sprouts >= 1){
-					if (twists < 1 && sprouts >= 1) {
-						create(1, twist);
-					}
-					sweetSynthesis(twist, item);
-					break;
-				}
-			}
-		  }
-		if (!have($effect`Synthesis: Movement`)){
-			if (fudges >= 1) {
-				if (!have($item`sugar shotgun`)) {
-					if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-					create(1, $item`sugar shotgun`);
-				}
-				sweetSynthesis(fudge, $item`sugar shotgun`);
-			}
-			if (!have($item`sugar shorts`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-				create(1, $item`sugar shorts`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`sugar shorts`);
-			} else {
-				sweetSynthesis($item`sugar shorts`,sprout);
-			}
-		}
-    }
-    if (!have($effect`Synthesis: Movement`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize movement. Help? :c.";
-    }
-}
-
-export function synthMoxExp(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-	const twist = $item`peppermint twist`;
-	const twists = availableAmount(twist);
-	const sprout = $item`peppermint sprout`;
-	const sprouts = availableAmount(sprout);
-	//const sprouts = availableAmount(sprout);
-    if (fudges >= 1) {
-        sweetSynthesis(fudge, sprout);
-    } else if (barks >= 1 && (twists+sprouts) >= 1) {
-        if (twists < 1 && sprouts >= 1) {
-			create(1, twist);
-        }
-		sweetSynthesis(twist, bark);
-	} else if (have($item`bag of many confections`) && pecans >=1){
-            sweetSynthesis(pecan, $item`bag of many confections`);
-    } else {
-		gingerCandy(); //Section below stolen from Bean (with edits)
-		const inventory = getInventory();
-		for (const itemName of Object.keys(inventory)) {
-			const item = Item.get(itemName);
-			const count = inventory[itemName];
-			const mod = (toInt(Item.get(itemName)) % 5)
-
-			if (item.candyType !== 'complex') {
-				continue;
-			}
-			if (mod === 0){
-				if(fudges >= 1){
-					sweetSynthesis(fudge, item);
-					break;
-				}
-			}
-			else if (mod === 4){
-				if( pecans >= 1){
-					sweetSynthesis(pecan, item);
-					break;
-				}
-			}
-			else if (mod === 1){
-				if( barks >= 1){
-					sweetSynthesis(bark, item);
-					break;
-				}
-			}
-		  }
-		if (!have($effect`Synthesis: Style`)){
-			if (!have($item`sugar shillelagh`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
-				create(1, $item`sugar shillelagh`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`sugar shillelagh`);
-			} else {
-				sweetSynthesis($item`sugar shillelagh`, $item`peppermint sprout`);
-			}
-		}
-    }
-    if (!have($effect`Synthesis: Style`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize style.  ¯\_(ツ)_/¯";
-    }
-}
-
-export function synthItem(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-
-	if (inMysClass()) {
-		if (barks > 2) {
-			sweetSynthesis(bark, bark);
-		} else {
-			if (!have($item`peppermint twist`)) {
-				create(1, $item`peppermint twist`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`peppermint twist`);
-			} else {
-				sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-			}
-		}
-	} else if (inMusClass()) {
-		if (barks >= 2 && fudges == 0) {
-			sweetSynthesis(bark, bark);
-		} else {
-			if (!have($item`peppermint twist`)) {
-				create(1, $item`peppermint twist`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`peppermint twist`);
-			} else {
-				sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-			}
-		}
-	} else if (inMoxClass()) {
-		if (barks >= 2 && pecans == 0) {
-			sweetSynthesis(bark, bark);
-		} else {
-			if (!have($item`peppermint twist`)) {
-				create(1, $item`peppermint twist`);
-			}
-			if (pecans >= 1) {
-				sweetSynthesis(pecan, $item`peppermint twist`);
-			} else {
-				sweetSynthesis($item`peppermint sprout`, $item`peppermint twist`);
-			}
-		}
-	}
-    
-    if (!have($effect`Synthesis: Collection`)) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
-    }
-}
-
-export function synthMyst(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    //const fudge = $item`Crimbo fudge`;
-    //const pecan = $item`Crimbo candied pecan`;
-    //const bark = $item`Crimbo peppermint bark`;
-    //const fudges = availableAmount(fudge);
-    //const pecans = availableAmount(pecan);
-    //const barks = availableAmount(bark);
-    if (have($item`bag of many confections`)) {
-        if (!get("_chubbyAndPlumpUsed")) {
-            useSkill(1, $skill`Chubby and Plump`);
-        }
-        sweetSynthesis($item`Chubby and Plump bar`, $item`bag of many confections`);
-    } else {
-        const mint = $item`Senior Mints`;
-        const mints = availableAmount(mint);
-        const orangeHeart = $item`orange candy heart`;
-        const orangeHearts = () => availableAmount(orangeHeart);
-        const pinkHeart = $item`pink candy heart`;
-        const pinkHearts = () => availableAmount($item`pink candy heart`);
-        let n = 0;
-        while (mints + orangeHearts() + pinkHearts() === 0 && n < 11) {
-            useSkill(1, $skill`Summon Candy Heart`);
-            n++;
-        }
-        if (mints + orangeHearts() + pinkHearts() === 0) {
-            throw "Failed to summon hearts in a timely manner";
-        }
-        if (mints >= 1) {
-            sweetSynthesis(mint, $item`peppermint sprout`);
-        } else if (orangeHearts() >= 1) {
-            sweetSynthesis(orangeHeart, $item`peppermint sprout`);
-        } else if (pinkHearts() >= 1) {
-            if (!have($item`peppermint twist`)) {
-                create(1, $item`peppermint twist`);
-            }
-            sweetSynthesis(pinkHeart, $item`peppermint twist`);
-        }
-    }
-    if (haveEffect($effect`Synthesis: Smart`) === 0) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize smart. Pwease fix me :c.";
-    }
-}
-
-export function synthMus(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    //const fudge = $item`Crimbo fudge`;
-    //const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    //const fudges = availableAmount(fudge);
-    //const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-	if (!get("_chubbyAndPlumpUsed")) {
-		useSkill(1, $skill`Chubby and Plump`);
-	}
-    if (have($item`Chubby and Plump bar`) && barks >= 2) {
-        sweetSynthesis($item`Chubby and Plump bar`, bark);
-    } else if (have($item`bag of many confections`)) {
-        const mint = $item`Senior Mints`;
-        const mints = availableAmount(mint);
-        const orangeHeart = $item`orange candy heart`;
-        const orangeHearts = () => availableAmount(orangeHeart);
-        const pinkHeart = $item`pink candy heart`;
-        const pinkHearts = () => availableAmount($item`pink candy heart`);
-        let n = 0;
-        while (mints + orangeHearts() === 0 && n < 11) {
-            useSkill(1, $skill`Summon Candy Heart`);
-            n++;
-        }
-        if (mints + orangeHearts() + pinkHearts() === 0) {
-            throw "Failed to summon hearts in a timely manner";
-        }
-        if (mints >= 1) {
-            sweetSynthesis(mint, $item`bag of many confections`);
-        } else if (orangeHearts() >= 1) {
-            sweetSynthesis(orangeHeart, $item`bag of many confections`);
-        } else if (pinkHearts() >= 1) {
-            sweetSynthesis(pinkHeart, $item`peppermint sprout`);
-        }
-    }
-    if (haveEffect($effect`Synthesis: Strong`) === 0) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize strong. You're on your own pal.";
-    }
-}
-
-export function synthMox(): void {
-    if (get("harvestGardenHardcore") === "none") {
-        visitUrl("campground.php?action=garden");
-    }
-    if (!get("_candySummons")) {
-        useSkill(1, $skill`Summon Crimbo Candy`);
-    }
-    const fudge = $item`Crimbo fudge`;
-    const pecan = $item`Crimbo candied pecan`;
-    const bark = $item`Crimbo peppermint bark`;
-    const fudges = availableAmount(fudge);
-    const pecans = availableAmount(pecan);
-    const barks = availableAmount(bark);
-	if (!get("_chubbyAndPlumpUsed")) {
-		useSkill(1, $skill`Chubby and Plump`);
-	}
-    if (pecans >=1) {
-        sweetSynthesis($item`Chubby and Plump bar`, pecan);
-    } else if (fudges > 1 && have($item`bag of many confections`)){
-        const taffy = $item`Daffy Taffy`;
-        const taffys = availableAmount(taffy);
-		const candy = $item`Cold Hots candy`;
-        const candys = availableAmount(candy);
-        const yellowHeart = $item`yellow candy heart`;
-        const yellowHearts = () => availableAmount(yellowHeart);
-        let n = 0;
-        while (taffys + yellowHearts() + candys === 0 && n < 11) {
-            useSkill(1, $skill`Summon Candy Heart`);
-            n++;
-        }
-        if (taffys + yellowHearts() + candys === 0) {
-            throw "Failed to summon hearts in a timely manner";
-        }
-        if (taffys >= 1) {
-            sweetSynthesis(taffy, $item`bag of many confections`);
-        } else if (yellowHearts() >= 1) {
-            sweetSynthesis(yellowHeart, $item`bag of many confections`);
-        } else if (candys >= 1) {
-            sweetSynthesis(candy, $item`bag of many confections`);
-        } else {
-			sweetSynthesis($item`peppermint sprout`, $item`Chubby and Plump bar`)
-		}
-    } else if (barks >= 1) {
-		sweetSynthesis($item`peppermint sprout`, $item`Chubby and Plump bar`)
-	}
-    if (haveEffect($effect`Synthesis: Cool`) === 0) {
-        throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize cool. Good Luck Buster.";
+    if (!get(`_asmo_gingercity`)) {
+        useFamiliar($familiar`Pair of Stomping Boots`);
+        set(`choiceAdventure1215`, 1);
+        set(`choiceAdventure1204`, 1);
+        advMacroAA($location`Gingerbread Civic Center`, Macro.step(`runaway`), 1);
+        advMacroAA($location`Gingerbread Train Station`, Macro.step(`runaway`), 4);
+        set(`_asmo_gingercity`, true);
     }
 }
 
@@ -560,8 +92,9 @@ export function kramcoCheck(): boolean {
 export function useDefaultFamiliar(canAttack = true): void {
     if (!get("_bagOfCandy") && canAttack) {
         useFamiliar($familiar`Stocking Mimic`);
-    } else if (!haveEffect($effect`Spit Upon`)
-        && !get("csServicesPerformed").split(",").includes("Reduce Gazelle Population")
+    } else if (
+        !haveEffect($effect`Spit Upon`) &&
+        !get("csServicesPerformed").split(",").includes("Reduce Gazelle Population")
     ) {
         useFamiliar($familiar`Melodramedary`);
         equip($slot`familiar`, $item`dromedary drinking helmet`);
@@ -625,6 +158,8 @@ export function ensureInnerElf(): void {
                 ),
                 () => {
                     ensureEffect($effect`Blood Bubble`);
+					setChoice(326, 1);
+					if (get("_kgbTranquilizerDartUses") >= 3) ensureMp(50);
                     advMacro(
                         $location`The Slime Tube`,
                         Macro.trySkill($skill`KGB tranquilizer dart`).trySkill($skill`Snokebomb`)
@@ -633,6 +168,9 @@ export function ensureInnerElf(): void {
             );
         } finally {
             setClan(get("asmocs_mainClan", "Alliance From Heck"));
+        }
+		if (!have($effect`Inner Elf`)) {
+            throw "Failed to get effect Inner Elf from Mother Slime.";
         }
     }
 }
@@ -652,9 +190,9 @@ export function fightSausageIfAble(location: Location, macro: Macro): void {
 
 export function shrug(ef: Effect) {
     if (haveEffect(ef) > 0) {
-      cliExecute(`shrug ${ef.name}`);
+        cliExecute(`shrug ${ef.name}`);
     }
-  }
+}
 
 // We have Stevedave's, Ur-Kel's on at all times during leveling (managed via mood); third and fourth slots are variable.
 
@@ -663,27 +201,27 @@ const songSlots = [
     $effects`Ur-Kel's Aria of Annoyance`,
     $effects`Power Ballad of the Arrowsmith, The Magical Mojomuscular Melody, The Moxious Madrigal, Ode to Booze, Jackasses' Symphony of Destruction`,
     $effects`Carlweather's Cantata of Confrontation, The Sonata of Sneakiness, Fat Leon's Phat Loot Lyric, Polka of Plenty`,
-  ];
-  const allKnownSongs = ([] as Effect[]).concat(...songSlots);
-  const allSongs = Skill.all()
+];
+const allKnownSongs = ([] as Effect[]).concat(...songSlots);
+const allSongs = Skill.all()
     .filter(
-      (skill) => toStringAsh(skill.class as unknown as string) === "Accordion Thief" && skill.buff
+        (skill) => toStringAsh(skill.class as unknown as string) === "Accordion Thief" && skill.buff
     )
     .map((skill) => toEffect(skill));
-  export function openSongSlot(song: Effect) {
+export function openSongSlot(song: Effect) {
     for (const songSlot of songSlots) {
-      if (songSlot.includes(song)) {
-        for (const shruggable of songSlot) {
-          shrug(shruggable);
+        if (songSlot.includes(song)) {
+            for (const shruggable of songSlot) {
+                shrug(shruggable);
+            }
         }
-      }
     }
     for (const badSong of allSongs) {
-      if (!allKnownSongs.includes(badSong)) {
-        shrug(badSong);
-      }
+        if (!allKnownSongs.includes(badSong)) {
+            shrug(badSong);
+        }
     }
-  }
+}
 
 export function ensurePotionEffect(ef: Effect, potion: Item): void {
     //stolen directly from bean
@@ -701,14 +239,14 @@ export function ensurePotionEffect(ef: Effect, potion: Item): void {
 
 export function ensureSong(ef: Effect) {
     if (haveEffect(ef) === 0) {
-      openSongSlot(ef);
-      if (!cliExecute(ef.default) || haveEffect(ef) === 0) {
-        throw `Failed to get effect ${ef.name}`;
-      }
+        openSongSlot(ef);
+        if (!cliExecute(ef.default) || haveEffect(ef) === 0) {
+            throw `Failed to get effect ${ef.name}`;
+        }
     } else {
-      print(`Already have effect ${ef.name}.`);
+        print(`Already have effect ${ef.name}.`);
     }
-  }
+}
 
 export function ensureEffect(ef: Effect, turns = 1): void {
     //stolen directly from bean
@@ -829,12 +367,6 @@ export function horse(horse: string): void {
     if (horsery() !== horse) cliExecute(`horsery ${horse}`);
 }
 
-export interface testDuration {
-    testName: string;
-    turnPrediction: number;
-    turnCost: number;
-}
-
 export function convertMilliseconds(milliseconds: number): string {
     const seconds = milliseconds / 1000;
     const minutes = Math.floor(seconds / 60);
@@ -868,20 +400,6 @@ export function fax(monster: Monster): void {
     }
 }
 
-export const tests: testDuration[] = [];
-
-export function testWrapper(name: string, test: Test, prepare: () => number): void {
-    if (testDone(test)) return;
-    const startTurns = myTurncount();
-    const predictedTurns = prepare();
-    doTest(test);
-    tests.push({
-        testName: name,
-        turnPrediction: predictedTurns,
-        turnCost: myTurncount() - startTurns,
-    });
-}
-
 export function questStep(questName: string): number {
     const stringStep = property.getString(questName);
     if (stringStep === "unstarted" || stringStep === "") return -1;
@@ -894,7 +412,6 @@ export function questStep(questName: string): number {
         return parseInt(stringStep.substring(4), 10);
     }
 }
-
 
 export function ensureMp(mp: number): void {
     if (myMp() > mp) return;
@@ -917,44 +434,26 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
     : $familiar`Left-Hand Man`;
 
 
-// Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
-
-
-  export function geneTonic(ph: Phylum) {
-	if (tonicsLeft() < 1) throw "You can't make any more tonics";
-	if (!have(getEffect(ph)) && !have(getTonic(ph))) {
-	  if (get("dnaSyringe") !== ph) throw "You have the wrong DNA in your syringe";
-	  makeTonic();
-	  if (!have(getTonic(ph))) {
-		throw "something went wrong getting your gene tonic";
-	  } else {
-		print(`successfully created ${getTonic(ph).name}`);
-	  }
-	} else {
-	  print(`You already have ${ph} DNA`);
-	}
-  }
-
-  function canCastLibrams(): boolean {
+function canCastLibrams(): boolean {
     const summonNumber = 1 + get("libramSummons");
     const cost = 1 + (summonNumber * (summonNumber - 10)) / 2;
     return myMp() >= cost + 100;
 }
 
-  export function burnLibrams(): void {
+export function burnLibrams(): void {
     if (!$skills`Summon Candy Heart, Summon Taffy, Summon Love Song`.some((skill) => have(skill)))
         return;
     while (canCastLibrams()) {
         const testsDone = get("csServicesPerformed").split(",");
         if (
             ((!testsDone.includes("Breed More Collies") && !have($item`green candy heart`)) ||
-            (!testsDone.includes("Make Margaritas") && !have($item`lavender candy heart`))) &&
+                (!testsDone.includes("Make Margaritas") && !have($item`lavender candy heart`))) &&
             have($skill`Summon Candy Heart`)
         ) {
             useSkill($skill`Summon Candy Heart`);
         } else if (
             !testsDone.includes("Breed More Collies") &&
-            !have($item`love song of icy revenge`, 4) && 
+            !have($item`love song of icy revenge`, 4) &&
             have($skill`Summon Love Song`)
         ) {
             useSkill($skill`Summon Love Song`);
@@ -965,11 +464,9 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
                 (!testsDone.includes("Breed More Collies") && !have($item`Pulled Blue Taffy`, 5))
         ) {
             useSkill($skill`Summon Taffy`);
-        }*/
-            
-            else {
-            const summonSkill = $skills`Summon Candy Heart, Summon Love Song`.find(
-                (skill) => have(skill)
+        }*/ else {
+            const summonSkill = $skills`Summon Candy Heart, Summon Love Song`.find((skill) =>
+                have(skill)
             );
             if (!summonSkill) return;
             useSkill(summonSkill);
@@ -977,148 +474,57 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
     }
 }
 
-const moonBonus = [
-	["weapon damage percent", "Mongoose", "20"],
-	["spell damage percent", "Wallaby", "20"],
-	["familiar weight", "Platypus", "5"],
-	["meat drop", "Wombat", "20"],
-	["item drop", "Packrat", "10"]
-];
-
 export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
-	if (pullsRemaining() > 0) {
-	  const quantityPull = Math.max(0, quantity - availableAmount(it));
-	  if (shopAmount(it) > 0) {
-		takeShop(Math.min(shopAmount(it), quantityPull), it);
-	  }
-	  if (storageAmount(it) < quantityPull) {
-		buyUsingStorage(quantityPull - storageAmount(it), it, maxPrice);
-	  }
-	  cliExecute(`pull ${quantityPull} ${it.name}`);
-	  return true;
-	} else return false;
+    if (pullsRemaining() > 0) {
+        const quantityPull = Math.max(0, quantity - availableAmount(it));
+        if (shopAmount(it) > 0) {
+            takeShop(Math.min(shopAmount(it), quantityPull), it);
+        }
+        if (storageAmount(it) < quantityPull) {
+            buyUsingStorage(quantityPull - storageAmount(it), it, maxPrice);
+        }
+        cliExecute(`pull ${quantityPull} ${it.name}`);
+        return true;
+    } else return false;
 }
-  
+
 export function ensurePullEffect(ef: Effect, it: Item) {
-	if (haveEffect(ef) === 0) {
-	  if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) ensureEffect(ef);
-	}
-}
-
-export function modTraceList(modifier: string) {
-	let totalVal = 0;
-	print("");
-	print("MOD TRACE: "+ modifier, "red");
-	for (const effect in myEffects()) {
-		let ef = toEffect(effect);
-		if (numericModifier(ef, modifier) !=0) {
-			totalVal = totalVal + numericModifier(ef, modifier);
-			print("EFFECT "+ ef+" : "+numericModifier(ef, modifier)+" "+modifier+" for "+haveEffect(ef)+" more turns");
-		}
-	}
-
-	for (const slot of $slots``){
-		let it = equippedItem(slot);
-		if (numericModifier(it, modifier) != 0 && 
-			(haveEquipped(it) || (haveEquipped($item`your cowboy boots`) && $slots`bootspur, bootskin`.includes(slot)))){
-				totalVal = totalVal + numericModifier(it, modifier);
-				print("SLOT "+ slot +" ITEM " + it + " : "+ numericModifier(it, modifier));
-		}
-	}
-	const famMod = numericModifier(myFamiliar(), modifier, familiarWeight(myFamiliar()) + weightAdjustment(), $item`none`);
-	if (famMod != 0){
-		totalVal = totalVal + famMod;
-		print("FAMILIAR " + myFamiliar() + " : " + famMod);
-	}
-	for (const sk of $skills``){
-		if (haveSkill(sk) && numericModifier(sk, modifier) != 0){
-			totalVal = totalVal + numericModifier(sk, modifier);
-			print("SKILL "+ sk + " : " + numericModifier(sk, modifier));
-		}
-	}
-
-	const myMoon = mySign();
-	if (modifier.includes("experience percent")){
-		if (modifier.includes("muscle") && inMuscleSign()){
-			totalVal = totalVal + 10;
-			print("MOON " + myMoon + " : " + 10);
-		}
-		else if (modifier.includes("mysticality") && inMysticalitySign()){
-			totalVal = totalVal + 10;
-			print("MOON " + myMoon + " : " + 10);
-		}
-		else if (modifier.includes("moxie") && inMoxieSign()){
-			totalVal = totalVal + 10;
-			print("MOON " + myMoon + " : " + 10);
-		}
-	}
-	/*else if (modifier.includes("damage percent")){
-		if (modifier.includes("weapon") && myMoon === "Mongoose"){
-			totalVal = totalVal + 20;
-			print("MOON " + myMoon + " : " + 20);			
-		}
-		else if (modifier.includes("spell") && myMoon === "Wallaby"){
-			totalVal = totalVal + 20;
-			print("MOON " + myMoon + " : " + 20);	
-		}
-	}
-	else if (modifier === "familiar weight" && myMoon === "Platypus"){
-		totalVal = totalVal + 5;
-		print("MOON " + myMoon + " : " + 5);	
-	}*/ 
-	else {
-		for (const line in moonBonus){
-			const mod = line[0];
-			const moon = line[1];
-			const bonus = line[2];
-			if (modifier === mod && myMoon === moon){
-				totalVal = totalVal + parseInt(bonus);
-				print("MOON " + myMoon + " : " + bonus)
-			}
-		}
-	}
-
-	const squint = $effect`Steely-Eyed Squint`;
-	const swagger = $effect`Bow-Legged Swagger`;
-
-	if (modifier === `item drop` && haveEffect(squint)){
-		print("EFFECT " + squint + " : " + totalVal);
-		totalVal = totalVal * 2;
-	}
-
-	if (haveEffect(swagger) && [`weapon damage`, `weapon damage percent`, `initiative`].includes(modifier)){
-		print("EFFECT " + swagger + " : " + totalVal);
-		totalVal = totalVal * 2;
-	}
-
-	print("Total " + modifier + ": " + totalVal, "purple");
-	print("");
+    if (haveEffect(ef) === 0) {
+        if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) ensureEffect(ef);
+    }
 }
 
 export function inMysClass() {
-	if ($classes`Sauceror, Pastamancer`.includes(myClass())){
-		return true;
-	}
-	else{
-		return false;
-	}
+    if ($classes`Sauceror, Pastamancer`.includes(myClass())) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 export function inMoxClass() {
-	if ($classes`Accordion Thief, Disco Bandit`.includes(myClass())){
-		return true;
-	}
-	else{
-		return false;
-	}
+    if ($classes`Accordion Thief, Disco Bandit`.includes(myClass())) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 export function inMusClass() {
-	if ($classes`Seal Clubber, Turtle Tamer`.includes(myClass())){
-		return true;
-	}
-	else{
-		return false;
-	}
+    if ($classes`Seal Clubber, Turtle Tamer`.includes(myClass())) {
+        return true;
+    } else {
+        return false;
+    }
 }
+
+export function unequip(item: Item): void {
+    while (equippedAmount(item) > 0) {
+        const slot = Slot.all().find((equipmentSlot) => equippedItem(equipmentSlot) === item);
+        if (!slot) return;
+        equip(slot, $item`none`);
+    }
+}
+
+export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
 

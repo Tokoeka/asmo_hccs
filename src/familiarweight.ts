@@ -1,13 +1,9 @@
 import {
     cliExecute,
     create,
-    familiarWeight,
-    myFamiliar,
     runChoice,
-    use,
     useFamiliar,
     visitUrl,
-    weightAdjustment,
 } from "kolmafia";
 import {
     $effect,
@@ -16,7 +12,7 @@ import {
     $location,
     $monster,
     $skill,
-	BeachComb,
+    BeachComb,
     get,
     have,
     Macro,
@@ -24,8 +20,9 @@ import {
     Witchess,
 } from "libram";
 import { defaultKill } from "./asmohccs-macros";
-import { advMacroAA, ensureEffect, horse, modTraceList, setChoice } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import uniform, { famweightOutfit } from "./outfits";
+import { modTraceList } from "./modtrace";
 
 export function universalWeightBuffs(): void {
     ensureEffect($effect`Empathy`);
@@ -51,12 +48,12 @@ function gearAndUncommonBuffs() {
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
     if (have($item`burning newspaper`) && !have($item`rope`)) create(1, $item`burning paper crane`);
     if (have($item`short stack of pancakes`)) ensureEffect($effect`Shortly Stacked`);
-	if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
+    if (have($item`green candy heart`)) ensureEffect($effect`Heart of Green`);
     useFamiliar($familiar`Baby Bugged Bugbear`);
     visitUrl("arena.php");
 
-	//removed due to Meat buff being better for aftercore than 1 turn saved
-	/*if (!get("_madTeaParty")) {
+    //removed due to Meat buff being better for aftercore than 1 turn saved
+    /*if (!get("_madTeaParty")) {
 		visitUrl("clan_viplounge.php?action=lookingglass&whichfloor=2");
 		cliExecute("acquire sombrero-mounted sparkler");
 		ensureEffect($effect`You Can Really Taste The Dormouse`);
@@ -89,7 +86,11 @@ function takeAShower() {
     horse("dark");
     uniform();
     setChoice(1387, 3);
-    if (get("_meteorShowerUses") < 5 && !have($effect`Meteor Showered`) && get(`_saberForceUses`) < 5) {
+    if (
+        get("_meteorShowerUses") < 5 &&
+        !have($effect`Meteor Showered`) &&
+        get(`_saberForceUses`) < 5
+    ) {
         advMacroAA(
             $location`The Dire Warren`,
             Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
@@ -106,15 +107,20 @@ function takeAShower() {
 function testPrep() {
     famweightOutfit();
     if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
+    /*while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
+    use($item`love song of icy revenge`);
+  }
+  while (have($item`pulled blue taffy`) && !have($effect`Blue Swayed`, 50)) {
+    use($item`pulled blue taffy`);
+  }*/
 }
 
-export default function familiarTest(): number {
+export default function familiarTest(): void {
     universalWeightBuffs();
-	universalWeightEffects();
+    universalWeightEffects();
     familiarStuff();
     gearAndUncommonBuffs();
     takeAShower();
     testPrep();
-	modTraceList("familiar weight");
-    return 60 - Math.floor((familiarWeight(myFamiliar()) + weightAdjustment()) / 5);
+    modTraceList("familiar weight");
 }

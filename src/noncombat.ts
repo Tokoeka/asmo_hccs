@@ -4,24 +4,37 @@ import {
     cliExecute,
     equip,
     getFuel,
+    getWorkshed,
     haveEffect,
     itemAmount,
-	knollAvailable,
-	myClass,
-    numericModifier,
+    knollAvailable,
+    myClass,
+    mySign,
     runChoice,
     runCombat,
     use,
     useFamiliar,
     visitUrl,
 } from "kolmafia";
-import { $classes, $coinmaster, $effect, $familiar, $item, $slot, get, have } from "libram";
+import {
+    $classes,
+    $coinmaster,
+    $effect,
+    $familiar,
+    $item,
+    $slot,
+    CommunityService,
+    get,
+    have,
+} from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
-import { ensureEffect, fuelUp, heal, horse, modTraceList, setChoice } from "./asmohccs-lib";
+import { ensureEffect, heal, horse, setChoice, setClan } from "./asmohccs-lib";
 import uniform, { noncombatOutfit } from "./outfits";
+import { modTraceList } from "./modtrace";
+import { fuelUp } from "./workshed";
 
-const predictor = () => 60 + (20 + numericModifier("combat rate")) * 3;
+const predictor = () => CommunityService.Noncombat.prediction;
 
 function castBuffs() {
     universalWeightBuffs();
@@ -30,18 +43,20 @@ function castBuffs() {
     equip($slot`acc3`, $item`Powerful Glove`);
     ensureEffect($effect`Invisible Avatar`);
 
-	if ($classes`pastamancer, disco bandit`.includes(myClass())){
-		ensureEffect($effect`Blessing of the Bird`);
-	}
-    
+    if ($classes`pastamancer, disco bandit`.includes(myClass())) {
+        ensureEffect($effect`Blessing of the Bird`);
+    }
+
     if (haveEffect($effect`Fat Leon's Phat Loot Lyric`))
         cliExecute("shrug fat leon's phat loot lyric");
     ensureEffect($effect`The Sonata of Sneakiness`);
 
     if (!get("_olympicSwimmingPool")) cliExecute("swim sprints");
 
-    //while (getFuel() < 37) fuelUp();
-    //if (!have($effect`Driving Stealthily`)) cliExecute("asdonmartin drive stealthily");
+    while (getFuel() < 37 && getWorkshed() === $item`asdon martin keyfob`) fuelUp();
+    if (!have($effect`Driving Stealthily`) && getWorkshed() === $item`asdon martin keyfob`) {
+        cliExecute("asdonmartin drive stealthily");
+    }
 
     horse("dark");
 }
@@ -55,9 +70,9 @@ function godLobster() {
         useFamiliar($familiar`God Lobster`);
         equip($slot`familiar`, $item`God Lobster's Ring`);
         uniform();
-		if ($classes`sauceror, accordion thief, pastamancer`.includes(myClass())){
-			equip($slot`hat`, $item`Daylight Shavings Helmet`);
-		}
+        if ($classes`sauceror, accordion thief, pastamancer`.includes(myClass())) {
+            equip($slot`hat`, $item`Daylight Shavings Helmet`);
+        }
         defaultKill.setAutoAttack();
         heal();
         setChoice(1310, 2);
@@ -79,11 +94,23 @@ function testPrep() {
             }
         },
         () => {
-			if(itemAmount($item`squeaky toy rose`) > 0){
-				use($item`squeaky toy rose`)
+            if (itemAmount($item`squeaky toy rose`) > 0) {
+                use($item`squeaky toy rose`);
+            }
+        },
+		() => {
+			if (itemAmount($item`worst candy`) > 0){
+				ensureEffect($effect`Predjudicetidigitation`);
 			}
 		},
         () => use($item`shady shades`),
+		() => {
+			if (!get("_floundryItemCreated")) {
+				setClan(get("asmocs_fishClan", "Alliance From Heck"));
+				cliExecute("acquire fish hatchet");
+				noncombatOutfit();
+			}
+		}
     ];
 
     for (const improvement of improvements) {
@@ -92,36 +119,33 @@ function testPrep() {
 }
 
 function moonTune() {
-	// Tune moon sign to Platypus
-	const desertAccessItem = knollAvailable()
-            ? $item`bitchin' meatcar`
-            : $item`Desert Bus pass`;
+    // Tune moon sign to Platypus
+    const desertAccessItem = knollAvailable() ? $item`bitchin' meatcar` : $item`Desert Bus pass`;
     if (!have(desertAccessItem)) {
         cliExecute(`acquire ${desertAccessItem.name}`);
     }
     visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
 
-	if (!get("moonTuned")) {
-		if (get("_campAwaySmileBuffs") === 0) {
-		  visitUrl("place.php?whichplace=campaway&action=campaway_sky");
-		}
-	
-		// Unequip spoon.
-		equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
-		equip($slot`acc2`, $item`Powerful Glove`);
-		equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-	
-		// Actually tune the moon.
-		visitUrl("inv_use.php?whichitem=10254&doit=96&whichsign=4");
-	  }
+    if (!get("moonTuned") && mySign() !== `Platypus`) {
+        if (get("_campAwaySmileBuffs") === 0) {
+            visitUrl("place.php?whichplace=campaway&action=campaway_sky");
+        }
+
+        // Unequip spoon.
+        equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
+        equip($slot`acc2`, $item`Powerful Glove`);
+        equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+
+        // Actually tune the moon.
+        visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
+    }
 }
 
-export default function noncombatTest(): number {
+export default function noncombatTest(): void {
     castBuffs();
-	moonTune();
+    moonTune();
     godLobster();
     testPrep();
     if (predictor() > 1) throw "Failed to cap noncombat";
-	modTraceList("combat rate");
-    return predictor();
+    modTraceList("combat rate");
 }

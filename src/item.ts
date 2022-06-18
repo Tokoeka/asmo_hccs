@@ -1,34 +1,28 @@
 import {
-    adv1,
-    availableAmount,
     cliExecute,
-    containsText,
     create,
-    drink,
     equip,
     getFuel,
     getWorkshed,
     haveEffect,
     myClass,
-    myInebriety,
     numericModifier,
-    print,
     use,
     useFamiliar,
-    useSkill,
     visitUrl,
 } from "kolmafia";
 import {
     $class,
-	$classes,
+    $classes,
     $effect,
     $familiar,
     $item,
     $location,
-	$monster,
-	$phylum,
+    $monster,
+    $phylum,
     $skill,
     $slot,
+    CommunityService,
     get,
     have,
     Macro,
@@ -37,21 +31,15 @@ import uniform, { itemOutfit } from "./outfits";
 import {
     advMacroAA,
     ensureEffect,
-    fuelUp,
-    geneTonic,
-    horse,
-	mapMacro,
-	modTraceList,
-    synthItem,
+    mapMacro,
     useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
+import { synthItem } from "./synthesis";
+import { fuelUp, geneTonic } from "./workshed";
+import { modTraceList } from "./modtrace";
 
-const predictor = () =>
-    60 -
-    Math.floor(numericModifier("item drop") / 30 + 0.001) -
-    Math.floor(numericModifier("booze drop") / 15 + 0.001);
-
+const predictor = () => CommunityService.BoozeDrop.prediction;
 
 function castBuffs() {
     if (!have($effect`Synthesis: Collection`)) synthItem();
@@ -59,7 +47,7 @@ function castBuffs() {
     ensureEffect($effect`Fat Leon's Phat Loot Lyric`);
     ensureEffect($effect`The Spirit of Taking`);
     ensureEffect($effect`items.enh`);
-	ensureEffect($effect`Singer's Faithful Ocelot`);
+    ensureEffect($effect`Singer's Faithful Ocelot`);
 
     if (getWorkshed() === $item`Asdon Martin keyfob` && !have($effect`Driving Observantly`)) {
         if (getFuel() < 37) fuelUp();
@@ -88,25 +76,25 @@ function castBuffs() {
 }
 
 function ninjaTot() {
-	useFamiliar($familiar`puck man`); 
-	uniform();
-	if ($classes`sauceror, disco bandit`.includes(myClass())){
-		equip($slot`hat`, $item`Daylight Shavings Helmet`);
-	}
+    useFamiliar($familiar`puck man`);
+    uniform();
+    if ($classes`sauceror, disco bandit`.includes(myClass())) {
+        equip($slot`hat`, $item`Daylight Shavings Helmet`);
+    }
     mapMacro(
-    	$location`The Haiku Dungeon`,
+        $location`The Haiku Dungeon`,
         $monster`amateur ninja`,
-        Macro.externalIf(
-			have($item`cosmic bowling ball`),
-			Macro.skill($skill`Bowl Straight Up`)
-		  ).if_(
-            `monsterid ${$monster`amateur ninja`.id}`,
-            Macro.skill($skill`Gingerbread Mob Hit`)
-        ).step("abort")
+        Macro.externalIf(have($item`cosmic bowling ball`), Macro.skill($skill`Bowl Straight Up`))
+            .if_(
+                `monsterid ${$monster`amateur ninja`.id}`,
+                Macro.skill($skill`Gingerbread Mob Hit`)
+            )
+            .step("abort")
     );
 }
 
 function batForm() {
+    //TODO - Combine into either Ninjatot or Pirate DNA???
     if (
         get("_latteRefillsUsed") < 3 &&
         numericModifier($item`latte lovers member's mug`, "Item Drop") < 20
@@ -121,7 +109,7 @@ function batForm() {
     if (!have($effect`Bat-Adjacent Form`)) {
         const run = Macro.skill($skill`Become a Bat`);
         if (!get("_latteBanishUsed")) {
-            useDefaultFamiliar(false); 
+            useDefaultFamiliar(false);
             equip($slot`off-hand`, $item`latte lovers member's mug`);
             equip($slot`back`, $item`vampyric cloake`);
             run.skill($skill`Throw Latte on Opponent`);
@@ -147,20 +135,22 @@ function batForm() {
 
 function pirateDNA() {
     // get pirate DNA and make a gene tonic
-	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
-		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
-    	advMacroAA(
-        	$location`Pirates of the Garbage Barges`,
-        	Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
-        	() => {
-	            return get("dnaSyringe") !== $phylum`pirate`;
-    	    }
-      	);
-		geneTonic($phylum`pirate`);
-		ensureEffect($effect`Human-Pirate Hybrid`);
-	} else {
-		throw "Something went wrong getting pirate DNA.";
-	}
+    if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
+        equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
+		useFamiliar($familiar`Ms. Puck man`);
+		equip($slot`familiar`, $item`none`); //ensure Fam is not wearing TCW
+        advMacroAA(
+            $location`Pirates of the Garbage Barges`,
+            Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
+            () => {
+                return get("dnaSyringe") !== $phylum`pirate`;
+            }
+        );
+        geneTonic($phylum`pirate`);
+        ensureEffect($effect`Human-Pirate Hybrid`);
+    } else {
+        throw "Something went wrong getting pirate DNA.";
+    }
 }
 
 function testPrep() {
@@ -172,41 +162,40 @@ function testPrep() {
     }
     useFamiliar($familiar`Trick-or-Treating Tot`);
     itemOutfit();
-	if (numericModifier($item`latte lovers member's mug`, "Item Drop") === 20){
-		equip($slot`offhand`, $item`latte lovers member's mug`);
-	}
+    if (numericModifier($item`latte lovers member's mug`, "Item Drop") === 20) {
+        equip($slot`offhand`, $item`latte lovers member's mug`);
+    }
 
-	const improvements = [
-		() => {
-			if (myClass() === $class`sauceror`){
-				ensureEffect($effect`Blessing of the Bird`);
-			}
-		},
+    const improvements = [
+        () => {
+            if (myClass() === $class`sauceror`) {
+                ensureEffect($effect`Blessing of the Bird`);
+            }
+        },
         () => ensureEffect($effect`Nearly All-Natural`),
-		() => {
-			if (have($item`Salsa Caliente™ candle`)) {
-				use($item`Salsa Caliente™ candle`)
-			}
-		},
+        () => {
+            if (have($item`Salsa Caliente™ candle`)) {
+                use($item`Salsa Caliente™ candle`);
+            }
+        },
     ];
     for (const improvement of improvements) {
         if (predictor() > 1) improvement();
     }
 
-	//Save for aftercore bonus adventures
-	/*if (predictor() > 1 && myClass() === $class`Accordion Thief` && !get("_barrelPrayer")) {
+    //Save for aftercore bonus adventures
+    /*if (predictor() > 1 && myClass() === $class`Accordion Thief` && !get("_barrelPrayer")) {
 		cliExecute("barrelprayer buff");
 	}*/
 }
 
-export default function itemTest(): number {
+export default function itemTest(): void {
     castBuffs();
     pirateDNA();
-	ninjaTot();
+    ninjaTot();
     batForm();
     testPrep();
     if (predictor() > 1) throw "Failed to cap item";
-	modTraceList("item drop");
-	modTraceList("booze drop");
-    return predictor();
+    modTraceList("item drop");
+    modTraceList("booze drop");
 }

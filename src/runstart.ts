@@ -9,14 +9,14 @@ import {
     haveEffect,
     inHardcore,
     itemAmount,
+    Item,
     myClass,
-	myGardenType,
+    myGardenType,
     myLevel,
-    myName,
     mySpleenUse,
-	print,
+    print,
     storageAmount,
-	takeStorage,
+    takeStorage,
     retrieveItem,
     runChoice,
     use,
@@ -24,8 +24,23 @@ import {
     useSkill,
     visitUrl,
 } from "kolmafia";
-import { $class, $coinmaster, $effect, $familiar, $item, $items, $skill, get, have, set, SourceTerminal } from "libram";
-import { ensureSong, ensureEffect, setClan, tryUse, pullIfPossible } from "./asmohccs-lib";
+import {
+    $class,
+    $coinmaster,
+    $effect,
+    $familiar,
+    $item,
+    $items,
+    $skill,
+    get,
+    have,
+    set,
+    SourceTerminal,
+} from "libram";
+import { ensureSong, ensureEffect, setClan, tryUse } from "./asmohccs-lib";
+import { ResourceTracker } from "./resources";
+
+const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
 
 function juiceBar() {
     visitUrl("place.php?whichplace=chateau&action=chateau_desk2");
@@ -38,16 +53,16 @@ function toot() {
     tryUse(1, $item`pork elf goodies sack`);
     autosell(5, $item`baconstone`);
     autosell(5, $item`hamethyst`);
-    autosell( itemAmount($item`porquoise`) -2, $item`porquoise`);
+    autosell(itemAmount($item`porquoise`) - 2, $item`porquoise`);
     if (!have($item`toy accordion`)) {
         buy(1, $item`toy accordion`);
     }
 
-	if (myGardenType() === "peppermint") {
+    if (myGardenType() === "peppermint") {
         cliExecute("garden pick");
     } else {
         print(
-          "WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
+            "WARNING: This script is built for peppermint garden. Switch gardens or find other candy."
         );
     }
 }
@@ -78,12 +93,12 @@ export function grimoires() {
 function setSettings() {
     SourceTerminal.educate([$skill`Digitize`, $skill`Extract`]);
     setClan(get("asmocs_mainClan", "Alliance From Heck"));
-	set("choiceAdventure1106",1); //Halloweiner Dog get Buff to help with Stat Tests
-	set("mpAutoRecovery",0.05);
-	set("mpAutoRecoveryTarget",0.1);
-	set("hpAutoRecovery",0.65);
-	set("hpAutoRecoveryTarget",0.95);
-	visitUrl("clan_viplounge.php?action=fwshop"); //visit Fireworks shop to ensure can buy fireworks
+    set("choiceAdventure1106", 1); //Halloweiner Dog get Buff to help with Stat Tests
+    set("mpAutoRecovery", 0.05);
+    set("mpAutoRecoveryTarget", 0.1);
+    set("hpAutoRecovery", 0.65);
+    set("hpAutoRecoveryTarget", 0.95);
+    visitUrl("clan_viplounge.php?action=fwshop"); //visit Fireworks shop to ensure can buy fireworks
 }
 
 function getTurns() {
@@ -94,7 +109,7 @@ function getTurns() {
     }
     if (!get("_borrowedTimeUsed")) {
         if (!have($item`borrowed time`)) {
-            create(1, $item`borrowed time`);
+            resources.tome($item`borrowed time`);
         }
         use(1, $item`borrowed time`);
     }
@@ -131,18 +146,18 @@ function prepGear() {
             use(1, $item`dungeoneering kit`);
         }
 
-    if (get("backupCameraReverserEnabled") === false) {
-        cliExecute("backupcamera reverser on");
+        if (get("backupCameraReverserEnabled") === false) {
+            cliExecute("backupcamera reverser on");
         }
     }
-	
+
     if (!get("_floundryItemCreated")) {
-		setClan(get("asmocs_fishClan", "Alliance From Heck"));
+        setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire codpiece");
     }
 
     // Get flimsy hardwood scraps.
-	//TODO Change depending on class???
+    //TODO Change depending on class???
     visitUrl("shop.php?whichshop=lathe");
     if (availableAmount($item`flimsy hardwood scraps`) > 0) {
         retrieveItem(1, $item`weeping willow wand`);
@@ -162,41 +177,35 @@ function prepGear() {
 function vote() {
     if (!get("_voteToday")) {
         visitUrl("place.php?whichplace=town_right&action=townright_vote");
-		if (myClass() === $class`Pastamancer`) {
-			//Weapon Damage & Gear Drop
-			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
-		}
-		else if (myClass() === $class`Sauceror`) {
-			//Exp & Spooky Res
-			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=4");
-		}
-		else if (myClass() === $class`Accordion Thief`) {
-			//Booze Drop & Init
-			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=3&local%5B%5D=4");
-		}
-		else if (myClass() === $class`Disco Bandit`) {
-			//Max MP  & Food Drop
-			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
-		}
-		else if (myClass() === $class`Seal Clubber`) {
-			//Fam Exp & Spooky Res
-			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
-		}
-		else if (myClass() === $class`Turtle Tamer`) {
-			//ML & Weapon Dmg
-			visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=2");
-		}
+        if (myClass() === $class`Pastamancer`) {
+            //Weapon Damage & Gear Drop
+            visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+        } else if (myClass() === $class`Sauceror`) {
+            //Exp & Spooky Res
+            visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=2&local%5B%5D=4");
+        } else if (myClass() === $class`Accordion Thief`) {
+            //Booze Drop & Init
+            visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=3&local%5B%5D=4");
+        } else if (myClass() === $class`Disco Bandit`) {
+            //Max MP  & Food Drop
+            visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+        } else if (myClass() === $class`Seal Clubber`) {
+            //Fam Exp & Spooky Res
+            visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=3");
+        } else if (myClass() === $class`Turtle Tamer`) {
+            //ML & Weapon Dmg
+            visitUrl("choice.php?option=1&whichchoice=1331&g=2&local%5B%5D=1&local%5B%5D=2");
+        }
     }
 }
 
 function deck() {
     if (!get("_deckCardsDrawn")) {
-		if(!inHardcore()){
-			cliExecute(`cheat rope`); //Don't get Wrench in Softcore as we can pull the Stick-Knife
-		}
-		else{
-			cliExecute("cheat wrench; cheat rope");
-		}
+		//resources.deck("1952"); TODO - Add getting 1952 Card if need meat?
+		resources.deck("rope");
+        if (inHardcore()) { //Don't get Wrench in Softcore as we can pull the Stick-Knife
+			resources.deck("wrench");
+        }
     }
 }
 
@@ -223,12 +232,11 @@ function buff100() {
     }
 
     if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
-
 }
 
 function horsery() {
     //get Crazy Horse
-    if( get("horseryAvailable") && get("_horsery")==="") {
+    if (get("horseryAvailable") && get("_horsery") === "") {
         cliExecute("horsery crazy");
     }
 }
@@ -238,10 +246,10 @@ function doPulls() {
 
     const pulls: (Item | Item[])[] = [
         $items`repaid diaper, Great Wolf's beastly trousers`,
-        $items`snow suit, meteorite necklace, meteorite ring, meteorite fragment, meteorite earring`,
+        $items`tiny costume wardrobe, snow suit`,
         $item`Stick-Knife of Loathing`,
         $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
-        $item`corrupted marrow`,
+        $items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, worst candy`,
     ];
 
     for (const pull of pulls) {
@@ -256,10 +264,8 @@ function doPulls() {
     }
 }
 
-
-
 export function runStart(): void {
-	doPulls();
+    doPulls();
     setSettings();
     toot();
     getTurns();
