@@ -3,7 +3,6 @@ import {
 	create,
 	haveEffect,
 	myClass,
-	numericModifier,
 	runChoice,
 	use,
 	useFamiliar,
@@ -18,15 +17,14 @@ import {
 	$skill,
 	$slot,
 	BeachComb,
+	CommunityService,
 	get,
 	have,
-	set,
 	Macro,
-	CommunityService,
+	set,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
-import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import uniform, { hotresOutfit } from "./outfits";
 import { modTraceList } from "./modtrace";
 const predictor = () => CommunityService.HotRes.prediction;
@@ -74,7 +72,7 @@ function castBuffs() {
 		cliExecute("witchess");
 	}
 
-	if (myClass() === $class`seal clubber`) {
+	if (myClass() === $class`Seal Clubber`) {
 		ensureEffect($effect`Blessing of the Bird`);
 	}
 }
@@ -89,7 +87,7 @@ function thisFireIsOutOfControl() {
 		advMacroAA(
 			$location`The Dire Warren`,
 			Macro.skill($skill`Fire Extinguisher: Foam Yourself`)
-				.skill($skill`become a cloud of mist`)
+				.skill($skill`Become a Cloud of Mist`)
 				.skill($skill`Use the Force`),
 			() => haveEffect($effect`Fireproof Foam Suit`) < 1 && get(`_saberForceUses`) < 3,
 			() => {

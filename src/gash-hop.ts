@@ -1,4 +1,3 @@
-import { retrieveItem } from "kolmafia";
 import {
 	$class,
 	$classes,

@@ -29,7 +29,6 @@ import {
 } from "libram";
 import uniform, { itemOutfit } from "./outfits";
 import { advMacroAA, ensureEffect, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
-import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
@@ -71,9 +70,9 @@ function castBuffs() {
 }
 
 function ninjaTot() {
-	useFamiliar($familiar`puck man`);
+	useFamiliar($familiar`Puck Man`);
 	uniform();
-	if ($classes`sauceror, disco bandit`.includes(myClass())) {
+	if ($classes`Sauceror, Disco Bandit`.includes(myClass())) {
 		equip($slot`hat`, $item`Daylight Shavings Helmet`);
 	}
 	mapMacro(
@@ -132,7 +131,7 @@ function pirateDNA() {
 	// get pirate DNA and make a gene tonic
 	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
 		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
-		useFamiliar($familiar`Ms. Puck man`);
+		useFamiliar($familiar`Ms. Puck Man`);
 		equip($slot`familiar`, $item`none`); //ensure Fam is not wearing TCW
 		advMacroAA(
 			$location`Pirates of the Garbage Barges`,
@@ -163,7 +162,7 @@ function testPrep() {
 
 	const improvements = [
 		() => {
-			if (myClass() === $class`sauceror`) {
+			if (myClass() === $class`Sauceror`) {
 				ensureEffect($effect`Blessing of the Bird`);
 			}
 		},

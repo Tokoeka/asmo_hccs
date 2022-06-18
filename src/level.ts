@@ -3,7 +3,6 @@ import {
 	buy,
 	cliExecute,
 	create,
-	drink,
 	eat,
 	equip,
 	getCounters,
@@ -14,7 +13,6 @@ import {
 	knollAvailable,
 	mpCost,
 	myClass,
-	myInebriety,
 	myLevel,
 	myMeat,
 	myMp,
@@ -286,25 +284,24 @@ function castBuffs() {
 	if (!have($item`turtle totem`)) cliExecute("acquire turtle totem");
 	if (!have($item`saucepan`)) cliExecute("acquire saucepan");
 
-	$skills`The Magical Mojomuscular Melody, 
-    Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, 
-     Polka of Plenty, Leash of Linguini, Empathy of the Newt, 
-     Blood Bond, Blood Bubble, Song of Bravado, Get Big`.forEach((buff) => {
-		if (!have(toEffect(buff))) {
-			if (myMp() < mpCost(buff)) {
-				if (totalFreeRests() > get("timesRested")) {
-					visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
-				} else if (availableAmount($item`psychokinetic energy blob`) >= 1) {
-					use(2, $item`psychokinetic energy blob`);
-				} else {
-					eat(1, $item`magical sausage`);
+	$skills`The Magical Mojomuscular Melody, Stevedave's Shanty of Superiority, Fat Leon's Phat Loot Lyric, The Polka of Plenty, Leash of Linguini, Empathy of the Newt, Blood Bond, Blood Bubble, Song of Bravado, Get Big`.forEach(
+		(buff) => {
+			if (!have(toEffect(buff))) {
+				if (myMp() < mpCost(buff)) {
+					if (totalFreeRests() > get("timesRested")) {
+						visitUrl("place.php?whichplace=chateau&action=chateau_restbox");
+					} else if (availableAmount($item`psychokinetic energy blob`) >= 1) {
+						use(2, $item`psychokinetic energy blob`);
+					} else {
+						eat(1, $item`magical sausage`);
+					}
 				}
+				useSkill(1, buff);
 			}
-			useSkill(1, buff);
 		}
-	});
+	);
 
-	if (holiday() == `Dependence Day` && myMeat() >= 400) {
+	if (holiday() === `Dependence Day` && myMeat() >= 400) {
 		if (inMoxClass()) {
 			buy($item`snake`, 1, 300);
 			use($item`snake`);
@@ -453,7 +450,7 @@ function lov(): void {
 function acquireFruit() {
 	cliExecute("backupcamera ml");
 
-	if ($classes`sauceror, seal clubber, turtle tamer`.includes(myClass())) {
+	if ($classes`Sauceror, Seal Clubber, Turtle Tamer`.includes(myClass())) {
 		//acquiring lemon (for mus classes) and cherry for saucerors (as well as lime and grapefruit if you don't have Summon Sobriety & Scurvy)
 		uniform();
 		useDefaultFamiliar(false);
@@ -465,10 +462,10 @@ function acquireFruit() {
 
 		mapMacro(
 			$location`The Skeleton Store`,
-			$monster`Novelty Tropical Skeleton`,
+			$monster`novelty tropical skeleton`,
 			Macro.if_(
-				`monsterid ${$monster`Novelty Tropical Skeleton`.id}`,
-				Macro.trySkill($skill`feel envy`).trySkill($skill`shattering punch`)
+				`monsterid ${$monster`novelty tropical skeleton`.id}`,
+				Macro.trySkill($skill`Feel Envy`).trySkill($skill`Shattering Punch`)
 			)
 		);
 	} else if (inMoxClass()) {
@@ -477,8 +474,8 @@ function acquireFruit() {
 
 		cliExecute("genie monster evil olive");
 		runCombat(
-			Macro.trySkill($skill`feel envy`)
-				.trySkill($skill`shattering punch`)
+			Macro.trySkill($skill`Feel Envy`)
+				.trySkill($skill`Shattering Punch`)
 				.toString()
 		);
 	}
@@ -533,7 +530,7 @@ function sauceCraft() {
 					use(1, $item`ointment of the occult`);
 				}
 			}
-			if (myClass() === $class`sauceror`) {
+			if (myClass() === $class`Sauceror`) {
 				if (!have($item`oil of expertise`)) {
 					create(1, $item`oil of expertise`);
 				}
@@ -836,7 +833,7 @@ function digitwinked() {
 	}
 
 	advMacroAA(
-		$location`the haunted kitchen`,
+		$location`The Haunted Kitchen`,
 		Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(),
 		() => {
 			return getCounters("Digitize", 0, 0).trim() !== "";
@@ -849,7 +846,7 @@ function digitwinked() {
 	}
 
 	advMacroAA(
-		$location`the haunted kitchen`,
+		$location`The Haunted Kitchen`,
 		Macro.step(delevel).step(easyFight).step(candyblast).attack().repeat(),
 		() => {
 			return getCounters("Romantic Monster window end", 0, 0).trim() !== "";
@@ -866,7 +863,7 @@ function hybridize(): void {
 	}
 	// become a human fish hybrid
 	if (!DNALab.isHybridized($phylum`fish`) && get("dnaSyringe") !== $phylum`fish`) {
-		useFamiliar($familiar`ms puck man`);
+		useFamiliar($familiar`Ms. Puck Man`);
 		advMacroAA(
 			$location`The Bubblin' Caldera`,
 			Macro.while_(

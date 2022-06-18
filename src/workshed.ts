@@ -3,16 +3,16 @@ import {
 	buy,
 	cliExecute,
 	create,
-	print,
-	use,
 	getWorkshed,
 	Phylum,
+	print,
+	use,
 } from "kolmafia";
 import { $item, get, have } from "libram";
 import { getEffect, getTonic, makeTonic, tonicsLeft } from "libram/dist/resources/2014/DNALab";
 
 export function fuelUp(): void {
-	if (getWorkshed() === $item`Asdon Martin Keyfob`) {
+	if (getWorkshed() === $item`Asdon Martin keyfob`) {
 		buy(1, $item`all-purpose flower`);
 		use(1, $item`all-purpose flower`);
 		buy(availableAmount($item`wad of dough`), $item`soda water`);

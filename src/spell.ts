@@ -1,27 +1,27 @@
 import {
 	availableAmount,
+	canEquip,
 	cliExecute,
 	create,
 	eat,
 	haveEffect,
 	inHardcore,
+	itemAmount,
 	maximize,
 	myClass,
 	myHp,
-	myMaxhp,
 	myLevel,
+	myMaxhp,
 	myMp,
 	numericModifier,
+	retrieveItem,
 	runChoice,
+	storageAmount,
+	takeStorage,
 	use,
 	useFamiliar,
 	useSkill,
 	visitUrl,
-	retrieveItem,
-	canEquip,
-	storageAmount,
-	itemAmount,
-	takeStorage,
 } from "kolmafia";
 import {
 	$class,
@@ -57,9 +57,8 @@ const predictor = () => CommunityService.SpellDamage.prediction;
 
 function castBuffs() {
 	ensureEffect($effect`Simmering`);
-	$effects`Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, 
-        Song of Sauce, We're All Made of Starfish, Mental A-cue-ity`.forEach((effect) =>
-		ensureEffect(effect)
+	$effects`Pisces in the Skyces, Carol of the Hells, Arched Eyebrow of the Archmage, Song of Sauce, We're All Made of Starfish, Mental A-cue-ity`.forEach(
+		(effect) => ensureEffect(effect)
 	);
 
 	if (
@@ -159,7 +158,7 @@ function fingies() {
 }
 
 function shower() {
-	useFamiliar($familiar`ms. puck man`);
+	useFamiliar($familiar`Ms. Puck Man`);
 	/*if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
         uniform();
         setChoice(1387, 3);
@@ -193,7 +192,7 @@ function shower() {
 }
 
 function testPrep() {
-	useFamiliar($familiar`left-hand man`);
+	useFamiliar($familiar`Left-Hand Man`);
 	if (!inHardcore()) {
 		const meteor = $items`meteorite ring, meteorite fragment, meteorite earring`.find((item) =>
 			have(item)

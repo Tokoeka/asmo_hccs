@@ -1,4 +1,4 @@
-import { $item, $skill, Macro } from "libram";
+import { $skill, Macro } from "libram";
 
 export const delevel = Macro.trySkill("curse of weaksauce")
 	.trySkill("micrometeorite")

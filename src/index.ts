@@ -84,17 +84,9 @@ try {
 	print(
 		`This loop took ${convertMilliseconds(
 			gametimeToInt() - startTime
-		)}, assuming it ran contiguously, for a 1 day, ` +
-			myTurncount() +
-			` turn HCCS run. Organ use was ` +
-			myFullness() +
-			`/` +
-			myInebriety() +
-			`/` +
-			mySpleenUse() +
-			`. I drank ` +
-			(6 - availableAmount($item`astral pilsner`)) +
-			` Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
+		)}, assuming it ran contiguously, for a 1 day, ${myTurncount()} turn HCCS run. Organ use was ${myFullness()}/${myInebriety()}/${mySpleenUse()}. I drank ${
+			6 - availableAmount($item`astral pilsner`)
+		} Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!`,
 		"red"
 	);
 	if (["food", "booze"].includes(get("_questPartyFairQuest"))) {

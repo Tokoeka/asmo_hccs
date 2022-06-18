@@ -8,17 +8,17 @@ import {
 	eudoraItem,
 	haveEffect,
 	inHardcore,
-	itemAmount,
 	Item,
+	itemAmount,
 	myClass,
 	myGardenType,
 	myLevel,
 	mySpleenUse,
 	print,
-	storageAmount,
-	takeStorage,
 	retrieveItem,
 	runChoice,
+	storageAmount,
+	takeStorage,
 	use,
 	useFamiliar,
 	useSkill,
@@ -37,7 +37,7 @@ import {
 	set,
 	SourceTerminal,
 } from "libram";
-import { ensureSong, ensureEffect, setClan, tryUse } from "./asmohccs-lib";
+import { ensureEffect, ensureSong, setClan, tryUse } from "./asmohccs-lib";
 import { ResourceTracker } from "./resources";
 
 const resources = ResourceTracker.deserialize(get("_hccs_resourceTracker") || "{}");
@@ -248,7 +248,7 @@ function doPulls() {
 
 	const pulls: (Item | Item[])[] = [
 		$items`repaid diaper, Great Wolf's beastly trousers`,
-		$items`tiny costume wardrobe, snow suit`,
+		$items`tiny costume wardrobe, Snow Suit`,
 		$item`Stick-Knife of Loathing`,
 		$items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
 		$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, worst candy`,

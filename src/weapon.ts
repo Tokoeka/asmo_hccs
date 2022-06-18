@@ -64,15 +64,13 @@ function getCrushed() {
 			useDefaultFamiliar();
 		}
 		geneTonic($phylum`elf`);
-		ensureEffect($effect`human-elf hybrid`);
+		ensureEffect($effect`Human-Elf Hybrid`);
 	}
 }
 
 function castBuffs() {
-	$effects`Carol of the Bulls, Song of the North, 
-        Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, 
-        Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird`.forEach((effect) =>
-		ensureEffect(effect)
+	$effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird`.forEach(
+		(effect) => ensureEffect(effect)
 	);
 	ensureEffect($effect`Frenzied, Bloody`);
 	if (have($item`LOV Elixir #3`)) use($item`LOV Elixir #3`);
@@ -92,7 +90,7 @@ function kungFuMeteors() {
 	equip($slot`off-hand`, $item`none`);
 	equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
 	setChoice(1387, 3);
-	Macro.skill($skill`meteor shower`)
+	Macro.skill($skill`Meteor Shower`)
 		.skill($skill`Use the Force`)
 		.setAutoAttack();
 	CombatLoversLocket.reminisce($monster`ungulith`);

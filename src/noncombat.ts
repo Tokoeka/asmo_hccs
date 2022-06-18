@@ -43,7 +43,7 @@ function castBuffs() {
 	equip($slot`acc3`, $item`Powerful Glove`);
 	ensureEffect($effect`Invisible Avatar`);
 
-	if ($classes`pastamancer, disco bandit`.includes(myClass())) {
+	if ($classes`Pastamancer, Disco Bandit`.includes(myClass())) {
 		ensureEffect($effect`Blessing of the Bird`);
 	}
 
@@ -53,8 +53,8 @@ function castBuffs() {
 
 	if (!get("_olympicSwimmingPool")) cliExecute("swim sprints");
 
-	while (getFuel() < 37 && getWorkshed() === $item`asdon martin keyfob`) fuelUp();
-	if (!have($effect`Driving Stealthily`) && getWorkshed() === $item`asdon martin keyfob`) {
+	while (getFuel() < 37 && getWorkshed() === $item`Asdon Martin keyfob`) fuelUp();
+	if (!have($effect`Driving Stealthily`) && getWorkshed() === $item`Asdon Martin keyfob`) {
 		cliExecute("asdonmartin drive stealthily");
 	}
 
@@ -70,7 +70,7 @@ function godLobster() {
 		useFamiliar($familiar`God Lobster`);
 		equip($slot`familiar`, $item`God Lobster's Ring`);
 		uniform();
-		if ($classes`sauceror, accordion thief, pastamancer`.includes(myClass())) {
+		if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
 			equip($slot`hat`, $item`Daylight Shavings Helmet`);
 		}
 		defaultKill.setAutoAttack();

@@ -5,6 +5,7 @@ import {
 	myAscensions,
 	mySign,
 	myTurncount,
+	print,
 	retrieveItem,
 	runChoice,
 	toInt,
@@ -22,13 +23,8 @@ cliExecute(`call login.ash`);
 let duped = $item`none`;
 
 if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
-	useFamiliar($familiar`machine elf`);
-	const dupeItems = $items`very fancy whiskey, 
-		bottle of Greedy Dog, liquid rhinestones, 
-		Daily Affirmation: Always be Collecting, 
-		huge Crimbo cookie, green-iced sweet roll, 
-		bottle of Race Car Red, warbear gyro, 
-		karma shawarma, Bottle of drinkin' gas, expensive cigar, Abstraction: comprehension`;
+	useFamiliar($familiar`Machine Elf`);
+	const dupeItems = $items`very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, expensive cigar, abstraction: comprehension`;
 	const dupeVals = Array.from(dupeItems.values()).map((dupe) => {
 		return {
 			dupeIt: dupe,
@@ -37,8 +33,8 @@ if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscen
 	});
 	const best = dupeVals.sort((a, b) => b.value - a.value)[0];
 	duped = best.dupeIt;
-	set(`choiceAdventure1125`, "1&iid=" + toInt(best.dupeIt));
-	adv1($location`the deep machine tunnels`);
+	set(`choiceAdventure1125`, `1&iid=${toInt(best.dupeIt)}`);
+	adv1($location`The Deep Machine Tunnels`);
 }
 
 if (mySign() !== "Platypus" && !get("moonTuned")) {
@@ -77,11 +73,11 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 	const calderaTurns = get(`_calderaStart`, myTurncount());
 
 	advMacro(
-		$location`the bubblin' caldera`,
-		Macro.skill($skill`curse of weaksauce`)
-			.skill($skill`micrometeorite`)
-			.while_(`!times 3`, Macro.skill($skill`saucestorm`))
-			.skill($skill`shrap`),
+		$location`The Bubblin' Caldera`,
+		Macro.skill($skill`Curse of Weaksauce`)
+			.skill($skill`Micrometeorite`)
+			.while_(`!times 3`, Macro.skill($skill`Saucestorm`))
+			.skill($skill`Shrap`),
 		() => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 7
 	);
 	cliExecute(`soak`);
@@ -90,6 +86,8 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 }
 
 if (!AsdonMartin.installed()) {
-	use($item`asdon martin keyfob`);
+	use($item`Asdon Martin keyfob`);
 	AsdonMartin.fillTo(200);
 }
+
+print("We duped a " + duped);

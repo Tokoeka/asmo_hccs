@@ -3,15 +3,15 @@ import {
 	create,
 	getInventory,
 	haveEffect,
+	Item,
 	sweetSynthesis,
-	toString as toStringAsh,
 	toInt,
+	toString as toStringAsh,
 	useSkill,
 	visitUrl,
-	Item,
 } from "kolmafia";
 import { $effect, $item, $items, $skill, get, have } from "libram";
-import { gingerCandy, inMysClass, inMoxClass, inMusClass } from "./asmohccs-lib";
+import { gingerCandy, inMoxClass, inMusClass, inMysClass } from "./asmohccs-lib";
 
 export function synthMysExp(): void {
 	if (get("harvestGardenHardcore") === "none") {
@@ -68,7 +68,7 @@ export function synthMysExp(): void {
 			const mod0 = toInt(Item.get(itemName0)) % 5;
 			if (
 				item0.candyType !== "complex" ||
-				$items`Ultra Mega Sour Ball, Crimbo fudge, crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
+				$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
 					item0
 				)
 			) {
@@ -79,7 +79,7 @@ export function synthMysExp(): void {
 				const mod1 = toInt(Item.get(itemName1)) % 5;
 				if (
 					item1.candyType !== "complex" ||
-					$items`Ultra Mega Sour Ball, Crimbo fudge, crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
+					$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
 						item1
 					) ||
 					(item1 === item0 && count <= 1)

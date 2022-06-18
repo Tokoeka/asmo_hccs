@@ -31,19 +31,19 @@ import { modTraceList } from "./modtrace";
 const musclePredictor = () => CommunityService.Muscle.prediction;
 
 function musclebuffs() {
-	if (myClass() === $class`pastamancer`) {
+	if (myClass() === $class`Pastamancer`) {
 		useSkill(1, $skill`Bind Undead Elbow Macaroni`);
-	} else if (myClass() === $class`sauceror`) {
-		ensureEffect($effect`expert oiliness`);
+	} else if (myClass() === $class`Sauceror`) {
+		ensureEffect($effect`Expert Oiliness`);
 	} else if (inMoxClass()) {
-		ensureEffect($effect`slippery oiliness`);
+		ensureEffect($effect`Slippery Oiliness`);
 	}
 
 	ensureEffect($effect`Big`);
 	ensureEffect($effect`Song of Bravado`);
 	ensureEffect($effect`Rage of the Reindeer`);
 	ensureEffect($effect`Quiet Determination`);
-	if (myClass() !== $class`turtle tamer`) {
+	if (myClass() !== $class`Turtle Tamer`) {
 		ensureEffect($effect`Disdain of the War Snapper`);
 	} else {
 		ensureEffect($effect`Blessing of the War Snapper`);
@@ -55,7 +55,7 @@ function musclebuffs() {
 		use(1, $item`Ben-Gal™ Balm`);
 	}
 
-	if (myClass() === $class`accordion thief`) {
+	if (myClass() === $class`Accordion Thief`) {
 		ensureEffect($effect`Blessing of the Bird`);
 	}
 }
@@ -87,11 +87,11 @@ const mystPredictor = () => CommunityService.Mysticality.prediction;
 
 function mystbuffs() {
 	if (inMusClass()) {
-		ensureEffect($effect`stabilizing oiliness`);
+		ensureEffect($effect`Stabilizing Oiliness`);
 	} else if (inMoxClass()) {
-		ensureEffect($effect`slippery oiliness`);
+		ensureEffect($effect`Slippery Oiliness`);
 	}
-	if (myClass() !== $class`turtle tamer`) {
+	if (myClass() !== $class`Turtle Tamer`) {
 		ensureEffect($effect`Disdain of She-Who-Was`);
 	} else {
 		ensureEffect($effect`Blessing of She-Who-Was`);
@@ -101,7 +101,7 @@ function mystbuffs() {
 	BeachComb.tryHead($effect`We're All Made of Starfish`);
 	ensureEffect($effect`Glittering Eyelashes`);
 
-	if (myClass() === $class`turtle tamer`) {
+	if (myClass() === $class`Turtle Tamer`) {
 		ensureEffect($effect`Blessing of the Bird`);
 	}
 }
@@ -144,16 +144,16 @@ function moxBuffs() {
 		eat(1, $item`magical sausage`);
 	}
 	ensureEffect($effect`Feeling Excited`);
-	if (myClass() === $class`pastamancer`) {
+	if (myClass() === $class`Pastamancer`) {
 		useSkill(1, $skill`Bind Penne Dreadful`);
-	} else if (myClass() === $class`sauceror`) {
-		ensureEffect($effect`expert oiliness`);
+	} else if (myClass() === $class`Sauceror`) {
+		ensureEffect($effect`Expert Oiliness`);
 	} else if (inMusClass()) {
-		ensureEffect($effect`stabilizing oiliness`);
+		ensureEffect($effect`Stabilizing Oiliness`);
 	}
 	ensureEffect($effect`Pomp & Circumsands`);
 
-	if ($classes`pastamancer, seal clubber, sauceror`.includes(myClass())) {
+	if ($classes`Pastamancer, Seal Clubber, Sauceror`.includes(myClass())) {
 		ensureEffect($effect`Blessing of the Bird`);
 	}
 
@@ -208,18 +208,18 @@ export function moxTest(): void {
 }
 
 function hpBuffs() {
-	if (myClass() === $class`pastamancer`) {
+	if (myClass() === $class`Pastamancer`) {
 		useSkill(1, $skill`Bind Undead Elbow Macaroni`);
-	} else if (myClass() === $class`sauceror`) {
-		ensureEffect($effect`expert oiliness`);
+	} else if (myClass() === $class`Sauceror`) {
+		ensureEffect($effect`Expert Oiliness`);
 	} else if (inMoxClass()) {
-		ensureEffect($effect`slippery oiliness`);
+		ensureEffect($effect`Slippery Oiliness`);
 	}
 	ensureEffect($effect`Big`);
 	ensureEffect($effect`Song of Starch`);
 	ensureEffect($effect`Rage of the Reindeer`);
 	ensureEffect($effect`Quiet Determination`);
-	if (myClass() !== $class`turtle tamer`) {
+	if (myClass() !== $class`Turtle Tamer`) {
 		ensureEffect($effect`Disdain of the War Snapper`);
 	} else {
 		ensureEffect($effect`Blessing of the War Snapper`);

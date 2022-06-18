@@ -1,8 +1,8 @@
 import {
 	availableAmount,
 	cliExecute,
-	haveEffect,
 	equip,
+	haveEffect,
 	myClass,
 	numericModifier,
 	use,
@@ -28,14 +28,14 @@ import {
 import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./asmohccs-lib";
-import { runStart, grimoires } from "./runstart";
+import { grimoires, runStart } from "./runstart";
 
 function firstFights() {
-	if (!have($item`makeshiftgarbage shirt`)) cliExecute("fold makeshift garbage shirt");
+	if (!have($item`makeshift garbage shirt`)) cliExecute("fold makeshift garbage shirt");
 	uniform(
 		...$items`protonic accelerator pack, latte lovers member's mug, makeshift garbage shirt`
 	);
-	if ($classes`sauceror`.includes(myClass())) {
+	if ($classes`Sauceror`.includes(myClass())) {
 		equip($slot`hat`, $item`Daylight Shavings Helmet`);
 	}
 
@@ -71,11 +71,11 @@ function firstFights() {
 		);
 	}
 
-	uniform(...$items`Kramco Sausage-o-Matic&trade;, makeshift garbage shirt`);
+	uniform(...$items`Kramco Sausage-o-Matic™, makeshift garbage shirt`);
 	//added attempting to get Chili for the latte back in, but only for classes that don't have the metal meteoroid
 	if (
 		!get("latteUnlocks").includes("chili") &&
-		$classes`turtle tamer, disco bandit, accordion thief`.includes(myClass())
+		$classes`Turtle Tamer, Disco Bandit, Accordion Thief`.includes(myClass())
 	) {
 		useFamiliar($familiar`Left-Hand Man`);
 		equip($slot`familiar`, $item`latte lovers member's mug`);
@@ -108,7 +108,7 @@ function terribleLove() {
 		if (availableAmount(lovePotion) === 0) {
 			useSkill(1, $skill`Love Mixology`);
 		}
-		visitUrl("desc_effect.php?whicheffect=" + loveEffect.descid);
+		visitUrl(`desc_effect.php?whicheffect=${loveEffect.descid}`);
 		if (
 			numericModifier(loveEffect, "mysticality") < 10 ||
 			numericModifier(loveEffect, "muscle") < -30 ||

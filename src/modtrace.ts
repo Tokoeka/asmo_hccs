@@ -30,40 +30,34 @@ const moonBonus = [
 export function modTraceList(modifier: string): void {
 	let totalVal = 0;
 	print("");
-	print("MOD TRACE: " + modifier, "red");
+	print(`MOD TRACE: ${modifier}`, "red");
 	for (const effect in myEffects()) {
-		let ef = toEffect(effect);
+		const ef = toEffect(effect);
 		if (numericModifier(ef, modifier) !== 0) {
 			totalVal = totalVal + numericModifier(ef, modifier);
 			print(
-				"EFFECT " +
-					ef +
-					" : " +
-					numericModifier(ef, modifier) +
-					" " +
-					modifier +
-					" for " +
-					haveEffect(ef) +
-					" more turns"
+				`EFFECT ${ef} : ${numericModifier(ef, modifier)} ${modifier} for ${haveEffect(
+					ef
+				)} more turns`
 			);
 		}
 	}
 
 	for (const slot of $slots``) {
-		let it = equippedItem(slot);
+		const it = equippedItem(slot);
 		if (
 			numericModifier(it, modifier) !== 0 &&
 			(haveEquipped(it) ||
 				(haveEquipped($item`your cowboy boots`) &&
 					$slots`bootspur, bootskin`.includes(slot)) ||
-				(haveEquipped($item`over-the-shoulder folder holder`) &&
+				(haveEquipped($item`over-the-shoulder Folder Holder`) &&
 					slot.toString().includes("folder")) ||
 				((haveEquipped($item`scratch 'n' sniff sword`) ||
 					haveEquipped($item`scratch 'n' sniff crossbow`)) &&
 					slot.toString().includes("sticker")))
 		) {
 			totalVal = totalVal + numericModifier(it, modifier);
-			print("SLOT " + slot + " ITEM " + it + " : " + numericModifier(it, modifier));
+			print(`SLOT ${slot} ITEM ${it} : ${numericModifier(it, modifier)}`);
 		}
 	}
 	if (equippedItem($slot`back`) === $item`unwrapped knock-off retro superhero cape`) {
@@ -81,29 +75,29 @@ export function modTraceList(modifier: string): void {
 				capeWash === "hold"
 			) {
 				totalVal = totalVal + 3;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 3);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${3}`);
 			} else if (modifier === "muscle percent") {
 				totalVal = totalVal + 30;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${30}`);
 			} else if (modifier === "maximum hp") {
 				totalVal = totalVal + 50;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${50}`);
 			}
 		} else if (capeForm === "heck") {
 			if (modifier === "mysticality percent") {
 				totalVal = totalVal + 30;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${30}`);
 			} else if (modifier === "maximum mp") {
 				totalVal = totalVal + 50;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 50);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${50}`);
 			}
 		} else if (capeForm === "robot") {
 			if (modifier === "moxie percent") {
 				totalVal = totalVal + 30;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 30);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${30}`);
 			} else if (["maximum hp", "maximum mp"].includes(modifier)) {
 				totalVal = totalVal + 25;
-				print("RETROCAPE " + capeForm + " " + capeWash + " : " + 25);
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${25}`);
 			}
 		}
 	}
@@ -116,12 +110,12 @@ export function modTraceList(modifier: string): void {
 	);
 	if (famMod !== 0) {
 		totalVal = totalVal + famMod;
-		print("FAMILIAR " + myFamiliar() + " : " + famMod);
+		print(`FAMILIAR ${myFamiliar()} : ${famMod}`);
 	}
 	for (const sk of $skills``) {
-		if (haveSkill(sk) && numericModifier(sk, modifier) != 0) {
+		if (haveSkill(sk) && numericModifier(sk, modifier) !== 0) {
 			totalVal = totalVal + numericModifier(sk, modifier);
-			print("SKILL " + sk + " : " + numericModifier(sk, modifier));
+			print(`SKILL ${sk} : ${numericModifier(sk, modifier)}`);
 		}
 	}
 
@@ -129,13 +123,13 @@ export function modTraceList(modifier: string): void {
 	if (modifier.includes("experience percent")) {
 		if (modifier.includes("muscle") && inMuscleSign()) {
 			totalVal = totalVal + 10;
-			print("MOON " + myMoon + " : " + 10);
+			print(`MOON ${myMoon} : ${10}`);
 		} else if (modifier.includes("mysticality") && inMysticalitySign()) {
 			totalVal = totalVal + 10;
-			print("MOON " + myMoon + " : " + 10);
+			print(`MOON ${myMoon} : ${10}`);
 		} else if (modifier.includes("moxie") && inMoxieSign()) {
 			totalVal = totalVal + 10;
-			print("MOON " + myMoon + " : " + 10);
+			print(`MOON ${myMoon} : ${10}`);
 		}
 	} /*else if (modifier.includes("damage percent")) {
         if (modifier.includes("weapon") && myMoon === "mongoose") {
@@ -155,7 +149,7 @@ export function modTraceList(modifier: string): void {
 			const bonus = line[2];
 			if (modifier === mod && myMoon.toLowerCase() === moon) {
 				totalVal = totalVal + parseInt(bonus);
-				print("MOON " + myMoon + " : " + bonus);
+				print(`MOON ${myMoon} : ${bonus}`);
 			}
 		}
 	}
@@ -164,10 +158,10 @@ export function modTraceList(modifier: string): void {
 		const myHorse = horsery();
 		if (modifier.includes("init") && myHorse.includes("normal")) {
 			totalVal = totalVal + 10;
-			print("HORSERY " + myHorse + " : " + 10);
+			print(`HORSERY ${myHorse} : ${10}`);
 		} else if (modifier.includes("combat") && myHorse.includes("dark")) {
 			totalVal = totalVal - 5;
-			print("HORSERY " + myHorse + " : -5");
+			print(`HORSERY ${myHorse} : -5`);
 		} else if (
 			[
 				"hot resistance",
@@ -179,16 +173,16 @@ export function modTraceList(modifier: string): void {
 			myHorse.includes("pale")
 		) {
 			totalVal = totalVal + 1;
-			print("HORSERY " + myHorse + " : " + 1);
+			print(`HORSERY ${myHorse} : ${1}`);
 		} else if (modifier === "moxie" && myHorse.includes("crazy")) {
 			totalVal = totalVal + toInt(get(`_horseryCrazyMox`));
-			print("HORSERY " + myHorse + " : " + get(`_horseryCrazyMox`));
+			print(`HORSERY ${myHorse} : ${get(`_horseryCrazyMox`)}`);
 		} else if (modifier === "muscle" && myHorse.includes("crazy")) {
 			totalVal = totalVal + toInt(get(`_horseryCrazyMus`));
-			print("HORSERY " + myHorse + " : " + get(`_horseryCrazyMus`));
+			print(`HORSERY ${myHorse} : ${get(`_horseryCrazyMus`)}`);
 		} else if (modifier === "mysticality" && myHorse.includes("crazy")) {
 			totalVal = totalVal + toInt(get(`_horseryCrazyMys`));
-			print("HORSERY " + myHorse + " : " + get(`_horseryCrazyMys`));
+			print(`HORSERY ${myHorse} : ${get(`_horseryCrazyMys`)}`);
 		}
 	}
 
@@ -196,7 +190,7 @@ export function modTraceList(modifier: string): void {
 	const swagger = $effect`Bow-Legged Swagger`;
 
 	if (modifier === `item drop` && haveEffect(squint)) {
-		print("EFFECT " + squint + " : " + totalVal);
+		print(`EFFECT ${squint} : ${totalVal}`);
 		totalVal = totalVal * 2;
 	}
 
@@ -204,10 +198,10 @@ export function modTraceList(modifier: string): void {
 		haveEffect(swagger) &&
 		[`weapon damage`, `weapon damage percent`, `initiative`].includes(modifier)
 	) {
-		print("EFFECT " + swagger + " : " + totalVal);
+		print(`EFFECT ${swagger} : ${totalVal}`);
 		totalVal = totalVal * 2;
 	}
 
-	print("Total " + modifier + ": " + totalVal, "purple");
+	print(`Total ${modifier}: ${totalVal}`, "purple");
 	print("");
 }
