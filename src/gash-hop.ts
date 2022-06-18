@@ -27,6 +27,8 @@ const timespinnerTargets = [
     safariTargets.shift();
 }*/
 
+
+
 export function main(args = ""): void {
     const newClass = args.includes(`sc`)
         ? $class`Seal Clubber`
@@ -66,8 +68,6 @@ export function main(args = ""): void {
         : $item`astral pet sweater`;
 
     const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
-
-    if (lifestyle === Lifestyle.softcore) retrieveItem(1, $item`corrupted marrow`);
 
     ascend(Paths.CommunityService, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
 }
