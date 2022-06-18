@@ -34,11 +34,11 @@ let duped = $item`none`;
 if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
     useFamiliar($familiar`machine elf`);
     const dupeItems = $items`very fancy whiskey, 
-		bottle of Greedy Dog, 
+		bottle of Greedy Dog, liquid rhinestones, 
 		Daily Affirmation: Always be Collecting, 
 		huge Crimbo cookie, green-iced sweet roll, 
 		bottle of Race Car Red, warbear gyro, 
-		karma shawarma`;
+		karma shawarma, Bottle of drinkin' gas, expensive cigar, Abstraction: comprehension`;
     const dupeVals = Array.from(dupeItems.values()).map((dupe) => {
         return {
             dupeIt: dupe,

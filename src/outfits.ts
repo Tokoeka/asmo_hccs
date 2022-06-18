@@ -14,7 +14,7 @@ import {
     toSlot,
     useFamiliar,
 } from "kolmafia";
-import { $familiar, $item, $items, $slot, $slots, have } from "libram";
+import { $familiar, $item, $items, $slot, $slots, get, have } from "libram";
 import { inMysClass, inMusClass, inMoxClass } from "./asmohccs-lib";
 
 export class Outfit {
@@ -153,9 +153,9 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
         [$slot`shirt`, $items`LOV Eardigan, fresh coat of paint`],
         [$slot`pants`, $items`pantogram pants, Cargo Cultist Shorts, old sweatpants`],
         [$slot`weapon`, $item`Fourth of May Cosplay Saber`],
-        [$slot`off-hand`, $item`familiar scrapbook`],
+        [$slot`off-hand`, $items`unbreakable umbrella, familiar scrapbook`],
         [$slot`acc1`, $items`meteorite necklace, hewn moon-rune spoon`],
-        [$slot`acc2`, $items`codpiece, beach comb`],
+        [$slot`acc2`, $item`beach comb`],
         [$slot`acc3`, $items`battle broom, LOV Earrings, Powerful Glove`],
         [
             $slot`back`,
@@ -270,7 +270,7 @@ export function mysticalityOutfit(): void {
             [$slot`shirt`, $items`denim jacket, shoe ad T-shirt, fresh coat of paint`],
             [$slot`pants`, $items`cargo cultist shorts, pantogram pants`],
             [$slot`acc1`, $item`retrospecs`], //TODO See if there is anything better
-            [$slot`acc2`, $item`codpiece`],
+            //[$slot`acc2`, $item`codpiece`],
             [$slot`acc3`, $item`battle broom`],
             [$slot`familiar`, $item`Abracandalabra`],
         ]),
@@ -280,6 +280,7 @@ export function mysticalityOutfit(): void {
 
 export function itemOutfit(): void {
     if (!have($item`wad of used tape`)) cliExecute("fold wad of used tape");
+	if (have($item`unbreakable umbrella`) && get(`umbrellaState`) !== "bucket style") cliExecute("umbrella item");
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`wad of used tape`],
@@ -287,7 +288,7 @@ export function itemOutfit(): void {
                 $slot`weapon`,
                 $items`extra-large utility candle, runed taper candle, novelty sparkling candle`,
             ],
-            [$slot`off-hand`, $items`Cursed Magnifying Glass, Kramco Sausage-o-Matic™`],
+            [$slot`off-hand`, $items`unbreakable umbrella, Cursed Magnifying Glass, Kramco Sausage-o-Matic™`],
             [$slot`back`, $items`vampyric cloake, protonic accelerator pack`],
             [$slot`acc1`, $item`Guzzlr tablet`],
             [$slot`acc2`, $item`gold detective badge`],
@@ -317,15 +318,16 @@ export function hotresOutfit(): void {
 }
 
 export function noncombatOutfit(): void {
+	if (have($item`unbreakable umbrella`) && get("umbrellaState") !== "cocoon") cliExecute("umbrella nc");
     Outfit.doYourBest(
         new Map<Slot, Item | Item[]>([
             [$slot`hat`, $item`very pointy crown`],
             [$slot`back`, $item`protonic accelerator pack`],
-            [$slot`weapon`, $items`fish hatchet, Fourth of May Cosplay Saber`],
-            [$slot`off-hand`, $items`rope, burning paper crane, familiar scrapbook`],
+            [$slot`weapon`, $items`Fourth of May Cosplay Saber`],
+            [$slot`off-hand`, $items`unbreakable umbrella, rope, burning paper crane, familiar scrapbook`],
             [$slot`pants`, $items`repaid diaper, Great Wolf's beastly trousers, pantogram pants`],
             [$slot`acc1`, $item`Kremlin's Greatest Briefcase`],
-            [$slot`acc2`, $item`codpiece`],
+            [$slot`acc2`, $item`beach comb`],
             [$slot`acc3`, $item`Brutal brogues`],
         ]),
         $familiar`Disgeist`

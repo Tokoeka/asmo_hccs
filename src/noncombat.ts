@@ -104,13 +104,13 @@ function testPrep() {
 			}
 		},
         () => use($item`shady shades`),
-		() => {
+		/*() => {
 			if (!get("_floundryItemCreated")) {
 				setClan(get("asmocs_fishClan", "Alliance From Heck"));
 				cliExecute("acquire fish hatchet");
 				noncombatOutfit();
 			}
-		}
+		}*/
     ];
 
     for (const improvement of improvements) {

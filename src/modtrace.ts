@@ -27,6 +27,7 @@ const moonBonus = [
     ["item drop", "packrat", "10"],
 ];
 
+
 export function modTraceList(modifier: string) {
     let totalVal = 0;
     print("");
@@ -65,8 +66,8 @@ export function modTraceList(modifier: string) {
             totalVal = totalVal + numericModifier(it, modifier);
             print("SLOT " + slot + " ITEM " + it + " : " + numericModifier(it, modifier));
         }
-    }
-    if (equippedItem($slot`back`) == $item`unwrapped knock-off retro superhero cape`) {
+    }	
+	if (equippedItem($slot`back`) === $item`unwrapped knock-off retro superhero cape`) {
         const capeForm = get(`retroCapeSuperhero`).toLowerCase();
         const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
         if (capeForm === "vampire") {
@@ -137,7 +138,7 @@ export function modTraceList(modifier: string) {
             totalVal = totalVal + 10;
             print("MOON " + myMoon + " : " + 10);
         }
-    } else if (modifier.includes("damage percent")) {
+    } /*else if (modifier.includes("damage percent")) {
         if (modifier.includes("weapon") && myMoon === "mongoose") {
             totalVal = totalVal + 20;
             print("MOON " + myMoon + " : " + 20);
@@ -148,8 +149,9 @@ export function modTraceList(modifier: string) {
     } else if (modifier === "familiar weight" && myMoon === "platypus") {
         totalVal = totalVal + 5;
         print("MOON " + myMoon + " : " + 5);
-    }
-    /*for (const line in moonBonus) {
+    }*/
+    else {
+		for (const line in moonBonus) {
             const mod = line[0];
             const moon = line[1];
             const bonus = line[2];
@@ -157,7 +159,8 @@ export function modTraceList(modifier: string) {
                 totalVal = totalVal + parseInt(bonus);
                 print("MOON " + myMoon + " : " + bonus);
             }
-        }*/
+        }
+	}
 
     if (horsery() !== "" && get(`horseryAvailable`)) {
         const myHorse = horsery();
