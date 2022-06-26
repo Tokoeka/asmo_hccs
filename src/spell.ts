@@ -2,7 +2,6 @@ import {
 	availableAmount,
 	canEquip,
 	cliExecute,
-	count,
 	create,
 	drink,
 	eat,
@@ -40,6 +39,7 @@ import {
 	Macro,
 	set,
 } from "libram";
+import { resources } from ".";
 import {
 	advMacroAA,
 	chefstaves,
@@ -51,11 +51,12 @@ import {
 	unequip,
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
-import { delevel, easyFight } from "./asmohccs-macros";
+import { delevel} from "./asmohccs-macros";
 import { modTraceList } from "./modtrace";
 import uniform, { spellOutfit } from "./outfits";
 
-const predictor = () => CommunityService.SpellDamage.prediction;
+//const predictor = () => CommunityService.SpellDamage.prediction;
+//TODO - Set min turncount we expect SpellDmg to meet?
 
 function castBuffs() {
 	ensureEffect($effect`Simmering`);
@@ -109,8 +110,8 @@ function castBuffs() {
 function deepDarkVisions() {
 	//horse("pale");
 	useFamiliar($familiar`Exotic Parrot`);
-	if (!have($item`astral pet sweater`) && get("tomeSummons") < 3 && inHardcore()) {
-		create(1, $item`box of Familiar Jacks`);
+	if (!have($item`astral pet sweater`) && inHardcore()) {
+		resources.clipArt($item`box of Familiar Jacks`, true);
 		use(1, $item`box of Familiar Jacks`);
 	}
 
@@ -219,9 +220,9 @@ function testPrep() {
 		}
 	}
 	spellOutfit();
-	if (availableAmount($item`astral pilsner`) > 1){
-		ensureEffect($effect`ode to booze`);
-		drink($item`astral pilsner`, availableAmount($item`astral pilsner`)-1);
+	if (availableAmount($item`astral pilsner`) > 1) {
+		ensureEffect($effect`Ode to Booze`);
+		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 1);
 	}
 }
 

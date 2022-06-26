@@ -29,7 +29,7 @@ import {
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
-import { ensureEffect, heal, horse, setChoice, setClan } from "./asmohccs-lib";
+import { ensureEffect, heal, horse, setChoice } from "./asmohccs-lib";
 import uniform, { noncombatOutfit } from "./outfits";
 import { modTraceList } from "./modtrace";
 import { fuelUp } from "./workshed";
@@ -103,14 +103,7 @@ function testPrep() {
 				ensureEffect($effect`Predjudicetidigitation`);
 			}
 		},
-		() => use($item`shady shades`),
-		/*() => {
-			if (!get("_floundryItemCreated")) {
-				setClan(get("asmocs_fishClan", "Alliance From Heck"));
-				cliExecute("acquire fish hatchet");
-				noncombatOutfit();
-			}
-		}*/
+		() => use($item`shady shades`)
 	];
 
 	for (const improvement of improvements) {

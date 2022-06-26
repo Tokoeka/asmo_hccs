@@ -22,13 +22,14 @@ import {
 	useSkill,
 } from "kolmafia";
 import { $effect, $item, $skill, CombatLoversLocket, get, have } from "libram";
-import { pullIfPossible } from "./asmohccs-lib";
+import { canCastLibrams, pullIfPossible } from "./asmohccs-lib";
 
 export class ResourceTracker {
 	deckCards: string[] = [];
-	genieWishes: Effect[] = [];
+	genieWishes: (Monster | Effect)[] = [];
 	// Items represent clip art summons.
 	tomeSummons: (Skill | Item)[] = [];
+	libramSummons: Skill[] = [];
 	locketMonsters: Monster[] = [];
 	pulls: Item[] = [];
 	consumedFood = new Map<Item, number>();
@@ -44,13 +45,33 @@ export class ResourceTracker {
 		}
 	}
 
-	wish(effect: Effect, attempt = false): void {
-		if (have(effect)) return;
-		if (3 - get("_genieWishesUsed") + itemAmount($item`pocket wish`) > 0) {
-			cliExecute(`genie effect ${effect}`);
-			this.genieWishes.push(effect);
+	wish(MonsterorEffect: Monster | Effect, attempt = false): void {
+		if (MonsterorEffect instanceof Effect) {
+			if (have(MonsterorEffect)) return;
+			if (3 - get("_genieWishesUsed") + itemAmount($item`pocket wish`) > 0) {
+				cliExecute(`genie effect ${MonsterorEffect}`);
+				this.genieWishes.push(MonsterorEffect);
+			} else if (!attempt) {
+				print(
+					`WARNING: Tried to wish for ${MonsterorEffect}, but we're out of wishes.`,
+					"orange"
+				);
+			}
+		} else if (MonsterorEffect instanceof Monster) {
+			if (3 - get("_genieWishesUsed") + itemAmount($item`pocket wish`) > 0) {
+				cliExecute(`genie monster ${MonsterorEffect}`);
+				this.genieWishes.push(MonsterorEffect);
+			} else if (!attempt) {
+				print(
+					`WARNING: Tried to wish to fight a(n) ${MonsterorEffect}, but we're out of wishes.`,
+					"orange"
+				);
+			}
 		} else if (!attempt) {
-			print(`WARNING: Tried to wish for ${effect}, but we're out of wishes.`, "orange");
+			print(
+				`WARNING: Tried to wish for ${MonsterorEffect}, but thats neither a Monster or an Effect.`,
+				"orange"
+			);
 		}
 	}
 
@@ -70,6 +91,18 @@ export class ResourceTracker {
 			this.tomeSummons.push(skillOrItem);
 		} else if (!attempt) {
 			print(`WARNING: Tried to use tome summon ${skillOrItem}, but we're out.`, "orange");
+		}
+	}
+
+	libram(skill: Skill, attempt = false): void {
+		if (canCastLibrams()) {
+			useSkill(skill);
+			this.libramSummons.push(skill);
+		} else if (!attempt) {
+			print(
+				`WARNING: Tried to use libram summon ${skill}, but we don't have enough mana`,
+				"orange"
+			);
 		}
 	}
 
@@ -128,8 +161,11 @@ export class ResourceTracker {
 	summarize(): void {
 		print("====== RESOURCE SUMMARY ======");
 		print(`Deck: ${this.deckCards.join(", ")}`);
-		print(`Wishes: ${this.genieWishes.map((effect) => effect.name).join(", ")}`);
+		print(
+			`Wishes: ${this.genieWishes.map((MonsterorEffect) => MonsterorEffect.name).join(", ")}`
+		);
 		print(`Tomes: ${this.tomeSummons.map((skillOrItem) => skillOrItem.name).join(", ")}`);
+		print(`Libram summons: ${this.libramSummons.map((skill) => skill.name).join(", ")}`);
 		print(`Locket: ${this.locketMonsters.map((monster) => monster.name).join(", ")}`);
 		print(`Pulls: ${this.pulls.map((item) => item.name).join(", ")}`);
 		print("Consumed:");

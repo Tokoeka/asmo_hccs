@@ -3,7 +3,6 @@ import {
 	create,
 	eat,
 	itemAmount,
-	myBasestat,
 	myBuffedstat,
 	myClass,
 	myMaxhp,
