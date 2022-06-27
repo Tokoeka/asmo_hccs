@@ -68,7 +68,7 @@ export function synthMysExp(): void {
 			const mod0 = toInt(Item.get(itemName0)) % 5;
 			if (
 				item0.candyType !== "complex" ||
-				$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
+				$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist`.includes(
 					item0
 				)
 			) {
@@ -79,7 +79,7 @@ export function synthMysExp(): void {
 				const mod1 = toInt(Item.get(itemName1)) % 5;
 				if (
 					item1.candyType !== "complex" ||
-					$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, pepperint twist`.includes(
+					$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist`.includes(
 						item1
 					) ||
 					(item1 === item0 && count <= 1)
