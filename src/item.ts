@@ -6,6 +6,7 @@ import {
 	getWorkshed,
 	haveEffect,
 	myClass,
+	print,
 	use,
 	useFamiliar,
 	useSkill,
@@ -74,7 +75,11 @@ function castBuffs() {
 	if (have($item`emergency glowstick`)) ensureEffect($effect`Glowing Hands`);
 }
 
-function ninjaTot() {
+function ninjaTot(): void {
+	print("reached ninjatot");
+	if (have($item`li'l ninja costume`)){
+		return;
+	}
 	useFamiliar($familiar`Puck Man`);
 	uniform();
 	if ($classes`Sauceror, Disco Bandit`.includes(myClass())) {
@@ -93,17 +98,25 @@ function ninjaTot() {
 }
 
 function batForm() {
-	//TODO - Combine into either Ninjatot or Pirate DNA???
-	//TODO Reminise a Crayon 
+	print("reached batform");
 	if (!have($effect`Bat-Adjacent Form`)) {
-		useFamiliar($familiar`Ghost of Crimo Carols`);
+		uniform();
+		useFamiliar($familiar`Ghost of Crimbo Carols`);
 		equip($slot`back`, $item`vampyric cloake`);
-		Macro.skill($skill`Become a Bat`).skill($skill`easyfight`).attack().repeat().setAutoAttack();
-		resources.locket($monster`black crayon elemental`, true);
+		Macro.skill($skill`Become a Bat`)
+			.step(`easyfight`)
+			.attack()
+			.repeat()
+			.setAutoAttack();
+		resources.locket($monster`Black Crayon Elemental`);
 	}
 }
 
-function pirateDNA() {
+function pirateDNA(): void {
+	print("reached piratedna");
+	if (haveEffect($effect`Human-Pirate Hybrid`)){
+		return;
+	}
 	// get pirate DNA and make a gene tonic
 	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
 		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
@@ -124,6 +137,7 @@ function pirateDNA() {
 }
 
 function testPrep() {
+	print("reached test prep");
 	if (!get("_steelyEyedSquintUsed")) {
 		ensureEffect($effect`Steely-Eyed Squint`);
 	}
