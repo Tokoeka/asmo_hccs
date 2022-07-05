@@ -109,6 +109,7 @@ export class ResourceTracker {
 	locket(monster: Monster, attempt = false): void {
 		if (CombatLoversLocket.monstersReminisced().includes(monster)) return;
 		if (CombatLoversLocket.reminiscesLeft() > 0) {
+			this.locketMonsters.push(monster);
 			CombatLoversLocket.reminisce(monster);
 		} else if (!attempt) {
 			print(
@@ -130,6 +131,7 @@ export class ResourceTracker {
 		const effect = effectModifier(item, "Effect");
 		if (!have(item) && !have(effect)) {
 			this.pull(item, maxPrice, attempt);
+			this.pulls.push(item);
 		}
 		if (!have(effect)) {
 			if (itemType(item) === "spleen item") chew(item);
