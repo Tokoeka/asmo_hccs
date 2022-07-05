@@ -34,6 +34,7 @@ import { advMacroAA, ensureEffect, mapMacro, useDefaultFamiliar } from "./asmohc
 import { fuelUp, geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
 import { resources } from ".";
+import { easyFight } from "./asmohccs-macros";
 
 const predictor = () => CommunityService.BoozeDrop.prediction;
 
@@ -104,7 +105,7 @@ function batForm() {
 		useFamiliar($familiar`Ghost of Crimbo Carols`);
 		equip($slot`back`, $item`vampyric cloake`);
 		Macro.skill($skill`Become a Bat`)
-			.step(`easyfight`)
+			.step(easyFight)
 			.attack()
 			.repeat()
 			.setAutoAttack();
