@@ -2496,7 +2496,7 @@ var $servants = createPluralConstant(external_kolmafia_namespaceObject.Servant);
  * @category In-game constant
  */
 
-var template_string_$skill = createSingleConstant(external_kolmafia_namespaceObject.Skill);
+var $skill = createSingleConstant(external_kolmafia_namespaceObject.Skill);
 /**
  * A list of Skills specified by a comma-separated list of names.
  * For a list of all possible Skills, leave the template string blank.
@@ -2550,115 +2550,6 @@ var $thrall = createSingleConstant(external_kolmafia_namespaceObject.Thrall);
  */
 
 var $thralls = createPluralConstant(external_kolmafia_namespaceObject.Thrall);
-;// CONCATENATED MODULE: ./node_modules/libram/dist/Path.js
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11;
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-var Path = //here, we define avatar-ness around being its own class
-//Defined as the lowest inebriety that makes you unable to drink more, just to make it fifteens across the board
-
-/**
- *
- * @param name Name of path
- * @param id Path ID
- * @param hasAllPerms Does the player have immediate access to all permed skills>
- * @param hasCampground Does the player have access to the campground?
- * @param hasTerrarium Does the player have access to terrarium.php
- * @param stomachSize Maximum fullness achievable at turn 0
- * @param liverSize The lowest inebriety that makes you unable to drink more
- * @param spleenSize Maximum spleen achievable at turn 0
- * @param classes Classes available in this path
- */
-function Path(name, id) {
-  var hasAllPerms = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
-  var hasCampground = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
-  var hasTerrarium = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-  var stomachSize = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 15;
-  var liverSize = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 15;
-  var spleenSize = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 15;
-  var classes = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : $classes(_templateObject || (_templateObject = _taggedTemplateLiteral(["Seal Clubber, Turtle Tamer, Sauceror, Pastamancer, Disco Bandit, Accordion Thief"])));
-
-  _classCallCheck(this, Path);
-
-  _defineProperty(this, "name", void 0);
-
-  _defineProperty(this, "id", void 0);
-
-  _defineProperty(this, "hasAllPerms", void 0);
-
-  _defineProperty(this, "hasCampground", void 0);
-
-  _defineProperty(this, "hasTerrarium", void 0);
-
-  _defineProperty(this, "stomachSize", void 0);
-
-  _defineProperty(this, "liverSize", void 0);
-
-  _defineProperty(this, "spleenSize", void 0);
-
-  _defineProperty(this, "classes", void 0);
-
-  this.name = name;
-  this.id = id;
-  this.hasAllPerms = hasAllPerms;
-  this.hasCampground = hasCampground;
-  this.hasTerrarium = hasTerrarium;
-  this.stomachSize = stomachSize;
-  this.liverSize = liverSize;
-  this.spleenSize = spleenSize;
-  this.classes = classes;
-};
-var Paths = {
-  Unrestricted: new Path("Unrestricted", 0),
-  Boozetafarian: new Path("Boozetafarian", 1, false, true, true, 0),
-  Teetotaler: new Path("Teetotaler", 2, false, true, true, 15, 0),
-  Oxygenarian: new Path("Oxygenarian", 3, false, true, true, 0, 0),
-  BeesHateYou: new Path("Bees Hate You", 4),
-  WayOfTheSurprisingFist: new Path("Way of the Surprising Fist", 6),
-  Trendy: new Path("Trendy", 6),
-  AvatarOfBoris: new Path("Avatar of Boris", 8, false, true, false, 20, 5, 15, $classes(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Avatar of Boris"])))),
-  BugbearInvasion: new Path("Bugbear Invasion", 9),
-  ZombieSlayer: new Path("Zombie Slayer", 10, false, true, true, 15, 5, 15, $classes(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Zombie Master"])))),
-  ClassAct: new Path("Class Act", 11, false),
-  AvatarofJarlsberg: new Path("Avatar of Jarlsberg", 12, false, true, false, 10, 10, 15, $classes(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Avatar of Jarlsberg"])))),
-  Big: new Path("BIG!", 14),
-  KolHs: new Path("KOLHS", 15),
-  ClassAct2: new Path("Class Act II: A Class For Pigs", 16, false),
-  AvatarofSneakyPete: new Path("Avatar of Sneaky Pete", 17, false, true, false, 5, 20, 15, $classes(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Avatar of Sneaky Pete"])))),
-  SlowAndSteady: new Path("Slow and Steady", 18),
-  HeavyRains: new Path("Heavy Rains", 19),
-  Picky: new Path("Picky", 21, false),
-  Standard: new Path("Standard", 22),
-  ActuallyEdTheUndying: new Path("Actually Ed the Undying", 23, false, false, false, 0, 0, 5, $classes(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Ed"])))),
-  OneCrazyRandomSummer: new Path("One Crazy Random Summer", 24),
-  CommunityService: new Path("Community Service", 25),
-  AvatarOfWestOfLoathing: new Path("Avatar of West of Loathing", 26, false, true, true, 10, 10, 10, $classes(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["Cow Puncher, Snake Oiler, Beanslinger"])))),
-  TheSource: new Path("The Source", 27),
-  NuclearAutumn: new Path("Nuclear Autumn", 28, false, false, true, 3, 3, 3),
-  GelatinousNoob: new Path("Gelatinous Noob", 29, false, true, true, 0, 0, 0, $classes(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Gelatinous Noob"])))),
-  LicenseToAdventure: new Path("License to Adventure", 30, true, true, false, 0, 2, 15),
-  LiveAscendRepeat: new Path("Live. Ascend. Repeat.", 31),
-  PocketFamiliars: new Path("Pocket Familiars", 32, false, true, false),
-  GLover: new Path("G-Lover", 33),
-  DisguisesDelimit: new Path("Disguises Delimit", 34),
-  DarkGyffte: new Path("Dark Gyffte", 35, false, true, false, 5, 5, 15, $classes(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Vampyre"])))),
-  TwoCrazyRandomSummer: new Path("Two Crazy Random Summer", 36),
-  KingdomOfExploathing: new Path("Kingdom of Exploathing", 37),
-  PathOfThePlumber: new Path("Path of the Plumber", 38, false, true, true, 20, 0, 5, $classes(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Plumber"])))),
-  LowKeySummer: new Path("Low Key Summer", 40),
-  GreyGoo: new Path("Grey Goo", 40),
-  YouRobot: new Path("You, Robot", 41, false, false, true, 0, 0, 0),
-  QuantumTerrarium: new Path("Quantum Terrarium", 42, true, true, false),
-  Wildfire: new Path("Wildfire", 43),
-  GreyYou: new Path("Grey You", 44, false, true, true, 0, 0, 0, // eslint-disable-next-line libram/verify-constants
-  $classes(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Grey Goo"]))))
-};
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/modules/es.object.entries.js
 var es_object_entries = __webpack_require__(4875);
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/modules/es.object.from-entries.js
@@ -2713,17 +2604,13 @@ function isPhylumProperty(property) {
   return phylumPropertiesSet.has(property);
 }
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/property.js
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { property_defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function property_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function property_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -2857,7 +2744,7 @@ function withProperties(properties, callback) {
   }
 }
 function withProperty(property, value, callback) {
-  withProperties(property_defineProperty({}, property, value), callback);
+  withProperties(_defineProperty({}, property, value), callback);
 }
 function withChoices(choices, callback) {
   var properties = Object.fromEntries(Object.entries(choices).map(_ref3 => {
@@ -2870,13 +2757,13 @@ function withChoices(choices, callback) {
   withProperties(properties, callback);
 }
 function withChoice(choice, value, callback) {
-  withChoices(property_defineProperty({}, choice, value), callback);
+  withChoices(_defineProperty({}, choice, value), callback);
 }
 var PropertiesManager = /*#__PURE__*/(/* unused pure expression or super */ null && (function () {
   function PropertiesManager() {
-    property_classCallCheck(this, PropertiesManager);
+    _classCallCheck(this, PropertiesManager);
 
-    property_defineProperty(this, "properties", {});
+    _defineProperty(this, "properties", {});
   }
 
   _createClass(PropertiesManager, [{
@@ -2919,17 +2806,6 @@ var PropertiesManager = /*#__PURE__*/(/* unused pure expression or super */ null
 
         return ["choiceAdventure".concat(choiceNumber), choiceValue];
       })));
-    }
-    /**
-     * Sets a single choice adventure property to the given value, storing the old value.
-     * @param choiceToSet The number of the choice adventure to set the property for.
-     * @param value The value to assign to that choice adventure.
-     */
-
-  }, {
-    key: "setChoice",
-    value: function setChoice(choiceToSet, value) {
-      this.setChoices(property_defineProperty({}, choiceToSet, value));
     }
     /**
      * Resets the given properties to their original stored value. Does not delete entries from the manager.
@@ -3001,7 +2877,7 @@ var PropertiesManager = /*#__PURE__*/(/* unused pure expression or super */ null
     key: "setMinimumValue",
     value: function setMinimumValue(property, value) {
       if (property_get(property, 0) < value) {
-        this.set(property_defineProperty({}, property, value));
+        this.set(_defineProperty({}, property, value));
         return true;
       }
 
@@ -3018,92 +2894,11 @@ var PropertiesManager = /*#__PURE__*/(/* unused pure expression or super */ null
     key: "setMaximumValue",
     value: function setMaximumValue(property, value) {
       if (property_get(property, 0) > value) {
-        this.set(property_defineProperty({}, property, value));
+        this.set(_defineProperty({}, property, value));
         return true;
       }
 
       return false;
-    }
-    /**
-     * Creates a new PropertiesManager with identical stored values to this one.
-     * @returns A new PropertiesManager, with identical stored values to this one.
-     */
-
-  }, {
-    key: "clone",
-    value: function clone() {
-      var newGuy = new PropertiesManager();
-      newGuy.properties = this.storedValues;
-      return newGuy;
-    }
-    /**
-     * Clamps a numeric property, modulating it up or down to fit within a specified range
-     * @param property The numeric property to clamp
-     * @param min The lower bound for what we want the property to be allowed to be.
-     * @param max The upper bound for what we want the property to be allowed to be.
-     * @returns Whether we ended up changing the property or not.
-     */
-
-  }, {
-    key: "clamp",
-    value: function clamp(property, min, max) {
-      if (max < min) return false;
-      var start = property_get(property);
-      this.setMinimumValue(property, min);
-      this.setMaximumValue(property, max);
-      return start !== property_get(property);
-    }
-    /**
-     * Determines whether this PropertiesManager has identical stored values to another.
-     * @param other The PropertiesManager to compare to this one.
-     * @returns Whether their StoredValues are identical.
-     */
-
-  }, {
-    key: "equals",
-    value: function equals(other) {
-      var thisProps = Object.entries(this.storedValues);
-      var otherProps = new Map(Object.entries(other.storedValues));
-      if (thisProps.length !== otherProps.size) return false;
-
-      for (var _i5 = 0, _thisProps = thisProps; _i5 < _thisProps.length; _i5++) {
-        var _thisProps$_i = _slicedToArray(_thisProps[_i5], 2),
-            propertyName = _thisProps$_i[0],
-            propertyValue = _thisProps$_i[1];
-
-        if (otherProps.get(propertyName) === propertyValue) return false;
-      }
-
-      return true;
-    }
-    /**
-     * Merges a PropertiesManager onto this one, letting the input win in the event that both PropertiesManagers have a value stored.
-     * @param other The PropertiesManager to be merged onto this one.
-     * @returns A new PropertiesManager with stored values from both its parents.
-     */
-
-  }, {
-    key: "merge",
-    value: function merge(other) {
-      var newGuy = new PropertiesManager();
-      newGuy.properties = _objectSpread(_objectSpread({}, this.properties), other.properties);
-      return newGuy;
-    }
-    /**
-     * Merges an arbitrary collection of PropertiesManagers, letting the rightmost PropertiesManager win in the event of verlap.
-     * @param mergees The PropertiesManagers to merge together.
-     * @returns A PropertiesManager that is just an amalgam of all the constituents.
-     */
-
-  }], [{
-    key: "merge",
-    value: function merge() {
-      for (var _len3 = arguments.length, mergees = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-        mergees[_key3] = arguments[_key3];
-      }
-
-      if (mergees.length === 0) return new PropertiesManager();
-      return mergees.reduce((a, b) => a.merge(b));
     }
   }]);
 
@@ -3161,206 +2956,10 @@ function changeNightstand(nightstand) {
   (0,external_kolmafia_namespaceObject.buy)(external_kolmafia_namespaceObject.Item.get(nightstand));
   return getNightstand() === nightstand;
 }
-;// CONCATENATED MODULE: ./node_modules/libram/dist/utils.js
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = utils_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function utils_slicedToArray(arr, i) { return utils_arrayWithHoles(arr) || utils_iterableToArrayLimit(arr, i) || utils_unsupportedIterableToArray(arr, i) || utils_nonIterableRest(); }
-
-function utils_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function utils_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function utils_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || utils_unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function utils_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return utils_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return utils_arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return utils_arrayLikeToArray(arr); }
-
-function utils_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function notNull(value) {
-  return value !== null;
-}
-function parseNumber(n) {
-  return Number.parseInt(n.replace(/,/g, ""));
-}
-/**
- * Clamp a number between lower and upper bounds.
- *
- * @param n Number to clamp.
- * @param min Lower bound.
- * @param max Upper bound.
- */
-
-function clamp(n, min, max) {
-  return Math.max(min, Math.min(max, n));
-}
-/**
- * Split an {@param array} into {@param chunkSize} sized chunks
- *
- * @param array Array to split
- * @param chunkSize Size of chunk
- */
-
-function utils_chunk(array, chunkSize) {
-  var result = [];
-
-  for (var i = 0; i < array.length; i += chunkSize) {
-    result.push(array.slice(i, i + chunkSize));
-  }
-
-  return result;
-}
-function arrayToCountedMap(array) {
-  if (!Array.isArray(array)) return array;
-  var map = new Map();
-  array.forEach(item => {
-    map.set(item, (map.get(item) || 0) + 1);
-  });
-  return map;
-}
-function countedMapToArray(map) {
-  var _ref;
-
-  return (_ref = []).concat.apply(_ref, _toConsumableArray(_toConsumableArray(map).map(_ref2 => {
-    var _ref3 = utils_slicedToArray(_ref2, 2),
-        item = _ref3[0],
-        quantity = _ref3[1];
-
-    return Array(quantity).fill(item);
-  })));
-}
-function countedMapToString(map) {
-  return _toConsumableArray(map).map(_ref4 => {
-    var _ref5 = utils_slicedToArray(_ref4, 2),
-        item = _ref5[0],
-        quantity = _ref5[1];
-
-    return "".concat(quantity, " x ").concat(item);
-  }).join(", ");
-}
-/**
- * Sum an array of numbers.
- * @param addends Addends to sum.
- * @param mappingFunction function to turn elements into numbers
- */
-
-function sum(addends, mappingFunction) {
-  return addends.reduce((subtotal, element) => subtotal + mappingFunction(element), 0);
-}
-function sumNumbers(addends) {
-  return sum(addends, x => x);
-}
-/**
- * Checks if a given item is in a readonly array, acting as a typeguard.
- * @param item Needle
- * @param array Readonly array haystack
- * @returns Whether the item is in the array, and narrows the type of the item.
- */
-
-function arrayContains(item, array) {
-  return array.includes(item);
-}
-/**
- * Checks if two arrays contain the same elements in the same quantity.
- * @param a First array for comparison
- * @param b Second array for comparison
- * @returns Whether the two arrays are equal, irrespective of order.
- */
-
-function setEqual(a, b) {
-  var sortedA = _toConsumableArray(a).sort();
-
-  var sortedB = _toConsumableArray(b).sort();
-
-  return a.length === b.length && sortedA.every((item, index) => item === sortedB[index]);
-}
-/**
- * Reverses keys and values for a given map
- * @param map Map to invert
- */
-
-function invertMap(map) {
-  var returnValue = new Map();
-
-  var _iterator = _createForOfIteratorHelper(map),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var _step$value = utils_slicedToArray(_step.value, 2),
-          key = _step$value[0],
-          value = _step$value[1];
-
-      returnValue.set(value, key);
-    }
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
-
-  return returnValue;
-}
-/**
- * Creates a Type Guard function for a string union type defined via an array as const.
- */
-
-function createStringUnionTypeGuardFunction(array) {
-  return function (x) {
-    return array.includes(x);
-  };
-}
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/ascend.js
-var ascend_templateObject, ascend_templateObject2, ascend_templateObject3, ascend_templateObject4, ascend_templateObject5, ascend_templateObject6;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6;
 
-function ascend_slicedToArray(arr, i) { return ascend_arrayWithHoles(arr) || ascend_iterableToArrayLimit(arr, i) || ascend_unsupportedIterableToArray(arr, i) || ascend_nonIterableRest(); }
-
-function ascend_nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function ascend_iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function ascend_arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-function ascend_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = ascend_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function ascend_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return ascend_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return ascend_arrayLikeToArray(o, minLen); }
-
-function ascend_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function ascend_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-function ascend_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
-
-function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
-
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function ascend_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
 
@@ -3374,121 +2973,22 @@ var Lifestyle;
   Lifestyle[Lifestyle["hardcore"] = 3] = "hardcore";
 })(Lifestyle || (Lifestyle = {}));
 
-var AscendError = /*#__PURE__*/function (_Error) {
-  _inherits(AscendError, _Error);
-
-  var _super = _createSuper(AscendError);
-
-  function AscendError(cause) {
-    var _this;
-
-    ascend_classCallCheck(this, AscendError);
-
-    if (!cause) {
-      _this = _super.call(this, "Failed to ascend--do you have a pending trade offer?");
-
-      ascend_defineProperty(_assertThisInitialized(_this), "cause", void 0);
-    } else if (cause instanceof external_kolmafia_namespaceObject.Skill) {
-      var reason = cause.permable ? (0,external_kolmafia_namespaceObject.haveSkill)(cause) ? "invalid for mysterious reasons" : "not a skill you currently know" : "unpermable";
-      _this = _super.call(this, "Skill ".concat(cause, " is ").concat(reason, "!"));
-
-      ascend_defineProperty(_assertThisInitialized(_this), "cause", void 0);
-    } else if (cause instanceof external_kolmafia_namespaceObject.Item) {
-      _this = _super.call(this, "Invalid astral item: ".concat(cause, "!"));
-
-      ascend_defineProperty(_assertThisInitialized(_this), "cause", void 0);
-    } else if (cause instanceof external_kolmafia_namespaceObject.Class) {
-      _this = _super.call(this, "Invalid class ".concat(cause, " for this path!"));
-
-      ascend_defineProperty(_assertThisInitialized(_this), "cause", void 0);
-    } else if (cause instanceof Path) {
-      _this = _super.call(this, "Invalid path ".concat(cause, "!"));
-
-      ascend_defineProperty(_assertThisInitialized(_this), "cause", void 0);
-    } else {
-      _this = _super.call(this, cause);
-
-      ascend_defineProperty(_assertThisInitialized(_this), "cause", void 0);
-    }
-
-    _this.cause = cause;
-    return _possibleConstructorReturn(_this);
-  }
-
-  return AscendError;
-}( /*#__PURE__*/_wrapNativeSuper(Error));
-var worksheds = ["warbear LP-ROM burner", "warbear jackhammer drill press", "warbear induction oven", "warbear high-efficiency still", "warbear chemistry lab", "warbear auto-anvil", "spinning wheel", "snow machine", "Little Geneticist DNA-Splicing Lab", "portable Mayo Clinic", "Asdon Martin keyfob", "diabolic pizza cube", "cold medicine cabinet"];
-var gardens = ["packet of pumpkin seeds", "Peppermint Pip Packet", "packet of dragon's teeth", "packet of beer seeds", "packet of winter seeds", "packet of thanksgarden seeds", "packet of tall grass seeds", "packet of mushroom spores"];
-var eudorae = ["My Own Pen Pal kit", "GameInformPowerDailyPro subscription card", "Xi Receiver Unit", "New-You Club Membership Form", "Our Daily Candles™ order form"];
-var isWorkshed = createStringUnionTypeGuardFunction(worksheds);
-var isGarden = createStringUnionTypeGuardFunction(gardens);
-var isEudora = createStringUnionTypeGuardFunction(eudorae);
-var isDesk = createStringUnionTypeGuardFunction(desks);
-var isNightstand = createStringUnionTypeGuardFunction(nightstands);
-var isCeiling = createStringUnionTypeGuardFunction(ceilings);
-var AscensionPrepError = /*#__PURE__*/function (_Error2) {
-  _inherits(AscensionPrepError, _Error2);
-
-  var _super2 = _createSuper(AscensionPrepError);
-
-  function AscensionPrepError(cause, original) {
-    var _this2;
-
-    ascend_classCallCheck(this, AscensionPrepError);
-
-    if (isWorkshed(cause)) {
-      _this2 = _super2.call(this, "Unable to swap workshed to ".concat(cause, "; workshed is currently ").concat(original, "."));
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    } else if (isGarden(cause)) {
-      _this2 = _super2.call(this, "Unable to swap garden to ".concat(cause, "; garden is currently ").concat(original, "."));
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    } else if (isEudora(cause)) {
-      _this2 = _super2.call(this, "Unable to swap eudora to ".concat(cause, "; eudora is currently ").concat(original, "."));
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    } else if (isDesk(cause)) {
-      _this2 = _super2.call(this, "Unable to swap chateau desk to ".concat(cause, "; desk is currently ").concat(original, "."));
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    } else if (isNightstand(cause)) {
-      _this2 = _super2.call(this, "Unable to swap chateau nightstand to ".concat(cause, "; nightstand is currently ").concat(original, "."));
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    } else if (isCeiling(cause)) {
-      _this2 = _super2.call(this, "Unable to swap chateau ceiling to ".concat(cause, "; ceiling is currently ").concat(original, "."));
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    } else {
-      _this2 = _super2.call(this, cause);
-
-      ascend_defineProperty(_assertThisInitialized(_this2), "cause", void 0);
-    }
-
-    _this2.cause = cause;
-    return _possibleConstructorReturn(_this2);
-  }
-
-  return AscensionPrepError;
-}( /*#__PURE__*/_wrapNativeSuper(Error));
-
 function toMoonId(moon, playerClass) {
   if (typeof moon === "number") return moon;
 
   var offset = () => {
     switch (playerClass.primestat) {
-      case $stat(ascend_templateObject || (ascend_templateObject = ascend_taggedTemplateLiteral(["Muscle"]))):
+      case $stat(_templateObject || (_templateObject = _taggedTemplateLiteral(["Muscle"]))):
         return 0;
 
-      case $stat(ascend_templateObject2 || (ascend_templateObject2 = ascend_taggedTemplateLiteral(["Mysticality"]))):
+      case $stat(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Mysticality"]))):
         return 1;
 
-      case $stat(ascend_templateObject3 || (ascend_templateObject3 = ascend_taggedTemplateLiteral(["Moxie"]))):
+      case $stat(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Moxie"]))):
         return 2;
 
       default:
-        throw new AscendError("unknown prime stat for ".concat(playerClass));
+        throw new Error("unknown prime stat for ".concat(playerClass));
     }
   };
 
@@ -3537,7 +3037,7 @@ function toMoonId(moon, playerClass) {
       return 7 + offset();
 
     default:
-      throw new AscendError("Invalid moon sign!");
+      return -1;
   }
 }
 /**
@@ -3552,38 +3052,31 @@ function toMoonId(moon, playerClass) {
 
 
 function ascend(path, playerClass, lifestyle, moon) {
-  var consumable = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : template_string_$item(ascend_templateObject4 || (ascend_templateObject4 = ascend_taggedTemplateLiteral(["astral six-pack"])));
+  var consumable = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : template_string_$item(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["astral six-pack"])));
   var pet = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : undefined;
-  var permSkills = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : undefined;
-
-  if (!path.classes.includes(playerClass)) {
-    throw new AscendError(playerClass);
-  }
-
-  if (path.id < 0) throw new AscendError(path);
-  var moonId = toMoonId(moon, playerClass);
-  if (moonId < 1 || moonId > 9) throw new Error("Invalid moon ".concat(moon));
-
-  if (consumable && !template_string_$items(ascend_templateObject5 || (ascend_templateObject5 = ascend_taggedTemplateLiteral(["astral six-pack, astral hot dog dinner, [10882]carton of astral energy drinks"]))).includes(consumable)) {
-    throw new AscendError(consumable);
-  }
-
-  if (pet && !template_string_$items(ascend_templateObject6 || (ascend_templateObject6 = ascend_taggedTemplateLiteral(["astral bludgeon, astral shield, astral chapeau, astral bracer, astral longbow, astral shorts, astral mace, astral trousers, astral ring, astral statuette, astral pistol, astral mask, astral pet sweater, astral shirt, astral belt"]))).includes(pet)) {
-    throw new AscendError(pet);
-  }
-
-  var illegalSkill = permSkills ? Array.from(permSkills.keys()).find(skill => !skill.permable || !(0,external_kolmafia_namespaceObject.haveSkill)(skill)) : undefined;
-
-  if (illegalSkill) {
-    throw new AscendError(illegalSkill);
-  }
 
   if (!(0,external_kolmafia_namespaceObject.containsText)((0,external_kolmafia_namespaceObject.visitUrl)("charpane.php"), "Astral Spirit")) {
     (0,external_kolmafia_namespaceObject.visitUrl)("ascend.php?action=ascend&confirm=on&confirm2=on");
   }
 
   if (!(0,external_kolmafia_namespaceObject.containsText)((0,external_kolmafia_namespaceObject.visitUrl)("charpane.php"), "Astral Spirit")) {
-    throw new AscendError();
+    throw new Error("Failed to ascend.");
+  }
+
+  if (!path.classes.includes(playerClass)) {
+    throw new Error("Invalid class ".concat(playerClass, " for this path"));
+  }
+
+  if (path.id < 0) throw new Error("Invalid path ID ".concat(path.id));
+  var moonId = toMoonId(moon, playerClass);
+  if (moonId < 1 || moonId > 9) throw new Error("Invalid moon ".concat(moon));
+
+  if (consumable && !template_string_$items(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["astral six-pack, astral hot dog dinner, [10882]carton of astral energy drinks"]))).includes(consumable)) {
+    throw new Error("Invalid consumable ".concat(consumable));
+  }
+
+  if (pet && !template_string_$items(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["astral bludgeon, astral shield, astral chapeau, astral bracer, astral longbow, astral shorts, astral mace, astral ring, astral statuette, astral pistol, astral mask, astral pet sweater, astral shirt, astral belt"]))).includes(pet)) {
+    throw new Error("Invalid astral item ".concat(pet));
   }
 
   (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=pearlygates");
@@ -3593,31 +3086,11 @@ function ascend(path, playerClass, lifestyle, moon) {
   }
 
   if (pet) (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=buyarmory&whichitem=".concat((0,external_kolmafia_namespaceObject.toInt)(pet)));
-
-  if (permSkills) {
-    var _iterator = ascend_createForOfIteratorHelper(permSkills.entries()),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var _step$value = ascend_slicedToArray(_step.value, 2),
-            skill = _step$value[0],
-            permLevel = _step$value[1];
-
-        if (permLevel !== Lifestyle.casual) {
-          var permText = permLevel === Lifestyle.hardcore ? "hcperm" : "scperm";
-          (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=".concat(permText, "&whichskill=").concat((0,external_kolmafia_namespaceObject.toInt)(skill)));
-        }
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  }
-
   (0,external_kolmafia_namespaceObject.visitUrl)("afterlife.php?action=ascend&confirmascend=1&whichsign=".concat(moonId, "&gender=2&whichclass=").concat((0,external_kolmafia_namespaceObject.toInt)(playerClass), "&whichpath=").concat(path.id, "&asctype=").concat(lifestyle, "&nopetok=1&noskillsok=1&lamepathok=1&lamesignok=1&pwd"), true);
 }
+var worksheds = (/* unused pure expression or super */ null && (["warbear LP-ROM burner", "warbear jackhammer drill press", "warbear induction oven", "warbear high-efficiency still", "warbear chemistry lab", "warbear auto-anvil", "spinning wheel", "snow machine", "Little Geneticist DNA-Splicing Lab", "portable Mayo Clinic", "Asdon Martin keyfob", "diabolic pizza cube", "cold medicine cabinet"]));
+var gardens = (/* unused pure expression or super */ null && (["packet of pumpkin seeds", "Peppermint Pip Packet", "packet of dragon's teeth", "packet of beer seeds", "packet of winter seeds", "packet of thanksgarden seeds", "packet of tall grass seeds", "packet of mushroom spores"]));
+var eudorae = ["My Own Pen Pal kit", "GameInformPowerDailyPro subscription card", "Xi Receiver Unit", "New-You Club Membership Form", "Our Daily Candles™ order form"];
 /**
  * Sets up various iotms you may want to use in the coming ascension
  * @param ascensionItems.workshed Workshed to switch to.
@@ -3642,16 +3115,15 @@ function prepareAscension() {
     (0,external_kolmafia_namespaceObject.use)(external_kolmafia_namespaceObject.Item.get(workshed));
 
     if ((0,external_kolmafia_namespaceObject.getWorkshed)().name !== workshed && throwOnFail) {
-      throw new AscensionPrepError(workshed, (0,external_kolmafia_namespaceObject.getWorkshed)());
+      throw new Error("Failed to switch workshed to ".concat(workshed, "; it is currently still ").concat((0,external_kolmafia_namespaceObject.getWorkshed)(), "."));
     }
   }
 
   if (garden && !Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).includes(garden)) {
     (0,external_kolmafia_namespaceObject.use)(external_kolmafia_namespaceObject.Item.get(garden));
-    var gardenName = Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).find(isGarden);
 
-    if (gardenName !== garden && throwOnFail) {
-      throw new AscensionPrepError(garden, gardenName);
+    if (!Object.getOwnPropertyNames((0,external_kolmafia_namespaceObject.getCampground)()).includes(garden) && throwOnFail) {
+      throw new Error("We really thought we changed your garden to a ".concat(garden, ", but Mafia is saying otherwise."));
     }
   }
 
@@ -3659,13 +3131,13 @@ function prepareAscension() {
     var eudoraNumber = 1 + eudorae.indexOf(eudora);
 
     if (!(0,external_kolmafia_namespaceObject.xpath)((0,external_kolmafia_namespaceObject.visitUrl)("account.php?tab=correspondence"), "//select[@name=\"whichpenpal\"]/option/@value").includes(eudoraNumber.toString()) && throwOnFail) {
-      throw new AscensionPrepError("Unable to swap eudora to ".concat(eudora, " because you are not subscribed to it."));
+      throw new Error("I'm sorry buddy, but you don't seem to be subscribed to ".concat(eudora, ". Which makes it REALLY hard to correspond with them."));
     } else {
       (0,external_kolmafia_namespaceObject.visitUrl)("account.php?actions[]=whichpenpal&whichpenpal=".concat(eudoraNumber, "&action=Update"), true);
     }
 
     if ((0,external_kolmafia_namespaceObject.eudoraItem)() !== external_kolmafia_namespaceObject.Item.get(eudora) && throwOnFail) {
-      throw new AscensionPrepError(eudora, (0,external_kolmafia_namespaceObject.eudoraItem)());
+      throw new Error("We really thought we changed your eudora to a ".concat(eudora, ", but Mafia is saying otherwise."));
     }
   }
 
@@ -3676,25 +3148,19 @@ function prepareAscension() {
 
     if (ceiling && getCeiling() !== ceiling) {
       if (!changeCeiling(ceiling) && throwOnFail) {
-        var _ChateauMantegna$getC;
-
-        throw new AscensionPrepError(ceiling, (_ChateauMantegna$getC = getCeiling()) !== null && _ChateauMantegna$getC !== void 0 ? _ChateauMantegna$getC : "unknown");
+        throw new Error("We tried, but were unable to change your chateau ceiling to ".concat(ceiling, ". Probably."));
       }
     }
 
     if (desk && getDesk() !== desk) {
       if (!changeDesk(desk) && throwOnFail) {
-        var _ChateauMantegna$getD;
-
-        throw new AscensionPrepError(desk, (_ChateauMantegna$getD = getDesk()) !== null && _ChateauMantegna$getD !== void 0 ? _ChateauMantegna$getD : "unknown");
+        throw new Error("We tried, but were unable to change your chateau desk to ".concat(desk, ". Probably."));
       }
     }
 
     if (nightstand && getNightstand() !== nightstand) {
       if (!changeNightstand(nightstand) && throwOnFail) {
-        var _ChateauMantegna$getN;
-
-        throw new AscensionPrepError(nightstand, (_ChateauMantegna$getN = getNightstand()) !== null && _ChateauMantegna$getN !== void 0 ? _ChateauMantegna$getN : "unknown");
+        throw new Error("We tried, but were unable to change your chateau nightstand to ".concat(nightstand, ". Probably."));
       }
     }
   }
@@ -3702,31 +3168,31 @@ function prepareAscension() {
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/features/array/flat.js
 var flat = __webpack_require__(2580);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/lib.js
-var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, lib_templateObject7, lib_templateObject8, lib_templateObject9, lib_templateObject10, lib_templateObject11, _templateObject12, _templateObject13;
+var lib_templateObject, lib_templateObject2, lib_templateObject3, lib_templateObject4, lib_templateObject5, lib_templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11;
 
 function lib_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function lib_inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) lib_setPrototypeOf(subClass, superClass); }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
-function lib_createSuper(Derived) { var hasNativeReflectConstruct = lib_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = lib_getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = lib_getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return lib_possibleConstructorReturn(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
-function lib_possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return lib_assertThisInitialized(self); }
+function _possibleConstructorReturn(self, call) { if (call && (typeof call === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
 
-function lib_assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function lib_wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; lib_wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !lib_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return lib_construct(Class, arguments, lib_getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return lib_setPrototypeOf(Wrapper, Class); }; return lib_wrapNativeSuper(Class); }
+function _wrapNativeSuper(Class) { var _cache = typeof Map === "function" ? new Map() : undefined; _wrapNativeSuper = function _wrapNativeSuper(Class) { if (Class === null || !_isNativeFunction(Class)) return Class; if (typeof Class !== "function") { throw new TypeError("Super expression must either be null or a function"); } if (typeof _cache !== "undefined") { if (_cache.has(Class)) return _cache.get(Class); _cache.set(Class, Wrapper); } function Wrapper() { return _construct(Class, arguments, _getPrototypeOf(this).constructor); } Wrapper.prototype = Object.create(Class.prototype, { constructor: { value: Wrapper, enumerable: false, writable: true, configurable: true } }); return _setPrototypeOf(Wrapper, Class); }; return _wrapNativeSuper(Class); }
 
-function lib_construct(Parent, args, Class) { if (lib_isNativeReflectConstruct()) { lib_construct = Reflect.construct; } else { lib_construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) lib_setPrototypeOf(instance, Class.prototype); return instance; }; } return lib_construct.apply(null, arguments); }
+function _construct(Parent, args, Class) { if (_isNativeReflectConstruct()) { _construct = Reflect.construct; } else { _construct = function _construct(Parent, args, Class) { var a = [null]; a.push.apply(a, args); var Constructor = Function.bind.apply(Parent, a); var instance = new Constructor(); if (Class) _setPrototypeOf(instance, Class.prototype); return instance; }; } return _construct.apply(null, arguments); }
 
-function lib_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 
-function lib_isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
+function _isNativeFunction(fn) { return Function.toString.call(fn).indexOf("[native code]") !== -1; }
 
-function lib_setPrototypeOf(o, p) { lib_setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return lib_setPrototypeOf(o, p); }
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-function lib_getPrototypeOf(o) { lib_getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return lib_getPrototypeOf(o); }
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function lib_createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = lib_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = lib_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e2) { throw _e2; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e3) { didErr = true; err = _e3; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function lib_slicedToArray(arr, i) { return lib_arrayWithHoles(arr) || lib_iterableToArrayLimit(arr, i) || lib_unsupportedIterableToArray(arr, i) || lib_nonIterableRest(); }
 
@@ -4121,7 +3587,7 @@ function getBanishedMonsters() {
   var banishes = chunk(get("banishedMonsters").split(":"), 3);
   var result = new Map();
 
-  var _iterator = lib_createForOfIteratorHelper(banishes),
+  var _iterator = _createForOfIteratorHelper(banishes),
       _step;
 
   try {
@@ -4133,18 +3599,8 @@ function getBanishedMonsters() {
       if (foe === undefined || banisher === undefined) break; // toItem doesn"t error if the item doesn"t exist, so we have to use that.
 
       var banisherItem = toItem(banisher);
-
-      if (banisher.toLowerCase() === "saber force") {
-        result.set($skill(lib_templateObject2 || (lib_templateObject2 = lib_taggedTemplateLiteral(["Use the Force"]))), Monster.get(foe));
-      } else if ([Item.get("none"), Item.get("training scroll:  Snokebomb"), Item.get("tomayohawk-style reflex hammer"), null].includes(banisherItem)) {
-        if (Skill.get(banisher) === $skill(lib_templateObject3 || (lib_templateObject3 = lib_taggedTemplateLiteral(["none"])))) {
-          break;
-        } else {
-          result.set(Skill.get(banisher), Monster.get(foe));
-        }
-      } else {
-        result.set(banisherItem, Monster.get(foe));
-      }
+      var banisherObject = [Item.get("none"), null].includes(banisherItem) ? Skill.get(banisher) : banisherItem;
+      result.set(banisherObject, Monster.get(foe));
     }
   } catch (err) {
     _iterator.e(err);
@@ -4166,7 +3622,7 @@ function canUse(item) {
   var path = myPath();
 
   if (path !== "Nuclear Autumn") {
-    if ($items(lib_templateObject4 || (lib_templateObject4 = lib_taggedTemplateLiteral(["Shrieking Weasel holo-record, Power-Guy 2000 holo-record, Lucky Strikes holo-record, EMD holo-record, Superdrifter holo-record, The Pigs holo-record, Drunk Uncles holo-record"]))).includes(item)) {
+    if ($items(lib_templateObject2 || (lib_templateObject2 = lib_taggedTemplateLiteral(["Shrieking Weasel holo-record, Power-Guy 2000 holo-record, Lucky Strikes holo-record, EMD holo-record, Superdrifter holo-record, The Pigs holo-record, Drunk Uncles holo-record"]))).includes(item)) {
       return false;
     }
   }
@@ -4272,9 +3728,9 @@ function questStep(questName) {
   }
 }
 var EnsureError = /*#__PURE__*/function (_Error) {
-  lib_inherits(EnsureError, _Error);
+  _inherits(EnsureError, _Error);
 
-  var _super = lib_createSuper(EnsureError);
+  var _super = _createSuper(EnsureError);
 
   function EnsureError(cause) {
     var _this;
@@ -4287,7 +3743,7 @@ var EnsureError = /*#__PURE__*/function (_Error) {
   }
 
   return EnsureError;
-}( /*#__PURE__*/lib_wrapNativeSuper(Error));
+}( /*#__PURE__*/_wrapNativeSuper(Error));
 /**
  * Tries to get an effect using the default method
  * @param ef effect to try to get
@@ -4341,8 +3797,8 @@ var Environment = {
  */
 
 function findLeprechaunMultiplier(familiar) {
-  if (familiar === $familiar(lib_templateObject5 || (lib_templateObject5 = lib_taggedTemplateLiteral(["Mutant Cactus Bud"])))) return numericModifier(familiar, "Leprechaun Effectiveness", 1, $item(lib_templateObject6 || (lib_templateObject6 = lib_taggedTemplateLiteral(["none"]))));
-  var meatBonus = numericModifier(familiar, "Meat Drop", 1, $item(lib_templateObject7 || (lib_templateObject7 = lib_taggedTemplateLiteral(["none"]))));
+  if (familiar === $familiar(lib_templateObject3 || (lib_templateObject3 = lib_taggedTemplateLiteral(["Mutant Cactus Bud"])))) return numericModifier(familiar, "Leprechaun Effectiveness", 1, $item(lib_templateObject4 || (lib_templateObject4 = lib_taggedTemplateLiteral(["none"]))));
+  var meatBonus = numericModifier(familiar, "Meat Drop", 1, $item(lib_templateObject5 || (lib_templateObject5 = lib_taggedTemplateLiteral(["none"]))));
   if (meatBonus === 0) return 0;
   return Math.pow(Math.sqrt(meatBonus / 2 + 55 / 4 + 3) - Math.sqrt(55) / 2, 2);
 }
@@ -4354,12 +3810,12 @@ function findLeprechaunMultiplier(familiar) {
  */
 
 function findFairyMultiplier(familiar) {
-  if (familiar === $familiar(lib_templateObject8 || (lib_templateObject8 = lib_taggedTemplateLiteral(["Mutant Fire Ant"])))) return numericModifier(familiar, "Fairy Effectiveness", 1, $item(lib_templateObject9 || (lib_templateObject9 = lib_taggedTemplateLiteral(["none"]))));
-  var itemBonus = numericModifier(familiar, "Item Drop", 1, $item(lib_templateObject10 || (lib_templateObject10 = lib_taggedTemplateLiteral(["none"]))));
+  if (familiar === $familiar(lib_templateObject6 || (lib_templateObject6 = lib_taggedTemplateLiteral(["Mutant Fire Ant"])))) return numericModifier(familiar, "Fairy Effectiveness", 1, $item(_templateObject7 || (_templateObject7 = lib_taggedTemplateLiteral(["none"]))));
+  var itemBonus = numericModifier(familiar, "Item Drop", 1, $item(_templateObject8 || (_templateObject8 = lib_taggedTemplateLiteral(["none"]))));
   if (itemBonus === 0) return 0;
   return Math.pow(Math.sqrt(itemBonus + 55 / 4 + 3) - Math.sqrt(55) / 2, 2);
 }
-var holidayWanderers = new Map([["El Dia De Los Muertos Borrachos", $monsters(lib_templateObject11 || (lib_templateObject11 = lib_taggedTemplateLiteral(["Novia Cad\xE1ver, Novio Cad\xE1ver, Padre Cad\xE1ver, Persona Inocente Cad\xE1ver"])))], ["Feast of Boris", $monsters(_templateObject12 || (_templateObject12 = lib_taggedTemplateLiteral(["Candied Yam Golem, Malevolent Tofurkey, Possessed Can of Cranberry Sauce, Stuffing Golem"])))], ["Talk Like a Pirate Day", $monsters(_templateObject13 || (_templateObject13 = lib_taggedTemplateLiteral(["ambulatory pirate, migratory pirate, peripatetic pirate"])))]]);
+var holidayWanderers = new Map([["El Dia De Los Muertos Borrachos", $monsters(_templateObject9 || (_templateObject9 = lib_taggedTemplateLiteral(["Novia Cad\xE1ver, Novio Cad\xE1ver, Padre Cad\xE1ver, Persona Inocente Cad\xE1ver"])))], ["Feast of Boris", $monsters(_templateObject10 || (_templateObject10 = lib_taggedTemplateLiteral(["Candied Yam Golem, Malevolent Tofurkey, Possessed Can of Cranberry Sauce, Stuffing Golem"])))], ["Talk Like a Pirate Day", $monsters(_templateObject11 || (_templateObject11 = lib_taggedTemplateLiteral(["ambulatory pirate, migratory pirate, peripatetic pirate"])))]]);
 function getTodaysHolidayWanderers() {
   return holiday().split("/").map(holiday => {
     var _holidayWanderers$get;
@@ -4367,27 +3823,117 @@ function getTodaysHolidayWanderers() {
     return (_holidayWanderers$get = holidayWanderers.get(holiday)) !== null && _holidayWanderers$get !== void 0 ? _holidayWanderers$get : [];
   }).flat();
 }
-/**
- * Determines & returns whether or not we can safely call visitUrl(), based on whether we're in a fight, multi-fight, choice, etc
- */
+;// CONCATENATED MODULE: ./node_modules/libram/dist/Path.js
+var Path_templateObject, Path_templateObject2, Path_templateObject3, Path_templateObject4, Path_templateObject5, Path_templateObject6, Path_templateObject7, Path_templateObject8, Path_templateObject9, Path_templateObject10, Path_templateObject11;
 
-function canVisitUrl() {
-  return !(currentRound() || inMultiFight() || choiceFollowsFight() || handlingChoice());
-}
-/**
- * Calculate damage taken from a specific element after factoring in resistance
- * @param baseDamage
- * @param element
- * @returns damage after factoring in resistances
- */
+function Path_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-function damageTakenByElement(baseDamage, element) {
-  if (baseDamage < 0) return 1;
-  var res = elementalResistance(element);
-  return Math.max(1, Math.ceil(baseDamage - baseDamage * res / 100));
-}
+function Path_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function Path_defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+var Path = //here, we define avatar-ness around being its own class
+//Defined as the lowest inebriety that makes you unable to drink more, just to make it fifteens across the board
+
+/**
+ *
+ * @param name Name of path
+ * @param id Path ID
+ * @param hasAllPerms Does the player have immediate access to all permed skills>
+ * @param hasCampground Does the player have access to the campground?
+ * @param hasTerrarium Does the player have access to terrarium.php
+ * @param stomachSize Maximum fullness achievable at turn 0
+ * @param liverSize The lowest inebriety that makes you unable to drink more
+ * @param spleenSize Maximum spleen achievable at turn 0
+ * @param classes Classes available in this path
+ */
+function Path(name, id) {
+  var hasAllPerms = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : true;
+  var hasCampground = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
+  var hasTerrarium = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+  var stomachSize = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 15;
+  var liverSize = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 15;
+  var spleenSize = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 15;
+  var classes = arguments.length > 8 && arguments[8] !== undefined ? arguments[8] : $classes(Path_templateObject || (Path_templateObject = Path_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer, Sauceror, Pastamancer, Disco Bandit, Accordion Thief"])));
+
+  Path_classCallCheck(this, Path);
+
+  Path_defineProperty(this, "name", void 0);
+
+  Path_defineProperty(this, "id", void 0);
+
+  Path_defineProperty(this, "hasAllPerms", void 0);
+
+  Path_defineProperty(this, "hasCampground", void 0);
+
+  Path_defineProperty(this, "hasTerrarium", void 0);
+
+  Path_defineProperty(this, "stomachSize", void 0);
+
+  Path_defineProperty(this, "liverSize", void 0);
+
+  Path_defineProperty(this, "spleenSize", void 0);
+
+  Path_defineProperty(this, "classes", void 0);
+
+  this.name = name;
+  this.id = id;
+  this.hasAllPerms = hasAllPerms;
+  this.hasCampground = hasCampground;
+  this.hasTerrarium = hasTerrarium;
+  this.stomachSize = stomachSize;
+  this.liverSize = liverSize;
+  this.spleenSize = spleenSize;
+  this.classes = classes;
+};
+var Paths = {
+  Unrestricted: new Path("Unrestricted", 0),
+  Boozetafarian: new Path("Boozetafarian", 1, false, true, true, 0),
+  Teetotaler: new Path("Teetotaler", 2, false, true, true, 15, 0),
+  Oxygenarian: new Path("Oxygenarian", 3, false, true, true, 0, 0),
+  BeesHateYou: new Path("Bees Hate You", 4),
+  WayOfTheSurprisingFist: new Path("Way of the Surprising Fist", 6),
+  Trendy: new Path("Trendy", 6),
+  AvatarOfBoris: new Path("Avatar of Boris", 8, false, true, false, 20, 5, 15, $classes(Path_templateObject2 || (Path_templateObject2 = Path_taggedTemplateLiteral(["Avatar of Boris"])))),
+  BugbearInvasion: new Path("Bugbear Invasion", 9),
+  ZombieSlayer: new Path("Zombie Slayer", 10, false, true, true, 15, 5, 15, $classes(Path_templateObject3 || (Path_templateObject3 = Path_taggedTemplateLiteral(["Zombie Master"])))),
+  ClassAct: new Path("Class Act", 11, false),
+  AvatarofJarlsberg: new Path("Avatar of Jarlsberg", 12, false, true, false, 10, 10, 15, $classes(Path_templateObject4 || (Path_templateObject4 = Path_taggedTemplateLiteral(["Avatar of Jarlsberg"])))),
+  Big: new Path("BIG!", 14),
+  KolHs: new Path("KOLHS", 15),
+  ClassAct2: new Path("Class Act II: A Class For Pigs", 16, false),
+  AvatarofSneakyPete: new Path("Avatar of Sneaky Pete", 17, false, true, false, 5, 20, 15, $classes(Path_templateObject5 || (Path_templateObject5 = Path_taggedTemplateLiteral(["Avatar of Sneaky Pete"])))),
+  SlowAndSteady: new Path("Slow and Steady", 18),
+  HeavyRains: new Path("Heavy Rains", 19),
+  Picky: new Path("Picky", 21, false),
+  Standard: new Path("Standard", 22),
+  ActuallyEdTheUndying: new Path("Actually Ed the Undying", 23, false, false, false, 0, 0, 5, $classes(Path_templateObject6 || (Path_templateObject6 = Path_taggedTemplateLiteral(["Ed"])))),
+  OneCrazyRandomSummer: new Path("One Crazy Random Summer", 24),
+  CommunityService: new Path("Community Service", 25),
+  AvatarOfWestOfLoathing: new Path("Avatar of West of Loathing", 26, false, true, true, 10, 10, 10, $classes(Path_templateObject7 || (Path_templateObject7 = Path_taggedTemplateLiteral(["Cow Puncher, Snake Oiler, Beanslinger"])))),
+  TheSource: new Path("The Source", 27),
+  NuclearAutumn: new Path("Nuclear Autumn", 28, false, false, true, 3, 3, 3),
+  GelatinousNoob: new Path("Gelatinous Noob", 29, false, true, true, 0, 0, 0, $classes(Path_templateObject8 || (Path_templateObject8 = Path_taggedTemplateLiteral(["Gelatinous Noob"])))),
+  LicenseToAdventure: new Path("License to Adventure", 30, true, true, false, 0, 2, 15),
+  LiveAscendRepeat: new Path("Live. Ascend. Repeat.", 31),
+  PocketFamiliars: new Path("Pocket Familiars", 32, false, true, false),
+  GLover: new Path("G-Lover", 33),
+  DisguisesDelimit: new Path("Disguises Delimit", 34),
+  DarkGyffte: new Path("Dark Gyffte", 35, false, true, false, 5, 5, 15, $classes(Path_templateObject9 || (Path_templateObject9 = Path_taggedTemplateLiteral(["Vampyre"])))),
+  TwoCrazyRandomSummer: new Path("Two Crazy Random Summer", 36),
+  KingdomOfExploathing: new Path("Kingdom of Exploathing", 37),
+  PathOfThePlumber: new Path("Path of the Plumber", 38, false, true, true, 20, 0, 5, $classes(Path_templateObject10 || (Path_templateObject10 = Path_taggedTemplateLiteral(["Plumber"])))),
+  LowKeySummer: new Path("Low Key Summer", 40),
+  GreyGoo: new Path("Grey Goo", 40),
+  YouRobot: new Path("You, Robot", 41, false, false, true, 0, 0, 0),
+  QuantumTerrarium: new Path("Quantum Terrarium", 42, true, true, false),
+  Wildfire: new Path("Wildfire", 43),
+  GreyYou: new Path("Grey You", 44, false, true, true, 0, 0, 0, // eslint-disable-next-line libram/verify-constants
+  $classes(Path_templateObject11 || (Path_templateObject11 = Path_taggedTemplateLiteral(["Grey Goo"]))))
+};
 ;// CONCATENATED MODULE: ./src/gash-hop.ts
-var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7, gash_hop_templateObject8, gash_hop_templateObject9, gash_hop_templateObject10, gash_hop_templateObject11, gash_hop_templateObject12;
+var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7, gash_hop_templateObject8, gash_hop_templateObject9, gash_hop_templateObject10, gash_hop_templateObject11, _templateObject12;
 
 function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -4414,7 +3960,7 @@ function main() {
   });
   var pet = lib_have(template_string_$familiar(gash_hop_templateObject9 || (gash_hop_templateObject9 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject10 || (gash_hop_templateObject10 = gash_hop_taggedTemplateLiteral(["astral chapeau"]))) : template_string_$item(gash_hop_templateObject11 || (gash_hop_templateObject11 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
   var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
-  ascend(Paths.CommunityService, newClass, lifestyle, "knoll", template_string_$item(gash_hop_templateObject12 || (gash_hop_templateObject12 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+  ascend(Paths.CommunityService, newClass, lifestyle, "knoll", template_string_$item(_templateObject12 || (_templateObject12 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
 }
 })();
 

@@ -12094,10 +12094,6 @@ function isPhylumProperty(property) {
   return phylumPropertiesSet.has(property);
 }
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/property.js
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -12302,17 +12298,6 @@ var PropertiesManager = /*#__PURE__*/function () {
       })));
     }
     /**
-     * Sets a single choice adventure property to the given value, storing the old value.
-     * @param choiceToSet The number of the choice adventure to set the property for.
-     * @param value The value to assign to that choice adventure.
-     */
-
-  }, {
-    key: "setChoice",
-    value: function setChoice(choiceToSet, value) {
-      this.setChoices(_defineProperty({}, choiceToSet, value));
-    }
-    /**
      * Resets the given properties to their original stored value. Does not delete entries from the manager.
      * @param properties Collection of properties to reset.
      */
@@ -12405,87 +12390,6 @@ var PropertiesManager = /*#__PURE__*/function () {
 
       return false;
     }
-    /**
-     * Creates a new PropertiesManager with identical stored values to this one.
-     * @returns A new PropertiesManager, with identical stored values to this one.
-     */
-
-  }, {
-    key: "clone",
-    value: function clone() {
-      var newGuy = new PropertiesManager();
-      newGuy.properties = this.storedValues;
-      return newGuy;
-    }
-    /**
-     * Clamps a numeric property, modulating it up or down to fit within a specified range
-     * @param property The numeric property to clamp
-     * @param min The lower bound for what we want the property to be allowed to be.
-     * @param max The upper bound for what we want the property to be allowed to be.
-     * @returns Whether we ended up changing the property or not.
-     */
-
-  }, {
-    key: "clamp",
-    value: function clamp(property, min, max) {
-      if (max < min) return false;
-      var start = property_get(property);
-      this.setMinimumValue(property, min);
-      this.setMaximumValue(property, max);
-      return start !== property_get(property);
-    }
-    /**
-     * Determines whether this PropertiesManager has identical stored values to another.
-     * @param other The PropertiesManager to compare to this one.
-     * @returns Whether their StoredValues are identical.
-     */
-
-  }, {
-    key: "equals",
-    value: function equals(other) {
-      var thisProps = Object.entries(this.storedValues);
-      var otherProps = new Map(Object.entries(other.storedValues));
-      if (thisProps.length !== otherProps.size) return false;
-
-      for (var _i5 = 0, _thisProps = thisProps; _i5 < _thisProps.length; _i5++) {
-        var _thisProps$_i = _slicedToArray(_thisProps[_i5], 2),
-            propertyName = _thisProps$_i[0],
-            propertyValue = _thisProps$_i[1];
-
-        if (otherProps.get(propertyName) === propertyValue) return false;
-      }
-
-      return true;
-    }
-    /**
-     * Merges a PropertiesManager onto this one, letting the input win in the event that both PropertiesManagers have a value stored.
-     * @param other The PropertiesManager to be merged onto this one.
-     * @returns A new PropertiesManager with stored values from both its parents.
-     */
-
-  }, {
-    key: "merge",
-    value: function merge(other) {
-      var newGuy = new PropertiesManager();
-      newGuy.properties = _objectSpread(_objectSpread({}, this.properties), other.properties);
-      return newGuy;
-    }
-    /**
-     * Merges an arbitrary collection of PropertiesManagers, letting the rightmost PropertiesManager win in the event of verlap.
-     * @param mergees The PropertiesManagers to merge together.
-     * @returns A PropertiesManager that is just an amalgam of all the constituents.
-     */
-
-  }], [{
-    key: "merge",
-    value: function merge() {
-      for (var _len3 = arguments.length, mergees = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-        mergees[_key3] = arguments[_key3];
-      }
-
-      if (mergees.length === 0) return new PropertiesManager();
-      return mergees.reduce((a, b) => a.merge(b));
-    }
   }]);
 
   return PropertiesManager;
@@ -12493,7 +12397,7 @@ var PropertiesManager = /*#__PURE__*/function () {
 // EXTERNAL MODULE: ./node_modules/libram/node_modules/core-js/features/array/flat.js
 var flat = __webpack_require__(2580);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/lib.js
-var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11, _templateObject12, _templateObject13;
+var _templateObject, _templateObject2, _templateObject3, _templateObject4, _templateObject5, _templateObject6, _templateObject7, _templateObject8, _templateObject9, _templateObject10, _templateObject11;
 
 function lib_classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12924,18 +12828,8 @@ function getBanishedMonsters() {
       if (foe === undefined || banisher === undefined) break; // toItem doesn"t error if the item doesn"t exist, so we have to use that.
 
       var banisherItem = toItem(banisher);
-
-      if (banisher.toLowerCase() === "saber force") {
-        result.set($skill(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Use the Force"]))), Monster.get(foe));
-      } else if ([Item.get("none"), Item.get("training scroll:  Snokebomb"), Item.get("tomayohawk-style reflex hammer"), null].includes(banisherItem)) {
-        if (Skill.get(banisher) === $skill(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["none"])))) {
-          break;
-        } else {
-          result.set(Skill.get(banisher), Monster.get(foe));
-        }
-      } else {
-        result.set(banisherItem, Monster.get(foe));
-      }
+      var banisherObject = [Item.get("none"), null].includes(banisherItem) ? Skill.get(banisher) : banisherItem;
+      result.set(banisherObject, Monster.get(foe));
     }
   } catch (err) {
     _iterator.e(err);
@@ -12957,7 +12851,7 @@ function canUse(item) {
   var path = myPath();
 
   if (path !== "Nuclear Autumn") {
-    if ($items(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["Shrieking Weasel holo-record, Power-Guy 2000 holo-record, Lucky Strikes holo-record, EMD holo-record, Superdrifter holo-record, The Pigs holo-record, Drunk Uncles holo-record"]))).includes(item)) {
+    if ($items(_templateObject2 || (_templateObject2 = _taggedTemplateLiteral(["Shrieking Weasel holo-record, Power-Guy 2000 holo-record, Lucky Strikes holo-record, EMD holo-record, Superdrifter holo-record, The Pigs holo-record, Drunk Uncles holo-record"]))).includes(item)) {
       return false;
     }
   }
@@ -13132,8 +13026,8 @@ var Environment = {
  */
 
 function findLeprechaunMultiplier(familiar) {
-  if (familiar === $familiar(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Mutant Cactus Bud"])))) return numericModifier(familiar, "Leprechaun Effectiveness", 1, $item(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["none"]))));
-  var meatBonus = numericModifier(familiar, "Meat Drop", 1, $item(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["none"]))));
+  if (familiar === $familiar(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["Mutant Cactus Bud"])))) return numericModifier(familiar, "Leprechaun Effectiveness", 1, $item(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["none"]))));
+  var meatBonus = numericModifier(familiar, "Meat Drop", 1, $item(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["none"]))));
   if (meatBonus === 0) return 0;
   return Math.pow(Math.sqrt(meatBonus / 2 + 55 / 4 + 3) - Math.sqrt(55) / 2, 2);
 }
@@ -13145,37 +13039,18 @@ function findLeprechaunMultiplier(familiar) {
  */
 
 function findFairyMultiplier(familiar) {
-  if (familiar === $familiar(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["Mutant Fire Ant"])))) return numericModifier(familiar, "Fairy Effectiveness", 1, $item(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["none"]))));
-  var itemBonus = numericModifier(familiar, "Item Drop", 1, $item(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["none"]))));
+  if (familiar === $familiar(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Mutant Fire Ant"])))) return numericModifier(familiar, "Fairy Effectiveness", 1, $item(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["none"]))));
+  var itemBonus = numericModifier(familiar, "Item Drop", 1, $item(_templateObject8 || (_templateObject8 = _taggedTemplateLiteral(["none"]))));
   if (itemBonus === 0) return 0;
   return Math.pow(Math.sqrt(itemBonus + 55 / 4 + 3) - Math.sqrt(55) / 2, 2);
 }
-var holidayWanderers = new Map([["El Dia De Los Muertos Borrachos", $monsters(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["Novia Cad\xE1ver, Novio Cad\xE1ver, Padre Cad\xE1ver, Persona Inocente Cad\xE1ver"])))], ["Feast of Boris", $monsters(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["Candied Yam Golem, Malevolent Tofurkey, Possessed Can of Cranberry Sauce, Stuffing Golem"])))], ["Talk Like a Pirate Day", $monsters(_templateObject13 || (_templateObject13 = _taggedTemplateLiteral(["ambulatory pirate, migratory pirate, peripatetic pirate"])))]]);
+var holidayWanderers = new Map([["El Dia De Los Muertos Borrachos", $monsters(_templateObject9 || (_templateObject9 = _taggedTemplateLiteral(["Novia Cad\xE1ver, Novio Cad\xE1ver, Padre Cad\xE1ver, Persona Inocente Cad\xE1ver"])))], ["Feast of Boris", $monsters(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Candied Yam Golem, Malevolent Tofurkey, Possessed Can of Cranberry Sauce, Stuffing Golem"])))], ["Talk Like a Pirate Day", $monsters(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["ambulatory pirate, migratory pirate, peripatetic pirate"])))]]);
 function getTodaysHolidayWanderers() {
   return (0,external_kolmafia_namespaceObject.holiday)().split("/").map(holiday => {
     var _holidayWanderers$get;
 
     return (_holidayWanderers$get = holidayWanderers.get(holiday)) !== null && _holidayWanderers$get !== void 0 ? _holidayWanderers$get : [];
   }).flat();
-}
-/**
- * Determines & returns whether or not we can safely call visitUrl(), based on whether we're in a fight, multi-fight, choice, etc
- */
-
-function canVisitUrl() {
-  return !(currentRound() || inMultiFight() || choiceFollowsFight() || handlingChoice());
-}
-/**
- * Calculate damage taken from a specific element after factoring in resistance
- * @param baseDamage
- * @param element
- * @returns damage after factoring in resistances
- */
-
-function damageTakenByElement(baseDamage, element) {
-  if (baseDamage < 0) return 1;
-  var res = elementalResistance(element);
-  return Math.max(1, Math.ceil(baseDamage - baseDamage * res / 100));
 }
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/combat.js
 var combat_templateObject, combat_templateObject2;
@@ -13473,9 +13348,6 @@ var combat_Macro = /*#__PURE__*/function () {
 
       if (condition instanceof external_kolmafia_namespaceObject.Monster) {
         ballsCondition = "monsterid ".concat(condition.id);
-      } else if (condition instanceof Array) {
-        ballsCondition = condition.map(mon => "monsterid ".concat(mon.id)).join(" || ");
-        ballsCondition = "(".concat(ballsCondition, ")");
       } else if (condition instanceof external_kolmafia_namespaceObject.Effect) {
         ballsCondition = "haseffect ".concat((0,external_kolmafia_namespaceObject.toInt)(condition));
       } else if (condition instanceof external_kolmafia_namespaceObject.Skill) {
@@ -14085,7 +13957,7 @@ var es_object_values = __webpack_require__(2231);
 // EXTERNAL MODULE: ./node_modules/lodash/lodash.js
 var lodash = __webpack_require__(3974);
 ;// CONCATENATED MODULE: ./node_modules/libram/dist/resources/2017/AsdonMartin.js
-var AsdonMartin_templateObject, AsdonMartin_templateObject2, AsdonMartin_templateObject3, AsdonMartin_templateObject4, AsdonMartin_templateObject5, AsdonMartin_templateObject6, AsdonMartin_templateObject7, AsdonMartin_templateObject8, AsdonMartin_templateObject9, AsdonMartin_templateObject10, AsdonMartin_templateObject11, AsdonMartin_templateObject12, AsdonMartin_templateObject13, _templateObject14;
+var AsdonMartin_templateObject, AsdonMartin_templateObject2, AsdonMartin_templateObject3, AsdonMartin_templateObject4, AsdonMartin_templateObject5, AsdonMartin_templateObject6, AsdonMartin_templateObject7, AsdonMartin_templateObject8, AsdonMartin_templateObject9, AsdonMartin_templateObject10, AsdonMartin_templateObject11, _templateObject12, _templateObject13, _templateObject14;
 
 function AsdonMartin_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -14280,8 +14152,8 @@ var Driving = {
   Safely: template_string_$effect(AsdonMartin_templateObject9 || (AsdonMartin_templateObject9 = AsdonMartin_taggedTemplateLiteral(["Driving Safely"]))),
   Recklessly: template_string_$effect(AsdonMartin_templateObject10 || (AsdonMartin_templateObject10 = AsdonMartin_taggedTemplateLiteral(["Driving Recklessly"]))),
   Intimidatingly: template_string_$effect(AsdonMartin_templateObject11 || (AsdonMartin_templateObject11 = AsdonMartin_taggedTemplateLiteral(["Driving Intimidatingly"]))),
-  Quickly: template_string_$effect(AsdonMartin_templateObject12 || (AsdonMartin_templateObject12 = AsdonMartin_taggedTemplateLiteral(["Driving Quickly"]))),
-  Observantly: template_string_$effect(AsdonMartin_templateObject13 || (AsdonMartin_templateObject13 = AsdonMartin_taggedTemplateLiteral(["Driving Observantly"]))),
+  Quickly: template_string_$effect(_templateObject12 || (_templateObject12 = AsdonMartin_taggedTemplateLiteral(["Driving Quickly"]))),
+  Observantly: template_string_$effect(_templateObject13 || (_templateObject13 = AsdonMartin_taggedTemplateLiteral(["Driving Observantly"]))),
   Waterproofly: template_string_$effect(_templateObject14 || (_templateObject14 = AsdonMartin_taggedTemplateLiteral(["Driving Waterproofly"])))
 };
 /**
