@@ -15086,6 +15086,7 @@ if (property_get("encountersUntilDMTChoice") === 0 && property_get("lastDMTDupli
   duped = best.dupeIt;
   _set("choiceAdventure1125", "1&iid=".concat((0,external_kolmafia_namespaceObject.toInt)(best.dupeIt)));
   (0,external_kolmafia_namespaceObject.adv1)(template_string_$location(aftercore_cs_templateObject4 || (aftercore_cs_templateObject4 = aftercore_cs_taggedTemplateLiteral(["The Deep Machine Tunnels"]))));
+  _set("lastDMTDuplication", (0,external_kolmafia_namespaceObject.myAscensions)());
 }
 
 if ((0,external_kolmafia_namespaceObject.mySign)() !== "Platypus" && !property_get("moonTuned")) {
@@ -15115,7 +15116,7 @@ if (property_get("lastEncounter") !== "Lava Dogs") {
   }
 
   var calderaTurns = property_get("_calderaStart", (0,external_kolmafia_namespaceObject.myTurncount)());
-  advMacro(template_string_$location(aftercore_cs_templateObject8 || (aftercore_cs_templateObject8 = aftercore_cs_taggedTemplateLiteral(["The Bubblin' Caldera"]))), combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject9 || (aftercore_cs_templateObject9 = aftercore_cs_taggedTemplateLiteral(["Curse of Weaksauce"])))).skill(template_string_$skill(aftercore_cs_templateObject10 || (aftercore_cs_templateObject10 = aftercore_cs_taggedTemplateLiteral(["Micrometeorite"])))).while_("!times 3", combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject11 || (aftercore_cs_templateObject11 = aftercore_cs_taggedTemplateLiteral(["Saucestorm"]))))).skill(template_string_$skill(aftercore_cs_templateObject12 || (aftercore_cs_templateObject12 = aftercore_cs_taggedTemplateLiteral(["Shrap"])))), () => property_get("lastEncounter") !== "Lava Dogs" && (0,external_kolmafia_namespaceObject.myTurncount)() - calderaTurns < 7);
+  advMacro(template_string_$location(aftercore_cs_templateObject8 || (aftercore_cs_templateObject8 = aftercore_cs_taggedTemplateLiteral(["The Bubblin' Caldera"]))), combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject9 || (aftercore_cs_templateObject9 = aftercore_cs_taggedTemplateLiteral(["Curse of Weaksauce"])))).skill(template_string_$skill(aftercore_cs_templateObject10 || (aftercore_cs_templateObject10 = aftercore_cs_taggedTemplateLiteral(["Micrometeorite"])))).while_("!times 3", combat_Macro.skill(template_string_$skill(aftercore_cs_templateObject11 || (aftercore_cs_templateObject11 = aftercore_cs_taggedTemplateLiteral(["Saucestorm"]))))).skill(template_string_$skill(aftercore_cs_templateObject12 || (aftercore_cs_templateObject12 = aftercore_cs_taggedTemplateLiteral(["Shrap"])))), () => property_get("lastEncounter") !== "Lava Dogs" && (0,external_kolmafia_namespaceObject.myTurncount)() - calderaTurns < 6);
   (0,external_kolmafia_namespaceObject.cliExecute)("soak");
   _set("mpAutoRecoveryTarget", 0.25);
   _set("mpAutoRecovery", 0.05);
