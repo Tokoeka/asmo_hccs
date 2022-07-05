@@ -186,7 +186,7 @@ export function fightSausageIfAble(location: Location, macro: Macro): void {
 	}
 }
 
-export function shrug(ef: Effect) {
+export function shrug(ef: Effect): void {
 	if (haveEffect(ef) > 0) {
 		cliExecute(`shrug ${ef.name}`);
 	}
@@ -206,7 +206,7 @@ const allSongs = Skill.all()
 		(skill) => toStringAsh(skill.class as unknown as string) === "Accordion Thief" && skill.buff
 	)
 	.map((skill) => toEffect(skill));
-export function openSongSlot(song: Effect) {
+export function openSongSlot(song: Effect): void {
 	for (const songSlot of songSlots) {
 		if (songSlot.includes(song)) {
 			for (const shruggable of songSlot) {
@@ -235,7 +235,7 @@ export function ensurePotionEffect(ef: Effect, potion: Item): void {
 	}
 }
 
-export function ensureSong(ef: Effect) {
+export function ensureSong(ef: Effect): void {
 	if (haveEffect(ef) === 0) {
 		openSongSlot(ef);
 		if (!cliExecute(ef.default) || haveEffect(ef) === 0) {
@@ -431,7 +431,7 @@ export const maximizeFamiliar = have($familiar`Disembodied Hand`)
 	? $familiar`Disembodied Hand`
 	: $familiar`Left-Hand Man`;
 
-function canCastLibrams(): boolean {
+export function canCastLibrams(): boolean {
 	const summonNumber = 1 + get("libramSummons");
 	const cost = 1 + (summonNumber * (summonNumber - 10)) / 2;
 	return myMp() >= cost + 100;
@@ -471,7 +471,7 @@ export function burnLibrams(): void {
 	}
 }
 
-export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
+export function pullIfPossible(quantity: number, it: Item, maxPrice: number): boolean {
 	if (pullsRemaining() > 0) {
 		const quantityPull = Math.max(0, quantity - availableAmount(it));
 		if (shopAmount(it) > 0) {
@@ -485,13 +485,13 @@ export function pullIfPossible(quantity: number, it: Item, maxPrice: number) {
 	} else return false;
 }
 
-export function ensurePullEffect(ef: Effect, it: Item) {
+export function ensurePullEffect(ef: Effect, it: Item): void {
 	if (haveEffect(ef) === 0) {
 		if (availableAmount(it) > 0 || pullIfPossible(1, it, 50000)) ensureEffect(ef);
 	}
 }
 
-export function inMysClass() {
+export function inMysClass(): boolean {
 	if ($classes`Sauceror, Pastamancer`.includes(myClass())) {
 		return true;
 	} else {
@@ -499,7 +499,7 @@ export function inMysClass() {
 	}
 }
 
-export function inMoxClass() {
+export function inMoxClass(): boolean {
 	if ($classes`Accordion Thief, Disco Bandit`.includes(myClass())) {
 		return true;
 	} else {
@@ -507,7 +507,7 @@ export function inMoxClass() {
 	}
 }
 
-export function inMusClass() {
+export function inMusClass(): boolean {
 	if ($classes`Seal Clubber, Turtle Tamer`.includes(myClass())) {
 		return true;
 	} else {

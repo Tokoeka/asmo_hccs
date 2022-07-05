@@ -18,7 +18,7 @@ import {
 	retrieveItem,
 	runChoice,
 	storageAmount,
-	takeStorage,
+	//takeStorage,
 	use,
 	useFamiliar,
 	useSkill,
@@ -66,7 +66,7 @@ function toot() {
 	if (availableAmount($item`astral six-pack`) !== 0) use(1, $item`astral six-pack`);
 }
 
-export function grimoires() {
+export function grimoires(): void {
 	if (!get("_grimoireConfiscatorSummons") && have($skill`Summon Confiscated Things`)) {
 		useSkill(1, $skill`Summon Confiscated Things`);
 		$items`glow-in-the-dark necklace, "KICK ME" sign, LCD game: Burger Belt, LCD game: Food Eater, LCD game: Garbage River`.forEach(
@@ -108,7 +108,7 @@ function getTurns() {
 	}
 	if (!get("_borrowedTimeUsed")) {
 		if (!have($item`borrowed time`)) {
-			resources.tome($item`borrowed time`);
+			resources.clipArt($item`borrowed time`);
 		}
 		use(1, $item`borrowed time`);
 	}
@@ -170,7 +170,12 @@ function prepGear() {
 		cliExecute("boombox meat");
 	}
 
-	cliExecute("briefcase enchantment weapon -combat");
+	if (myClass() === $class`Sauceror`) {
+		cliExecute("briefcase enchantment weapon");
+	} else {
+		cliExecute("briefcase enchantment weapon -combat");
+	}
+
 	if (get("umbrellaState") !== "broken") cliExecute("umbrella ml");
 }
 
@@ -261,7 +266,8 @@ function doPulls() {
 			continue;
 		}
 		const pullItem = Array.isArray(pull) ? pull.find((pull) => storageAmount(pull) > 0) : pull;
-		if (pullItem) takeStorage(pullItem, 1);
+		//if (pullItem) takeStorage(pullItem, 1);
+		if (pullItem) resources.pull(pullItem, 100);
 	}
 }
 

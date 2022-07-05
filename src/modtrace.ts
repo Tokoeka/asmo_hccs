@@ -17,7 +17,7 @@ import {
 	weightAdjustment,
 } from "kolmafia";
 import { $effect, $item, $skills, $slot, $slots, get } from "libram";
-import { horse, horsery } from "./asmohccs-lib";
+import { horsery } from "./asmohccs-lib";
 
 const moonBonus = [
 	["weapon damage percent", "mongoose", "20"],

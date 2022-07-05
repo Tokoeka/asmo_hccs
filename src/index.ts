@@ -14,7 +14,7 @@ import {
 	toItem,
 	visitUrl,
 } from "kolmafia";
-import { $item, CommunityService, get, set } from "libram";
+import { $item, CommunityService, get } from "libram";
 import coilWire from "./coil wire";
 import familiarTest from "./familiarweight";
 import hotTest from "./hotres";

@@ -6,9 +6,10 @@ import {
 	getWorkshed,
 	haveEffect,
 	myClass,
-	numericModifier,
+	print,
 	use,
 	useFamiliar,
+	useSkill,
 	visitUrl,
 } from "kolmafia";
 import {
@@ -29,14 +30,19 @@ import {
 } from "libram";
 import uniform, { itemOutfit } from "./outfits";
 import { advMacroAA, ensureEffect, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
-import { synthItem } from "./synthesis";
+//import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
+import { resources } from ".";
+import { easyFight } from "./asmohccs-macros";
 
 const predictor = () => CommunityService.BoozeDrop.prediction;
 
 function castBuffs() {
-	if (!have($effect`Synthesis: Collection`)) synthItem();
+	//if (!have($effect`Synthesis: Collection`)) synthItem();
+	if (myClass() === $class`Pastamancer`) {
+		useSkill(1, $skill`Bind Spice Ghost`);
+	}
 	cliExecute("shrug ode");
 	ensureEffect($effect`Fat Leon's Phat Loot Lyric`);
 	ensureEffect($effect`The Spirit of Taking`);
@@ -67,9 +73,14 @@ function castBuffs() {
 	}
 
 	if (have($item`lavender candy heart`)) ensureEffect($effect`Heart of Lavender`);
+	if (have($item`emergency glowstick`)) ensureEffect($effect`Glowing Hands`);
 }
 
-function ninjaTot() {
+function ninjaTot(): void {
+	print("reached ninjatot");
+	if (have($item`li'l ninja costume`)){
+		return;
+	}
 	useFamiliar($familiar`Puck Man`);
 	uniform();
 	if ($classes`Sauceror, Disco Bandit`.includes(myClass())) {
@@ -88,46 +99,25 @@ function ninjaTot() {
 }
 
 function batForm() {
-	//TODO - Combine into either Ninjatot or Pirate DNA???
-	if (
-		get("_latteRefillsUsed") < 3 &&
-		numericModifier($item`latte lovers member's mug`, "Item Drop") < 20
-	) {
-		const latte = `pumpkin ${get("latteUnlocks").includes("carrot") ? "carrot " : "vanilla "}${
-			get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon"
-		}`;
-		if (latte !== "") {
-			cliExecute(`latte refill ${latte}`);
-		}
-	}
+	print("reached batform");
 	if (!have($effect`Bat-Adjacent Form`)) {
-		const run = Macro.skill($skill`Become a Bat`);
-		if (!get("_latteBanishUsed")) {
-			useDefaultFamiliar(false);
-			equip($slot`off-hand`, $item`latte lovers member's mug`);
-			equip($slot`back`, $item`vampyric cloake`);
-			run.skill($skill`Throw Latte on Opponent`);
-		} else {
-			useFamiliar($familiar`Frumious Bandersnatch`);
-			ensureEffect($effect`Ode to Booze`);
-			run.step("runaway");
-		}
-		advMacroAA($location`The Dire Warren`, run);
-	}
-	if (
-		get("_latteRefillsUsed") < 3 &&
-		numericModifier($item`latte lovers member's mug`, "Item Drop") < 20
-	) {
-		const latte = `pumpkin ${get("latteUnlocks").includes("carrot") ? "carrot" : "vanilla"} ${
-			get("latteUnlocks").includes("butternut") ? "butternut" : "cinnamon"
-		}`;
-		if (latte !== "") {
-			cliExecute(`latte refill ${latte}`);
-		}
+		uniform();
+		useFamiliar($familiar`Ghost of Crimbo Carols`);
+		equip($slot`back`, $item`vampyric cloake`);
+		Macro.skill($skill`Become a Bat`)
+			.step(easyFight)
+			.attack()
+			.repeat()
+			.setAutoAttack();
+		resources.locket($monster`Black Crayon Elemental`);
 	}
 }
 
-function pirateDNA() {
+function pirateDNA(): void {
+	print("reached piratedna");
+	if (haveEffect($effect`Human-Pirate Hybrid`)){
+		return;
+	}
 	// get pirate DNA and make a gene tonic
 	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
 		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
@@ -148,6 +138,7 @@ function pirateDNA() {
 }
 
 function testPrep() {
+	print("reached test prep");
 	if (!get("_steelyEyedSquintUsed")) {
 		ensureEffect($effect`Steely-Eyed Squint`);
 	}
@@ -156,9 +147,6 @@ function testPrep() {
 	}
 	useFamiliar($familiar`Trick-or-Treating Tot`);
 	itemOutfit();
-	if (numericModifier($item`latte lovers member's mug`, "Item Drop") === 20) {
-		equip($slot`offhand`, $item`latte lovers member's mug`);
-	}
 
 	const improvements = [
 		() => {
@@ -171,6 +159,14 @@ function testPrep() {
 			if (have($item`Salsa Caliente™ candle`)) {
 				use($item`Salsa Caliente™ candle`);
 			}
+		},
+		() => {
+			if (have($item`pulled yellow taffy`)) {
+				use($item`pulled yellow taffy`);
+			}
+		},
+		() => {
+			resources.deck(`fortune`);
 		},
 	];
 	for (const improvement of improvements) {

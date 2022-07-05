@@ -77,7 +77,6 @@ import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } 
 import { geneTonic } from "./workshed";
 import { resources } from ".";
 
-
 function initialExp() {
 	if (!have($effect`That's Just Cloud-Talk, Man`)) {
 		visitUrl("place.php?whichplace=campaway&action=campaway_sky");
@@ -254,6 +253,9 @@ function buffMainstat() {
 
 	if (!get("_freePillKeeperUsed")) {
 		cliExecute("pillkeeper familiar");
+	}
+	if (have($item`MayDay™ supply package`)) {
+		use($item`MayDay™ supply package`);
 	}
 }
 
@@ -470,8 +472,9 @@ function acquireFruit() {
 	} else if (inMoxClass()) {
 		uniform();
 		useDefaultFamiliar(false);
-
-		cliExecute("genie monster evil olive");
+		//resources.locket($monster`evil olive`);
+		resources.wish($monster`Evil Olive`);
+		//cliExecute("genie monster evil olive");
 		runCombat(
 			Macro.trySkill($skill`Feel Envy`)
 				.trySkill($skill`Shattering Punch`)
@@ -588,7 +591,7 @@ function snojo(): void {
 		return;
 	}
 	if (get("_discoKnife") === false) {
-		useSkill($skill`that's not a knife`);
+		useSkill($skill`That's Not a Knife`);
 	}
 	uniform();
 	useDefaultFamiliar();

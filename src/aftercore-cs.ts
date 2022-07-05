@@ -35,6 +35,7 @@ if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscen
 	duped = best.dupeIt;
 	set(`choiceAdventure1125`, `1&iid=${toInt(best.dupeIt)}`);
 	adv1($location`The Deep Machine Tunnels`);
+	set(`lastDMTDuplication`, myAscensions());
 }
 
 if (mySign() !== "Platypus" && !get("moonTuned")) {
@@ -78,7 +79,7 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 			.skill($skill`Micrometeorite`)
 			.while_(`!times 3`, Macro.skill($skill`Saucestorm`))
 			.skill($skill`Shrap`),
-		() => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 7
+		() => get(`lastEncounter`) !== `Lava Dogs` && (myTurncount() - calderaTurns) < 6
 	);
 	cliExecute(`soak`);
 	set(`mpAutoRecoveryTarget`, 0.25);

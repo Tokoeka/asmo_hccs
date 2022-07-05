@@ -22,7 +22,6 @@ import {
 	$skill,
 	$slot,
 	BeachComb,
-	CombatLoversLocket,
 	CommunityService,
 	get,
 	have,
@@ -34,7 +33,6 @@ import {
 	ensureEffect,
 	ensureInnerElf,
 	setChoice,
-	setClan,
 	unequip,
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
@@ -42,6 +40,7 @@ import uniform, { weaponOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
+import { resources } from ".";
 
 const predictor = () => CommunityService.WeaponDamage.prediction;
 
@@ -60,7 +59,8 @@ function getCrushed() {
 				.attack()
 				.repeat()
 				.setAutoAttack();
-			CombatLoversLocket.reminisce($monster`Black Crayon Crimbo Elf`);
+			resources.locket($monster`Black Crayon Crimbo Elf`);
+			//CombatLoversLocket.reminisce($monster`Black Crayon Crimbo Elf`);
 			useDefaultFamiliar();
 		}
 		geneTonic($phylum`elf`);
@@ -93,7 +93,8 @@ function kungFuMeteors() {
 	Macro.skill($skill`Meteor Shower`)
 		.skill($skill`Use the Force`)
 		.setAutoAttack();
-	CombatLoversLocket.reminisce($monster`ungulith`);
+	resources.locket($monster`ungulith`);
+	//CombatLoversLocket.reminisce($monster`ungulith`);
 	if (handlingChoice()) runChoice(-1);
 	set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
 	if (get("_locketMonstersFought") === "") set("_locketMonstersFought", "1932");

@@ -23,7 +23,7 @@ export function fuelUp(): void {
 
 // Checks that you don't already have the tonic or effect and if your syringe has the right phylum and if so, makes the appropriate tonic.
 
-export function geneTonic(ph: Phylum) {
+export function geneTonic(ph: Phylum): void {
 	if (getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`) {
 		return;
 	}

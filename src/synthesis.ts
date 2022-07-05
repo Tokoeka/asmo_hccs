@@ -11,6 +11,7 @@ import {
 	visitUrl,
 } from "kolmafia";
 import { $effect, $item, $items, $skill, get, have } from "libram";
+import { resources } from ".";
 import { gingerCandy, inMoxClass, inMusClass, inMysClass } from "./asmohccs-lib";
 
 export function synthMysExp(): void {
@@ -39,7 +40,7 @@ export function synthMysExp(): void {
 		const inventory = getInventory();
 		for (const itemName of Object.keys(inventory)) {
 			const item = Item.get(itemName);
-			const count = inventory[itemName];
+			//const count = inventory[itemName];
 			const mod = toInt(Item.get(itemName)) % 5;
 
 			if (item.candyType !== "complex" || item === $item`Ultra Mega Sour Ball`) {
@@ -98,7 +99,8 @@ export function synthMysExp(): void {
 		if (!have($effect`Synthesis: Learning`)) {
 			if (!have($item`sugar shotgun`)) {
 				if (!have($item`sugar sheet`)) {
-					create(1, $item`sugar sheet`);
+					resources.tome($skill`Summon Sugar Sheets`);
+					//create(1, $item`sugar sheet`);
 				}
 				create(1, $item`sugar shotgun`);
 			}
@@ -143,7 +145,7 @@ export function synthMusExp(): void {
 		const inventory = getInventory();
 		for (const itemName of Object.keys(inventory)) {
 			const item = Item.get(itemName);
-			const count = inventory[itemName];
+			//const count = inventory[itemName];
 			const mod = toInt(Item.get(itemName)) % 5;
 
 			if (item.candyType !== "complex" || item === $item`Ultra Mega Sour Ball`) {
@@ -180,13 +182,13 @@ export function synthMusExp(): void {
 		if (!have($effect`Synthesis: Movement`)) {
 			if (fudges >= 1) {
 				if (!have($item`sugar shotgun`)) {
-					if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+					if (!have($item`sugar sheet`)) resources.tome($skill`Summon Sugar Sheets`); //create(1, $item`sugar sheet`);
 					create(1, $item`sugar shotgun`);
 				}
 				sweetSynthesis(fudge, $item`sugar shotgun`);
 			}
 			if (!have($item`sugar shorts`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+				if (!have($item`sugar sheet`)) resources.tome($skill`Summon Sugar Sheets`);
 				create(1, $item`sugar shorts`);
 			}
 			if (pecans >= 1) {
@@ -233,7 +235,7 @@ export function synthMoxExp(): void {
 		const inventory = getInventory();
 		for (const itemName of Object.keys(inventory)) {
 			const item = Item.get(itemName);
-			const count = inventory[itemName];
+			//const count = inventory[itemName];
 			const mod = toInt(Item.get(itemName)) % 5;
 
 			if (item.candyType !== "complex" || item === $item`Ultra Mega Sour Ball`) {
@@ -258,7 +260,7 @@ export function synthMoxExp(): void {
 		}
 		if (!have($effect`Synthesis: Style`)) {
 			if (!have($item`sugar shillelagh`)) {
-				if (!have($item`sugar sheet`)) create(1, $item`sugar sheet`);
+				if (!have($item`sugar sheet`)) resources.tome($skill`Summon Sugar Sheets`);
 				create(1, $item`sugar shillelagh`);
 			}
 			if (pecans >= 1) {
