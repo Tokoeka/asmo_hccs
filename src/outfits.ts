@@ -149,7 +149,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
 				: $items`Daylight Shavings Helmet, Iunion Crown`,
 		],
 		[$slot`shirt`, $items`LOV Eardigan, fresh coat of paint`],
-		[$slot`pants`, $items`pantogram pants, Cargo Cultist Shorts, old sweatpants`],
+		[$slot`pants`, $items`designer sweatpants, Cargo Cultist Shorts, old sweatpants`],
 		[$slot`weapon`, $item`Fourth of May Cosplay Saber`],
 		[$slot`off-hand`, $items`unbreakable umbrella, familiar scrapbook`],
 		[$slot`acc1`, $items`meteorite necklace, hewn moon-rune spoon`],

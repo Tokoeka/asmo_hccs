@@ -1,6 +1,7 @@
 import {
 	adv1,
 	cliExecute,
+	equip,
 	mallPrice,
 	myAscensions,
 	mySign,
@@ -13,7 +14,7 @@ import {
 	useFamiliar,
 	visitUrl,
 } from "kolmafia";
-import { $familiar, $item, $items, $location, $skill, AsdonMartin, get, Macro, set } from "libram";
+import { $familiar, $item, $items, $location, $skill, $slot, AsdonMartin, get, Macro, set } from "libram";
 import { advMacro, unequip } from "./asmohccs-lib";
 
 cliExecute(`hagnk all`);
@@ -72,6 +73,7 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 	}
 
 	const calderaTurns = get(`_calderaStart`, myTurncount());
+	equip($slot`pants`, $item`designer sweatpants`);
 
 	advMacro(
 		$location`The Bubblin' Caldera`,
