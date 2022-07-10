@@ -1,5 +1,6 @@
 import {
 	equippedItem,
+	familiarEquippedEquipment,
 	familiarWeight,
 	haveEffect,
 	haveEquipped,
@@ -16,7 +17,7 @@ import {
 	toInt,
 	weightAdjustment,
 } from "kolmafia";
-import { $effect, $item, $skills, $slot, $slots, get } from "libram";
+import { $effect, $familiar, $item, $skills, $slot, $slots, get } from "libram";
 import { horsery } from "./asmohccs-lib";
 
 const moonBonus = [
@@ -26,6 +27,15 @@ const moonBonus = [
 	["meat drop", "wombat", "20"],
 	["item drop", "packrat", "10"],
 ];
+
+const umbrellaBonus = [
+	["monster level percent", "broken", "25"],
+	["damage reduction", "forward", "25"],
+	["item drop", "bucket style", "25"],
+	["weapon damage", "pitchfork style", "25"],
+	["spell damage", "constantly twirling", "25"],
+	["combat rate", "cocoon", "10"],
+]
 
 export function modTraceList(modifier: string): void {
 	let totalVal = 0;
@@ -101,6 +111,18 @@ export function modTraceList(modifier: string): void {
 			}
 		}
 	}
+	if (equippedItem($slot`off-hand`) === $item`unbreakable umbrella` || (myFamiliar() === $familiar`left-hand man` && familiarEquippedEquipment($familiar`left-hand man`) === $item`unbreakable umbrella`)){
+		const umbrellaForm = get(`umbrellaState`);
+		for (const line in umbrellaBonus) {
+			const mod = line[0];
+			const style = line[1];
+			const bonus = line[2];
+			if (modifier === mod && get("umbrellaState").toLowerCase() === style) {
+				totalVal = totalVal + parseInt(bonus);
+				print(`UMBRELLA ${style} : ${bonus}`);
+			}
+		}
+	}
 
 	const famMod = numericModifier(
 		myFamiliar(),
@@ -131,18 +153,7 @@ export function modTraceList(modifier: string): void {
 			totalVal = totalVal + 10;
 			print(`MOON ${myMoon} : ${10}`);
 		}
-	} /*else if (modifier.includes("damage percent")) {
-        if (modifier.includes("weapon") && myMoon === "mongoose") {
-            totalVal = totalVal + 20;
-            print("MOON " + myMoon + " : " + 20);
-        } else if (modifier.includes("spell") && myMoon === "wallaby") {
-            totalVal = totalVal + 20;
-            print("MOON " + myMoon + " : " + 20);
-        }
-    } else if (modifier === "familiar weight" && myMoon === "platypus") {
-        totalVal = totalVal + 5;
-        print("MOON " + myMoon + " : " + 5);
-    }*/ else {
+	}  else {
 		for (const line in moonBonus) {
 			const mod = line[0];
 			const moon = line[1];
