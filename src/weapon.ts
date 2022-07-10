@@ -84,12 +84,19 @@ function castBuffs() {
 //moved Force Spit to occur during NEP Levelling, in order to get it during last little bit of levelling & as bonus to stat tests.
 
 function kungFuMeteors() {
+	//TODO - Insert +ML buffs prior to fighting to reduce liklihood of disembodied hand killing it?
 	if (!have($effect`cowrruption`) && !have($item`corrupted marrow`)){
 	uniform();
-	useFamiliar($familiar`Disembodied Hand`);
-	equip($slot`weapon`, $item`none`);
-	equip($slot`off-hand`, $item`none`);
-	equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
+	if(inHardcore()){
+		useFamiliar($familiar`Disembodied Hand`);
+		equip($slot`weapon`, $item`none`);
+		equip($slot`off-hand`, $item`none`);
+		equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
+	}
+	else {
+		useDefaultFamiliar(false);
+		equip($slot`weapon`, $item`Fourth of may cosplay saber`);
+	}
 	setChoice(1387, 3);
 	Macro.skill($skill`Meteor Shower`)
 		.skill($skill`Use the Force`)
