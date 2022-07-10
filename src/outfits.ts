@@ -320,8 +320,10 @@ export function hotresOutfit(): void {
 }
 
 export function noncombatOutfit(): void {
-	if (have($item`unbreakable umbrella`) && get("umbrellaState") !== "cocoon")
+	if (have($item`unbreakable umbrella`) ){
 		cliExecute("umbrella nc");
+	}
+		
 	Outfit.doYourBest(
 		new Map<Slot, Item | Item[]>([
 			[$slot`hat`, $item`very pointy crown`],
