@@ -69,7 +69,7 @@ function getCrushed() {
 }
 
 function castBuffs() {
-	$effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird`.forEach(
+	$effects`Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction`.forEach(
 		(effect) => ensureEffect(effect)
 	);
 	ensureEffect($effect`Frenzied, Bloody`);
@@ -84,6 +84,7 @@ function castBuffs() {
 //moved Force Spit to occur during NEP Levelling, in order to get it during last little bit of levelling & as bonus to stat tests.
 
 function kungFuMeteors() {
+	if (!have($effect`cowrruption`) && !have($item`corrupted marrow`)){
 	uniform();
 	useFamiliar($familiar`Disembodied Hand`);
 	equip($slot`weapon`, $item`none`);
@@ -99,11 +100,13 @@ function kungFuMeteors() {
 	set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
 	if (get("_locketMonstersFought") === "") set("_locketMonstersFought", "1932");
 	else set("_locketMonstersFought", `${get("_locketMonstersFought")},1932`);
+	}
 }
 
 function testPrep() {
-	if (have($item`corrupted marrow`)) use($item`corrupted marrow`);
+	if (have($item`corrupted marrow`) && !have($effect`cowrruption`)) use($item`corrupted marrow`);
 	if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
+	//grimBuff();
 	/*if (!get("_floundryItemCreated")) {
         setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire fish hatchet");
@@ -121,7 +124,13 @@ function testPrep() {
 		}
 	}
 	weaponOutfit();
-	weaponOutfit();
+
+}
+
+function grimBuff() {
+	if(!get("_grimBuff")){
+		cliExecute($effect`Grumpy and Ornery`.default);
+	}
 }
 
 export default function weaponTest(): void {

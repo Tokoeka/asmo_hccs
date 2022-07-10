@@ -13059,7 +13059,7 @@ function HPTest() {
   modTraceList("maximum hp percent");
 }
 ;// CONCATENATED MODULE: ./src/weapon.ts
-var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28, weapon_templateObject29, weapon_templateObject30, weapon_templateObject31, weapon_templateObject32, weapon_templateObject33, weapon_templateObject34, weapon_templateObject35;
+var weapon_templateObject, weapon_templateObject2, weapon_templateObject3, weapon_templateObject4, weapon_templateObject5, weapon_templateObject6, weapon_templateObject7, weapon_templateObject8, weapon_templateObject9, weapon_templateObject10, weapon_templateObject11, weapon_templateObject12, weapon_templateObject13, weapon_templateObject14, weapon_templateObject15, weapon_templateObject16, weapon_templateObject17, weapon_templateObject18, weapon_templateObject19, weapon_templateObject20, weapon_templateObject21, weapon_templateObject22, weapon_templateObject23, weapon_templateObject24, weapon_templateObject25, weapon_templateObject26, weapon_templateObject27, weapon_templateObject28, weapon_templateObject29, weapon_templateObject30, weapon_templateObject31, weapon_templateObject32, weapon_templateObject33, weapon_templateObject34, weapon_templateObject35, weapon_templateObject36, weapon_templateObject37, weapon_templateObject38, weapon_templateObject39;
 
 function weapon_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -13096,7 +13096,7 @@ function getCrushed() {
 }
 
 function weapon_castBuffs() {
-  $effects(weapon_templateObject13 || (weapon_templateObject13 = weapon_taggedTemplateLiteral(["Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird"]))).forEach(effect => asmohccs_lib_ensureEffect(effect));
+  $effects(weapon_templateObject13 || (weapon_templateObject13 = weapon_taggedTemplateLiteral(["Carol of the Bulls, Song of the North, Rage of the Reindeer, Scowl of the Auk, Disdain of the War Snapper, Tenacity of the Snapper, Billiards Belligerence, Blessing of the Bird, Jackasses' Symphony of Destruction"]))).forEach(effect => asmohccs_lib_ensureEffect(effect));
   asmohccs_lib_ensureEffect(template_string_$effect(weapon_templateObject14 || (weapon_templateObject14 = weapon_taggedTemplateLiteral(["Frenzied, Bloody"]))));
   if (lib_have(template_string_$item(weapon_templateObject15 || (weapon_templateObject15 = weapon_taggedTemplateLiteral(["LOV Elixir #3"]))))) (0,external_kolmafia_namespaceObject.use)(template_string_$item(weapon_templateObject16 || (weapon_templateObject16 = weapon_taggedTemplateLiteral(["LOV Elixir #3"]))));
   tryHead(template_string_$effect(weapon_templateObject17 || (weapon_templateObject17 = weapon_taggedTemplateLiteral(["Lack of Body-Building"]))));
@@ -13108,42 +13108,50 @@ function weapon_castBuffs() {
 
 
 function kungFuMeteors() {
-  outfits_uniform();
-  (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(weapon_templateObject19 || (weapon_templateObject19 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))));
-  (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(weapon_templateObject20 || (weapon_templateObject20 = weapon_taggedTemplateLiteral(["weapon"]))), template_string_$item(weapon_templateObject21 || (weapon_templateObject21 = weapon_taggedTemplateLiteral(["none"]))));
-  (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(weapon_templateObject22 || (weapon_templateObject22 = weapon_taggedTemplateLiteral(["off-hand"]))), template_string_$item(weapon_templateObject23 || (weapon_templateObject23 = weapon_taggedTemplateLiteral(["none"]))));
-  (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(weapon_templateObject24 || (weapon_templateObject24 = weapon_taggedTemplateLiteral(["familiar"]))), template_string_$item(weapon_templateObject25 || (weapon_templateObject25 = weapon_taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))));
-  setChoice(1387, 3);
-  combat_Macro.skill(template_string_$skill(weapon_templateObject26 || (weapon_templateObject26 = weapon_taggedTemplateLiteral(["Meteor Shower"])))).skill(template_string_$skill(weapon_templateObject27 || (weapon_templateObject27 = weapon_taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
-  resources.locket($monster(weapon_templateObject28 || (weapon_templateObject28 = weapon_taggedTemplateLiteral(["ungulith"])))); //CombatLoversLocket.reminisce($monster`ungulith`);
+  if (!lib_have(template_string_$effect(weapon_templateObject19 || (weapon_templateObject19 = weapon_taggedTemplateLiteral(["cowrruption"])))) && !lib_have(template_string_$item(weapon_templateObject20 || (weapon_templateObject20 = weapon_taggedTemplateLiteral(["corrupted marrow"]))))) {
+    outfits_uniform();
+    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(weapon_templateObject21 || (weapon_templateObject21 = weapon_taggedTemplateLiteral(["Disembodied Hand"]))));
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(weapon_templateObject22 || (weapon_templateObject22 = weapon_taggedTemplateLiteral(["weapon"]))), template_string_$item(weapon_templateObject23 || (weapon_templateObject23 = weapon_taggedTemplateLiteral(["none"]))));
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(weapon_templateObject24 || (weapon_templateObject24 = weapon_taggedTemplateLiteral(["off-hand"]))), template_string_$item(weapon_templateObject25 || (weapon_templateObject25 = weapon_taggedTemplateLiteral(["none"]))));
+    (0,external_kolmafia_namespaceObject.equip)(template_string_$slot(weapon_templateObject26 || (weapon_templateObject26 = weapon_taggedTemplateLiteral(["familiar"]))), template_string_$item(weapon_templateObject27 || (weapon_templateObject27 = weapon_taggedTemplateLiteral(["Fourth of May Cosplay Saber"]))));
+    setChoice(1387, 3);
+    combat_Macro.skill(template_string_$skill(weapon_templateObject28 || (weapon_templateObject28 = weapon_taggedTemplateLiteral(["Meteor Shower"])))).skill(template_string_$skill(weapon_templateObject29 || (weapon_templateObject29 = weapon_taggedTemplateLiteral(["Use the Force"])))).setAutoAttack();
+    resources.locket($monster(weapon_templateObject30 || (weapon_templateObject30 = weapon_taggedTemplateLiteral(["ungulith"])))); //CombatLoversLocket.reminisce($monster`ungulith`);
 
-  if ((0,external_kolmafia_namespaceObject.handlingChoice)()) (0,external_kolmafia_namespaceObject.runChoice)(-1);
-  _set("_meteorShowerUses", 1 + property_get("_meteorShowerUses"));
-  if (property_get("_locketMonstersFought") === "") _set("_locketMonstersFought", "1932");else _set("_locketMonstersFought", "".concat(property_get("_locketMonstersFought"), ",1932"));
+    if ((0,external_kolmafia_namespaceObject.handlingChoice)()) (0,external_kolmafia_namespaceObject.runChoice)(-1);
+    _set("_meteorShowerUses", 1 + property_get("_meteorShowerUses"));
+    if (property_get("_locketMonstersFought") === "") _set("_locketMonstersFought", "1932");else _set("_locketMonstersFought", "".concat(property_get("_locketMonstersFought"), ",1932"));
+  }
 }
 
 function weapon_testPrep() {
-  if (lib_have(template_string_$item(weapon_templateObject29 || (weapon_templateObject29 = weapon_taggedTemplateLiteral(["corrupted marrow"]))))) (0,external_kolmafia_namespaceObject.use)(template_string_$item(weapon_templateObject30 || (weapon_templateObject30 = weapon_taggedTemplateLiteral(["corrupted marrow"]))));
-  if (!property_get("_bowleggedSwaggerUsed")) (0,external_kolmafia_namespaceObject.useSkill)(template_string_$skill(weapon_templateObject31 || (weapon_templateObject31 = weapon_taggedTemplateLiteral(["Bow-Legged Swagger"]))));
+  if (lib_have(template_string_$item(weapon_templateObject31 || (weapon_templateObject31 = weapon_taggedTemplateLiteral(["corrupted marrow"])))) && !lib_have(template_string_$effect(weapon_templateObject32 || (weapon_templateObject32 = weapon_taggedTemplateLiteral(["cowrruption"]))))) (0,external_kolmafia_namespaceObject.use)(template_string_$item(weapon_templateObject33 || (weapon_templateObject33 = weapon_taggedTemplateLiteral(["corrupted marrow"]))));
+  if (!property_get("_bowleggedSwaggerUsed")) (0,external_kolmafia_namespaceObject.useSkill)(template_string_$skill(weapon_templateObject34 || (weapon_templateObject34 = weapon_taggedTemplateLiteral(["Bow-Legged Swagger"])))); //grimBuff();
+
   /*if (!get("_floundryItemCreated")) {
          setClan(get("asmocs_fishClan", "Alliance From Heck"));
          cliExecute("acquire fish hatchet");
      }*/
 
   if (!(0,external_kolmafia_namespaceObject.inHardcore)()) {
-    var meteor = template_string_$items(weapon_templateObject32 || (weapon_templateObject32 = weapon_taggedTemplateLiteral(["meteorite necklace, meteorite fragment, meteorite earring"]))).find(item => lib_have(item));
+    var meteor = template_string_$items(weapon_templateObject35 || (weapon_templateObject35 = weapon_taggedTemplateLiteral(["meteorite necklace, meteorite fragment, meteorite earring"]))).find(item => lib_have(item));
 
     if (meteor) {
       unequip(meteor);
-      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject33 || (weapon_templateObject33 = weapon_taggedTemplateLiteral(["tenderizing hammer"]))));
-      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject34 || (weapon_templateObject34 = weapon_taggedTemplateLiteral(["jewelry-making pliers"]))));
+      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject36 || (weapon_templateObject36 = weapon_taggedTemplateLiteral(["tenderizing hammer"]))));
+      (0,external_kolmafia_namespaceObject.retrieveItem)(1, template_string_$item(weapon_templateObject37 || (weapon_templateObject37 = weapon_taggedTemplateLiteral(["jewelry-making pliers"]))));
       (0,external_kolmafia_namespaceObject.cliExecute)("smash ".concat(meteor));
-      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(weapon_templateObject35 || (weapon_templateObject35 = weapon_taggedTemplateLiteral(["meteorite ring"])))));
+      (0,external_kolmafia_namespaceObject.cliExecute)("make ".concat(template_string_$item(weapon_templateObject38 || (weapon_templateObject38 = weapon_taggedTemplateLiteral(["meteorite ring"])))));
     }
   }
 
   weaponOutfit();
-  weaponOutfit();
+}
+
+function grimBuff() {
+  if (!get("_grimBuff")) {
+    cliExecute($effect(weapon_templateObject39 || (weapon_templateObject39 = weapon_taggedTemplateLiteral(["Grumpy and Ornery"]))).default);
+  }
 }
 
 function weaponTest() {
