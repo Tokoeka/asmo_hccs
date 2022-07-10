@@ -11222,7 +11222,7 @@ function changeNightstand(nightstand) {
   return getNightstand() === nightstand;
 }
 ;// CONCATENATED MODULE: ./src/synthesis.ts
-var synthesis_templateObject, synthesis_templateObject2, synthesis_templateObject3, synthesis_templateObject4, synthesis_templateObject5, synthesis_templateObject6, synthesis_templateObject7, synthesis_templateObject8, synthesis_templateObject9, synthesis_templateObject10, synthesis_templateObject11, synthesis_templateObject12, synthesis_templateObject13, synthesis_templateObject14, synthesis_templateObject15, synthesis_templateObject16, synthesis_templateObject17, synthesis_templateObject18, synthesis_templateObject19, synthesis_templateObject20, synthesis_templateObject21, synthesis_templateObject22, synthesis_templateObject23, synthesis_templateObject24, synthesis_templateObject25, synthesis_templateObject26, synthesis_templateObject27, synthesis_templateObject28, synthesis_templateObject29, synthesis_templateObject30, synthesis_templateObject31, synthesis_templateObject32, synthesis_templateObject33, synthesis_templateObject34, synthesis_templateObject35, synthesis_templateObject36, synthesis_templateObject37, synthesis_templateObject38, synthesis_templateObject39, synthesis_templateObject40, synthesis_templateObject41, synthesis_templateObject42, synthesis_templateObject43, synthesis_templateObject44, synthesis_templateObject45, synthesis_templateObject46, synthesis_templateObject47, synthesis_templateObject48, synthesis_templateObject49, synthesis_templateObject50, synthesis_templateObject51, synthesis_templateObject52, synthesis_templateObject53, synthesis_templateObject54, synthesis_templateObject55, synthesis_templateObject56, synthesis_templateObject57, synthesis_templateObject58, synthesis_templateObject59, synthesis_templateObject60, synthesis_templateObject61, synthesis_templateObject62, synthesis_templateObject63, synthesis_templateObject64, synthesis_templateObject65, synthesis_templateObject66, synthesis_templateObject67, synthesis_templateObject68, synthesis_templateObject69, synthesis_templateObject70, synthesis_templateObject71, synthesis_templateObject72, synthesis_templateObject73, synthesis_templateObject74, synthesis_templateObject75, synthesis_templateObject76, synthesis_templateObject77, synthesis_templateObject78, synthesis_templateObject79, synthesis_templateObject80, synthesis_templateObject81, synthesis_templateObject82, synthesis_templateObject83, synthesis_templateObject84, synthesis_templateObject85, synthesis_templateObject86, synthesis_templateObject87, synthesis_templateObject88, synthesis_templateObject89, synthesis_templateObject90, synthesis_templateObject91, synthesis_templateObject92, synthesis_templateObject93, synthesis_templateObject94, synthesis_templateObject95, synthesis_templateObject96, synthesis_templateObject97, synthesis_templateObject98, synthesis_templateObject99, synthesis_templateObject100, synthesis_templateObject101, synthesis_templateObject102, synthesis_templateObject103, synthesis_templateObject104, synthesis_templateObject105, synthesis_templateObject106, synthesis_templateObject107, synthesis_templateObject108, synthesis_templateObject109, synthesis_templateObject110, synthesis_templateObject111, synthesis_templateObject112, synthesis_templateObject113, synthesis_templateObject114, synthesis_templateObject115, synthesis_templateObject116, synthesis_templateObject117, synthesis_templateObject118, synthesis_templateObject119, synthesis_templateObject120, synthesis_templateObject121, synthesis_templateObject122, synthesis_templateObject123, synthesis_templateObject124, synthesis_templateObject125, synthesis_templateObject126;
+var synthesis_templateObject, synthesis_templateObject2, synthesis_templateObject3, synthesis_templateObject4, synthesis_templateObject5, synthesis_templateObject6, synthesis_templateObject7, synthesis_templateObject8, synthesis_templateObject9, synthesis_templateObject10, synthesis_templateObject11, synthesis_templateObject12, synthesis_templateObject13, synthesis_templateObject14, synthesis_templateObject15, synthesis_templateObject16, synthesis_templateObject17, synthesis_templateObject18, synthesis_templateObject19, synthesis_templateObject20, synthesis_templateObject21, synthesis_templateObject22, synthesis_templateObject23, synthesis_templateObject24, synthesis_templateObject25, synthesis_templateObject26, synthesis_templateObject27, synthesis_templateObject28, synthesis_templateObject29, synthesis_templateObject30, synthesis_templateObject31, synthesis_templateObject32, synthesis_templateObject33, synthesis_templateObject34, synthesis_templateObject35, synthesis_templateObject36, synthesis_templateObject37, synthesis_templateObject38, synthesis_templateObject39, synthesis_templateObject40, synthesis_templateObject41, synthesis_templateObject42, synthesis_templateObject43, synthesis_templateObject44, synthesis_templateObject45, synthesis_templateObject46, synthesis_templateObject47, synthesis_templateObject48, synthesis_templateObject49, synthesis_templateObject50, synthesis_templateObject51, synthesis_templateObject52, synthesis_templateObject53, synthesis_templateObject54, synthesis_templateObject55, synthesis_templateObject56, synthesis_templateObject57, synthesis_templateObject58, synthesis_templateObject59, synthesis_templateObject60, synthesis_templateObject61, synthesis_templateObject62, synthesis_templateObject63, synthesis_templateObject64, synthesis_templateObject65, synthesis_templateObject66, synthesis_templateObject67, synthesis_templateObject68, synthesis_templateObject69, synthesis_templateObject70, synthesis_templateObject71, synthesis_templateObject72, synthesis_templateObject73, synthesis_templateObject74, synthesis_templateObject75, synthesis_templateObject76, synthesis_templateObject77, synthesis_templateObject78, synthesis_templateObject79, synthesis_templateObject80, synthesis_templateObject81, synthesis_templateObject82, synthesis_templateObject83, synthesis_templateObject84, synthesis_templateObject85, synthesis_templateObject86, synthesis_templateObject87, synthesis_templateObject88, synthesis_templateObject89, synthesis_templateObject90, synthesis_templateObject91, synthesis_templateObject92, synthesis_templateObject93, synthesis_templateObject94, synthesis_templateObject95, synthesis_templateObject96, synthesis_templateObject97, synthesis_templateObject98, synthesis_templateObject99, synthesis_templateObject100, synthesis_templateObject101, synthesis_templateObject102, synthesis_templateObject103, synthesis_templateObject104, synthesis_templateObject105, synthesis_templateObject106, synthesis_templateObject107, synthesis_templateObject108, synthesis_templateObject109, synthesis_templateObject110, synthesis_templateObject111, synthesis_templateObject112, synthesis_templateObject113, synthesis_templateObject114, synthesis_templateObject115, synthesis_templateObject116, synthesis_templateObject117, synthesis_templateObject118, synthesis_templateObject119, synthesis_templateObject120, synthesis_templateObject121, synthesis_templateObject122, synthesis_templateObject123, synthesis_templateObject124, synthesis_templateObject125, synthesis_templateObject126, synthesis_templateObject127;
 
 function synthesis_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -11287,54 +11287,56 @@ function synthMysExp() {
       }
     }
 
-    for (var _i2 = 0, _Object$keys2 = Object.keys(inventory); _i2 < _Object$keys2.length; _i2++) {
-      var itemName0 = _Object$keys2[_i2];
-      var item0 = external_kolmafia_namespaceObject.Item.get(itemName0);
-      var count = inventory[itemName0];
-      var mod0 = (0,external_kolmafia_namespaceObject.toInt)(external_kolmafia_namespaceObject.Item.get(itemName0)) % 5;
+    if (!(0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject7 || (synthesis_templateObject7 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
+      for (var _i2 = 0, _Object$keys2 = Object.keys(inventory); _i2 < _Object$keys2.length; _i2++) {
+        var itemName0 = _Object$keys2[_i2];
+        var item0 = external_kolmafia_namespaceObject.Item.get(itemName0);
+        var count = inventory[itemName0];
+        var mod0 = (0,external_kolmafia_namespaceObject.toInt)(external_kolmafia_namespaceObject.Item.get(itemName0)) % 5;
 
-      if (item0.candyType !== "complex" || template_string_$items(synthesis_templateObject7 || (synthesis_templateObject7 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist"]))).includes(item0)) {
-        continue;
-      }
-
-      for (var _i3 = 0, _Object$keys3 = Object.keys(inventory); _i3 < _Object$keys3.length; _i3++) {
-        var itemName1 = _Object$keys3[_i3];
-        var item1 = external_kolmafia_namespaceObject.Item.get(itemName1);
-        var mod1 = (0,external_kolmafia_namespaceObject.toInt)(external_kolmafia_namespaceObject.Item.get(itemName1)) % 5;
-
-        if (item1.candyType !== "complex" || template_string_$items(synthesis_templateObject8 || (synthesis_templateObject8 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist"]))).includes(item1) || item1 === item0 && count <= 1) {
+        if (item0.candyType !== "complex" || template_string_$items(synthesis_templateObject8 || (synthesis_templateObject8 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist"]))).includes(item0)) {
           continue;
         }
 
-        if ((mod0 + mod1) % 5 === 3) {
-          (0,external_kolmafia_namespaceObject.sweetSynthesis)(item0, item1);
+        for (var _i3 = 0, _Object$keys3 = Object.keys(inventory); _i3 < _Object$keys3.length; _i3++) {
+          var itemName1 = _Object$keys3[_i3];
+          var item1 = external_kolmafia_namespaceObject.Item.get(itemName1);
+          var mod1 = (0,external_kolmafia_namespaceObject.toInt)(external_kolmafia_namespaceObject.Item.get(itemName1)) % 5;
+
+          if (item1.candyType !== "complex" || template_string_$items(synthesis_templateObject9 || (synthesis_templateObject9 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist"]))).includes(item1) || item1 === item0 && count <= 1) {
+            continue;
+          }
+
+          if ((mod0 + mod1) % 5 === 3) {
+            (0,external_kolmafia_namespaceObject.sweetSynthesis)(item0, item1);
+            break;
+          }
+        }
+
+        if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject10 || (synthesis_templateObject10 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
           break;
         }
       }
-
-      if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject9 || (synthesis_templateObject9 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
-        break;
-      }
     }
 
-    if (!lib_have(template_string_$effect(synthesis_templateObject10 || (synthesis_templateObject10 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
-      if (!lib_have(template_string_$item(synthesis_templateObject11 || (synthesis_templateObject11 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))))) {
-        if (!lib_have(template_string_$item(synthesis_templateObject12 || (synthesis_templateObject12 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) {
-          resources.tome(template_string_$skill(synthesis_templateObject13 || (synthesis_templateObject13 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"])))); //create(1, $item`sugar sheet`);
+    if (!lib_have(template_string_$effect(synthesis_templateObject11 || (synthesis_templateObject11 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
+      if (!lib_have(template_string_$item(synthesis_templateObject12 || (synthesis_templateObject12 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))))) {
+        if (!lib_have(template_string_$item(synthesis_templateObject13 || (synthesis_templateObject13 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) {
+          resources.tome(template_string_$skill(synthesis_templateObject14 || (synthesis_templateObject14 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"])))); //create(1, $item`sugar sheet`);
         }
 
-        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject14 || (synthesis_templateObject14 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
+        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject15 || (synthesis_templateObject15 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
       }
 
       if (pecans >= 1) {
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject15 || (synthesis_templateObject15 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject16 || (synthesis_templateObject16 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
       } else {
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject16 || (synthesis_templateObject16 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))), template_string_$item(synthesis_templateObject17 || (synthesis_templateObject17 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject17 || (synthesis_templateObject17 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))), template_string_$item(synthesis_templateObject18 || (synthesis_templateObject18 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
       }
     }
   }
 
-  if (!lib_have(template_string_$effect(synthesis_templateObject18 || (synthesis_templateObject18 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
+  if (!lib_have(template_string_$effect(synthesis_templateObject19 || (synthesis_templateObject19 = synthesis_taggedTemplateLiteral(["Synthesis: Learning"]))))) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize learning. Pwease fix me :c.";
   }
 }
@@ -11344,18 +11346,18 @@ function synthMusExp() {
   }
 
   if (!property_get("_candySummons")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject19 || (synthesis_templateObject19 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject20 || (synthesis_templateObject20 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   }
 
-  var fudge = template_string_$item(synthesis_templateObject20 || (synthesis_templateObject20 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = template_string_$item(synthesis_templateObject21 || (synthesis_templateObject21 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = template_string_$item(synthesis_templateObject22 || (synthesis_templateObject22 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
+  var fudge = template_string_$item(synthesis_templateObject21 || (synthesis_templateObject21 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
+  var pecan = template_string_$item(synthesis_templateObject22 || (synthesis_templateObject22 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
+  var bark = template_string_$item(synthesis_templateObject23 || (synthesis_templateObject23 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
   var fudges = (0,external_kolmafia_namespaceObject.availableAmount)(fudge);
   var pecans = (0,external_kolmafia_namespaceObject.availableAmount)(pecan);
   var barks = (0,external_kolmafia_namespaceObject.availableAmount)(bark);
-  var twist = template_string_$item(synthesis_templateObject23 || (synthesis_templateObject23 = synthesis_taggedTemplateLiteral(["peppermint twist"])));
+  var twist = template_string_$item(synthesis_templateObject24 || (synthesis_templateObject24 = synthesis_taggedTemplateLiteral(["peppermint twist"])));
   var twists = (0,external_kolmafia_namespaceObject.availableAmount)(twist);
-  var sprout = template_string_$item(synthesis_templateObject24 || (synthesis_templateObject24 = synthesis_taggedTemplateLiteral(["peppermint sprout"])));
+  var sprout = template_string_$item(synthesis_templateObject25 || (synthesis_templateObject25 = synthesis_taggedTemplateLiteral(["peppermint sprout"])));
   var sprouts = (0,external_kolmafia_namespaceObject.availableAmount)(sprout);
 
   if (fudges >= 1 && barks >= 1) {
@@ -11377,7 +11379,7 @@ function synthMusExp() {
 
       var mod = (0,external_kolmafia_namespaceObject.toInt)(external_kolmafia_namespaceObject.Item.get(itemName)) % 5;
 
-      if (item.candyType !== "complex" || item === template_string_$item(synthesis_templateObject25 || (synthesis_templateObject25 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball"])))) {
+      if (item.candyType !== "complex" || item === template_string_$item(synthesis_templateObject26 || (synthesis_templateObject26 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball"])))) {
         continue;
       }
 
@@ -11411,31 +11413,31 @@ function synthMusExp() {
       }
     }
 
-    if (!lib_have(template_string_$effect(synthesis_templateObject26 || (synthesis_templateObject26 = synthesis_taggedTemplateLiteral(["Synthesis: Movement"]))))) {
+    if (!lib_have(template_string_$effect(synthesis_templateObject27 || (synthesis_templateObject27 = synthesis_taggedTemplateLiteral(["Synthesis: Movement"]))))) {
       if (fudges >= 1) {
-        if (!lib_have(template_string_$item(synthesis_templateObject27 || (synthesis_templateObject27 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))))) {
-          if (!lib_have(template_string_$item(synthesis_templateObject28 || (synthesis_templateObject28 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) resources.tome(template_string_$skill(synthesis_templateObject29 || (synthesis_templateObject29 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"])))); //create(1, $item`sugar sheet`);
+        if (!lib_have(template_string_$item(synthesis_templateObject28 || (synthesis_templateObject28 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))))) {
+          if (!lib_have(template_string_$item(synthesis_templateObject29 || (synthesis_templateObject29 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) resources.tome(template_string_$skill(synthesis_templateObject30 || (synthesis_templateObject30 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"])))); //create(1, $item`sugar sheet`);
 
-          (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject30 || (synthesis_templateObject30 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
+          (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject31 || (synthesis_templateObject31 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
         }
 
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(fudge, template_string_$item(synthesis_templateObject31 || (synthesis_templateObject31 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(fudge, template_string_$item(synthesis_templateObject32 || (synthesis_templateObject32 = synthesis_taggedTemplateLiteral(["sugar shotgun"]))));
       }
 
-      if (!lib_have(template_string_$item(synthesis_templateObject32 || (synthesis_templateObject32 = synthesis_taggedTemplateLiteral(["sugar shorts"]))))) {
-        if (!lib_have(template_string_$item(synthesis_templateObject33 || (synthesis_templateObject33 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) resources.tome(template_string_$skill(synthesis_templateObject34 || (synthesis_templateObject34 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"]))));
-        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject35 || (synthesis_templateObject35 = synthesis_taggedTemplateLiteral(["sugar shorts"]))));
+      if (!lib_have(template_string_$item(synthesis_templateObject33 || (synthesis_templateObject33 = synthesis_taggedTemplateLiteral(["sugar shorts"]))))) {
+        if (!lib_have(template_string_$item(synthesis_templateObject34 || (synthesis_templateObject34 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) resources.tome(template_string_$skill(synthesis_templateObject35 || (synthesis_templateObject35 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"]))));
+        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject36 || (synthesis_templateObject36 = synthesis_taggedTemplateLiteral(["sugar shorts"]))));
       }
 
       if (pecans >= 1) {
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject36 || (synthesis_templateObject36 = synthesis_taggedTemplateLiteral(["sugar shorts"]))));
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject37 || (synthesis_templateObject37 = synthesis_taggedTemplateLiteral(["sugar shorts"]))));
       } else {
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject37 || (synthesis_templateObject37 = synthesis_taggedTemplateLiteral(["sugar shorts"]))), sprout);
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject38 || (synthesis_templateObject38 = synthesis_taggedTemplateLiteral(["sugar shorts"]))), sprout);
       }
     }
   }
 
-  if (!lib_have(template_string_$effect(synthesis_templateObject38 || (synthesis_templateObject38 = synthesis_taggedTemplateLiteral(["Synthesis: Movement"]))))) {
+  if (!lib_have(template_string_$effect(synthesis_templateObject39 || (synthesis_templateObject39 = synthesis_taggedTemplateLiteral(["Synthesis: Movement"]))))) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize movement. Help? :c.";
   }
 }
@@ -11445,18 +11447,18 @@ function synthMoxExp() {
   }
 
   if (!property_get("_candySummons")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject39 || (synthesis_templateObject39 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject40 || (synthesis_templateObject40 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   }
 
-  var fudge = template_string_$item(synthesis_templateObject40 || (synthesis_templateObject40 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = template_string_$item(synthesis_templateObject41 || (synthesis_templateObject41 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = template_string_$item(synthesis_templateObject42 || (synthesis_templateObject42 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
+  var fudge = template_string_$item(synthesis_templateObject41 || (synthesis_templateObject41 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
+  var pecan = template_string_$item(synthesis_templateObject42 || (synthesis_templateObject42 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
+  var bark = template_string_$item(synthesis_templateObject43 || (synthesis_templateObject43 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
   var fudges = (0,external_kolmafia_namespaceObject.availableAmount)(fudge);
   var pecans = (0,external_kolmafia_namespaceObject.availableAmount)(pecan);
   var barks = (0,external_kolmafia_namespaceObject.availableAmount)(bark);
-  var twist = template_string_$item(synthesis_templateObject43 || (synthesis_templateObject43 = synthesis_taggedTemplateLiteral(["peppermint twist"])));
+  var twist = template_string_$item(synthesis_templateObject44 || (synthesis_templateObject44 = synthesis_taggedTemplateLiteral(["peppermint twist"])));
   var twists = (0,external_kolmafia_namespaceObject.availableAmount)(twist);
-  var sprout = template_string_$item(synthesis_templateObject44 || (synthesis_templateObject44 = synthesis_taggedTemplateLiteral(["peppermint sprout"])));
+  var sprout = template_string_$item(synthesis_templateObject45 || (synthesis_templateObject45 = synthesis_taggedTemplateLiteral(["peppermint sprout"])));
   var sprouts = (0,external_kolmafia_namespaceObject.availableAmount)(sprout); //const sprouts = availableAmount(sprout);
 
   if (fudges >= 1) {
@@ -11467,8 +11469,8 @@ function synthMoxExp() {
     }
 
     (0,external_kolmafia_namespaceObject.sweetSynthesis)(twist, bark);
-  } else if (lib_have(template_string_$item(synthesis_templateObject45 || (synthesis_templateObject45 = synthesis_taggedTemplateLiteral(["bag of many confections"])))) && pecans >= 1) {
-    (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject46 || (synthesis_templateObject46 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+  } else if (lib_have(template_string_$item(synthesis_templateObject46 || (synthesis_templateObject46 = synthesis_taggedTemplateLiteral(["bag of many confections"])))) && pecans >= 1) {
+    (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject47 || (synthesis_templateObject47 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
   } else {
     gingerCandy(); //Section below stolen from Bean (with edits)
 
@@ -11480,7 +11482,7 @@ function synthMoxExp() {
 
       var mod = (0,external_kolmafia_namespaceObject.toInt)(external_kolmafia_namespaceObject.Item.get(itemName)) % 5;
 
-      if (item.candyType !== "complex" || item === template_string_$item(synthesis_templateObject47 || (synthesis_templateObject47 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball"])))) {
+      if (item.candyType !== "complex" || item === template_string_$item(synthesis_templateObject48 || (synthesis_templateObject48 = synthesis_taggedTemplateLiteral(["Ultra Mega Sour Ball"])))) {
         continue;
       }
 
@@ -11502,21 +11504,21 @@ function synthMoxExp() {
       }
     }
 
-    if (!lib_have(template_string_$effect(synthesis_templateObject48 || (synthesis_templateObject48 = synthesis_taggedTemplateLiteral(["Synthesis: Style"]))))) {
-      if (!lib_have(template_string_$item(synthesis_templateObject49 || (synthesis_templateObject49 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))))) {
-        if (!lib_have(template_string_$item(synthesis_templateObject50 || (synthesis_templateObject50 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) resources.tome(template_string_$skill(synthesis_templateObject51 || (synthesis_templateObject51 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"]))));
-        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject52 || (synthesis_templateObject52 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))));
+    if (!lib_have(template_string_$effect(synthesis_templateObject49 || (synthesis_templateObject49 = synthesis_taggedTemplateLiteral(["Synthesis: Style"]))))) {
+      if (!lib_have(template_string_$item(synthesis_templateObject50 || (synthesis_templateObject50 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))))) {
+        if (!lib_have(template_string_$item(synthesis_templateObject51 || (synthesis_templateObject51 = synthesis_taggedTemplateLiteral(["sugar sheet"]))))) resources.tome(template_string_$skill(synthesis_templateObject52 || (synthesis_templateObject52 = synthesis_taggedTemplateLiteral(["Summon Sugar Sheets"]))));
+        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject53 || (synthesis_templateObject53 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))));
       }
 
       if (pecans >= 1) {
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject53 || (synthesis_templateObject53 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))));
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(pecan, template_string_$item(synthesis_templateObject54 || (synthesis_templateObject54 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))));
       } else {
-        (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject54 || (synthesis_templateObject54 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))), template_string_$item(synthesis_templateObject55 || (synthesis_templateObject55 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
+        (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject55 || (synthesis_templateObject55 = synthesis_taggedTemplateLiteral(["sugar shillelagh"]))), template_string_$item(synthesis_templateObject56 || (synthesis_templateObject56 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
       }
     }
   }
 
-  if (!lib_have(template_string_$effect(synthesis_templateObject56 || (synthesis_templateObject56 = synthesis_taggedTemplateLiteral(["Synthesis: Style"]))))) {
+  if (!lib_have(template_string_$effect(synthesis_templateObject57 || (synthesis_templateObject57 = synthesis_taggedTemplateLiteral(["Synthesis: Style"]))))) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize style.  ¯_(ツ)_/¯";
   }
 }
@@ -11526,12 +11528,12 @@ function synthItem() {
   }
 
   if (!get("_candySummons")) {
-    useSkill(1, $skill(synthesis_templateObject57 || (synthesis_templateObject57 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+    useSkill(1, $skill(synthesis_templateObject58 || (synthesis_templateObject58 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   }
 
-  var fudge = $item(synthesis_templateObject58 || (synthesis_templateObject58 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = $item(synthesis_templateObject59 || (synthesis_templateObject59 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = $item(synthesis_templateObject60 || (synthesis_templateObject60 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
+  var fudge = $item(synthesis_templateObject59 || (synthesis_templateObject59 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
+  var pecan = $item(synthesis_templateObject60 || (synthesis_templateObject60 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
+  var bark = $item(synthesis_templateObject61 || (synthesis_templateObject61 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
   var fudges = availableAmount(fudge);
   var pecans = availableAmount(pecan);
   var barks = availableAmount(bark);
@@ -11540,47 +11542,47 @@ function synthItem() {
     if (barks > 2) {
       sweetSynthesis(bark, bark);
     } else {
-      if (!have($item(synthesis_templateObject61 || (synthesis_templateObject61 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(synthesis_templateObject62 || (synthesis_templateObject62 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+      if (!have($item(synthesis_templateObject62 || (synthesis_templateObject62 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
+        create(1, $item(synthesis_templateObject63 || (synthesis_templateObject63 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
 
       if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(synthesis_templateObject63 || (synthesis_templateObject63 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+        sweetSynthesis(pecan, $item(synthesis_templateObject64 || (synthesis_templateObject64 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       } else {
-        sweetSynthesis($item(synthesis_templateObject64 || (synthesis_templateObject64 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), $item(synthesis_templateObject65 || (synthesis_templateObject65 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+        sweetSynthesis($item(synthesis_templateObject65 || (synthesis_templateObject65 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), $item(synthesis_templateObject66 || (synthesis_templateObject66 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
     }
   } else if (inMusClass()) {
     if (barks >= 2 && fudges === 0) {
       sweetSynthesis(bark, bark);
     } else {
-      if (!have($item(synthesis_templateObject66 || (synthesis_templateObject66 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(synthesis_templateObject67 || (synthesis_templateObject67 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+      if (!have($item(synthesis_templateObject67 || (synthesis_templateObject67 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
+        create(1, $item(synthesis_templateObject68 || (synthesis_templateObject68 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
 
       if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(synthesis_templateObject68 || (synthesis_templateObject68 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+        sweetSynthesis(pecan, $item(synthesis_templateObject69 || (synthesis_templateObject69 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       } else {
-        sweetSynthesis($item(synthesis_templateObject69 || (synthesis_templateObject69 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), $item(synthesis_templateObject70 || (synthesis_templateObject70 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+        sweetSynthesis($item(synthesis_templateObject70 || (synthesis_templateObject70 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), $item(synthesis_templateObject71 || (synthesis_templateObject71 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
     }
   } else if (inMoxClass()) {
     if (barks >= 2 && pecans === 0) {
       sweetSynthesis(bark, bark);
     } else {
-      if (!have($item(synthesis_templateObject71 || (synthesis_templateObject71 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
-        create(1, $item(synthesis_templateObject72 || (synthesis_templateObject72 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+      if (!have($item(synthesis_templateObject72 || (synthesis_templateObject72 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
+        create(1, $item(synthesis_templateObject73 || (synthesis_templateObject73 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
 
       if (pecans >= 1) {
-        sweetSynthesis(pecan, $item(synthesis_templateObject73 || (synthesis_templateObject73 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+        sweetSynthesis(pecan, $item(synthesis_templateObject74 || (synthesis_templateObject74 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       } else {
-        sweetSynthesis($item(synthesis_templateObject74 || (synthesis_templateObject74 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), $item(synthesis_templateObject75 || (synthesis_templateObject75 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+        sweetSynthesis($item(synthesis_templateObject75 || (synthesis_templateObject75 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), $item(synthesis_templateObject76 || (synthesis_templateObject76 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
     }
   }
 
-  if (!have($effect(synthesis_templateObject76 || (synthesis_templateObject76 = synthesis_taggedTemplateLiteral(["Synthesis: Collection"]))))) {
+  if (!have($effect(synthesis_templateObject77 || (synthesis_templateObject77 = synthesis_taggedTemplateLiteral(["Synthesis: Collection"]))))) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize collection. Pwease fix me :c.";
   }
 }
@@ -11590,7 +11592,7 @@ function synthMyst() {
   }
 
   if (!property_get("_candySummons")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject77 || (synthesis_templateObject77 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject78 || (synthesis_templateObject78 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   } //const fudge = $item`Crimbo fudge`;
   //const pecan = $item`Crimbo candied pecan`;
   //const bark = $item`Crimbo peppermint bark`;
@@ -11599,27 +11601,27 @@ function synthMyst() {
   //const barks = availableAmount(bark);
 
 
-  if (lib_have(template_string_$item(synthesis_templateObject78 || (synthesis_templateObject78 = synthesis_taggedTemplateLiteral(["bag of many confections"]))))) {
+  if (lib_have(template_string_$item(synthesis_templateObject79 || (synthesis_templateObject79 = synthesis_taggedTemplateLiteral(["bag of many confections"]))))) {
     if (!property_get("_chubbyAndPlumpUsed")) {
-      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject79 || (synthesis_templateObject79 = synthesis_taggedTemplateLiteral(["Chubby and Plump"]))));
+      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject80 || (synthesis_templateObject80 = synthesis_taggedTemplateLiteral(["Chubby and Plump"]))));
     }
 
-    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject80 || (synthesis_templateObject80 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))), template_string_$item(synthesis_templateObject81 || (synthesis_templateObject81 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject81 || (synthesis_templateObject81 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))), template_string_$item(synthesis_templateObject82 || (synthesis_templateObject82 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
   } else {
-    var mint = template_string_$item(synthesis_templateObject82 || (synthesis_templateObject82 = synthesis_taggedTemplateLiteral(["Senior Mints"])));
+    var mint = template_string_$item(synthesis_templateObject83 || (synthesis_templateObject83 = synthesis_taggedTemplateLiteral(["Senior Mints"])));
     var mints = (0,external_kolmafia_namespaceObject.availableAmount)(mint);
-    var orangeHeart = template_string_$item(synthesis_templateObject83 || (synthesis_templateObject83 = synthesis_taggedTemplateLiteral(["orange candy heart"])));
+    var orangeHeart = template_string_$item(synthesis_templateObject84 || (synthesis_templateObject84 = synthesis_taggedTemplateLiteral(["orange candy heart"])));
 
     var orangeHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(orangeHeart);
 
-    var pinkHeart = template_string_$item(synthesis_templateObject84 || (synthesis_templateObject84 = synthesis_taggedTemplateLiteral(["pink candy heart"])));
+    var pinkHeart = template_string_$item(synthesis_templateObject85 || (synthesis_templateObject85 = synthesis_taggedTemplateLiteral(["pink candy heart"])));
 
-    var pinkHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(synthesis_templateObject85 || (synthesis_templateObject85 = synthesis_taggedTemplateLiteral(["pink candy heart"]))));
+    var pinkHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(synthesis_templateObject86 || (synthesis_templateObject86 = synthesis_taggedTemplateLiteral(["pink candy heart"]))));
 
     var n = 0;
 
     while (mints + orangeHearts() + pinkHearts() === 0 && n < 11) {
-      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject86 || (synthesis_templateObject86 = synthesis_taggedTemplateLiteral(["Summon Candy Heart"]))));
+      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject87 || (synthesis_templateObject87 = synthesis_taggedTemplateLiteral(["Summon Candy Heart"]))));
       n++;
     }
 
@@ -11628,19 +11630,19 @@ function synthMyst() {
     }
 
     if (mints >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(mint, template_string_$item(synthesis_templateObject87 || (synthesis_templateObject87 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(mint, template_string_$item(synthesis_templateObject88 || (synthesis_templateObject88 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
     } else if (orangeHearts() >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(orangeHeart, template_string_$item(synthesis_templateObject88 || (synthesis_templateObject88 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(orangeHeart, template_string_$item(synthesis_templateObject89 || (synthesis_templateObject89 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
     } else if (pinkHearts() >= 1) {
-      if (!lib_have(template_string_$item(synthesis_templateObject89 || (synthesis_templateObject89 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
-        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject90 || (synthesis_templateObject90 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+      if (!lib_have(template_string_$item(synthesis_templateObject90 || (synthesis_templateObject90 = synthesis_taggedTemplateLiteral(["peppermint twist"]))))) {
+        (0,external_kolmafia_namespaceObject.create)(1, template_string_$item(synthesis_templateObject91 || (synthesis_templateObject91 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
       }
 
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(pinkHeart, template_string_$item(synthesis_templateObject91 || (synthesis_templateObject91 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(pinkHeart, template_string_$item(synthesis_templateObject92 || (synthesis_templateObject92 = synthesis_taggedTemplateLiteral(["peppermint twist"]))));
     }
   }
 
-  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject92 || (synthesis_templateObject92 = synthesis_taggedTemplateLiteral(["Synthesis: Smart"])))) === 0) {
+  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject93 || (synthesis_templateObject93 = synthesis_taggedTemplateLiteral(["Synthesis: Smart"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize smart. Pwease fix me :c.";
   }
 }
@@ -11650,37 +11652,37 @@ function synthMus() {
   }
 
   if (!property_get("_candySummons")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject93 || (synthesis_templateObject93 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject94 || (synthesis_templateObject94 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   } //const fudge = $item`Crimbo fudge`;
   //const pecan = $item`Crimbo candied pecan`;
 
 
-  var bark = template_string_$item(synthesis_templateObject94 || (synthesis_templateObject94 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"]))); //const fudges = availableAmount(fudge);
+  var bark = template_string_$item(synthesis_templateObject95 || (synthesis_templateObject95 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"]))); //const fudges = availableAmount(fudge);
   //const pecans = availableAmount(pecan);
 
   var barks = (0,external_kolmafia_namespaceObject.availableAmount)(bark);
 
   if (!property_get("_chubbyAndPlumpUsed")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject95 || (synthesis_templateObject95 = synthesis_taggedTemplateLiteral(["Chubby and Plump"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject96 || (synthesis_templateObject96 = synthesis_taggedTemplateLiteral(["Chubby and Plump"]))));
   }
 
-  if (lib_have(template_string_$item(synthesis_templateObject96 || (synthesis_templateObject96 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"])))) && barks >= 2) {
-    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject97 || (synthesis_templateObject97 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))), bark);
-  } else if (lib_have(template_string_$item(synthesis_templateObject98 || (synthesis_templateObject98 = synthesis_taggedTemplateLiteral(["bag of many confections"]))))) {
-    var mint = template_string_$item(synthesis_templateObject99 || (synthesis_templateObject99 = synthesis_taggedTemplateLiteral(["Senior Mints"])));
+  if (lib_have(template_string_$item(synthesis_templateObject97 || (synthesis_templateObject97 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"])))) && barks >= 2) {
+    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject98 || (synthesis_templateObject98 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))), bark);
+  } else if (lib_have(template_string_$item(synthesis_templateObject99 || (synthesis_templateObject99 = synthesis_taggedTemplateLiteral(["bag of many confections"]))))) {
+    var mint = template_string_$item(synthesis_templateObject100 || (synthesis_templateObject100 = synthesis_taggedTemplateLiteral(["Senior Mints"])));
     var mints = (0,external_kolmafia_namespaceObject.availableAmount)(mint);
-    var orangeHeart = template_string_$item(synthesis_templateObject100 || (synthesis_templateObject100 = synthesis_taggedTemplateLiteral(["orange candy heart"])));
+    var orangeHeart = template_string_$item(synthesis_templateObject101 || (synthesis_templateObject101 = synthesis_taggedTemplateLiteral(["orange candy heart"])));
 
     var orangeHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(orangeHeart);
 
-    var pinkHeart = template_string_$item(synthesis_templateObject101 || (synthesis_templateObject101 = synthesis_taggedTemplateLiteral(["pink candy heart"])));
+    var pinkHeart = template_string_$item(synthesis_templateObject102 || (synthesis_templateObject102 = synthesis_taggedTemplateLiteral(["pink candy heart"])));
 
-    var pinkHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(synthesis_templateObject102 || (synthesis_templateObject102 = synthesis_taggedTemplateLiteral(["pink candy heart"]))));
+    var pinkHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(template_string_$item(synthesis_templateObject103 || (synthesis_templateObject103 = synthesis_taggedTemplateLiteral(["pink candy heart"]))));
 
     var n = 0;
 
     while (mints + orangeHearts() === 0 && n < 11) {
-      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject103 || (synthesis_templateObject103 = synthesis_taggedTemplateLiteral(["Summon Candy Heart"]))));
+      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject104 || (synthesis_templateObject104 = synthesis_taggedTemplateLiteral(["Summon Candy Heart"]))));
       n++;
     }
 
@@ -11689,15 +11691,15 @@ function synthMus() {
     }
 
     if (mints >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(mint, template_string_$item(synthesis_templateObject104 || (synthesis_templateObject104 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(mint, template_string_$item(synthesis_templateObject105 || (synthesis_templateObject105 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
     } else if (orangeHearts() >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(orangeHeart, template_string_$item(synthesis_templateObject105 || (synthesis_templateObject105 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(orangeHeart, template_string_$item(synthesis_templateObject106 || (synthesis_templateObject106 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
     } else if (pinkHearts() >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(pinkHeart, template_string_$item(synthesis_templateObject106 || (synthesis_templateObject106 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(pinkHeart, template_string_$item(synthesis_templateObject107 || (synthesis_templateObject107 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))));
     }
   }
 
-  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject107 || (synthesis_templateObject107 = synthesis_taggedTemplateLiteral(["Synthesis: Strong"])))) === 0) {
+  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject108 || (synthesis_templateObject108 = synthesis_taggedTemplateLiteral(["Synthesis: Strong"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize strong. You're on your own pal.";
   }
 }
@@ -11707,35 +11709,35 @@ function synthMox() {
   }
 
   if (!property_get("_candySummons")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject108 || (synthesis_templateObject108 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject109 || (synthesis_templateObject109 = synthesis_taggedTemplateLiteral(["Summon Crimbo Candy"]))));
   }
 
-  var fudge = template_string_$item(synthesis_templateObject109 || (synthesis_templateObject109 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
-  var pecan = template_string_$item(synthesis_templateObject110 || (synthesis_templateObject110 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
-  var bark = template_string_$item(synthesis_templateObject111 || (synthesis_templateObject111 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
+  var fudge = template_string_$item(synthesis_templateObject110 || (synthesis_templateObject110 = synthesis_taggedTemplateLiteral(["Crimbo fudge"])));
+  var pecan = template_string_$item(synthesis_templateObject111 || (synthesis_templateObject111 = synthesis_taggedTemplateLiteral(["Crimbo candied pecan"])));
+  var bark = template_string_$item(synthesis_templateObject112 || (synthesis_templateObject112 = synthesis_taggedTemplateLiteral(["Crimbo peppermint bark"])));
   var fudges = (0,external_kolmafia_namespaceObject.availableAmount)(fudge);
   var pecans = (0,external_kolmafia_namespaceObject.availableAmount)(pecan);
   var barks = (0,external_kolmafia_namespaceObject.availableAmount)(bark);
 
   if (!property_get("_chubbyAndPlumpUsed")) {
-    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject112 || (synthesis_templateObject112 = synthesis_taggedTemplateLiteral(["Chubby and Plump"]))));
+    (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject113 || (synthesis_templateObject113 = synthesis_taggedTemplateLiteral(["Chubby and Plump"]))));
   }
 
   if (pecans >= 1) {
-    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject113 || (synthesis_templateObject113 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))), pecan);
-  } else if (fudges > 1 && lib_have(template_string_$item(synthesis_templateObject114 || (synthesis_templateObject114 = synthesis_taggedTemplateLiteral(["bag of many confections"]))))) {
-    var taffy = template_string_$item(synthesis_templateObject115 || (synthesis_templateObject115 = synthesis_taggedTemplateLiteral(["Daffy Taffy"])));
+    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject114 || (synthesis_templateObject114 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))), pecan);
+  } else if (fudges > 1 && lib_have(template_string_$item(synthesis_templateObject115 || (synthesis_templateObject115 = synthesis_taggedTemplateLiteral(["bag of many confections"]))))) {
+    var taffy = template_string_$item(synthesis_templateObject116 || (synthesis_templateObject116 = synthesis_taggedTemplateLiteral(["Daffy Taffy"])));
     var taffys = (0,external_kolmafia_namespaceObject.availableAmount)(taffy);
-    var candy = template_string_$item(synthesis_templateObject116 || (synthesis_templateObject116 = synthesis_taggedTemplateLiteral(["Cold Hots candy"])));
+    var candy = template_string_$item(synthesis_templateObject117 || (synthesis_templateObject117 = synthesis_taggedTemplateLiteral(["Cold Hots candy"])));
     var candys = (0,external_kolmafia_namespaceObject.availableAmount)(candy);
-    var yellowHeart = template_string_$item(synthesis_templateObject117 || (synthesis_templateObject117 = synthesis_taggedTemplateLiteral(["yellow candy heart"])));
+    var yellowHeart = template_string_$item(synthesis_templateObject118 || (synthesis_templateObject118 = synthesis_taggedTemplateLiteral(["yellow candy heart"])));
 
     var yellowHearts = () => (0,external_kolmafia_namespaceObject.availableAmount)(yellowHeart);
 
     var n = 0;
 
     while (taffys + yellowHearts() + candys === 0 && n < 11) {
-      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject118 || (synthesis_templateObject118 = synthesis_taggedTemplateLiteral(["Summon Candy Heart"]))));
+      (0,external_kolmafia_namespaceObject.useSkill)(1, template_string_$skill(synthesis_templateObject119 || (synthesis_templateObject119 = synthesis_taggedTemplateLiteral(["Summon Candy Heart"]))));
       n++;
     }
 
@@ -11744,19 +11746,19 @@ function synthMox() {
     }
 
     if (taffys >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(taffy, template_string_$item(synthesis_templateObject119 || (synthesis_templateObject119 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(taffy, template_string_$item(synthesis_templateObject120 || (synthesis_templateObject120 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
     } else if (yellowHearts() >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(yellowHeart, template_string_$item(synthesis_templateObject120 || (synthesis_templateObject120 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(yellowHeart, template_string_$item(synthesis_templateObject121 || (synthesis_templateObject121 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
     } else if (candys >= 1) {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(candy, template_string_$item(synthesis_templateObject121 || (synthesis_templateObject121 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(candy, template_string_$item(synthesis_templateObject122 || (synthesis_templateObject122 = synthesis_taggedTemplateLiteral(["bag of many confections"]))));
     } else {
-      (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject122 || (synthesis_templateObject122 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), template_string_$item(synthesis_templateObject123 || (synthesis_templateObject123 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))));
+      (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject123 || (synthesis_templateObject123 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), template_string_$item(synthesis_templateObject124 || (synthesis_templateObject124 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))));
     }
   } else if (barks >= 1) {
-    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject124 || (synthesis_templateObject124 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), template_string_$item(synthesis_templateObject125 || (synthesis_templateObject125 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))));
+    (0,external_kolmafia_namespaceObject.sweetSynthesis)(template_string_$item(synthesis_templateObject125 || (synthesis_templateObject125 = synthesis_taggedTemplateLiteral(["peppermint sprout"]))), template_string_$item(synthesis_templateObject126 || (synthesis_templateObject126 = synthesis_taggedTemplateLiteral(["Chubby and Plump bar"]))));
   }
 
-  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject126 || (synthesis_templateObject126 = synthesis_taggedTemplateLiteral(["Synthesis: Cool"])))) === 0) {
+  if ((0,external_kolmafia_namespaceObject.haveEffect)(template_string_$effect(synthesis_templateObject127 || (synthesis_templateObject127 = synthesis_taggedTemplateLiteral(["Synthesis: Cool"])))) === 0) {
     throw "I'm very embarrassed, and I'm sorry to admit it, but I failed to synthesize cool. Good Luck Buster.";
   }
 }

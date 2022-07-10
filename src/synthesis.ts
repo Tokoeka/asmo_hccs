@@ -63,37 +63,39 @@ export function synthMysExp(): void {
 				}
 			}
 		}
-		for (const itemName0 of Object.keys(inventory)) {
-			const item0 = Item.get(itemName0);
-			const count = inventory[itemName0];
-			const mod0 = toInt(Item.get(itemName0)) % 5;
-			if (
-				item0.candyType !== "complex" ||
-				$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist`.includes(
-					item0
-				)
-			) {
-				continue;
-			}
-			for (const itemName1 of Object.keys(inventory)) {
-				const item1 = Item.get(itemName1);
-				const mod1 = toInt(Item.get(itemName1)) % 5;
+		if (!haveEffect($effect`Synthesis: Learning`)) {
+			for (const itemName0 of Object.keys(inventory)) {
+				const item0 = Item.get(itemName0);
+				const count = inventory[itemName0];
+				const mod0 = toInt(Item.get(itemName0)) % 5;
 				if (
-					item1.candyType !== "complex" ||
+					item0.candyType !== "complex" ||
 					$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist`.includes(
-						item1
-					) ||
-					(item1 === item0 && count <= 1)
+						item0
+					)
 				) {
 					continue;
 				}
-				if ((mod0 + mod1) % 5 === 3) {
-					sweetSynthesis(item0, item1);
+				for (const itemName1 of Object.keys(inventory)) {
+					const item1 = Item.get(itemName1);
+					const mod1 = toInt(Item.get(itemName1)) % 5;
+					if (
+						item1.candyType !== "complex" ||
+						$items`Ultra Mega Sour Ball, Crimbo fudge, Crimbo candied pecan, Crimbo peppermint bark, peppermint sprout, peppermint twist`.includes(
+							item1
+						) ||
+						(item1 === item0 && count <= 1)
+					) {
+						continue;
+					}
+					if ((mod0 + mod1) % 5 === 3) {
+						sweetSynthesis(item0, item1);
+						break;
+					}
+				}
+				if (haveEffect($effect`Synthesis: Learning`)) {
 					break;
 				}
-			}
-			if (haveEffect($effect`Synthesis: Learning`)) {
-				break;
 			}
 		}
 		if (!have($effect`Synthesis: Learning`)) {
