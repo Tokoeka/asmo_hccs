@@ -103,7 +103,7 @@ function testPrep() {
 				ensureEffect($effect`Predjudicetidigitation`);
 			}
 		},
-		() => use($item`shady shades`)
+		() => use($item`shady shades`),
 	];
 
 	for (const improvement of improvements) {

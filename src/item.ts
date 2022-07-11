@@ -78,7 +78,7 @@ function castBuffs() {
 
 function ninjaTot(): void {
 	print("reached ninjatot");
-	if (have($item`li'l ninja costume`)){
+	if (have($item`li'l ninja costume`)) {
 		return;
 	}
 	useFamiliar($familiar`Puck Man`);
@@ -115,7 +115,7 @@ function batForm() {
 
 function pirateDNA(): void {
 	print("reached piratedna");
-	if (haveEffect($effect`Human-Pirate Hybrid`)){
+	if (haveEffect($effect`Human-Pirate Hybrid`)) {
 		return;
 	}
 	// get pirate DNA and make a gene tonic

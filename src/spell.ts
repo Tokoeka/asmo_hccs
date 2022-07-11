@@ -51,7 +51,7 @@ import {
 	unequip,
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
-import { delevel} from "./asmohccs-macros";
+import { delevel } from "./asmohccs-macros";
 import { modTraceList } from "./modtrace";
 import uniform, { spellOutfit } from "./outfits";
 

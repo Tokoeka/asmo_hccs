@@ -14,7 +14,18 @@ import {
 	useFamiliar,
 	visitUrl,
 } from "kolmafia";
-import { $familiar, $item, $items, $location, $skill, $slot, AsdonMartin, get, Macro, set } from "libram";
+import {
+	$familiar,
+	$item,
+	$items,
+	$location,
+	$skill,
+	$slot,
+	AsdonMartin,
+	get,
+	Macro,
+	set,
+} from "libram";
 import { advMacro, unequip } from "./asmohccs-lib";
 
 cliExecute(`hagnk all`);
@@ -81,7 +92,7 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 			.skill($skill`Micrometeorite`)
 			.while_(`!times 3`, Macro.skill($skill`Saucestorm`))
 			.skill($skill`Shrap`),
-		() => get(`lastEncounter`) !== `Lava Dogs` && (myTurncount() - calderaTurns) < 6
+		() => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 6
 	);
 	cliExecute(`soak`);
 	set(`mpAutoRecoveryTarget`, 0.25);
