@@ -36,7 +36,7 @@ const umbrellaBonus = [
 	["weapon damage", "pitchfork style", "25"],
 	["spell damage", "constantly twirling", "25"],
 	["combat rate", "cocoon", "10"],
-]
+];
 
 export function modTraceList(modifier: string): void {
 	let totalVal = 0;
@@ -49,7 +49,12 @@ export function modTraceList(modifier: string): void {
 		const it = equippedItem(slot);
 		if (
 			numericModifier(it, modifier) !== 0 &&
-			(haveEquipped(it) ||
+			((haveEquipped(it) &&
+				!(
+					slot.toString().includes("sticker") ||
+					slot.toString().includes("folder") ||
+					slot.toString().includes("card-sleeve")
+				)) ||
 				(haveEquipped($item`your cowboy boots`) &&
 					$slots`bootspur, bootskin`.includes(slot)) ||
 				(haveEquipped($item`over-the-shoulder Folder Holder`) &&
@@ -57,8 +62,7 @@ export function modTraceList(modifier: string): void {
 				((haveEquipped($item`scratch 'n' sniff sword`) ||
 					haveEquipped($item`scratch 'n' sniff crossbow`)) &&
 					slot.toString().includes("sticker")) ||
-					(haveEquipped($item`card sleeve`) &&
-						slot.toString().includes("card-sleeve")))
+				(haveEquipped($item`card sleeve`) && slot.toString().includes("card-sleeve")))
 		) {
 			slotTotal = slotTotal + numericModifier(it, modifier);
 			slotCount++;
@@ -113,11 +117,15 @@ export function modTraceList(modifier: string): void {
 				print(`RETROCAPE ${capeForm} ${capeWash} : ${25}`);
 			}
 		}
-		if (retroBonus === 1){
+		if (retroBonus === 1) {
 			slotCount++;
 		}
 	}
-	if (equippedItem($slot`off-hand`) === $item`unbreakable umbrella` || (myFamiliar() === $familiar`left-hand man` && familiarEquippedEquipment($familiar`left-hand man`) === $item`unbreakable umbrella`)){
+	if (
+		equippedItem($slot`off-hand`) === $item`unbreakable umbrella` ||
+		(myFamiliar() === $familiar`left-hand man` &&
+			familiarEquippedEquipment($familiar`left-hand man`) === $item`unbreakable umbrella`)
+	) {
 		const umbrellaForm = get(`umbrellaState`);
 		for (const i in umbrellaBonus) {
 			const line = umbrellaBonus[i];
@@ -131,7 +139,7 @@ export function modTraceList(modifier: string): void {
 			}
 		}
 	}
-	if(slotCount > 0){
+	if (slotCount > 0) {
 		print(`Equipment Total: ${slotTotal}`, "blue");
 		print("");
 	}
@@ -145,7 +153,7 @@ export function modTraceList(modifier: string): void {
 			print(`SKILL ${sk} : ${numericModifier(sk, modifier)}`);
 		}
 	}
-	if(skillCount > 0){
+	if (skillCount > 0) {
 		print(`Passive Skills Total: ${skillTotal}`, "blue");
 		print("");
 	}
@@ -167,7 +175,7 @@ export function modTraceList(modifier: string): void {
 			otherCount++;
 			print(`MOON ${myMoon} : ${10}`);
 		}
-	}  else {
+	} else {
 		for (const i in moonBonus) {
 			const line = moonBonus[i];
 			const mod = line[0];
@@ -218,33 +226,29 @@ export function modTraceList(modifier: string): void {
 			print(`HORSERY ${myHorse} : ${get(`_horseryCrazyMys`)}`);
 		}
 	}
-	if (myThrall() !== $thrall`none`){
-		let thrallBonus = 0
-		if (myThrall() === $thrall`lasagmbie` && modifier === "meat drop"){
-			thrallBonus = 20 + (2 * myThrall().level);
-		}
-		else if (myThrall() === $thrall`spice ghost` && modifier === "item drop"){
+	if (myThrall() !== $thrall`none`) {
+		let thrallBonus = 0;
+		if (myThrall() === $thrall`lasagmbie` && modifier === "meat drop") {
+			thrallBonus = 20 + 2 * myThrall().level;
+		} else if (myThrall() === $thrall`spice ghost` && modifier === "item drop") {
 			thrallBonus = 10 + myThrall().level;
-		}
-		else if (myThrall() === $thrall`angel hair wisp` && modifier === "initiative"){
+		} else if (myThrall() === $thrall`angel hair wisp` && modifier === "initiative") {
 			thrallBonus = 5 * myThrall().level;
 		}
-		if (thrallBonus > 0){
+		if (thrallBonus > 0) {
 			print(`THRALL ${myThrall()} : ${thrallBonus}`);
 			otherCount++;
 			otherTotal = otherTotal + thrallBonus;
 		}
-		
 	}
 
-	if (otherCount > 0){
+	if (otherCount > 0) {
 		print(`Other Bonuses Total: ${otherTotal}`, "blue");
 		print("");
 	}
-	
 
 	let effectTotal = 0;
-	let effectCount = 0
+	let effectCount = 0;
 	for (const effect in myEffects()) {
 		const ef = toEffect(effect);
 		if (numericModifier(ef, modifier) !== 0) {
@@ -263,7 +267,6 @@ export function modTraceList(modifier: string): void {
 	const doublerVal = slotTotal + skillTotal + otherTotal + effectTotal;
 
 	if (modifier === `item drop` && haveEffect(squint)) {
-
 		print(`EFFECT ${squint} : ${doublerVal}`);
 		effectTotal = effectTotal + doublerVal;
 		effectCount++;
@@ -277,9 +280,8 @@ export function modTraceList(modifier: string): void {
 		effectTotal = effectTotal + doublerVal;
 		effectCount++;
 	}
-	
 
-	if(effectCount > 0){
+	if (effectCount > 0) {
 		print(`Effects Total: ${effectTotal}`, "blue");
 		print("");
 	}
@@ -300,6 +302,6 @@ export function modTraceList(modifier: string): void {
 	print("");
 }
 
-export function main(args = ""){
+export function main(args = "") {
 	modTraceList(args);
 }
