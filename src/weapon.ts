@@ -85,35 +85,34 @@ function castBuffs() {
 
 function kungFuMeteors() {
 	//TODO - Insert +ML buffs prior to fighting to reduce liklihood of disembodied hand killing it?
-	if (!have($effect`cowrruption`) && !have($item`corrupted marrow`)){
-	uniform();
-	if(inHardcore()){
-		useFamiliar($familiar`Disembodied Hand`);
-		equip($slot`weapon`, $item`none`);
-		equip($slot`off-hand`, $item`none`);
-		equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
-	}
-	else {
-		useDefaultFamiliar(false);
-		equip($slot`weapon`, $item`Fourth of may cosplay saber`);
-	}
-	setChoice(1387, 3);
-	Macro.skill($skill`Meteor Shower`)
-		.skill($skill`Use the Force`)
-		.setAutoAttack();
-	resources.locket($monster`ungulith`);
-	//CombatLoversLocket.reminisce($monster`ungulith`);
-	if (handlingChoice()) runChoice(-1);
-	set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
-	if (get("_locketMonstersFought") === "") set("_locketMonstersFought", "1932");
-	else set("_locketMonstersFought", `${get("_locketMonstersFought")},1932`);
+	if (!have($effect`cowrruption`) && !have($item`corrupted marrow`)) {
+		uniform();
+		if (inHardcore()) {
+			useFamiliar($familiar`Disembodied Hand`);
+			equip($slot`weapon`, $item`none`);
+			equip($slot`off-hand`, $item`none`);
+			equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
+		} else {
+			useDefaultFamiliar(false);
+			equip($slot`weapon`, $item`Fourth of may cosplay saber`);
+		}
+		setChoice(1387, 3);
+		Macro.skill($skill`Meteor Shower`)
+			.skill($skill`Use the Force`)
+			.setAutoAttack();
+		resources.locket($monster`ungulith`);
+		//CombatLoversLocket.reminisce($monster`ungulith`);
+		if (handlingChoice()) runChoice(-1);
+		set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+		if (get("_locketMonstersFought") === "") set("_locketMonstersFought", "1932");
+		else set("_locketMonstersFought", `${get("_locketMonstersFought")},1932`);
 	}
 }
 
 function testPrep() {
 	if (have($item`corrupted marrow`) && !have($effect`cowrruption`)) use($item`corrupted marrow`);
 	if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
-	//grimBuff();
+	grimBuff();
 	/*if (!get("_floundryItemCreated")) {
         setClan(get("asmocs_fishClan", "Alliance From Heck"));
         cliExecute("acquire fish hatchet");
@@ -131,11 +130,10 @@ function testPrep() {
 		}
 	}
 	weaponOutfit();
-
 }
 
 function grimBuff() {
-	if(!get("_grimBuff")){
+	if (!get("_grimBuff")) {
 		cliExecute($effect`Grumpy and Ornery`.default);
 	}
 }
