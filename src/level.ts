@@ -679,9 +679,9 @@ function NEP() {
 	advMacroAA(
 		$location`The Neverending Party`,
 
-		Macro.step(delevel)
-			.if_("!hasskill Bowl Sideways && hasskill Feel Pride", Macro.skill("Feel Pride"))
+		Macro.if_("!hasskill Bowl Sideways && hasskill Feel Pride", Macro.skill("Feel Pride"))
 			.trySkill("Bowl Sideways")
+			.step(delevel)
 			.trySkill($skill`%fn, spit on me!`)
 			.step(easyFight)
 			.attack()
