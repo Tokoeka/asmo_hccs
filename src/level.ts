@@ -742,7 +742,7 @@ function NEP() {
 			Macro.trySkill($skill`Shattering Punch`).trySkill($skill`Chest X-Ray`)
 		).if_(
 			"monstername sausage goblin",
-			Macro.step(delevel).step(candyblast).step(easyFight).repeat()
+			Macro.step(delevel).step(candyblast).step(easyFight).attack().repeat()
 		),
 		() => {
 			return get("_chestXRayUsed") < 3;
