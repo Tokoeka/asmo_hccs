@@ -149,7 +149,12 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
 				: $items`Daylight Shavings Helmet, Iunion Crown`,
 		],
 		[$slot`shirt`, $items`LOV Eardigan, fresh coat of paint`],
-		[$slot`pants`, $items`designer sweatpants, Cargo Cultist Shorts, old sweatpants`],
+		[
+			$slot`pants`,
+			get("sweat", 0) < 100
+				? $item`designer sweatpants`
+				: $items`Cargo Cultist Shorts, old sweatpants`,
+		],
 		[$slot`weapon`, $item`Fourth of May Cosplay Saber`],
 		[$slot`off-hand`, $items`unbreakable umbrella, familiar scrapbook`],
 		[$slot`acc1`, $items`meteorite necklace, hewn moon-rune spoon`],
@@ -309,7 +314,7 @@ export function hotresOutfit(): void {
 			[$slot`back`, $item`unwrapped knock-off retro superhero cape`],
 			[$slot`weapon`, $items`industrial fire extinguisher, Fourth of May Cosplay Saber`],
 			[$slot`off-hand`, $items`meteorite guard, latte lovers member's mug`],
-			[$slot`pants`, $items`lava-proof pants, pantogram pants`],
+			[$slot`pants`, $item`designer sweatpants`],
 			[$slot`acc1`, $items`heat-resistant necktie, Brutal brogues`],
 			[$slot`acc2`, $item`heat-resistant gloves`],
 			[$slot`acc3`, $item`Beach Comb`],
@@ -320,10 +325,10 @@ export function hotresOutfit(): void {
 }
 
 export function noncombatOutfit(): void {
-	if (have($item`unbreakable umbrella`) ){
+	if (have($item`unbreakable umbrella`)) {
 		cliExecute("umbrella nc");
 	}
-		
+
 	Outfit.doYourBest(
 		new Map<Slot, Item | Item[]>([
 			[$slot`hat`, $item`very pointy crown`],
