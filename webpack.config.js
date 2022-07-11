@@ -13,7 +13,7 @@ module.exports = {
     asmohccs: "./src/index.ts",
     hccsAscend: "./src/gash-hop.ts",
 	aftercoreCS: "./src/aftercore-cs.ts",
-	//modList: "./src/mod-list.ts",
+	modTraceList: "./src/modtrace.ts",
   },
   // Turns on tree-shaking and minification in the default Terser minifier
   // https://webpack.js.org/plugins/terser-webpack-plugin/
