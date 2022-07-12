@@ -901,7 +901,7 @@ function prelude() {
 	if (have($effect`The Magical Mojomuscular Melody`))
 		cliExecute("shrug The Magical Mojomuscular Melody");
 	useSkill($skill`The Ode to Booze`);
-	resources.consumeTo(5, $item`astral pilsner`);
+	resources.consumeTo(3, $item`astral pilsner`);
 }
 
 /*

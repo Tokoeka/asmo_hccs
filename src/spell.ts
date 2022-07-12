@@ -208,9 +208,9 @@ function testPrep() {
 		}
 	}
 	spellOutfit();
-	if (availableAmount($item`astral pilsner`) > 1) {
+	if (availableAmount($item`astral pilsner`) > 3) {
 		ensureEffect($effect`Ode to Booze`);
-		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 1);
+		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 3);
 	}
 }
 
