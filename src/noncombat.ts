@@ -86,6 +86,7 @@ function godLobster() {
 function testPrep() {
 	noncombatOutfit();
 	const improvements = [
+		() => use($item`shady shades`),
 		() => {
 			if (!have($effect`Gummed Shoes`)) {
 				if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
@@ -103,7 +104,6 @@ function testPrep() {
 				ensureEffect($effect`Predjudicetidigitation`);
 			}
 		},
-		() => use($item`shady shades`),
 	];
 
 	for (const improvement of improvements) {
