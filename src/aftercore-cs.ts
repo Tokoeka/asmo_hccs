@@ -56,7 +56,7 @@ if (mySign() !== "Platypus" && !get("moonTuned")) {
 }
 
 useFamiliar($familiar`Ms. Puck Man`);
-if (get(`_questESp`) == "") {
+if (get(`_questESp`) === "") {
 	visitUrl(`place.php?whichplace=airport_spooky&action=airport2_radio`);
 	if (
 		[
@@ -79,7 +79,7 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 	set(`mpAutoRecoveryTarget`, 0.7);
 	set(`mpAutoRecovery`, 0.5);
 
-	if (get(`_calderaStart`) == "") {
+	if (get(`_calderaStart`) === "") {
 		set(`_calderaStart`, myTurncount());
 	}
 
@@ -104,4 +104,4 @@ if (!AsdonMartin.installed()) {
 	AsdonMartin.fillTo(200);
 }
 
-print("We duped a " + duped);
+print(`We duped a ${duped}`);

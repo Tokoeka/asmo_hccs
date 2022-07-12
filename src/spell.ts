@@ -33,7 +33,6 @@ import {
 	$items,
 	$location,
 	$skill,
-	CommunityService,
 	get,
 	have,
 	Macro,

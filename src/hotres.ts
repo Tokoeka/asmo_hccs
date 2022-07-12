@@ -112,14 +112,14 @@ function testPrep() {
 		},
 		() => {
 			if (
-			!have($item`meteorite guard`) &&
-			have($item`metal meteoroid`) &&
-			!get("latteUnlocks").includes("chili")
+				!have($item`meteorite guard`) &&
+				have($item`metal meteoroid`) &&
+				!get("latteUnlocks").includes("chili")
 			) {
-			create(1, $item`meteorite guard`);
+				create(1, $item`meteorite guard`);
 			}
 		},
-		() => 	horse("pale"),
+		() => horse("pale"),
 		() => BeachComb.tryHead($effect`Hot-Headed`),
 	];
 	for (const improvement of improvements) {

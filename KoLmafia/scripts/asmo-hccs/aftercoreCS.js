@@ -5611,7 +5611,7 @@ if ((0,external_kolmafia_namespaceObject.mySign)() !== "Platypus" && !property_g
 
 (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject6 || (aftercore_cs_templateObject6 = aftercore_cs_taggedTemplateLiteral(["Ms. Puck Man"]))));
 
-if (property_get("_questESp") == "") {
+if (property_get("_questESp") === "") {
   (0,external_kolmafia_namespaceObject.visitUrl)("place.php?whichplace=airport_spooky&action=airport2_radio");
 
   if (["questESpEVE", "questESpFakeMedium", "questESpGore", "questESpOutOfOrder", "questESpSerum", "questESpSmokes"].includes(property_get("_questESp"))) {
@@ -5626,7 +5626,7 @@ if (property_get("lastEncounter") !== "Lava Dogs") {
   _set("mpAutoRecoveryTarget", 0.7);
   _set("mpAutoRecovery", 0.5);
 
-  if (property_get("_calderaStart") == "") {
+  if (property_get("_calderaStart") === "") {
     _set("_calderaStart", (0,external_kolmafia_namespaceObject.myTurncount)());
   }
 
@@ -5643,7 +5643,7 @@ if (!installed()) {
   fillTo(200);
 }
 
-(0,external_kolmafia_namespaceObject.print)("We duped a " + duped);
+(0,external_kolmafia_namespaceObject.print)("We duped a ".concat(duped));
 })();
 
 var __webpack_export_target__ = exports;

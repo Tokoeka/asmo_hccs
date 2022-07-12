@@ -6,7 +6,6 @@ import {
 	Item,
 	sweetSynthesis,
 	toInt,
-	toString as toStringAsh,
 	useSkill,
 	visitUrl,
 } from "kolmafia";

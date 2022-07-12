@@ -6,7 +6,6 @@ import {
 	getWorkshed,
 	haveEffect,
 	myClass,
-	print,
 	use,
 	useFamiliar,
 	useSkill,
@@ -29,7 +28,7 @@ import {
 	Macro,
 } from "libram";
 import uniform, { itemOutfit } from "./outfits";
-import { advMacroAA, ensureEffect, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, mapMacro } from "./asmohccs-lib";
 //import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
@@ -151,7 +150,7 @@ function testPrep() {
 				ensureEffect($effect`Blessing of the Bird`);
 			}
 		},
-		/*() => { 
+		/*() => {
 			print("reached bag of grain");
 			if (have($item`bag of grain`)){
 			use($item`bag of grain`);
@@ -173,7 +172,7 @@ function testPrep() {
 	for (const improvement of improvements) {
 		if (predictor() > 1) {
 			improvement();
-		} 
+		}
 	}
 
 	//Save for aftercore bonus adventures

@@ -85,7 +85,7 @@ function castBuffs() {
 
 function kungFuMeteors() {
 	//TODO - Insert +ML buffs prior to fighting to reduce liklihood of disembodied hand killing it?
-	if (!have($effect`cowrruption`) && !have($item`corrupted marrow`)) {
+	if (!have($effect`Cowrruption`) && !have($item`corrupted marrow`)) {
 		uniform();
 		if (inHardcore()) {
 			useFamiliar($familiar`Disembodied Hand`);
@@ -94,7 +94,7 @@ function kungFuMeteors() {
 			equip($slot`familiar`, $item`Fourth of May Cosplay Saber`);
 		} else {
 			useDefaultFamiliar(false);
-			equip($slot`weapon`, $item`Fourth of may cosplay saber`);
+			equip($slot`weapon`, $item`Fourth of May Cosplay Saber`);
 		}
 		setChoice(1387, 3);
 		Macro.skill($skill`Meteor Shower`)
@@ -110,7 +110,7 @@ function kungFuMeteors() {
 }
 
 function testPrep() {
-	if (have($item`corrupted marrow`) && !have($effect`cowrruption`)) use($item`corrupted marrow`);
+	if (have($item`corrupted marrow`) && !have($effect`Cowrruption`)) use($item`corrupted marrow`);
 	if (!get("_bowleggedSwaggerUsed")) useSkill($skill`Bow-Legged Swagger`);
 	grimBuff();
 	/*if (!get("_floundryItemCreated")) {

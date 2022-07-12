@@ -4669,7 +4669,7 @@ function modTraceList(modifier) {
     }
   }
 
-  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)((0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$slot */ .Jh)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["off-hand"])))) === (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$item */ .xr)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["unbreakable umbrella"]))) || (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)() === (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$familiar */ .HP)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["left-hand man"]))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.familiarEquippedEquipment)((0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$familiar */ .HP)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["left-hand man"])))) === (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$item */ .xr)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["unbreakable umbrella"])))) {
+  if ((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)((0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$slot */ .Jh)(_templateObject3 || (_templateObject3 = _taggedTemplateLiteral(["off-hand"])))) === (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$item */ .xr)(_templateObject4 || (_templateObject4 = _taggedTemplateLiteral(["unbreakable umbrella"]))) || (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)() === (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$familiar */ .HP)(_templateObject5 || (_templateObject5 = _taggedTemplateLiteral(["Left-Hand Man"]))) && (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.familiarEquippedEquipment)((0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$familiar */ .HP)(_templateObject6 || (_templateObject6 = _taggedTemplateLiteral(["Left-Hand Man"])))) === (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$item */ .xr)(_templateObject7 || (_templateObject7 = _taggedTemplateLiteral(["unbreakable umbrella"])))) {
     var umbrellaForm = (0,libram__WEBPACK_IMPORTED_MODULE_3__/* .get */ .U2)("umbrellaState");
 
     for (var i in umbrellaBonus) {
@@ -4820,7 +4820,7 @@ function modTraceList(modifier) {
     (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("");
   }
 
-  var equipFams = (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$familiars */ .LG)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["trick-or-treating tot, disembodied hand, left-hand man"])));
+  var equipFams = (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$familiars */ .LG)(_templateObject10 || (_templateObject10 = _taggedTemplateLiteral(["Trick-or-Treating Tot, Disembodied Hand, Left-Hand Man"])));
   var famMod = (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.numericModifier)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)(), modifier, (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.familiarWeight)((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)()) + (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.weightAdjustment)(), equipFams.includes((0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myFamiliar)()) ? (0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$item */ .xr)(_templateObject11 || (_templateObject11 = _taggedTemplateLiteral(["none"]))) : (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.equippedItem)((0,libram__WEBPACK_IMPORTED_MODULE_2__/* .$slot */ .Jh)(_templateObject12 || (_templateObject12 = _taggedTemplateLiteral(["familiar"])))));
 
   if (famMod !== 0) {

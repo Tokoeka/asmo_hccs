@@ -18,7 +18,17 @@ import {
 	toInt,
 	weightAdjustment,
 } from "kolmafia";
-import { $effect, $familiar, $familiars, $item, $skills, $slot, $slots, $thrall, get } from "libram";
+import {
+	$effect,
+	$familiar,
+	$familiars,
+	$item,
+	$skills,
+	$slot,
+	$slots,
+	$thrall,
+	get,
+} from "libram";
 import { horsery, PropertyManager } from "./asmohccs-lib";
 
 const moonBonus = [
@@ -123,8 +133,8 @@ export function modTraceList(modifier: string): void {
 	}
 	if (
 		equippedItem($slot`off-hand`) === $item`unbreakable umbrella` ||
-		(myFamiliar() === $familiar`left-hand man` &&
-			familiarEquippedEquipment($familiar`left-hand man`) === $item`unbreakable umbrella`)
+		(myFamiliar() === $familiar`Left-Hand Man` &&
+			familiarEquippedEquipment($familiar`Left-Hand Man`) === $item`unbreakable umbrella`)
 	) {
 		const umbrellaForm = get(`umbrellaState`);
 		for (const i in umbrellaBonus) {
@@ -271,13 +281,13 @@ export function modTraceList(modifier: string): void {
 		print("");
 	}
 
-	const equipFams = $familiars`trick-or-treating tot, disembodied hand, left-hand man`
+	const equipFams = $familiars`Trick-or-Treating Tot, Disembodied Hand, Left-Hand Man`;
 
 	const famMod = numericModifier(
 		myFamiliar(),
 		modifier,
 		familiarWeight(myFamiliar()) + weightAdjustment(),
-		equipFams.includes(myFamiliar())? $item `none` : equippedItem($slot`familiar`)
+		equipFams.includes(myFamiliar()) ? $item`none` : equippedItem($slot`familiar`)
 	);
 	if (famMod !== 0) {
 		print(`FAMILIAR ${myFamiliar()} : ${Math.floor(famMod)}`);
@@ -303,6 +313,6 @@ export function modTraceList(modifier: string): void {
 	print("");
 }
 
-export function main(args = "") {
+export function main(args = ""): void {
 	modTraceList(args);
 }
