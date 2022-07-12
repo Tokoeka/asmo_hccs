@@ -18,7 +18,7 @@ import {
 	toInt,
 	weightAdjustment,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skills, $slot, $slots, $thrall, get } from "libram";
+import { $effect, $familiar, $familiars, $item, $skills, $slot, $slots, $thrall, get } from "libram";
 import { horsery, PropertyManager } from "./asmohccs-lib";
 
 const moonBonus = [
@@ -226,21 +226,6 @@ export function modTraceList(modifier: string): void {
 			print(`HORSERY ${myHorse} : ${get(`_horseryCrazyMys`)}`);
 		}
 	}
-	if (myThrall() !== $thrall`none`) {
-		let thrallBonus = 0;
-		if (myThrall() === $thrall`lasagmbie` && modifier === "meat drop") {
-			thrallBonus = 20 + 2 * myThrall().level;
-		} else if (myThrall() === $thrall`spice ghost` && modifier === "item drop") {
-			thrallBonus = 10 + myThrall().level;
-		} else if (myThrall() === $thrall`angel hair wisp` && modifier === "initiative") {
-			thrallBonus = 5 * myThrall().level;
-		}
-		if (thrallBonus > 0) {
-			print(`THRALL ${myThrall()} : ${thrallBonus}`);
-			otherCount++;
-			otherTotal = otherTotal + thrallBonus;
-		}
-	}
 
 	if (otherCount > 0) {
 		print(`Other Bonuses Total: ${otherTotal}`, "blue");
@@ -286,17 +271,33 @@ export function modTraceList(modifier: string): void {
 		print("");
 	}
 
+	const equipFams = $familiars`trick-or-treating tot, disembodied hand, left-hand man`
+
 	const famMod = numericModifier(
 		myFamiliar(),
 		modifier,
 		familiarWeight(myFamiliar()) + weightAdjustment(),
-		equippedItem($slot`familiar`)
+		equipFams.includes(myFamiliar())? $item `none` : equippedItem($slot`familiar`)
 	);
 	if (famMod !== 0) {
 		print(`FAMILIAR ${myFamiliar()} : ${Math.floor(famMod)}`);
 	}
 
-	totalVal = skillTotal + slotTotal + effectTotal + otherTotal + Math.floor(famMod);
+	let thrallBonus = 0;
+	if (myThrall() !== $thrall`none`) {
+		if (myThrall() === $thrall`lasagmbie` && modifier === "meat drop") {
+			thrallBonus = 20 + 2 * myThrall().level;
+		} else if (myThrall() === $thrall`spice ghost` && modifier === "item drop") {
+			thrallBonus = 10 + myThrall().level;
+		} else if (myThrall() === $thrall`angel hair wisp` && modifier === "initiative") {
+			thrallBonus = 5 * myThrall().level;
+		}
+		if (thrallBonus > 0) {
+			print(`THRALL ${myThrall()} : ${thrallBonus}`);
+		}
+	}
+
+	totalVal = skillTotal + slotTotal + effectTotal + otherTotal + Math.floor(famMod) + thrallBonus;
 
 	print(`Total ${modifier}: ${totalVal}`, "purple");
 	print("");
