@@ -70,9 +70,9 @@ function godLobster() {
 		useFamiliar($familiar`God Lobster`);
 		equip($slot`familiar`, $item`God Lobster's Ring`);
 		uniform();
-		if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
+		/*if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
 			equip($slot`hat`, $item`Daylight Shavings Helmet`);
-		}
+		}*/
 		defaultKill.setAutoAttack();
 		heal();
 		setChoice(1310, 2);
