@@ -27,7 +27,7 @@ import {
 	have,
 	Macro,
 } from "libram";
-import uniform, { itemOutfit } from "./outfits";
+import uniform, { itemOutfit } from "./outfit2";
 import { advMacroAA, ensureEffect, mapMacro } from "./asmohccs-lib";
 //import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
@@ -141,7 +141,7 @@ function testPrep() {
 		ensureEffect($effect`Feeling Lost`);
 	}
 	useFamiliar($familiar`Trick-or-Treating Tot`);
-	itemOutfit();
+	itemOutfit.dress();
 	use($item`bag of grain`);
 
 	const improvements = [

@@ -25,8 +25,8 @@ import {
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
-import uniform, { hotresOutfit } from "./outfits";
 import { modTraceList } from "./modtrace";
+import uniform, { hotresOutfit } from "./outfit2";
 const predictor = () => CommunityService.HotRes.prediction;
 
 function castBuffs() {
@@ -97,7 +97,7 @@ function thisFireIsOutOfControl() {
 }
 
 function testPrep() {
-	hotresOutfit();
+	hotresOutfit.dress();
 	const improvements = [
 		() => {
 			if (have($item`programmable turtle`)) {

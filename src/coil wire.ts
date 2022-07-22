@@ -25,10 +25,10 @@ import {
 	Macro,
 	Witchess,
 } from "libram";
-import uniform, { wireOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./asmohccs-lib";
 import { grimoires, runStart } from "./runstart";
+import uniform, { wireOutfit } from "./outfit2";
 
 function firstFights() {
 	if (!have($item`makeshift garbage shirt`)) cliExecute("fold makeshift garbage shirt");
@@ -58,7 +58,7 @@ function firstFights() {
 
 	const ghostLocation = get("ghostLocation");
 	if (ghostLocation) {
-		equip($slot`off-hand`, $item`latte lovers member's mug`);
+		uniform(...$items`latte lovers member's mug, protonic accelerator pack`);
 		useDefaultFamiliar();
 		advMacro(
 			ghostLocation,
@@ -133,7 +133,7 @@ Use Love Potion if Shitty
 export default function coilWire(): void {
 	runStart();
 	firstFights();
-	wireOutfit();
+	wireOutfit.dress();
 	terribleLove();
 	burnLibrams();
 }

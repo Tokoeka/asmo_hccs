@@ -6,6 +6,7 @@ import {
 	$location,
 	$monster,
 	$skill,
+	$slot,
 	BeachComb,
 	get,
 	have,
@@ -15,8 +16,8 @@ import {
 } from "libram";
 import { defaultKill } from "./asmohccs-macros";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
-import uniform, { famweightOutfit } from "./outfits";
 import { modTraceList } from "./modtrace";
+import uniform, { famweightOutfit } from "./outfit2";
 
 export function universalWeightBuffs(): void {
 	ensureEffect($effect`Empathy`);
@@ -78,7 +79,7 @@ function familiarStuff() {
 function takeAShower() {
 	useFamiliar($familiar`Ms. Puck Man`);
 	horse("dark");
-	uniform();
+	uniform([$item`Fourth of May Cosplay Saber`, $slot`weapon`]);
 	setChoice(1387, 3);
 	if (
 		get("_meteorShowerUses") < 5 &&
@@ -99,7 +100,7 @@ function takeAShower() {
 }
 
 function testPrep() {
-	famweightOutfit();
+	famweightOutfit.dress();
 	if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
 	/*while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
     use($item`love song of icy revenge`);

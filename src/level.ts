@@ -72,7 +72,7 @@ import {
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { universalWeightEffects } from "./familiarweight";
-import uniform from "./outfits";
+import uniform from "./outfit2";
 import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
 import { geneTonic } from "./workshed";
 import { resources } from ".";
@@ -830,7 +830,7 @@ function restAndBuff() {
 	}
 }
 
-function digitwinked() {
+/* function digitwinked() {
 	uniform();
 	useDefaultFamiliar();
 	if (!get("latteUnlocks").includes("chili")) {
@@ -857,7 +857,7 @@ function digitwinked() {
 			return getCounters("Romantic Monster window end", 0, 0).trim() !== "";
 		}
 	);
-}
+} */
 
 function hybridize(): void {
 	if (

@@ -65,8 +65,9 @@ import {
 	PropertiesManager,
 	property,
 	set,
+	withProperty,
 } from "libram";
-import { Outfit, withOutfit } from "./outfits";
+import { Outfit, withOutfit } from "./outfit2";
 
 export const PropertyManager = new PropertiesManager();
 
@@ -150,10 +151,7 @@ export function ensureInnerElf(): void {
 		setClan(get("asmocs_elfClan", "Hobopolis Vacation Home"));
 		try {
 			withOutfit(
-				new Outfit(
-					new Map<Slot, Item>([[$slot`acc3`, $item`Kremlin's Greatest Briefcase`]]),
-					$familiar`Machine Elf`
-				),
+				new Outfit({ acc3: $item`Kremlin's Greatest Briefcase` }, $familiar`Machine Elf`),
 				() => {
 					ensureEffect($effect`Blood Bubble`);
 					setChoice(326, 1);
@@ -524,3 +522,14 @@ export function unequip(item: Item): void {
 }
 
 export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
+
+
+export function juneCleave(): void {
+    if (get("_juneCleaverFightsLeft") > 0) return;
+    withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
+        withProperty("recoveryScript", "", () => {
+            adv1($location`Noob Cave`, -1, "");
+            if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
+        });
+    });
+}

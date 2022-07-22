@@ -403,7 +403,6 @@ export function spellOutfit(): void {
 		new Map<Slot, Item | Item[]>([
 			[$slot`hat`, $items`sugar chapeau, astral chapeau, Hollandaise helmet`],
 			[$slot`weapon`, $items`Staff of Kitchen Royalty, weeping willow wand`],
-			[$slot`familiar`, $items`Stick-Knife of Loathing, wrench`],
 			[$slot`off-hand`, $item`Abracandalabra`],
 			//[$slot`pants`, $item`pantogram pants`],
 			[$slot`acc1`, $items`meteorite necklace, Kremlin's Greatest Briefcase`],

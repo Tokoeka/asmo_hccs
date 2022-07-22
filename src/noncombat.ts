@@ -30,7 +30,7 @@ import {
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
 import { ensureEffect, heal, horse, setChoice } from "./asmohccs-lib";
-import uniform, { noncombatOutfit } from "./outfits";
+import uniform, { noncombatOutfit } from "./outfit2";
 import { modTraceList } from "./modtrace";
 import { fuelUp } from "./workshed";
 
@@ -84,7 +84,7 @@ function godLobster() {
 }
 
 function testPrep() {
-	noncombatOutfit();
+	noncombatOutfit.dress();
 	const improvements = [
 		() => use($item`shady shades`),
 		() => {

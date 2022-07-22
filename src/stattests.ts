@@ -23,9 +23,9 @@ import {
 	CommunityService,
 	have,
 } from "libram";
-import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfits";
 import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, tryUse } from "./asmohccs-lib";
 import { modTraceList } from "./modtrace";
+import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfit2";
 
 const musclePredictor = () => CommunityService.Muscle.prediction;
 
@@ -60,7 +60,7 @@ function musclebuffs() {
 }
 
 function muscleTestPrep() {
-	muscleOutfit();
+	muscleOutfit.dress();
 
 	for (const increaser of [
 		() => ensureEffect($effect`Lack of Body-Building`),
@@ -106,7 +106,7 @@ function mystbuffs() {
 }
 
 function mystTestPrep() {
-	mysticalityOutfit();
+	mysticalityOutfit.dress();
 
 	for (const increaser of [
 		() => {
@@ -165,9 +165,7 @@ function moxBuffs() {
 }
 
 function moxTestPrep() {
-	useFamiliar($familiar`Left-Hand Man`);
-	//maximize("moxie", false);
-	moxieOutfit();
+	moxieOutfit.dress();
 	for (const increaser of [
 		() => use(availableAmount($item`rhinestone`), $item`rhinestone`),
 		() => {
@@ -238,7 +236,7 @@ function hpBuffs() {
 
 const hpPredictor = () => 60 - Math.floor((myMaxhp() - myBuffedstat($stat`muscle`) - 3) / 30);
 function hpTestPrep() {
-	hpOutfit();
+	hpOutfit.dress();
 }
 
 export function HPTest(): void {
