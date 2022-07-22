@@ -60,14 +60,6 @@ function castBuffs() {
 		cliExecute(`latte refill ${latte}`);
 	}
 
-	if (
-		!have($item`meteorite guard`) &&
-		have($item`metal meteoroid`) &&
-		!get("latteUnlocks").includes("chili")
-	) {
-		create(1, $item`meteorite guard`);
-	}
-
 	if (!have($effect`Puzzle Champ`)) {
 		cliExecute("witchess");
 	}
@@ -80,14 +72,14 @@ function castBuffs() {
 function thisFireIsOutOfControl() {
 	//Don't need to spend a Map for High-Temp Mining Mask when we can Foam ourselves
 	if (get("_saberForceUses") < 5 && !have($effect`Fireproof Foam Suit`)) {
-		uniform([$item`industrial fire extinguisher`, $slot`off-hand`], $item`vampyric cloake`);
+		uniform([$item`industrial fire extinguisher`, $slot`off-hand`], $item`vampyric cloake`); //TODO - add daylight shavings helmet here?
 		useFamiliar($familiar`Ms. Puck Man`);
 		horse(`dark`);
 		setChoice(1387, 3);
 		advMacroAA(
 			$location`The Dire Warren`,
 			Macro.skill($skill`Fire Extinguisher: Foam Yourself`)
-				.skill($skill`Become a Cloud of Mist`)
+				//.skill($skill`Become a Cloud of Mist`)
 				.skill($skill`Use the Force`),
 			() => haveEffect($effect`Fireproof Foam Suit`) < 1 && get(`_saberForceUses`) < 3,
 			() => {
@@ -106,7 +98,6 @@ function thisFireIsOutOfControl() {
 
 function testPrep() {
 	hotresOutfit();
-	horse("pale");
 	const improvements = [
 		() => {
 			if (have($item`programmable turtle`)) {
@@ -119,6 +110,16 @@ function testPrep() {
 				use($item`rainbow glitter candle`);
 			}
 		},
+		() => {
+			if (
+				!have($item`meteorite guard`) &&
+				have($item`metal meteoroid`) &&
+				!get("latteUnlocks").includes("chili")
+			) {
+				create(1, $item`meteorite guard`);
+			}
+		},
+		() => horse("pale"),
 		() => BeachComb.tryHead($effect`Hot-Headed`),
 	];
 	for (const improvement of improvements) {

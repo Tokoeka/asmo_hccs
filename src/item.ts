@@ -6,7 +6,6 @@ import {
 	getWorkshed,
 	haveEffect,
 	myClass,
-	print,
 	use,
 	useFamiliar,
 	useSkill,
@@ -29,7 +28,7 @@ import {
 	Macro,
 } from "libram";
 import uniform, { itemOutfit } from "./outfits";
-import { advMacroAA, ensureEffect, mapMacro, useDefaultFamiliar } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, mapMacro } from "./asmohccs-lib";
 //import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
@@ -77,8 +76,7 @@ function castBuffs() {
 }
 
 function ninjaTot(): void {
-	print("reached ninjatot");
-	if (have($item`li'l ninja costume`)){
+	if (have($item`li'l ninja costume`)) {
 		return;
 	}
 	useFamiliar($familiar`Puck Man`);
@@ -99,7 +97,6 @@ function ninjaTot(): void {
 }
 
 function batForm() {
-	print("reached batform");
 	if (!have($effect`Bat-Adjacent Form`)) {
 		uniform();
 		useFamiliar($familiar`Ghost of Crimbo Carols`);
@@ -114,8 +111,7 @@ function batForm() {
 }
 
 function pirateDNA(): void {
-	print("reached piratedna");
-	if (haveEffect($effect`Human-Pirate Hybrid`)){
+	if (haveEffect($effect`Human-Pirate Hybrid`)) {
 		return;
 	}
 	// get pirate DNA and make a gene tonic
@@ -138,7 +134,6 @@ function pirateDNA(): void {
 }
 
 function testPrep() {
-	print("reached test prep");
 	if (!get("_steelyEyedSquintUsed")) {
 		ensureEffect($effect`Steely-Eyed Squint`);
 	}
@@ -147,6 +142,7 @@ function testPrep() {
 	}
 	useFamiliar($familiar`Trick-or-Treating Tot`);
 	itemOutfit();
+	use($item`bag of grain`);
 
 	const improvements = [
 		() => {
@@ -154,7 +150,11 @@ function testPrep() {
 				ensureEffect($effect`Blessing of the Bird`);
 			}
 		},
-		() => ensureEffect($effect`Nearly All-Natural`),
+		/*() => {
+			print("reached bag of grain");
+			if (have($item`bag of grain`)){
+			use($item`bag of grain`);
+		} },*/
 		() => {
 			if (have($item`Salsa Caliente™ candle`)) {
 				use($item`Salsa Caliente™ candle`);
@@ -170,7 +170,9 @@ function testPrep() {
 		},
 	];
 	for (const improvement of improvements) {
-		if (predictor() > 1) improvement();
+		if (predictor() > 1) {
+			improvement();
+		}
 	}
 
 	//Save for aftercore bonus adventures

@@ -70,9 +70,9 @@ function godLobster() {
 		useFamiliar($familiar`God Lobster`);
 		equip($slot`familiar`, $item`God Lobster's Ring`);
 		uniform();
-		if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
+		/*if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
 			equip($slot`hat`, $item`Daylight Shavings Helmet`);
-		}
+		}*/
 		defaultKill.setAutoAttack();
 		heal();
 		setChoice(1310, 2);
@@ -86,6 +86,7 @@ function godLobster() {
 function testPrep() {
 	noncombatOutfit();
 	const improvements = [
+		() => use($item`shady shades`),
 		() => {
 			if (!have($effect`Gummed Shoes`)) {
 				if (availableAmount($item`cop dollar`) < 10) cliExecute("detective solver.ash");
@@ -103,7 +104,6 @@ function testPrep() {
 				ensureEffect($effect`Predjudicetidigitation`);
 			}
 		},
-		() => use($item`shady shades`)
 	];
 
 	for (const improvement of improvements) {

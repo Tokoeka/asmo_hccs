@@ -679,9 +679,9 @@ function NEP() {
 	advMacroAA(
 		$location`The Neverending Party`,
 
-		Macro.step(delevel)
-			.if_("!hasskill Bowl Sideways && hasskill Feel Pride", Macro.skill("Feel Pride"))
+		Macro.if_("!hasskill Bowl Sideways && hasskill Feel Pride", Macro.skill("Feel Pride"))
 			.trySkill("Bowl Sideways")
+			.step(delevel)
 			.trySkill($skill`%fn, spit on me!`)
 			.step(easyFight)
 			.attack()
@@ -742,7 +742,7 @@ function NEP() {
 			Macro.trySkill($skill`Shattering Punch`).trySkill($skill`Chest X-Ray`)
 		).if_(
 			"monstername sausage goblin",
-			Macro.step(delevel).step(candyblast).step(easyFight).repeat()
+			Macro.step(delevel).step(candyblast).step(easyFight).attack().repeat()
 		),
 		() => {
 			return get("_chestXRayUsed") < 3;
@@ -901,7 +901,7 @@ function prelude() {
 	if (have($effect`The Magical Mojomuscular Melody`))
 		cliExecute("shrug The Magical Mojomuscular Melody");
 	useSkill($skill`The Ode to Booze`);
-	resources.consumeTo(5, $item`astral pilsner`);
+	resources.consumeTo(3, $item`astral pilsner`);
 }
 
 /*

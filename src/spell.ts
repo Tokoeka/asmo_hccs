@@ -33,7 +33,6 @@ import {
 	$items,
 	$location,
 	$skill,
-	CommunityService,
 	get,
 	have,
 	Macro,
@@ -51,7 +50,7 @@ import {
 	unequip,
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
-import { delevel} from "./asmohccs-macros";
+import { delevel } from "./asmohccs-macros";
 import { modTraceList } from "./modtrace";
 import uniform, { spellOutfit } from "./outfits";
 
@@ -162,25 +161,13 @@ function fingies() {
 
 function shower() {
 	useFamiliar($familiar`Ms. Puck Man`);
-	/*if (!have($effect`Meteor Showered`) && get("_meteorShowerUses") < 5) {
-        uniform();
-        setChoice(1387, 3);
-
-        mapMacro(
-            $location`LavaCo™ Lamp Factory`,
-            $monster`factory worker (female)`,
-            Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`)
-        );
-        if (handlingChoice()) runChoice(-1);
-        set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
-        set("mappingMonsters", false);
-    }*/
 	if (
 		//No longer need Lava-proof Pants /  heat-resitant gloves to cap hot res test
 		get("_meteorShowerUses") < 5 &&
 		!have($effect`Meteor Showered`) &&
 		get(`_saberForceUses`) < 5
 	) {
+		setChoice(1387, 3);
 		advMacroAA(
 			$location`The Dire Warren`,
 			Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
@@ -220,9 +207,9 @@ function testPrep() {
 		}
 	}
 	spellOutfit();
-	if (availableAmount($item`astral pilsner`) > 1) {
+	if (availableAmount($item`astral pilsner`) > 3) {
 		ensureEffect($effect`Ode to Booze`);
-		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 1);
+		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 3);
 	}
 }
 
