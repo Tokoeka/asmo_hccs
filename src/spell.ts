@@ -52,7 +52,7 @@ import {
 } from "./asmohccs-lib";
 import { delevel } from "./asmohccs-macros";
 import { modTraceList } from "./modtrace";
-import uniform, { spellOutfit } from "./outfits";
+import uniform, { OutfitPlan, spellOutfit } from "./outfit";
 
 //const predictor = () => CommunityService.SpellDamage.prediction;
 //TODO - Set min turncount we expect SpellDmg to meet?
@@ -108,13 +108,22 @@ function castBuffs() {
 
 function deepDarkVisions() {
 	//horse("pale");
-	useFamiliar($familiar`Exotic Parrot`);
+	new OutfitPlan(
+        {
+            hat: $item`Iunion Crown`,
+            shirt: $items`denim jacket`,
+            back: $item`unwrapped knock-off retro superhero cape`,
+            weapon: $item`Fourth of May Cosplay Saber`,
+            offhand: $item`familiar scrapbook`,
+            pants: $item`Cargo Cultist Shorts`,
+            acc1: $item`your cowboy boots`,
+        },
+        { familiar: $familiar`Exotic Parrot`, modes: {retrocape: ["vampire", "hold"]}, },
+    ).dress();
 	if (!have($item`astral pet sweater`) && inHardcore()) {
 		resources.clipArt($item`box of Familiar Jacks`, true);
 		use(1, $item`box of Familiar Jacks`);
 	}
-
-	maximize("spooky res", false);
 	while (
 		have($skill`Deep Dark Visions`) &&
 		!haveEffect($effect`Visions of the Deep Dark Deeps`)
@@ -206,7 +215,7 @@ function testPrep() {
 			if (staff) takeStorage(staff, 1);
 		}
 	}
-	spellOutfit();
+	spellOutfit.dress();
 	if (availableAmount($item`astral pilsner`) > 3) {
 		ensureEffect($effect`Ode to Booze`);
 		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 3);

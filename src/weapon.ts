@@ -36,11 +36,11 @@ import {
 	unequip,
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
-import uniform, { weaponOutfit } from "./outfits";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
 import { resources } from ".";
+import uniform, { weaponOutfit } from "./outfit";
 
 const predictor = () => CommunityService.WeaponDamage.prediction;
 
@@ -129,7 +129,7 @@ function testPrep() {
 			cliExecute(`make ${$item`meteorite ring`}`);
 		}
 	}
-	weaponOutfit();
+	weaponOutfit.dress();
 }
 
 function grimBuff() {
