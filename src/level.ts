@@ -72,7 +72,7 @@ import {
 	useDefaultFamiliar,
 } from "./asmohccs-lib";
 import { universalWeightEffects } from "./familiarweight";
-import uniform from "./outfit2";
+import uniform from "./outfit";
 import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
 import { geneTonic } from "./workshed";
 import { resources } from ".";

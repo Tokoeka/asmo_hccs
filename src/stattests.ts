@@ -25,7 +25,7 @@ import {
 } from "libram";
 import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, tryUse } from "./asmohccs-lib";
 import { modTraceList } from "./modtrace";
-import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfit2";
+import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfit";
 
 const musclePredictor = () => CommunityService.Muscle.prediction;
 

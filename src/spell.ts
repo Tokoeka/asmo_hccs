@@ -52,7 +52,7 @@ import {
 } from "./asmohccs-lib";
 import { delevel } from "./asmohccs-macros";
 import { modTraceList } from "./modtrace";
-import uniform, { OutfitPlan, spellOutfit } from "./outfit2";
+import uniform, { OutfitPlan, spellOutfit } from "./outfit";
 
 //const predictor = () => CommunityService.SpellDamage.prediction;
 //TODO - Set min turncount we expect SpellDmg to meet?

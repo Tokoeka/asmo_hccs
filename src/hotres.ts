@@ -26,7 +26,7 @@ import {
 import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import { modTraceList } from "./modtrace";
-import uniform, { hotresOutfit } from "./outfit2";
+import uniform, { hotresOutfit } from "./outfit";
 const predictor = () => CommunityService.HotRes.prediction;
 
 function castBuffs() {

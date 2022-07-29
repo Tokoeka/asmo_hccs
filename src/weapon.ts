@@ -40,7 +40,7 @@ import { delevel, easyFight } from "./asmohccs-macros";
 import { geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
 import { resources } from ".";
-import uniform, { weaponOutfit } from "./outfit2";
+import uniform, { weaponOutfit } from "./outfit";
 
 const predictor = () => CommunityService.WeaponDamage.prediction;
 

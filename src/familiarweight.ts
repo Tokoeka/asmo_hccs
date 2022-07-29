@@ -17,7 +17,7 @@ import {
 import { defaultKill } from "./asmohccs-macros";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import { modTraceList } from "./modtrace";
-import uniform, { famweightOutfit } from "./outfit2";
+import uniform, { famweightOutfit } from "./outfit";
 
 export function universalWeightBuffs(): void {
 	ensureEffect($effect`Empathy`);

@@ -28,7 +28,7 @@ import {
 import { delevel, easyFight } from "./asmohccs-macros";
 import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./asmohccs-lib";
 import { grimoires, runStart } from "./runstart";
-import uniform, { wireOutfit } from "./outfit2";
+import uniform, { wireOutfit } from "./outfit";
 
 function firstFights() {
 	if (!have($item`makeshift garbage shirt`)) cliExecute("fold makeshift garbage shirt");

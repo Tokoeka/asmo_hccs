@@ -67,7 +67,7 @@ import {
 	set,
 	withProperty,
 } from "libram";
-import { Outfit, withOutfit } from "./outfit2";
+import { Outfit, withOutfit } from "./outfit";
 
 export const PropertyManager = new PropertiesManager();
 

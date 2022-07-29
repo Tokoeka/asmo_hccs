@@ -27,7 +27,7 @@ import {
 	have,
 	Macro,
 } from "libram";
-import uniform, { itemOutfit } from "./outfit2";
+import uniform, { itemOutfit } from "./outfit";
 import { advMacroAA, ensureEffect, mapMacro } from "./asmohccs-lib";
 //import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
