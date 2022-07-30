@@ -523,13 +523,12 @@ export function unequip(item: Item): void {
 
 export const chefstaves = $items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`;
 
-
 export function juneCleave(): void {
-    if (get("_juneCleaverFightsLeft") > 0) return;
-    withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
-        withProperty("recoveryScript", "", () => {
-            adv1($location`Noob Cave`, -1, "");
-            if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
-        });
-    });
+	if (get("_juneCleaverFightsLeft") > 0) return;
+	withOutfit(new Outfit({ weapon: $item`June cleaver` }), () => {
+		withProperty("recoveryScript", "", () => {
+			adv1($location`Noob Cave`, -1, "");
+			if (get("lastEncounter") === "Poetic Justice") useSkill($skill`Tongue of the Walrus`);
+		});
+	});
 }
