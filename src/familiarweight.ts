@@ -1,4 +1,4 @@
-import { cliExecute, create, runChoice, useFamiliar, visitUrl } from "kolmafia";
+import { cliExecute, create, handlingChoice, runChoice, useFamiliar, visitUrl } from "kolmafia";
 import {
 	$effect,
 	$familiar,
@@ -91,8 +91,7 @@ function takeAShower() {
 			Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
 			1,
 			() => {
-				visitUrl("choice.php");
-				runChoice(3);
+				if (handlingChoice()) runChoice(3);
 			}
 		);
 		set("_meteorShowerUses", 1 + get("_meteorShowerUses"));

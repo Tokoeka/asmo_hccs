@@ -1,10 +1,12 @@
 import {
 	availableAmount,
 	canEquip,
+	choiceFollowsFight,
 	cliExecute,
 	create,
 	drink,
 	eat,
+	handlingChoice,
 	haveEffect,
 	inHardcore,
 	itemAmount,
@@ -109,17 +111,17 @@ function castBuffs() {
 function deepDarkVisions() {
 	//horse("pale");
 	new OutfitPlan(
-        {
-            hat: $item`Iunion Crown`,
-            shirt: $items`denim jacket`,
-            back: $item`unwrapped knock-off retro superhero cape`,
-            weapon: $item`Fourth of May Cosplay Saber`,
-            offhand: $item`familiar scrapbook`,
-            pants: $item`Cargo Cultist Shorts`,
-            acc1: $item`your cowboy boots`,
-        },
-        { familiar: $familiar`Exotic Parrot`, modes: {retrocape: ["vampire", "hold"]}, },
-    ).dress();
+		{
+			hat: $item`Iunion Crown`,
+			shirt: $items`denim jacket`,
+			back: $item`unwrapped knock-off retro superhero cape`,
+			weapon: $item`Fourth of May Cosplay Saber`,
+			offhand: $item`familiar scrapbook`,
+			pants: $item`Cargo Cultist Shorts`,
+			acc1: $item`your cowboy boots`,
+		},
+		{ familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"] } }
+	).dress();
 	if (!have($item`astral pet sweater`) && inHardcore()) {
 		resources.clipArt($item`box of Familiar Jacks`, true);
 		use(1, $item`box of Familiar Jacks`);
@@ -182,8 +184,8 @@ function shower() {
 			Macro.skill($skill`Meteor Shower`).skill($skill`Use the Force`),
 			1,
 			() => {
-				visitUrl("choice.php");
-				runChoice(3);
+				//visitUrl("choice.php");
+				if (handlingChoice()) runChoice(3);
 			}
 		);
 		set("_meteorShowerUses", 1 + get("_meteorShowerUses"));

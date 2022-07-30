@@ -1,6 +1,7 @@
 import {
 	cliExecute,
 	create,
+	handlingChoice,
 	haveEffect,
 	myClass,
 	runChoice,
@@ -83,16 +84,15 @@ function thisFireIsOutOfControl() {
 				.skill($skill`Use the Force`),
 			() => haveEffect($effect`Fireproof Foam Suit`) < 1 && get(`_saberForceUses`) < 3,
 			() => {
-				visitUrl("choice.php");
-				runChoice(-1);
+				if (handlingChoice()) runChoice(-1);
 				if (!haveEffect($effect`Fireproof Foam Suit`)) {
 					throw "failed to Get Fireproof Foam Suit, please Help";
 				}
 			}
 		);
 		set(`_fireExtinguisherCharge`, 90);
-		const curFormCasts = get(`_vampyreCloakeFormUses`);
-		set(`_vampyreCloakeFormUses`, curFormCasts + 1);
+		//const curFormCasts = get(`_vampyreCloakeFormUses`);
+		//set(`_vampyreCloakeFormUses`, curFormCasts + 1);
 	}
 }
 
