@@ -74,6 +74,7 @@ export const PropertyManager = new PropertiesManager();
 export function gingerCandy(): void {
 	if (!get(`_asmo_gingercity`)) {
 		useFamiliar($familiar`Pair of Stomping Boots`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		set(`choiceAdventure1215`, 1);
 		set(`choiceAdventure1204`, 1);
 		advMacroAA($location`Gingerbread Civic Center`, Macro.step(`runaway`), 1);
@@ -104,10 +105,13 @@ export function useDefaultFamiliar(canAttack = true): void {
 		!get("csServicesPerformed").split(",").includes("Breed More Collies")
 	) {
 		useFamiliar($familiar`Shorter-Order Cook`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 	} else if (!have($item`burning newspaper`) && !have($item`burning paper crane`)) {
 		useFamiliar($familiar`Garbage Fire`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 	} else {
 		useFamiliar($familiar`Puck Man`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 	}
 }
 
@@ -151,7 +155,10 @@ export function ensureInnerElf(): void {
 		setClan(get("asmocs_elfClan", "Hobopolis Vacation Home"));
 		try {
 			withOutfit(
-				new Outfit({ acc3: $item`Kremlin's Greatest Briefcase` }, $familiar`Machine Elf`),
+				new Outfit(
+					{ acc3: $item`Kremlin's Greatest Briefcase`, familiar: $item`tiny stillsuit` },
+					$familiar`Machine Elf`
+				),
 				() => {
 					ensureEffect($effect`Blood Bubble`);
 					setChoice(326, 1);
@@ -174,6 +181,7 @@ export function ensureInnerElf(): void {
 export function fightSausageIfAble(location: Location, macro: Macro): void {
 	if (kramcoCheck()) {
 		equip($slot`off-hand`, $item`Kramco Sausage-o-Matic™`);
+		//useDefaultFamiliar();
 		const sausages = get("_sausageFights");
 		advMacroAA(location, macro, () => {
 			return sausages === get("_sausageFights");

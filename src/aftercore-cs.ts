@@ -56,6 +56,7 @@ if (mySign() !== "Platypus" && !get("moonTuned")) {
 }
 
 useFamiliar($familiar`Ms. Puck Man`);
+equip($slot`familiar`, $item`tiny stillsuit`);
 if (get(`_questESp`) === "") {
 	visitUrl(`place.php?whichplace=airport_spooky&action=airport2_radio`);
 	if (

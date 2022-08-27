@@ -30,7 +30,7 @@ import {
 	sum,
 } from "libram";
 import { BooleanModifier, NumericModifier, numericModifiers } from "libram/dist/modifierTypes";
-import { chefstaves, inMoxClass, inMusClass, inMysClass } from "./asmohccs-lib";
+import { inMoxClass, inMusClass, inMysClass } from "./asmohccs-lib";
 
 type Modes = {
 	backupcamera?: "ml" | "meat" | "init";
@@ -294,7 +294,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
 		offhand: $items`unbreakable umbrella, familiar scrapbook`,
 		acc1: $items`meteorite necklace, hewn moon-rune spoon`,
 		acc2: $item`Beach Comb`,
-		acc3: $items`battle broom, Lov Earrings, Powerful Glove`,
+		acc3: $items`battle broom, LOV Earrings, Powerful Glove`,
 		back: $items`LOV Epaulettes, unwrapped knock-off retro superhero cape, vampyric cloake`,
 	};
 
@@ -495,7 +495,7 @@ export const spellOutfit = new OutfitPlan(
 				? $items`weeping willow wand, astral statuette`
 				: $items`obsidian nutcracker`),
 		],
-		pants: $item`designer sweatpants`,
+		pants: $items`Pantaloons of Hatred, designer sweatpants`,
 		acc1: $items`meteorite necklace, Kremlin's Greatest Briefcase`,
 		acc2: $item`Powerful Glove`,
 		acc3: $item`battle broom`,

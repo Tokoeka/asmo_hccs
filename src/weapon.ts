@@ -50,9 +50,9 @@ function getCrushed() {
 			uneffect($effect`Holiday Yoked`);
 		}
 		if (!have($effect`Holiday Yoked`)) {
+			uniform([$item`Lil' Doctor™ bag`, $slot`acc3`]);
 			useFamiliar($familiar`Ghost of Crimbo Carols`);
-			uniform();
-			equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+			equip($slot`familiar`, $item`tiny stillsuit`);
 			Macro.item($item`DNA extraction syringe`)
 				.step(delevel)
 				.step(easyFight)

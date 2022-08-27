@@ -1,16 +1,15 @@
 import {
 	availableAmount,
 	canEquip,
-	choiceFollowsFight,
 	cliExecute,
 	create,
 	drink,
 	eat,
+	equip,
 	handlingChoice,
 	haveEffect,
 	inHardcore,
 	itemAmount,
-	maximize,
 	myClass,
 	myHp,
 	myLevel,
@@ -35,6 +34,7 @@ import {
 	$items,
 	$location,
 	$skill,
+	$slot,
 	get,
 	have,
 	Macro,
@@ -159,6 +159,7 @@ function fingies() {
 		have($familiar`Mini-Adventurer`)
 	) {
 		useFamiliar($familiar`Mini-Adventurer`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		horse("dark");
 		uniform();
 		setChoice(768, 4);

@@ -8,14 +8,12 @@ import {
 	myMaxhp,
 	retrieveItem,
 	use,
-	useFamiliar,
 	useSkill,
 } from "kolmafia";
 import {
 	$class,
 	$classes,
 	$effect,
-	$familiar,
 	$item,
 	$skill,
 	$stat,

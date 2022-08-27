@@ -1,4 +1,12 @@
-import { cliExecute, create, handlingChoice, runChoice, useFamiliar, visitUrl } from "kolmafia";
+import {
+	cliExecute,
+	create,
+	equip,
+	handlingChoice,
+	runChoice,
+	useFamiliar,
+	visitUrl,
+} from "kolmafia";
 import {
 	$effect,
 	$familiar,
@@ -61,6 +69,7 @@ function familiarStuff() {
 		5 - Witchess.fightsDone() > 11 - get("_shortOrderCookCharge")
 	) {
 		useFamiliar($familiar`Shorter-Order Cook`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		uniform();
 		defaultKill.setAutoAttack();
 		Witchess.fightPiece($monster`Witchess Bishop`);
@@ -70,6 +79,7 @@ function familiarStuff() {
 		5 - Witchess.fightsDone() > 30 - get("garbageFireProgress")
 	) {
 		useFamiliar($familiar`Garbage Fire`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		uniform();
 		defaultKill.setAutoAttack();
 		Witchess.fightPiece($monster`Witchess Bishop`);

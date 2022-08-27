@@ -322,6 +322,7 @@ function getYoked() {
 	//I Don't get Yoked due to my Test Order
 	uniform();
 	useFamiliar($familiar`Ghost of Crimbo Carols`);
+	equip($slot`familiar`, $item`tiny stillsuit`);
 	if (get("snojoSetting") === "NONE") {
 		visitUrl("place.php?whichplace=snojo&action=snojo_controller");
 		runChoice(2);
@@ -768,6 +769,7 @@ function mElfLeveling() {
 	cliExecute("fold garbage shirt");
 	uniform($item`makeshift garbage shirt`);
 	useFamiliar($familiar`Machine Elf`);
+	equip($slot`familiar`, $item`tiny stillsuit`);
 	advMacroAA(
 		$location`The Deep Machine Tunnels`,
 		defaultKill,
@@ -869,6 +871,7 @@ function hybridize(): void {
 	// become a human fish hybrid
 	if (!DNALab.isHybridized($phylum`fish`) && get("dnaSyringe") !== $phylum`fish`) {
 		useFamiliar($familiar`Ms. Puck Man`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		advMacroAA(
 			$location`The Bubblin' Caldera`,
 			Macro.while_(

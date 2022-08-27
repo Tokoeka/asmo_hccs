@@ -80,6 +80,7 @@ function ninjaTot(): void {
 		return;
 	}
 	useFamiliar($familiar`Puck Man`);
+	equip($slot`familiar`, $item`tiny stillsuit`);
 	uniform();
 	if ($classes`Sauceror, Disco Bandit`.includes(myClass())) {
 		equip($slot`hat`, $item`Daylight Shavings Helmet`);
@@ -100,6 +101,7 @@ function batForm() {
 	if (!have($effect`Bat-Adjacent Form`)) {
 		uniform();
 		useFamiliar($familiar`Ghost of Crimbo Carols`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		equip($slot`back`, $item`vampyric cloake`);
 		Macro.skill($skill`Become a Bat`)
 			.step(easyFight)
@@ -118,7 +120,7 @@ function pirateDNA(): void {
 	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
 		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
 		useFamiliar($familiar`Ms. Puck Man`);
-		equip($slot`familiar`, $item`none`); //ensure Fam is not wearing TCW
+		equip($slot`familiar`, $item`tiny stillsuit`);
 		advMacroAA(
 			$location`Pirates of the Garbage Barges`,
 			Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),

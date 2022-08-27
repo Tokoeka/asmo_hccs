@@ -7,7 +7,6 @@ import {
 	runChoice,
 	use,
 	useFamiliar,
-	visitUrl,
 } from "kolmafia";
 import {
 	$class,

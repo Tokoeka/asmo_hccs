@@ -255,7 +255,7 @@ function doPulls() {
 		$items`tiny costume wardrobe, Snow Suit`,
 		$item`Stick-Knife of Loathing`,
 		$items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
-		$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, worst candy`,
+		$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, Pantaloons of Hatred`,
 	];
 
 	for (const pull of pulls) {

@@ -31,6 +31,7 @@ import { grimoires, runStart } from "./runstart";
 import uniform, { wireOutfit } from "./outfit";
 
 function firstFights() {
+	//TODO - do kramco fight first? move witchess fight post coil wire?
 	if (!have($item`makeshift garbage shirt`)) cliExecute("fold makeshift garbage shirt");
 	uniform(
 		...$items`protonic accelerator pack, latte lovers member's mug, makeshift garbage shirt`
