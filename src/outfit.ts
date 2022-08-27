@@ -488,7 +488,7 @@ export const weaponOutfit = new OutfitPlan(
 export const spellOutfit = new OutfitPlan(
 	{
 		hat: $items`sugar chapeau, astral chapeau, Hollandaise helmet`,
-		weapon: !inHardcore() ? chefstaves : $item`weeping willow wand`,
+		weapon: !inHardcore() ? $item`Staff of Kitchen Royalty` : $item`weeping willow wand`,
 		offhand: [
 			$item`Abracandalabra`,
 			...(inHardcore()
