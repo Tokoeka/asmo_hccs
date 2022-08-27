@@ -101,7 +101,6 @@ function batForm() {
 	if (!have($effect`Bat-Adjacent Form`)) {
 		uniform();
 		useFamiliar($familiar`Ghost of Crimbo Carols`);
-		equip($slot`familiar`, $item`tiny stillsuit`);
 		equip($slot`back`, $item`vampyric cloake`);
 		Macro.skill($skill`Become a Bat`)
 			.step(easyFight)

@@ -322,7 +322,6 @@ function getYoked() {
 	//I Don't get Yoked due to my Test Order
 	uniform();
 	useFamiliar($familiar`Ghost of Crimbo Carols`);
-	equip($slot`familiar`, $item`tiny stillsuit`);
 	if (get("snojoSetting") === "NONE") {
 		visitUrl("place.php?whichplace=snojo&action=snojo_controller");
 		runChoice(2);
