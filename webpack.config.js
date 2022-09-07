@@ -10,7 +10,7 @@ const packageData = require("./package.json");
 module.exports = {
   entry: {
     // Point "entry" to scripts you want to be CLI-eligible.
-    asmohccs: "./src/index.ts",
+    asmohccs: "./src/trunk.ts",
     hccsAscend: "./src/gash-hop.ts",
 	aftercoreCS: "./src/aftercore-cs.ts",
 	modTraceList: "./src/modtrace.ts",

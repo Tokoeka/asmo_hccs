@@ -35,11 +35,11 @@ import {
 	setChoice,
 	unequip,
 	useDefaultFamiliar,
-} from "./asmohccs-lib";
+} from "./lib";
 import { delevel, easyFight } from "./asmohccs-macros";
 import { geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
-import { resources } from ".";
+import { resources } from "./trunk";
 import uniform, { weaponOutfit } from "./outfit";
 
 const predictor = () => CommunityService.WeaponDamage.prediction;

@@ -21,7 +21,7 @@ import hotTest from "./hotres";
 import itemTest from "./item";
 import levelUp from "./level";
 import noncombatTest from "./noncombat";
-import { convertMilliseconds, PropertyManager } from "./asmohccs-lib";
+import { convertMilliseconds, PropertyManager } from "./lib";
 import spellTest from "./spell";
 import { HPTest, moxTest, muscleTest, mystTest } from "./stattests";
 import weaponTest from "./weapon";

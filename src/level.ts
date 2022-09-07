@@ -70,12 +70,12 @@ import {
 	setChoice,
 	tryUse,
 	useDefaultFamiliar,
-} from "./asmohccs-lib";
+} from "./lib";
 import { universalWeightEffects } from "./familiarweight";
 import uniform from "./outfit";
 import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
 import { geneTonic } from "./workshed";
-import { resources } from ".";
+import { resources } from "./trunk";
 
 function initialExp() {
 	if (!have($effect`That's Just Cloud-Talk, Man`)) {

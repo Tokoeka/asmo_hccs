@@ -24,7 +24,7 @@ import {
 	set,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice } from "./lib";
 import { modTraceList } from "./modtrace";
 import uniform, { hotresOutfit } from "./outfit";
 const predictor = () => CommunityService.HotRes.prediction;

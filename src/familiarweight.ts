@@ -15,7 +15,7 @@ import {
 	Witchess,
 } from "libram";
 import { defaultKill } from "./asmohccs-macros";
-import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse, setChoice } from "./lib";
 import { modTraceList } from "./modtrace";
 import uniform, { famweightOutfit } from "./outfit";
 

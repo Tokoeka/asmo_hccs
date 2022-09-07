@@ -30,7 +30,7 @@ import {
     sum,
 } from "libram";
 import { BooleanModifier, NumericModifier, numericModifiers } from "libram/dist/modifierTypes";
-import { chefstaves, inMoxClass, inMusClass, inMysClass } from "./asmohccs-lib";
+import { chefstaves, inMoxClass, inMusClass, inMysClass } from "./lib";
 
 type Modes = {
     backupcamera?: "ml" | "meat" | "init";

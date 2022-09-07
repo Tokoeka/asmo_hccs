@@ -29,7 +29,7 @@ import {
 	$thrall,
 	get,
 } from "libram";
-import { horsery, PropertyManager } from "./asmohccs-lib";
+import { horsery, PropertyManager } from "./lib";
 
 const moonBonus = [
 	["weapon damage percent", "mongoose", "20"],

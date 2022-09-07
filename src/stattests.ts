@@ -23,7 +23,7 @@ import {
 	CommunityService,
 	have,
 } from "libram";
-import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, tryUse } from "./asmohccs-lib";
+import { ensureEffect, ensureInnerElf, inMoxClass, inMusClass, tryUse } from "./lib";
 import { modTraceList } from "./modtrace";
 import { hpOutfit, moxieOutfit, muscleOutfit, mysticalityOutfit } from "./outfit";
 

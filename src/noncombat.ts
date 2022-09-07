@@ -29,7 +29,7 @@ import {
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
 import { defaultKill } from "./asmohccs-macros";
-import { ensureEffect, heal, horse, setChoice } from "./asmohccs-lib";
+import { ensureEffect, heal, horse, setChoice } from "./lib";
 import uniform, { noncombatOutfit } from "./outfit";
 import { modTraceList } from "./modtrace";
 import { fuelUp } from "./workshed";

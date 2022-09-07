@@ -26,7 +26,7 @@ import {
 	Macro,
 	set,
 } from "libram";
-import { advMacro, unequip } from "./asmohccs-lib";
+import { advMacro, unequip } from "./lib";
 
 cliExecute(`hagnk all`);
 cliExecute(`refresh all`);

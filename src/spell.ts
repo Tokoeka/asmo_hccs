@@ -33,12 +33,13 @@ import {
 	$items,
 	$location,
 	$skill,
+	CommunityService,
 	get,
 	have,
 	Macro,
 	set,
 } from "libram";
-import { resources } from ".";
+import { resources } from "./trunk";
 import {
 	advMacroAA,
 	chefstaves,
@@ -49,13 +50,22 @@ import {
 	setChoice,
 	unequip,
 	useDefaultFamiliar,
-} from "./asmohccs-lib";
+} from "./lib";
 import { delevel } from "./asmohccs-macros";
 import { modTraceList } from "./modtrace";
 import uniform, { OutfitPlan, spellOutfit } from "./outfit";
+import { Quest } from "grimoire-kolmafia";
 
 //const predictor = () => CommunityService.SpellDamage.prediction;
 //TODO - Set min turncount we expect SpellDmg to meet?
+
+export const SpellDamageQuest: Quest = {
+	name: "Spell Damage",
+	completed: CommunityService.SpellDamage.isDone,
+	tasks : [
+		{}
+	]
+}
 
 function castBuffs() {
 	ensureEffect($effect`Simmering`);

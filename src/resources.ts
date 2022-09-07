@@ -22,7 +22,7 @@ import {
 	useSkill,
 } from "kolmafia";
 import { $effect, $item, $skill, CombatLoversLocket, get, have } from "libram";
-import { canCastLibrams, pullIfPossible } from "./asmohccs-lib";
+import { canCastLibrams, pullIfPossible } from "./lib";
 
 export class ResourceTracker {
 	deckCards: string[] = [];

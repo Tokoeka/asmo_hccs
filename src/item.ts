@@ -28,11 +28,11 @@ import {
 	Macro,
 } from "libram";
 import uniform, { itemOutfit } from "./outfit";
-import { advMacroAA, ensureEffect, mapMacro } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, mapMacro } from "./lib";
 //import { synthItem } from "./synthesis";
 import { fuelUp, geneTonic } from "./workshed";
 import { modTraceList } from "./modtrace";
-import { resources } from ".";
+import { resources } from "./trunk";
 import { easyFight } from "./asmohccs-macros";
 
 const predictor = () => CommunityService.BoozeDrop.prediction;

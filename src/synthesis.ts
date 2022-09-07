@@ -10,8 +10,8 @@ import {
 	visitUrl,
 } from "kolmafia";
 import { $effect, $item, $items, $skill, get, have } from "libram";
-import { resources } from ".";
-import { gingerCandy, inMoxClass, inMusClass, inMysClass } from "./asmohccs-lib";
+import { resources } from "./trunk";
+import { gingerCandy, inMoxClass, inMusClass, inMysClass } from "./lib";
 
 export function synthMysExp(): void {
 	if (get("harvestGardenHardcore") === "none") {
