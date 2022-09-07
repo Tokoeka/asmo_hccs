@@ -10,6 +10,7 @@ import {
 	inMysticalitySign,
 	myEffects,
 	myFamiliar,
+	myLevel,
 	mySign,
 	myThrall,
 	numericModifier,
@@ -46,6 +47,27 @@ const umbrellaBonus = [
 	["weapon damage", "pitchfork style", "25"],
 	["spell damage", "constantly twirling", "25"],
 	["combat rate", "cocoon", "10"],
+];
+
+function parkaML(): string {
+	return Math.min(33, 3 * myLevel()).toString();
+}
+
+const parkaBonus = [
+	["maximum hp percent", "kachungasaur", "100"],
+	["meat drop", "kachungasaur", "50"],
+	["cold resistance", "kachungasaur", "2"],
+	["sleaze damage", "dilophosaur", "20"],
+	["sleaze spell damage", "dilophosaur", "20"],
+	["stench resistance", "dilophosaur", "2"],
+	["monster level", "spikolodon", parkaML()],
+	["sleaze resistance", "spikolodon", "2"],
+	["damage reduction", "ghostasaurus", "10"],
+	["maximum mp", "ghostasaurus", "50"],
+	["spooky resistance", "ghostasaurus", "2"],
+	["combat rate", "pterodactyl", "-5"],
+	["initiative", "pterodactyl", "50"],
+	["hot resistance", "pterodactyl", "2"],
 ];
 
 export function modTraceList(modifier: string): void {
@@ -146,6 +168,20 @@ export function modTraceList(modifier: string): void {
 				slotTotal = slotTotal + parseInt(bonus);
 				slotCount++;
 				print(`UMBRELLA ${style} : ${bonus}`);
+			}
+		}
+	}
+	if (equippedItem($slot`shirt`) === $item`Jurassic Parka`) {
+		const parkaForm = get(`parkaMode`);
+		for (const i in parkaBonus) {
+			const line = parkaBonus[i];
+			const mod = line[0];
+			const mode = line[1];
+			const bonus = line[2];
+			if (modifier === mod && parkaForm === mode) {
+				slotTotal = slotTotal + parseInt(bonus);
+				slotCount++;
+				print(`JURASSIC PARKA ${mode} : ${bonus}`);
 			}
 		}
 	}
