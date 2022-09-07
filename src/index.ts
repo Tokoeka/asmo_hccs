@@ -6,7 +6,7 @@ import {
 	myFullness,
 	myInebriety,
 	myLevel,
-	myPathId,
+	myPath,
 	mySpleenUse,
 	myTurncount,
 	print,
@@ -34,7 +34,7 @@ const assertCompleted = (action: string, warning: string) => {
 };
 
 //preamble
-if (myPathId() !== 25) abort();
+if (myPath().id !== 25) abort();
 visitUrl("council.php");
 cliExecute("ccs twiddle");
 

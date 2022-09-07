@@ -38,6 +38,7 @@ type Modes = {
 	snowsuit?: "eyebrows" | "smirk" | "nose" | "goatee" | "hat";
 	edpiece?: "bear" | "owl" | "puma" | "hyena" | "mouse" | "weasel" | "fish";
 	retrocape?: ["vampire" | "heck" | "robot", "hold" | "thrill" | "kiss" | "kill"];
+	parka?: "kachungasaur" | "dilophosaur" | "ghostasaurus" | "spikolodon" | "pterodactyl";
 };
 
 const modeables = {
@@ -46,6 +47,7 @@ const modeables = {
 	snowsuit: $item`Snow Suit`,
 	edpiece: $item`The Crown of Ed the Undying`,
 	retrocape: $item`unwrapped knock-off retro superhero cape`,
+	parka: $item`Jurassic Parka`,
 } as const;
 
 const outfitSlots = [
@@ -282,7 +284,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
 			: inMysClass()
 			? $items`astral chapeau, Iunion Crown`
 			: $items`Daylight Shavings Helmet, Iunion Crown`,
-		shirt: $items`LOV Eardigan, fresh coat of paint`,
+		shirt: $items`LOV Eardigan, Jurassic Parka, fresh coat of paint`,
 		pants:
 			get("sweat", 0) < 100
 				? $item`designer sweatpants`
@@ -313,6 +315,7 @@ export default function uniform(...changes: (Item | [Item, Slot])[]): void {
 		modes: {
 			umbrella: "broken",
 			retrocape: [inMoxClass() ? "robot" : inMusClass() ? "vampire" : "heck", "thrill"],
+			parka: "spikolodon",
 		},
 	})
 		.merge(alterations)
@@ -333,7 +336,7 @@ export const wireOutfit = new OutfitPlan({
 export const moxieOutfit = new OutfitPlan(
 	{
 		hat: $item`very pointy crown`,
-		shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+		shirt: $items`Jurassic Parka, shoe ad T-shirt, fresh coat of paint`,
 		back: $item`unwrapped knock-off retro superhero cape`,
 		weapon: $items`Staff of Kitchen Royalty, Fourth of May Cosplay Saber`,
 		offhand: $item`unbreakable umbrella`,
@@ -353,7 +356,7 @@ export const hpOutfit = new OutfitPlan(
 		hat: $items`extra-wide head candle, wad of used tape`,
 		weapon: $item`dented scepter`,
 		offhand: $item`Fourth of May Cosplay Saber`,
-		shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+		shirt: $items`Jurassic Parka, shoe ad T-shirt, fresh coat of paint`,
 		back: $items`vampyric cloake, unwrapped knock-off retro superhero cape`,
 		pants: $item`Cargo Cultist Shorts`,
 		acc1: $item`Brutal brogues`,
@@ -361,7 +364,7 @@ export const hpOutfit = new OutfitPlan(
 		acc3: $item`Kremlin's Greatest Briefcase`,
 		familiar: $item`miniature crystal ball`,
 	},
-	{ modes: { retrocape: ["vampire", RetroCape.currentMode()] } }
+	{ modes: { retrocape: ["vampire", RetroCape.currentMode()], parka: "kachungasaur" } }
 );
 
 export const muscleOutfit = new OutfitPlan(
@@ -369,7 +372,7 @@ export const muscleOutfit = new OutfitPlan(
 		hat: $item`wad of used tape`,
 		weapon: $item`dented scepter`,
 		offhand: $item`unbreakable umbrella`,
-		shirt: $items`shoe ad T-shirt, fresh coat of paint`,
+		shirt: $items`Jurassic Parka, shoe ad T-shirt, fresh coat of paint`,
 		back: $item`unwrapped knock-off retro superhero cape`,
 		pants: $item`Cargo Cultist Shorts`,
 		acc1: $item`Brutal brogues`,
@@ -389,7 +392,7 @@ export const mysticalityOutfit = new OutfitPlan(
 		weapon: $item`weeping willow wand`,
 		offhand: $item`Fourth of May Cosplay Saber`,
 		back: $item`unwrapped knock-off retro superhero cape`,
-		shirt: $items`denim jacket, shoe ad T-shirt, fresh coat of paint`,
+		shirt: $items`Jurassic Parka, denim jacket, shoe ad T-shirt, fresh coat of paint`,
 		pants: $item`designer sweatpants`,
 		acc1: $item`Retrospecs`,
 		//acc2: $item`codpiece`,
@@ -421,12 +424,16 @@ export const hotresOutfit = new OutfitPlan(
 		back: $item`unwrapped knock-off retro superhero cape`,
 		weapon: $items`industrial fire extinguisher, Fourth of May Cosplay Saber`,
 		offhand: $items`meteorite guard, latte lovers member's mug`,
+		shirt: $item`Jurassic Parka`,
 		pants: $item`designer sweatpants`,
 		//acc1: $item`your cowboy boots`,
 		acc2: $item`Brutal brogues`,
 		acc3: $item`Beach Comb`,
 	},
-	{ familiar: $familiar`Exotic Parrot`, modes: { retrocape: ["vampire", "hold"] } }
+	{
+		familiar: $familiar`Exotic Parrot`,
+		modes: { retrocape: ["vampire", "hold"], parka: "pterodactyl" },
+	}
 );
 
 export const noncombatOutfit = new OutfitPlan(
@@ -435,12 +442,13 @@ export const noncombatOutfit = new OutfitPlan(
 		back: $item`protonic accelerator pack`,
 		weapon: $item`Fourth of May Cosplay Saber`,
 		offhand: $items`unbreakable umbrella, rope, burning paper crane, familiar scrapbook`,
+		shirt: $item`Jurassic Parka`,
 		pants: $items`repaid diaper, Great Wolf's beastly trousers, designer sweatpants`,
 		acc1: $item`hewn moon-rune spoon`,
 		acc2: $items`atlas of local maps, Kremlin's Greatest Briefcase`,
 		acc3: $item`Brutal brogues`,
 	},
-	{ familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon" } }
+	{ familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon", parka: "pterodactyl" } }
 );
 
 const familiarAndEquip =
@@ -473,7 +481,7 @@ export const famweightOutfit = new OutfitPlan(
 
 export const weaponOutfit = new OutfitPlan(
 	{
-		hat: $items`extra-wide head candle, seal-skull helmet`,
+		hat: $items`seal-skull helmet`,
 		weapon: $item`broken champagne bottle`,
 		offhand: $item`dented scepter`,
 		pants: $item`Great Wolf's beastly trousers`,

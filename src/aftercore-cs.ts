@@ -1,14 +1,18 @@
 import {
 	adv1,
 	cliExecute,
+	closetAmount,
 	equip,
+	itemAmount,
 	mallPrice,
 	myAscensions,
 	mySign,
 	myTurncount,
 	print,
+	putCloset,
 	retrieveItem,
 	runChoice,
+	takeCloset,
 	toInt,
 	use,
 	useFamiliar,
@@ -23,6 +27,7 @@ import {
 	$slot,
 	AsdonMartin,
 	get,
+	have,
 	Macro,
 	set,
 } from "libram";
@@ -45,9 +50,17 @@ if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscen
 	});
 	const best = dupeVals.sort((a, b) => b.value - a.value)[0];
 	duped = best.dupeIt;
+	let closet = false;
 	set(`choiceAdventure1125`, `1&iid=${toInt(best.dupeIt)}`);
+	if (itemAmount(best.dupeIt) === 0 && closetAmount(best.dupeIt) > 0) {
+		takeCloset(best.dupeIt, 1);
+		closet = true;
+	}
 	adv1($location`The Deep Machine Tunnels`);
 	set(`lastDMTDuplication`, myAscensions());
+	if (closet) {
+		putCloset(best.dupeIt, 2);
+	}
 }
 
 if (mySign() !== "Platypus" && !get("moonTuned")) {
@@ -93,7 +106,7 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 			.skill($skill`Micrometeorite`)
 			.while_(`!times 3`, Macro.skill($skill`Saucestorm`))
 			.skill($skill`Shrap`),
-		() => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 6
+		() => get(`lastEncounter`) !== `Lava Dogs` && myTurncount() - calderaTurns < 7
 	);
 	cliExecute(`soak`);
 	set(`mpAutoRecoveryTarget`, 0.25);

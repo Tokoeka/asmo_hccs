@@ -3,6 +3,7 @@ import {
 	$classes,
 	$familiar,
 	$item,
+	$path,
 	ascend,
 	have,
 	Lifestyle,
@@ -66,5 +67,5 @@ export function main(args = ""): void {
 
 	const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
 
-	ascend(Paths.CommunityService, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
+	ascend($path`CommunityService`, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
 }
