@@ -10,17 +10,13 @@ import {
 	knollAvailable,
 	myClass,
 	mySign,
-	runChoice,
-	runCombat,
 	use,
-	useFamiliar,
 	visitUrl,
 } from "kolmafia";
 import {
 	$classes,
 	$coinmaster,
 	$effect,
-	$familiar,
 	$item,
 	$slot,
 	CommunityService,
@@ -28,9 +24,8 @@ import {
 	have,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { defaultKill } from "./asmohccs-macros";
-import { ensureEffect, heal, horse, setChoice } from "./asmohccs-lib";
-import uniform, { noncombatOutfit } from "./outfit";
+import { ensureEffect, horse } from "./asmohccs-lib";
+import { noncombatOutfit } from "./outfit";
 import { modTraceList } from "./modtrace";
 import { fuelUp } from "./workshed";
 
@@ -61,7 +56,7 @@ function castBuffs() {
 	horse("dark");
 }
 
-function godLobster() {
+/* function godLobster() {
 	if (
 		!have($effect`Silence of the God Lobster`) &&
 		get("_godLobsterFights") < 3 &&
@@ -70,9 +65,9 @@ function godLobster() {
 		useFamiliar($familiar`God Lobster`);
 		equip($slot`familiar`, $item`God Lobster's Ring`);
 		uniform();
-		/*if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
+		if ($classes`Sauceror, Accordion Thief, Pastamancer`.includes(myClass())) {
 			equip($slot`hat`, $item`Daylight Shavings Helmet`);
-		}*/
+		}
 		defaultKill.setAutoAttack();
 		heal();
 		setChoice(1310, 2);
@@ -81,7 +76,7 @@ function godLobster() {
 		visitUrl("choice.php");
 		runChoice(-1);
 	}
-}
+} */
 
 function testPrep() {
 	noncombatOutfit.dress();
@@ -137,7 +132,7 @@ function moonTune() {
 export default function noncombatTest(): void {
 	castBuffs();
 	moonTune();
-	godLobster();
+	//godLobster();
 	testPrep();
 	if (predictor() > 1) throw "Failed to cap noncombat";
 	modTraceList("combat rate");

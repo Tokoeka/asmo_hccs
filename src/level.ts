@@ -571,18 +571,23 @@ function godLob() {
 		uniform($item`makeshift garbage shirt`);
 		heal();
 		useFamiliar($familiar`God Lobster`);
-		setChoice(1310, 1);
+		setChoice(1310, 3);
 		visitUrl("main.php?fightgodlobster=1");
 		runCombat(Macro.step(delevel).step(easyFight).step(defaultKill).repeat().toString());
 		multiFightAutoAttack();
 		runChoice(-1);
-		equip($slot`familiar`, $item`God Lobster's Scepter`);
+		//equip($slot`familiar`, $item`God Lobster's Scepter`);
 		heal();
 		visitUrl("main.php?fightgodlobster=1");
 		runCombat();
 		multiFightAutoAttack();
 		runChoice(-1);
-		equip($slot`familiar`, $item`God Lobster's Ring`);
+		//equip($slot`familiar`, $item`God Lobster's Ring`); //3rd Globster fight moved here due to jurassic Parka
+		heal();
+		visitUrl("main.php?fightgodlobster=1");
+		runCombat();
+		multiFightAutoAttack();
+		runChoice(-1);
 	}
 }
 
