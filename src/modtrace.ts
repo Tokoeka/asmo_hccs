@@ -46,7 +46,7 @@ const umbrellaBonus = [
 	["item drop", "bucket style", "25"],
 	["weapon damage", "pitchfork style", "25"],
 	["spell damage", "constantly twirling", "25"],
-	["combat rate", "cocoon", "10"],
+	["combat rate", "cocoon", "-10"],
 ];
 
 function parkaML(): string {
@@ -69,6 +69,8 @@ const parkaBonus = [
 	["initiative", "pterodactyl", "50"],
 	["hot resistance", "pterodactyl", "2"],
 ];
+
+//TODO Add voting modifiers
 
 export function modTraceList(modifier: string): void {
 	let totalVal = 0;

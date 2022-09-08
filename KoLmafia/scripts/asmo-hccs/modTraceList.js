@@ -6149,13 +6149,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
 
 var moonBonus = [["weapon damage percent", "mongoose", "20"], ["spell damage percent", "wallaby", "20"], ["familiar weight", "platypus", "5"], ["meat drop", "wombat", "20"], ["item drop", "packrat", "10"]];
-var umbrellaBonus = [["monster level percent", "broken", "25"], ["damage reduction", "forward", "25"], ["item drop", "bucket style", "25"], ["weapon damage", "pitchfork style", "25"], ["spell damage", "constantly twirling", "25"], ["combat rate", "cocoon", "10"]];
+var umbrellaBonus = [["monster level percent", "broken", "25"], ["damage reduction", "forward", "25"], ["item drop", "bucket style", "25"], ["weapon damage", "pitchfork style", "25"], ["spell damage", "constantly twirling", "25"], ["combat rate", "cocoon", "-10"]];
 
 function parkaML() {
   return Math.min(33, 3 * (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.myLevel)()).toString();
 }
 
-var parkaBonus = [["maximum hp percent", "kachungasaur", "100"], ["meat drop", "kachungasaur", "50"], ["cold resistance", "kachungasaur", "2"], ["sleaze damage", "dilophosaur", "20"], ["sleaze spell damage", "dilophosaur", "20"], ["stench resistance", "dilophosaur", "2"], ["monster level", "spikolodon", parkaML()], ["sleaze resistance", "spikolodon", "2"], ["damage reduction", "ghostasaurus", "10"], ["maximum mp", "ghostasaurus", "50"], ["spooky resistance", "ghostasaurus", "2"], ["combat rate", "pterodactyl", "-5"], ["initiative", "pterodactyl", "50"], ["hot resistance", "pterodactyl", "2"]];
+var parkaBonus = [["maximum hp percent", "kachungasaur", "100"], ["meat drop", "kachungasaur", "50"], ["cold resistance", "kachungasaur", "2"], ["sleaze damage", "dilophosaur", "20"], ["sleaze spell damage", "dilophosaur", "20"], ["stench resistance", "dilophosaur", "2"], ["monster level", "spikolodon", parkaML()], ["sleaze resistance", "spikolodon", "2"], ["damage reduction", "ghostasaurus", "10"], ["maximum mp", "ghostasaurus", "50"], ["spooky resistance", "ghostasaurus", "2"], ["combat rate", "pterodactyl", "-5"], ["initiative", "pterodactyl", "50"], ["hot resistance", "pterodactyl", "2"]]; //TODO Add voting modifiers
+
 function modTraceList(modifier) {
   var totalVal = 0;
   (0,kolmafia__WEBPACK_IMPORTED_MODULE_0__.print)("");

@@ -7,7 +7,6 @@ import {
 	ascend,
 	have,
 	Lifestyle,
-	Paths,
 	prepareAscension,
 } from "libram";
 
@@ -67,5 +66,5 @@ export function main(args = ""): void {
 
 	const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
 
-	ascend($path`CommunityService`, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
+	ascend($path`Community Service`, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
 }

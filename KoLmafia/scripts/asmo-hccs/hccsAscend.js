@@ -4401,7 +4401,7 @@ function main() {
   });
   var pet = lib_have(template_string_$familiar(gash_hop_templateObject9 || (gash_hop_templateObject9 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject10 || (gash_hop_templateObject10 = gash_hop_taggedTemplateLiteral(["astral chapeau"]))) : template_string_$item(gash_hop_templateObject11 || (gash_hop_templateObject11 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
   var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
-  ascend($path(gash_hop_templateObject12 || (gash_hop_templateObject12 = gash_hop_taggedTemplateLiteral(["CommunityService"]))), newClass, lifestyle, "knoll", template_string_$item(gash_hop_templateObject13 || (gash_hop_templateObject13 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+  ascend($path(gash_hop_templateObject12 || (gash_hop_templateObject12 = gash_hop_taggedTemplateLiteral(["Community Service"]))), newClass, lifestyle, "knoll", template_string_$item(gash_hop_templateObject13 || (gash_hop_templateObject13 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
 }
 })();
 
