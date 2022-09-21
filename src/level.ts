@@ -661,18 +661,19 @@ function tentacle(): void {
 	});
 }
 
+// Don't get the actual quest, just accept it.
 function NEP() {
 	if (get("_questPartyFair") === "unstarted") {
 		setChoice(1322, "");
 		visitUrl("adventure.php?snarfblat=528");
 		if (get("_questPartyFairQuest") === "food") {
 			runChoice(1);
-			setChoice(1324, 2);
-			setChoice(1326, 3);
+			setChoice(1324, 5);
+			// setChoice(1326, 3);
 		} else if (get("_questPartyFairQuest") === "booze") {
 			runChoice(1);
-			setChoice(1324, 3);
-			setChoice(1327, 3);
+			setChoice(1324, 5);
+			// setChoice(1327, 3);
 		} else {
 			runChoice(2);
 			setChoice(1324, 5);

@@ -90,9 +90,9 @@ try {
 		"red"
 	);
 	if (["food", "booze"].includes(get("_questPartyFairQuest"))) {
-		const partyFairInfo = get("_questPartyFairProgress").split(" ");
+		const partyType = get("_questPartyFairQuest");
 		print(
-			`Gerald/ine wants ${partyFairInfo[0]} ${toItem(partyFairInfo[1]).plural}, please!`,
+			`${partyType} Quest available! Go see Gerald${partyType === "food" ? "ine" : ""}`,
 			"red"
 		);
 	}

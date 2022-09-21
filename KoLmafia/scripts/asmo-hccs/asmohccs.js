@@ -13226,7 +13226,8 @@ function tentacle() {
     (0,external_kolmafia_.runCombat)(macro.toString());
     if ((0,lib/* have */.lf)((0,template_string/* $effect */._G)(_templateObject181 || (_templateObject181 = level_taggedTemplateLiteral(["Beaten Up"]))))) (0,external_kolmafia_.cliExecute)("soak");
   });
-}
+} // Don't get the actual quest, just accept it.
+
 
 function NEP() {
   if ((0,property/* get */.U2)("_questPartyFair") === "unstarted") {
@@ -13235,12 +13236,10 @@ function NEP() {
 
     if ((0,property/* get */.U2)("_questPartyFairQuest") === "food") {
       (0,external_kolmafia_.runChoice)(1);
-      (0,asmohccs_lib/* setChoice */.Y7)(1324, 2);
-      (0,asmohccs_lib/* setChoice */.Y7)(1326, 3);
+      (0,asmohccs_lib/* setChoice */.Y7)(1324, 5); // setChoice(1326, 3);
     } else if ((0,property/* get */.U2)("_questPartyFairQuest") === "booze") {
       (0,external_kolmafia_.runChoice)(1);
-      (0,asmohccs_lib/* setChoice */.Y7)(1324, 3);
-      (0,asmohccs_lib/* setChoice */.Y7)(1327, 3);
+      (0,asmohccs_lib/* setChoice */.Y7)(1324, 5); // setChoice(1327, 3);
     } else {
       (0,external_kolmafia_.runChoice)(2);
       (0,asmohccs_lib/* setChoice */.Y7)(1324, 5);
@@ -14627,8 +14626,8 @@ try {
   (0,external_kolmafia_.print)("This loop took ".concat((0,asmohccs_lib/* convertMilliseconds */.OX)((0,external_kolmafia_.gametimeToInt)() - startTime), ", assuming it ran contiguously, for a 1 day, ").concat((0,external_kolmafia_.myTurncount)(), " turn HCCS run. Organ use was ").concat((0,external_kolmafia_.myFullness)(), "/").concat((0,external_kolmafia_.myInebriety)(), "/").concat((0,external_kolmafia_.mySpleenUse)(), ". I drank ").concat(6 - (0,external_kolmafia_.availableAmount)((0,template_string/* $item */.xr)(src_templateObject || (src_templateObject = src_taggedTemplateLiteral(["astral pilsner"])))), " Astral Pilsners. Otherwise, this run of the program lasted that much time. Hope whatever number you see is good!"), "red");
 
   if (["food", "booze"].includes((0,property/* get */.U2)("_questPartyFairQuest"))) {
-    var partyFairInfo = (0,property/* get */.U2)("_questPartyFairProgress").split(" ");
-    (0,external_kolmafia_.print)("Gerald/ine wants ".concat(partyFairInfo[0], " ").concat((0,external_kolmafia_.toItem)(partyFairInfo[1]).plural, ", please!"), "red");
+    var partyType = (0,property/* get */.U2)("_questPartyFairQuest");
+    (0,external_kolmafia_.print)("".concat(partyType, " Quest available! Go see Gerald").concat(partyType === "food" ? "ine" : ""), "red");
   }
 
   resources.summarize();
