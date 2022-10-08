@@ -11150,7 +11150,7 @@ function setSettings() {
 
 function getTurns() {
   if ((0,external_kolmafia_.myLevel)() === 1 && !(0,external_kolmafia_.mySpleenUse)()) {
-    while ((0,property/* get */.U2)("_universeCalculated") < (0,property/* get */.U2)("skillLevel144")) {
+    while ((0,property/* get */.U2)("_universeCalculated") < Math.min((0,property/* get */.U2)("skillLevel144"), 3)) {
       (0,external_kolmafia_.cliExecute)("numberology 69");
     }
   }

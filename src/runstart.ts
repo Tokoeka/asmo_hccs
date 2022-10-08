@@ -102,7 +102,7 @@ function setSettings() {
 
 function getTurns() {
 	if (myLevel() === 1 && !mySpleenUse()) {
-		while (get("_universeCalculated") < get("skillLevel144")) {
+		while (get("_universeCalculated") < Math.min(get("skillLevel144"), 3)) {
 			cliExecute("numberology 69");
 		}
 	}
