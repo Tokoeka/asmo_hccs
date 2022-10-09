@@ -195,7 +195,7 @@ function fallBot(): void {
 		if (haveFamiliar($familiar`Machine Elf`)) {
 			useFamiliar($familiar`Machine Elf`);
 		}
-		AutumnAton.sendTo($locations`The Deep Machine Tunnels, The Dire Warren`);
+		AutumnAton.sendTo($locations`The Deep Machine Tunnels, The Dire Warren`, true);
 	}
 }
 
