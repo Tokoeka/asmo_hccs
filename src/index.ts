@@ -6,12 +6,11 @@ import {
 	myFullness,
 	myInebriety,
 	myLevel,
-	myPath,
+	myPathId,
 	mySpleenUse,
 	myTurncount,
 	print,
 	setAutoAttack,
-	toItem,
 	visitUrl,
 } from "kolmafia";
 import { $item, CommunityService, get } from "libram";
@@ -34,7 +33,7 @@ const assertCompleted = (action: string, warning: string) => {
 };
 
 //preamble
-if (myPath().id !== 25) abort();
+if (myPathId() !== 25) abort();
 visitUrl("council.php");
 cliExecute("ccs twiddle");
 
@@ -60,13 +59,13 @@ try {
 		"Failed to cap Weapon Damage test!"
 	);
 	assertCompleted(
-		CommunityService.SpellDamage.run(spellTest, 30),
+		CommunityService.SpellDamage.run(spellTest, 20),
 		"Failed to perform Spell Damage test!"
 	);
 	assertCompleted(CommunityService.Noncombat.run(noncombatTest, 1), "Failed to cap NC test!");
 	assertCompleted(CommunityService.HotRes.run(hotTest, 1), "Failed to cap Hot Res test!");
 	assertCompleted(
-		CommunityService.FamiliarWeight.run(familiarTest, 30),
+		CommunityService.FamiliarWeight.run(familiarTest, 20),
 		"Failed to perform Familiar test!"
 	);
 	assertCompleted(CommunityService.BoozeDrop.run(itemTest, 1), "Failed to cap Item test!");

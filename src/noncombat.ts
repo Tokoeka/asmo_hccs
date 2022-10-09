@@ -11,23 +11,31 @@ import {
 	myClass,
 	mySign,
 	use,
+	useFamiliar,
 	visitUrl,
 } from "kolmafia";
 import {
 	$classes,
 	$coinmaster,
 	$effect,
+	$familiar,
 	$item,
+	$location,
+	$locations,
+	$phylum,
+	$skill,
 	$slot,
+	AutumnAton,
 	CommunityService,
 	get,
 	have,
+	Macro,
 } from "libram";
 import { universalWeightBuffs } from "./familiarweight";
-import { ensureEffect, horse } from "./asmohccs-lib";
+import { advMacroAA, ensureEffect, horse } from "./asmohccs-lib";
 import { noncombatOutfit } from "./outfit";
 import { modTraceList } from "./modtrace";
-import { fuelUp } from "./workshed";
+import { fuelUp, geneTonic } from "./workshed";
 
 const predictor = () => CommunityService.Noncombat.prediction;
 
@@ -129,9 +137,39 @@ function moonTune() {
 	}
 }
 
+function pirateDNA(): void {
+	if (haveEffect($effect`Human-Pirate Hybrid`)) {
+		return;
+	}
+	// get pirate DNA and make a gene tonic
+	if (get("dnaSyringe") !== $phylum`pirate` && !have($item`Gene Tonic: Pirate`)) {
+		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
+		useFamiliar($familiar`Ms. Puck Man`);
+		equip($slot`familiar`, $item`tiny stillsuit`);
+		advMacroAA(
+			$location`Pirates of the Garbage Barges`,
+			Macro.item($item`DNA extraction syringe`).skill($skill`Snokebomb`),
+			() => {
+				return get("dnaSyringe") !== $phylum`pirate`;
+			}
+		);
+		geneTonic($phylum`pirate`);
+	} else {
+		throw "Something went wrong getting pirate DNA.";
+	}
+}
+
+function fallBot(): void {
+	if (AutumnAton.available()) {
+		AutumnAton.sendTo($locations`The Dire Warren, Noob Cave`, true);
+	}
+}
+
 export default function noncombatTest(): void {
 	castBuffs();
 	moonTune();
+	pirateDNA();
+	fallBot();
 	//godLobster();
 	testPrep();
 	if (predictor() > 1) throw "Failed to cap noncombat";
