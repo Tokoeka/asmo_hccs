@@ -35,11 +35,13 @@ import {
 	$item,
 	$items,
 	$location,
+	$locations,
 	$monster,
 	$phylum,
 	$skill,
 	$skills,
 	$slot,
+	AutumnAton,
 	BeachComb,
 	ChateauMantegna,
 	DNALab,
@@ -711,6 +713,7 @@ function NEP() {
 				sauceCraft();
 			}
 			ensureMp(30);
+			fallBot();
 		}
 	);
 	advMacroAA(
@@ -910,6 +913,12 @@ function prelude() {
 		cliExecute("shrug The Magical Mojomuscular Melody");
 	useSkill($skill`The Ode to Booze`);
 	resources.consumeTo(3, $item`astral pilsner`);
+}
+
+function fallBot(): void {
+	if (AutumnAton.available()) {
+		AutumnAton.sendTo($locations`The Neverending Party, The Haunted Kitchen`, true);
+	}
 }
 
 /*

@@ -5,6 +5,7 @@ import {
 	getFuel,
 	getWorkshed,
 	haveEffect,
+	haveFamiliar,
 	myClass,
 	use,
 	useFamiliar,
@@ -18,19 +19,20 @@ import {
 	$familiar,
 	$item,
 	$location,
+	$locations,
 	$monster,
-	$phylum,
 	$skill,
 	$slot,
+	AutumnAton,
 	CommunityService,
 	get,
 	have,
 	Macro,
 } from "libram";
 import uniform, { itemOutfit } from "./outfit";
-import { advMacroAA, ensureEffect, mapMacro } from "./asmohccs-lib";
+import { ensureEffect, mapMacro } from "./asmohccs-lib";
 //import { synthItem } from "./synthesis";
-import { fuelUp, geneTonic } from "./workshed";
+import { fuelUp } from "./workshed";
 import { modTraceList } from "./modtrace";
 import { resources } from ".";
 import { easyFight } from "./asmohccs-macros";
@@ -112,11 +114,19 @@ function batForm() {
 }
 
 function pirateDNA(): void {
-	if (haveEffect($effect`Human-Pirate Hybrid`)) {
+	// acquiring Pirate DNA moved prior to noncombat test for autumnaton routing
+	if (
+		haveEffect($effect`Human-Pirate Hybrid`) ||
+		getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`
+	) {
+		return;
+	}
+	if (have($item`Gene Tonic: Pirate`)) {
+		ensureEffect($effect`Human-Pirate Hybrid`);
 		return;
 	}
 	// get pirate DNA and make a gene tonic
-	if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
+	/* if (get("dnaSyringe") !== $phylum`pirate` && haveEffect($effect`Human-Pirate Hybrid`) === 0) {
 		equip($slot`acc1`, $item`Kremlin's Greatest Briefcase`);
 		useFamiliar($familiar`Ms. Puck Man`);
 		equip($slot`familiar`, $item`tiny stillsuit`);
@@ -129,7 +139,8 @@ function pirateDNA(): void {
 		);
 		geneTonic($phylum`pirate`);
 		ensureEffect($effect`Human-Pirate Hybrid`);
-	} else {
+	}  */
+	else {
 		throw "Something went wrong getting pirate DNA.";
 	}
 }
@@ -182,11 +193,21 @@ function testPrep() {
 	}*/
 }
 
+function fallBot(): void {
+	if (AutumnAton.available()) {
+		if (haveFamiliar($familiar`Machine Elf`)) {
+			useFamiliar($familiar`Machine Elf`);
+		}
+		AutumnAton.sendTo($locations`The Deep Machine Tunnels, The Dire Warren`, true);
+	}
+}
+
 export default function itemTest(): void {
 	castBuffs();
 	pirateDNA();
 	ninjaTot();
 	batForm();
+	fallBot();
 	testPrep();
 	if (predictor() > 1) throw "Failed to cap item";
 	modTraceList("item drop");

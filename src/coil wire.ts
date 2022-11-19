@@ -20,6 +20,7 @@ import {
 	$monster,
 	$skill,
 	$slot,
+	AutumnAton,
 	get,
 	have,
 	Macro,
@@ -122,6 +123,12 @@ function terribleLove() {
 	}
 }
 
+function fallBot(): void {
+	if (AutumnAton.available()) {
+		AutumnAton.sendTo($location`The Sleazy Back Alley`);
+	}
+}
+
 /*
 Inital Setup & Prep
 Fight a witchess Bishop with latte in offhand for MP
@@ -133,6 +140,7 @@ Use Love Potion if Shitty
 
 export default function coilWire(): void {
 	runStart();
+	fallBot();
 	firstFights();
 	wireOutfit.dress();
 	terribleLove();

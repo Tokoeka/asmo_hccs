@@ -1,7 +1,9 @@
 import {
 	cliExecute,
 	equip,
+	getWorkshed,
 	handlingChoice,
+	haveEffect,
 	inHardcore,
 	myClass,
 	retrieveItem,
@@ -52,7 +54,10 @@ function getCrushed() {
 		if (!have($effect`Holiday Yoked`)) {
 			uniform([$item`Lil' Doctor™ bag`, $slot`acc3`]);
 			useFamiliar($familiar`Ghost of Crimbo Carols`);
-			Macro.item($item`DNA extraction syringe`)
+			Macro.externalIf(
+				have($item`DNA extraction syringe`),
+				Macro.item($item`DNA extraction syringe`)
+			)
 				.step(delevel)
 				.step(easyFight)
 				.attack()
@@ -62,8 +67,13 @@ function getCrushed() {
 			//CombatLoversLocket.reminisce($monster`Black Crayon Crimbo Elf`);
 			useDefaultFamiliar();
 		}
-		geneTonic($phylum`elf`);
-		ensureEffect($effect`Human-Elf Hybrid`);
+		if (
+			getWorkshed() === $item`Little Geneticist DNA-Splicing Lab` &&
+			!haveEffect($effect`Human-Elf Hybrid`)
+		) {
+			geneTonic($phylum`elf`);
+			ensureEffect($effect`Human-Elf Hybrid`);
+		}
 	}
 }
 
