@@ -138,7 +138,10 @@ function moonTune() {
 }
 
 function pirateDNA(): void {
-	if (haveEffect($effect`Human-Pirate Hybrid`) || getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`) {
+	if (
+		haveEffect($effect`Human-Pirate Hybrid`) ||
+		getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`
+	) {
 		return;
 	}
 	// get pirate DNA and make a gene tonic

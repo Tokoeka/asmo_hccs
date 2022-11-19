@@ -115,7 +115,10 @@ function batForm() {
 
 function pirateDNA(): void {
 	// acquiring Pirate DNA moved prior to noncombat test for autumnaton routing
-	if (haveEffect($effect`Human-Pirate Hybrid`) || getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`) {
+	if (
+		haveEffect($effect`Human-Pirate Hybrid`) ||
+		getWorkshed() !== $item`Little Geneticist DNA-Splicing Lab`
+	) {
 		return;
 	}
 	if (have($item`Gene Tonic: Pirate`)) {
