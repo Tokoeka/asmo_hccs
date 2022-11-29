@@ -384,12 +384,19 @@ function witchGhostAgent() {
 			[$item`gold detective badge`, $slot`acc2`],
 			[$item`Lil' Doctor™ bag`, $slot`acc3`]
 		);
+
+/* () => (get("ownsSpeakeasy", false) ? 3 - get("_speakeasyFreeFights", 0) : 0),
+		// eslint-disable-next-line libram/verify-constants
+		() => adv1($location`An Unusually Quiet Barroom Brawl`, -1, ""), */
+
 		advMacroAA(
-			$location`Noob Cave`,
+			$location`An Unusually Quiet Barroom Brawl`,
 			Macro.step(delevel)
 				.trySkill($skill`Otoscope`)
 				.trySkill($skill`Become a Bat`)
-				.trySkill($skill`Chest X-Ray`),
+				.step(easyFight)
+				.attack()
+				.repeat(),
 			() => {
 				return getCounters("Portscan", 0, 0) !== "";
 			},
