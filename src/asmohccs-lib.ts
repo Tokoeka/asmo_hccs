@@ -29,8 +29,6 @@ import {
 	restoreHp,
 	restoreMp,
 	retrieveItem,
-	runChoice,
-	runCombat,
 	setAutoAttack,
 	setProperty,
 	shopAmount,
@@ -41,7 +39,6 @@ import {
 	toEffect,
 	toString as toStringAsh,
 	totalTurnsPlayed,
-	toUrl,
 	use,
 	useFamiliar,
 	useSkill,
@@ -67,6 +64,7 @@ import {
 	set,
 	withProperty,
 } from "libram";
+import { resources } from ".";
 import { Outfit, withOutfit } from "./outfit";
 
 export const PropertyManager = new PropertiesManager();
@@ -349,7 +347,7 @@ export function advMacro(
 	}
 }
 
-export function mapMacro(location: Location, monster: Monster, macro: Macro): void {
+/* export function mapMacro(location: Location, monster: Monster, macro: Macro): void {
 	macro.setAutoAttack();
 	useSkill($skill`Map the Monsters`);
 	if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
@@ -360,7 +358,7 @@ export function mapMacro(location: Location, monster: Monster, macro: Macro): vo
 			runCombat(macro.toString());
 		}
 	}
-}
+} */
 
 export function horsery(): string {
 	return get("_horsery");
@@ -453,26 +451,26 @@ export function burnLibrams(): void {
 				(!testsDone.includes("Make Margaritas") && !have($item`lavender candy heart`))) &&
 			have($skill`Summon Candy Heart`)
 		) {
-			useSkill($skill`Summon Candy Heart`);
+			resources.libram($skill`Summon Candy Heart`);
 		} else if (
 			!testsDone.includes("Breed More Collies") &&
 			!have($item`love song of icy revenge`, 4) &&
 			have($skill`Summon Love Song`)
 		) {
-			useSkill($skill`Summon Love Song`);
+			resources.libram($skill`Summon Love Song`);
 		} /*else if (have($skill`Summon BRICKOs`) && get("_brickoEyeSummons") < 3) {
-            useSkill($skill`Summon BRICKOs`);
+            resources.libram($skill`Summon BRICKOs`);
         } else if (
                 have($skill`Summon Taffy`) &&
                 (!testsDone.includes("Breed More Collies") && !have($item`Pulled Blue Taffy`, 5))
         ) {
-            useSkill($skill`Summon Taffy`);
+            resources.libram($skill`Summon Taffy`);
         }*/ else {
 			const summonSkill = $skills`Summon Candy Heart, Summon Love Song`.find((skill) =>
 				have(skill)
 			);
 			if (!summonSkill) return;
-			useSkill(summonSkill);
+			resources.libram(summonSkill);
 		}
 	}
 }

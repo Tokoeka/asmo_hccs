@@ -9,19 +9,24 @@ import {
 	Item,
 	itemAmount,
 	itemType,
+	Location,
 	Monster,
 	myFullness,
 	myInebriety,
 	print,
 	pullsRemaining,
 	retrieveItem,
+	runChoice,
+	runCombat,
 	Skill,
 	toItem,
 	toSkill,
+	toUrl,
 	use,
 	useSkill,
+	visitUrl,
 } from "kolmafia";
-import { $effect, $item, $skill, CombatLoversLocket, get, have } from "libram";
+import { $effect, $item, $skill, CombatLoversLocket, get, have, Macro } from "libram";
 import { canCastLibrams, pullIfPossible } from "./asmohccs-lib";
 
 export class ResourceTracker {
@@ -30,6 +35,8 @@ export class ResourceTracker {
 	// Items represent clip art summons.
 	tomeSummons: (Skill | Item)[] = [];
 	libramSummons: Skill[] = [];
+	saberForces: (Item | Effect)[] = [];
+	maps: Monster[] = [];
 	locketMonsters: Monster[] = [];
 	pulls: Item[] = [];
 	consumedFood = new Map<Item, number>();
@@ -106,6 +113,20 @@ export class ResourceTracker {
 		}
 	}
 
+	mapMacro(location: Location, monster: Monster, macro: Macro): void {
+		macro.setAutoAttack();
+		useSkill($skill`Map the Monsters`);
+		if (!get("mappingMonsters")) throw `I am not actually mapping anything. Weird!`;
+		else {
+			while (get("mappingMonsters") && !have($effect`Meteor Showered`)) {
+				visitUrl(toUrl(location));
+				runChoice(1, `heyscriptswhatsupwinkwink=${monster.id}`);
+				runCombat(macro.toString());
+			}
+			this.maps.push(monster);
+		}
+	}
+
 	locket(monster: Monster, attempt = false): void {
 		if (CombatLoversLocket.monstersReminisced().includes(monster)) return;
 		if (CombatLoversLocket.reminiscesLeft() > 0) {
@@ -168,7 +189,9 @@ export class ResourceTracker {
 		);
 		print(`Tomes: ${this.tomeSummons.map((skillOrItem) => skillOrItem.name).join(", ")}`);
 		print(`Libram summons: ${this.libramSummons.map((skill) => skill.name).join(", ")}`);
-		print(`Locket: ${this.locketMonsters.map((monster) => monster.name).join(", ")}`);
+		print(`Sabers: ${this.saberForces.map((effectOrItem) => effectOrItem.name).join(", ")}`);
+		print(`Locket Fights: ${this.locketMonsters.map((monster) => monster.name).join(", ")}`);
+		print(`Maps: ${this.maps.map((monster) => monster.name).join(", ")}`);
 		print(`Pulls: ${this.pulls.map((item) => item.name).join(", ")}`);
 		print("Consumed:");
 		if (this.consumedFood.size > 0) {

@@ -93,7 +93,7 @@ function firstFights() {
 
 	/*useDefaultFamiliar(false); //moved to item test as no longer needed for digitize/wink purposes, and being in itemtest will allow for daylight hsaving shenanigans
     uniform();
-    mapMacro(
+    resources.mapMacro(
         $location`The Haiku Dungeon`,
         $monster`amateur ninja`,
         Macro.if_(

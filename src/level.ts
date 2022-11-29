@@ -66,7 +66,6 @@ import {
 	inMoxClass,
 	inMusClass,
 	inMysClass,
-	mapMacro,
 	multiFightAutoAttack,
 	questStep,
 	setChoice,
@@ -471,7 +470,7 @@ function acquireFruit() {
 			runChoice(1);
 		}
 
-		mapMacro(
+		resources.mapMacro(
 			$location`The Skeleton Store`,
 			$monster`novelty tropical skeleton`,
 			Macro.if_(
@@ -507,7 +506,7 @@ function sauceCraft() {
     ) {
         equip($slot`acc3`, $item`Lil' Doctor™ bag`);
         useDefaultFamiliar();
-        mapMacro(
+        resources.mapMacro(
             $location`The Haunted Pantry`,
             $monster`possessed can of tomatoes`,
             Macro.if_(

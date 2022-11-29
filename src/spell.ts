@@ -3,7 +3,6 @@ import {
 	canEquip,
 	cliExecute,
 	create,
-	drink,
 	eat,
 	equip,
 	handlingChoice,
@@ -215,6 +214,7 @@ function shower() {
 			}
 		);
 		set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+		resources.saberForces.push($effect`Meteor Showered`);
 	}
 }
 
@@ -247,7 +247,7 @@ function testPrep() {
 	spellOutfit.dress();
 	if (availableAmount($item`astral pilsner`) > 3) {
 		ensureEffect($effect`Ode to Booze`);
-		drink($item`astral pilsner`, availableAmount($item`astral pilsner`) - 3);
+		resources.consumeTo(availableAmount($item`astral pilsner`) - 3, $item`astral pilsner`);
 	}
 }
 

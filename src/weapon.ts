@@ -113,6 +113,7 @@ function kungFuMeteors() {
 		//CombatLoversLocket.reminisce($monster`ungulith`);
 		if (handlingChoice()) runChoice(-1);
 		set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+		resources.saberForces.push($effect`Meteor Showered`);
 		if (get("_locketMonstersFought") === "") set("_locketMonstersFought", "1932");
 		else set("_locketMonstersFought", `${get("_locketMonstersFought")},1932`);
 	}

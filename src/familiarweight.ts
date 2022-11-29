@@ -26,6 +26,7 @@ import { defaultKill } from "./asmohccs-macros";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import { modTraceList } from "./modtrace";
 import uniform, { famweightOutfit } from "./outfit";
+import { resources } from ".";
 
 export function universalWeightBuffs(): void {
 	ensureEffect($effect`Empathy`);
@@ -105,6 +106,7 @@ function takeAShower() {
 			}
 		);
 		set("_meteorShowerUses", 1 + get("_meteorShowerUses"));
+		resources.saberForces.push($effect`Meteor Showered`);
 	}
 }
 

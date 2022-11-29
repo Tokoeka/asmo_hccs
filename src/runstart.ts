@@ -4,7 +4,6 @@ import {
 	buy,
 	cliExecute,
 	containsText,
-	create,
 	eudoraItem,
 	haveEffect,
 	inHardcore,
@@ -118,7 +117,7 @@ function prepGear() {
 	if (!have($item`dromedary drinking helmet`)) {
 		useFamiliar($familiar`Melodramedary`);
 		if (!have($item`box of Familiar Jacks`)) {
-			create(1, $item`box of Familiar Jacks`);
+			resources.clipArt($item`box of Familiar Jacks`);
 		}
 		use(1, $item`box of Familiar Jacks`);
 		cliExecute("mummery myst");

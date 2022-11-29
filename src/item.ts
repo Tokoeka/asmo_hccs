@@ -30,7 +30,7 @@ import {
 	Macro,
 } from "libram";
 import uniform, { itemOutfit } from "./outfit";
-import { ensureEffect, mapMacro } from "./asmohccs-lib";
+import { ensureEffect } from "./asmohccs-lib";
 //import { synthItem } from "./synthesis";
 import { fuelUp } from "./workshed";
 import { modTraceList } from "./modtrace";
@@ -87,7 +87,7 @@ function ninjaTot(): void {
 	if ($classes`Sauceror, Disco Bandit`.includes(myClass())) {
 		equip($slot`hat`, $item`Daylight Shavings Helmet`);
 	}
-	mapMacro(
+	resources.mapMacro(
 		$location`The Haiku Dungeon`,
 		$monster`amateur ninja`,
 		Macro.externalIf(have($item`cosmic bowling ball`), Macro.skill($skill`Bowl Straight Up`))

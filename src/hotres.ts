@@ -27,6 +27,7 @@ import { universalWeightBuffs } from "./familiarweight";
 import { advMacroAA, ensureEffect, horse, setChoice } from "./asmohccs-lib";
 import { modTraceList } from "./modtrace";
 import uniform, { hotresOutfit } from "./outfit";
+import { resources } from ".";
 const predictor = () => CommunityService.HotRes.prediction;
 
 function castBuffs() {
@@ -90,6 +91,7 @@ function thisFireIsOutOfControl() {
 			}
 		);
 		set(`_fireExtinguisherCharge`, 90);
+		resources.saberForces.push($effect`Fireproof Foam Suit`);
 		//const curFormCasts = get(`_vampyreCloakeFormUses`);
 		//set(`_vampyreCloakeFormUses`, curFormCasts + 1);
 	}
