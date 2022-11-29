@@ -1,5 +1,6 @@
 import {
 	adv1,
+	buy,
 	cliExecute,
 	closetAmount,
 	equip,
@@ -40,7 +41,7 @@ let duped = $item`none`;
 
 if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
 	useFamiliar($familiar`Machine Elf`);
-	const dupeItems = $items`very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, expensive cigar, abstraction: comprehension`;
+	const dupeItems = $items`very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, Daily Affirmation: Work For Hours a Week, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, expensive cigar, abstraction: comprehension`;
 	const dupeVals = Array.from(dupeItems.values()).map((dupe) => {
 		return {
 			dupeIt: dupe,
@@ -50,11 +51,14 @@ if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscen
 	const best = dupeVals.sort((a, b) => b.value - a.value)[0];
 	duped = best.dupeIt;
 	let closet = false;
-	set(`choiceAdventure1125`, `1&iid=${toInt(best.dupeIt)}`);
 	if (itemAmount(best.dupeIt) === 0 && closetAmount(best.dupeIt) > 0) {
 		takeCloset(best.dupeIt, 1);
 		closet = true;
 	}
+	if (itemAmount(duped) === 0) {
+		buy(duped, 1);
+	}
+	set(`choiceAdventure1125`, `1&iid=${toInt(best.dupeIt)}`);
 	adv1($location`The Deep Machine Tunnels`);
 	set(`lastDMTDuplication`, myAscensions());
 	if (closet) {
