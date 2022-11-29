@@ -385,11 +385,12 @@ function witchGhostAgent() {
 			[$item`Lil' Doctor™ bag`, $slot`acc3`]
 		);
 
-/* () => (get("ownsSpeakeasy", false) ? 3 - get("_speakeasyFreeFights", 0) : 0),
+		/* () => (get("ownsSpeakeasy", false) ? 3 - get("_speakeasyFreeFights", 0) : 0),
 		// eslint-disable-next-line libram/verify-constants
 		() => adv1($location`An Unusually Quiet Barroom Brawl`, -1, ""), */
 
 		advMacroAA(
+			// eslint-disable-next-line libram/verify-constants
 			$location`An Unusually Quiet Barroom Brawl`,
 			Macro.step(delevel)
 				.trySkill($skill`Otoscope`)

@@ -110,7 +110,7 @@ function castBuffs() {
 	}
 }
 
-export function moonTune() {
+export function moonTune(): void {
 	// Tune moon sign to Platypus
 	const desertAccessItem = knollAvailable() ? $item`bitchin' meatcar` : $item`Desert Bus pass`;
 	if (!have(desertAccessItem)) {

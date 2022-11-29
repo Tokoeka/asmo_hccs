@@ -256,7 +256,7 @@ function doPulls() {
 		$item`Stick-Knife of Loathing`,
 		$items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
 		//$item`Pantaloons of Hatred`,
-		$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, Pantaloons of Hatred`, 
+		$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, Pantaloons of Hatred`,
 		//TODO: using metorite fragment required reworkign when to swap moonsign.
 	];
 

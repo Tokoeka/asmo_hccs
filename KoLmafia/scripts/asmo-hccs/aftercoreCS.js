@@ -7122,7 +7122,7 @@ var duped = template_string_$item(aftercore_cs_templateObject || (aftercore_cs_t
 
 if (property_get("encountersUntilDMTChoice") === 0 && property_get("lastDMTDuplication") < (0,external_kolmafia_namespaceObject.myAscensions)()) {
   (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(aftercore_cs_templateObject2 || (aftercore_cs_templateObject2 = aftercore_cs_taggedTemplateLiteral(["Machine Elf"]))));
-  var dupeItems = template_string_$items(aftercore_cs_templateObject3 || (aftercore_cs_templateObject3 = aftercore_cs_taggedTemplateLiteral(["very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, expensive cigar, abstraction: comprehension"])));
+  var dupeItems = template_string_$items(aftercore_cs_templateObject3 || (aftercore_cs_templateObject3 = aftercore_cs_taggedTemplateLiteral(["very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, Daily Affirmation: Work For Hours a Week, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, expensive cigar, abstraction: comprehension"])));
   var dupeVals = Array.from(dupeItems.values()).map(dupe => {
     return {
       dupeIt: dupe,
@@ -7132,13 +7132,17 @@ if (property_get("encountersUntilDMTChoice") === 0 && property_get("lastDMTDupli
   var best = dupeVals.sort((a, b) => b.value - a.value)[0];
   duped = best.dupeIt;
   var closet = false;
-  _set("choiceAdventure1125", "1&iid=".concat((0,external_kolmafia_namespaceObject.toInt)(best.dupeIt)));
 
   if ((0,external_kolmafia_namespaceObject.itemAmount)(best.dupeIt) === 0 && (0,external_kolmafia_namespaceObject.closetAmount)(best.dupeIt) > 0) {
     (0,external_kolmafia_namespaceObject.takeCloset)(best.dupeIt, 1);
     closet = true;
   }
 
+  if ((0,external_kolmafia_namespaceObject.itemAmount)(duped) === 0) {
+    (0,external_kolmafia_namespaceObject.buy)(duped, 1);
+  }
+
+  _set("choiceAdventure1125", "1&iid=".concat((0,external_kolmafia_namespaceObject.toInt)(best.dupeIt)));
   (0,external_kolmafia_namespaceObject.adv1)(template_string_$location(aftercore_cs_templateObject4 || (aftercore_cs_templateObject4 = aftercore_cs_taggedTemplateLiteral(["The Deep Machine Tunnels"]))));
   _set("lastDMTDuplication", (0,external_kolmafia_namespaceObject.myAscensions)());
 

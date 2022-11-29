@@ -7,12 +7,9 @@ import {
 	getWorkshed,
 	haveEffect,
 	itemAmount,
-	knollAvailable,
 	myClass,
-	mySign,
 	use,
 	useFamiliar,
-	visitUrl,
 } from "kolmafia";
 import {
 	$classes,
