@@ -10,11 +10,13 @@ import {
 	haveEffect,
 	inHardcore,
 	itemAmount,
+	knollAvailable,
 	myClass,
 	myHp,
 	myLevel,
 	myMaxhp,
 	myMp,
+	mySign,
 	numericModifier,
 	retrieveItem,
 	runChoice,
@@ -105,6 +107,29 @@ function castBuffs() {
 
 	if (myClass() === $class`Sauceror` && !get("_barrelPrayer")) {
 		cliExecute("barrelprayer buff");
+	}
+}
+
+export function moonTune() {
+	// Tune moon sign to Platypus
+	const desertAccessItem = knollAvailable() ? $item`bitchin' meatcar` : $item`Desert Bus pass`;
+	if (!have(desertAccessItem)) {
+		cliExecute(`acquire ${desertAccessItem.name}`);
+	}
+	visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
+
+	if (!get("moonTuned") && mySign() !== `Platypus`) {
+		if (get("_campAwaySmileBuffs") === 0) {
+			visitUrl("place.php?whichplace=campaway&action=campaway_sky");
+		}
+
+		// Unequip spoon.
+		equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
+		equip($slot`acc2`, $item`Powerful Glove`);
+		equip($slot`acc3`, $item`Lil' Doctor™ bag`);
+
+		// Actually tune the moon.
+		visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
 	}
 }
 
@@ -200,6 +225,7 @@ function testPrep() {
 			have(item)
 		);
 		if (meteor) {
+			moonTune();
 			unequip(meteor);
 			retrieveItem(1, $item`tenderizing hammer`);
 			retrieveItem(1, $item`jewelry-making pliers`);

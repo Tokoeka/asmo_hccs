@@ -36,6 +36,7 @@ import { advMacroAA, ensureEffect, horse } from "./asmohccs-lib";
 import { noncombatOutfit } from "./outfit";
 import { modTraceList } from "./modtrace";
 import { fuelUp, geneTonic } from "./workshed";
+import { moonTune } from "./spell";
 
 const predictor = () => CommunityService.Noncombat.prediction;
 
@@ -111,29 +112,6 @@ function testPrep() {
 
 	for (const improvement of improvements) {
 		if (predictor() > 1) improvement();
-	}
-}
-
-function moonTune() {
-	// Tune moon sign to Platypus
-	const desertAccessItem = knollAvailable() ? $item`bitchin' meatcar` : $item`Desert Bus pass`;
-	if (!have(desertAccessItem)) {
-		cliExecute(`acquire ${desertAccessItem.name}`);
-	}
-	visitUrl("place.php?whichplace=desertbeach&action=db_nukehouse");
-
-	if (!get("moonTuned") && mySign() !== `Platypus`) {
-		if (get("_campAwaySmileBuffs") === 0) {
-			visitUrl("place.php?whichplace=campaway&action=campaway_sky");
-		}
-
-		// Unequip spoon.
-		equip($slot`acc1`, $item`Eight Days a Week Pill Keeper`);
-		equip($slot`acc2`, $item`Powerful Glove`);
-		equip($slot`acc3`, $item`Lil' Doctor™ bag`);
-
-		// Actually tune the moon.
-		visitUrl("inv_use.php?whichitem=10254&pwd&doit=96&whichsign=4");
 	}
 }
 
