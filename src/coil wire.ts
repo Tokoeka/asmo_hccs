@@ -27,9 +27,10 @@ import {
 	Witchess,
 } from "libram";
 import { delevel, easyFight } from "./asmohccs-macros";
-import { advMacro, burnLibrams, fightSausageIfAble, useDefaultFamiliar } from "./asmohccs-lib";
+import { advMacro, fightSausageIfAble, useDefaultFamiliar } from "./asmohccs-lib";
 import { grimoires, runStart } from "./runstart";
 import uniform, { wireOutfit } from "./outfit";
+import { burnLibrams } from "./librams";
 
 function firstFights() {
 	//TODO - do kramco fight first? move witchess fight post coil wire?

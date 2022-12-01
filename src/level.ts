@@ -57,7 +57,6 @@ import { candyblast, defaultKill, delevel, easyFight } from "./asmohccs-macros";
 import {
 	advMacro,
 	advMacroAA,
-	burnLibrams,
 	ensureEffect,
 	ensureInnerElf,
 	ensureMp,
@@ -77,6 +76,7 @@ import uniform from "./outfit";
 import { synthMox, synthMoxExp, synthMus, synthMusExp, synthMysExp, synthMyst } from "./synthesis";
 import { geneTonic } from "./workshed";
 import { resources } from ".";
+import { burnLibrams } from "./librams";
 
 function initialExp() {
 	if (!have($effect`That's Just Cloud-Talk, Man`)) {
