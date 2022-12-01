@@ -34,7 +34,7 @@ export class ResourceTracker {
 	genieWishes: (Monster | Effect)[] = [];
 	// Items represent clip art summons.
 	tomeSummons: (Skill | Item)[] = [];
-	libramSummons: Skill[] = [];
+	libramSummons = new Map<Skill, number>();
 	saberForces: (Item | Effect)[] = [];
 	maps: Monster[] = [];
 	locketMonsters: Monster[] = [];
@@ -104,7 +104,7 @@ export class ResourceTracker {
 	libram(skill: Skill, attempt = false): void {
 		if (canCastLibrams()) {
 			useSkill(skill);
-			this.libramSummons.push(skill);
+			this.libramSummons.set(skill, (this.libramSummons.get(skill) ?? 0) + 1);
 		} else if (!attempt) {
 			print(
 				`WARNING: Tried to use libram summon ${skill}, but we don't have enough mana`,
@@ -188,7 +188,10 @@ export class ResourceTracker {
 			`Wishes: ${this.genieWishes.map((MonsterorEffect) => MonsterorEffect.name).join(", ")}`
 		);
 		print(`Tomes: ${this.tomeSummons.map((skillOrItem) => skillOrItem.name).join(", ")}`);
-		print(`Libram summons: ${this.libramSummons.map((skill) => skill.name).join(", ")}`);
+		print(`Libram summons:`);
+		for (const [libram, count] of this.libramSummons) {
+			print(`${count} x ${libram}`);
+		}
 		print(`Sabers: ${this.saberForces.map((effectOrItem) => effectOrItem.name).join(", ")}`);
 		print(`Locket Fights: ${this.locketMonsters.map((monster) => monster.name).join(", ")}`);
 		print(`Maps: ${this.maps.map((monster) => monster.name).join(", ")}`);
