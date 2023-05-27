@@ -252,9 +252,9 @@ function buffMainstat() {
 
 	if (have($item`votive of confidence`)) use($item`votive of confidence`);
 
-	if (!get("_freePillKeeperUsed")) {
+	/* if (!get("_freePillKeeperUsed")) {
 		cliExecute("pillkeeper familiar");
-	}
+	} */
 	if (have($item`MayDay™ supply package`)) {
 		use($item`MayDay™ supply package`);
 	}

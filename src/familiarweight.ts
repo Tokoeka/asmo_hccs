@@ -3,6 +3,7 @@ import {
 	create,
 	equip,
 	handlingChoice,
+	myFamiliar,
 	runChoice,
 	useFamiliar,
 	visitUrl,
@@ -38,9 +39,9 @@ export function universalWeightEffects(): void {
 	ensureEffect($effect`Billiards Belligerence`);
 
 	if (!get("_clanFortuneBuffUsed")) cliExecute("fortune buff familiar");
-	if (!get("_freePillKeeperUsed")) {
+	/* if (!get("_freePillKeeperUsed")) {
 		cliExecute("pillkeeper familiar");
-	}
+	} */
 	if (!have($effect`Puzzle Champ`)) {
 		cliExecute("witchess");
 	}
@@ -112,6 +113,10 @@ function takeAShower() {
 
 function testPrep() {
 	famweightOutfit.dress();
+	if (myFamiliar() === $familiar`Comma Chameleon`) {
+		visitUrl("inv_equip.php?which=2&action=equip&whichitem=6102&pwd");
+		visitUrl("charpane.php");
+	}
 	if (have($item`silver face paint`)) ensureEffect($effect`Robot Friends`);
 	/*while (have($item`love song of icy revenge`) && !have($effect`Cold Hearted`, 20)) {
     use($item`love song of icy revenge`);

@@ -15,22 +15,10 @@ import {
 	runChoice,
 	takeCloset,
 	toInt,
-	use,
 	useFamiliar,
 	visitUrl,
 } from "kolmafia";
-import {
-	$familiar,
-	$item,
-	$items,
-	$location,
-	$skill,
-	$slot,
-	AsdonMartin,
-	get,
-	Macro,
-	set,
-} from "libram";
+import { $familiar, $item, $items, $location, $skill, $slot, get, Macro, set } from "libram";
 import { advMacro, unequip } from "./asmohccs-lib";
 
 cliExecute(`hagnk all`);
@@ -41,7 +29,7 @@ let duped = $item`none`;
 
 if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscensions()) {
 	useFamiliar($familiar`Machine Elf`);
-	const dupeItems = $items`very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, Daily Affirmation: Work For Hours a Week, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, expensive cigar, abstraction: comprehension`;
+	const dupeItems = $items`chocomotive, cabooze, freightcake, very fancy whiskey, bottle of Greedy Dog, liquid rhinestones, Daily Affirmation: Always be Collecting, Daily Affirmation: Work For Hours a Week, huge Crimbo cookie, green-iced sweet roll, bottle of Race Car Red, warbear gyro, karma shawarma, bottle of drinkin' gas, abstraction: comprehension, Daily Affirmation: Think Win-Lose, bottle of Old Pugilist`;
 	const dupeVals = Array.from(dupeItems.values()).map((dupe) => {
 		return {
 			dupeIt: dupe,
@@ -59,8 +47,9 @@ if (get(`encountersUntilDMTChoice`) === 0 && get(`lastDMTDuplication`) < myAscen
 		buy(duped, 1);
 	}
 	set(`choiceAdventure1125`, `1&iid=${toInt(best.dupeIt)}`);
-	adv1($location`The Deep Machine Tunnels`);
-	set(`lastDMTDuplication`, myAscensions());
+	while (get(`lastDMTDuplication`) < myAscensions()) {
+		adv1($location`The Deep Machine Tunnels`);
+	}
 	if (closet) {
 		putCloset(best.dupeIt, 2);
 	}
@@ -116,9 +105,9 @@ if (get(`lastEncounter`) !== `Lava Dogs`) {
 	set(`mpAutoRecovery`, 0.05);
 }
 
-if (!AsdonMartin.installed()) {
+/* if (!AsdonMartin.installed()) {
 	use($item`Asdon Martin keyfob`);
 	AsdonMartin.fillTo(200);
-}
+} */
 
 print(`We duped a ${duped}`);

@@ -1,3 +1,4 @@
+import { use, useFamiliar } from "kolmafia";
 import {
 	$class,
 	$classes,
@@ -10,7 +11,7 @@ import {
 	prepareAscension,
 } from "libram";
 
-const timespinnerTargets = [
+/* const timespinnerTargets = [
 	"Busta_Rhymes",
 	"Manendra",
 	"Gausie",
@@ -20,7 +21,7 @@ const timespinnerTargets = [
 	"phreddrickv2",
 	"The Dictator",
 ];
-
+ */
 /*while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets.length) {
     useSkill($skill`Experience Safari`, 1, safariTargets[0]);
     safariTargets.shift();
@@ -40,13 +41,14 @@ export function main(args = ""): void {
 		: $class`Pastamancer`;
 
 	const shed = args.includes(`asdon`)
-		? "Asdon Martin keyfob"
+		? $item`Asdon Martin keyfob`
 		: args.includes(`pizza`)
-		? "diabolic pizza cube"
-		: "Little Geneticist DNA-Splicing Lab";
+		? $item`diabolic pizza cube`
+		: args.includes(`train`)
+		? $item`model train set`
+		: $item`Little Geneticist DNA-Splicing Lab`;
 
 	prepareAscension({
-		workshed: shed,
 		garden: `Peppermint Pip Packet`,
 		eudora: `Our Daily Candles™ order form`,
 		chateau: {
@@ -65,6 +67,12 @@ export function main(args = ""): void {
 		: $item`astral pet sweater`;
 
 	const lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
+	if (!have($item`homemade robot gear`) && have($familiar`Homemade Robot`)) {
+		useFamiliar($familiar`Homemade Robot`);
+		use($item`box of Familiar Jacks`);
+	}
 
 	ascend($path`Community Service`, newClass, lifestyle, "knoll", $item`astral six-pack`, pet);
+
+	use(shed);
 }

@@ -451,19 +451,20 @@ export const noncombatOutfit = new OutfitPlan(
 	{ familiar: $familiar`Disgeist`, modes: { umbrella: "cocoon", parka: "pterodactyl" } }
 );
 
-const familiarAndEquip =
-	have($familiar`Doppelshifter`) && !inHardcore()
-		? { fam: $familiar`Doppelshifter`, equip: $item`tiny costume wardrobe` }
-		: have($item`Snow Suit`) && !inHardcore()
-		? { fam: $familiar`Exotic Parrot`, equip: $item`Snow Suit` }
-		: have($item`cracker`)
-		? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
-		: have($familiar`Baby Bugged Bugbear`)
-		? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
-		: {
-				fam: $familiar`Blood-Faced Volleyball`,
-				equip: have($item`astral pet sweater`) ? $item`astral pet sweater` : $item`none`,
-		  };
+const familiarAndEquip = have($familiar`Comma Chameleon`)
+	? { fam: $familiar`Comma Chameleon`, equip: $item`none` }
+	: have($familiar`Doppelshifter`) && !inHardcore()
+	? { fam: $familiar`Doppelshifter`, equip: $item`tiny costume wardrobe` }
+	: have($item`Snow Suit`) && !inHardcore()
+	? { fam: $familiar`Exotic Parrot`, equip: $item`Snow Suit` }
+	: have($item`cracker`)
+	? { fam: $familiar`Exotic Parrot`, equip: $item`cracker` }
+	: have($familiar`Baby Bugged Bugbear`)
+	? { fam: $familiar`Baby Bugged Bugbear`, equip: $item`bugged beanie` }
+	: {
+			fam: $familiar`Blood-Faced Volleyball`,
+			equip: have($item`astral pet sweater`) ? $item`astral pet sweater` : $item`none`,
+	  };
 
 export const famweightOutfit = new OutfitPlan(
 	{
@@ -496,7 +497,9 @@ export const weaponOutfit = new OutfitPlan(
 export const spellOutfit = new OutfitPlan(
 	{
 		hat: $items`sugar chapeau, astral chapeau, Hollandaise helmet`,
-		weapon: !inHardcore() ? $item`Staff of Kitchen Royalty` : $item`weeping willow wand`,
+		weapon: !inHardcore()
+			? $items`Staff of the Roaring Hearth, Staff of Kitchen Royalty`
+			: $item`weeping willow wand`,
 		offhand: [
 			$item`Abracandalabra`,
 			...(inHardcore()

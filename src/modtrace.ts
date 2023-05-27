@@ -19,17 +19,7 @@ import {
 	toInt,
 	weightAdjustment,
 } from "kolmafia";
-import {
-	$effect,
-	$familiar,
-	$familiars,
-	$item,
-	$skills,
-	$slot,
-	$slots,
-	$thrall,
-	get,
-} from "libram";
+import { $effect, $familiar, $item, $skills, $slot, $slots, $thrall, get, have } from "libram";
 import { horsery } from "./asmohccs-lib";
 
 const moonBonus = [
@@ -38,6 +28,20 @@ const moonBonus = [
 	["familiar weight", "platypus", "5"],
 	["meat drop", "wombat", "20"],
 	["item drop", "packrat", "10"],
+];
+
+const thrallBonus = [
+	["maximum hp", "vampieroghi", "10", "60"],
+	["maximum mp", "vermincelli", "10", "30"],
+	["initiative", "angel hair wisp", "1", `${5 * myThrall().level}`],
+	["weapon damage", "elbow macaroni", "5", `${2 * myThrall().level}`],
+	["critical hit chance", "elbow macaroni", "10", "10"],
+	["damage reduction", "penne dreadful", "10", "10"],
+	["experience", "spaghetti elemental", "1", "1"],
+	["spell damage", "spaghetti elemental", "10", "5"],
+	["meat drop", "lasagmbie", "1", `${20 + 2 * myThrall().level}`],
+	["spooky spell damage", "lasagmbie", "10", "10"],
+	["item drop", "spice ghost", "1", `${10 + myThrall().level}`],
 ];
 
 const umbrellaBonus = [
@@ -70,6 +74,16 @@ const parkaBonus = [
 	["hot resistance", "pterodactyl", "2"],
 ];
 
+const boomboxBonus = [
+	["spooky damage", "Eye of the Giger", `${myLevel()}`],
+	["spooky resistance", "Eye of the Giger", "1"],
+	["food drop", "Food Vibrations", "30"],
+	["mp regen min", "Food Vibrations", "3"],
+	["mp regen max", "Food Vibrations", "5"],
+	["damage reduction", "Remainin' Alive", `${myLevel()}`],
+	["weapon damage", "These Fists Were Made for Punchin'", `${myLevel()}`],
+	["meat drop", "Total Eclipse of Your Meat", "30"],
+];
 //TODO Add voting modifiers
 
 export function modTraceList(modifier: string): void {
@@ -237,6 +251,23 @@ export function modTraceList(modifier: string): void {
 		}
 	}
 
+	for (const i in thrallBonus) {
+		const line = thrallBonus[i];
+		const mod = line[0];
+		const thrall = line[1];
+		const level = line[2];
+		const bonus = line[3];
+		if (
+			modifier === mod &&
+			myThrall() === $thrall`${thrall}` &&
+			myThrall().level >= parseInt(level)
+		) {
+			otherTotal = otherTotal + parseInt(bonus);
+			otherCount++;
+			print(`THRALL ${myThrall()} : ${bonus}`);
+		}
+	}
+
 	if (horsery() !== "" && get(`horseryAvailable`)) {
 		const myHorse = horsery();
 		if (modifier.includes("init") && myHorse.includes("normal")) {
@@ -275,8 +306,20 @@ export function modTraceList(modifier: string): void {
 		}
 	}
 
+	for (const i in boomboxBonus) {
+		const line = boomboxBonus[i];
+		const mod = line[0];
+		const song = line[1];
+		const bonus = line[2];
+		if (modifier === mod && get("boomBoxSong") === song) {
+			otherTotal = otherTotal + parseInt(bonus);
+			otherCount++;
+			print(`BOOMBOX ${song} : ${bonus}`);
+		}
+	}
+
 	if (otherCount > 0) {
-		print(`Other Bonuses Total: ${otherTotal}`, "blue");
+		print(`Misc. Bonuses Total: ${otherTotal}`, "blue");
 		print("");
 	}
 
@@ -293,6 +336,14 @@ export function modTraceList(modifier: string): void {
 				)} more turns`
 			);
 		}
+	}
+
+	if (have($effect`Fidoxene`) && modifier === "familiar weight") {
+		const ef = $effect`Fidoxene`;
+		const fidoTotal = Math.max(20 - familiarWeight(myFamiliar()), 0);
+		effectTotal = effectTotal + fidoTotal;
+		effectCount++;
+		print(`EFFECT ${ef} : ${fidoTotal} familiar weight for ${haveEffect(ef)} more turns`);
 	}
 
 	const squint = $effect`Steely-Eyed Squint`;
@@ -319,33 +370,36 @@ export function modTraceList(modifier: string): void {
 		print("");
 	}
 
-	const equipFams = $familiars`Trick-or-Treating Tot, Disembodied Hand, Left-Hand Man`;
+	//const equipFams = $familiars`Trick-or-Treating Tot, Disembodied Hand, Left-Hand Man`;
+
+	let famTotal = 0;
 
 	const famMod = numericModifier(
 		myFamiliar(),
 		modifier,
 		familiarWeight(myFamiliar()) + weightAdjustment(),
-		equipFams.includes(myFamiliar()) ? $item`none` : equippedItem($slot`familiar`)
+		$item.none
 	);
+
 	if (famMod !== 0) {
+		famTotal = famTotal + famMod;
 		print(`FAMILIAR ${myFamiliar()} : ${Math.floor(famMod)}`);
 	}
-
-	let thrallBonus = 0;
-	if (myThrall() !== $thrall`none`) {
-		if (myThrall() === $thrall`lasagmbie` && modifier === "meat drop") {
-			thrallBonus = 20 + 2 * myThrall().level;
-		} else if (myThrall() === $thrall`spice ghost` && modifier === "item drop") {
-			thrallBonus = 10 + myThrall().level;
-		} else if (myThrall() === $thrall`angel hair wisp` && modifier === "initiative") {
-			thrallBonus = 5 * myThrall().level;
-		}
-		if (thrallBonus > 0) {
-			print(`THRALL ${myThrall()} : ${thrallBonus}`);
+	if (modifier === "familiar weight") {
+		print(`FAMILIAR ${myFamiliar()} (Base) : ${familiarWeight(myFamiliar())}`);
+		famTotal = famTotal + familiarWeight(myFamiliar());
+		if (myFamiliar() === $familiar`Comma Chameleon` && get("commaFamiliar") !== null) {
+			famTotal = famTotal + 5;
+			print(`FAMILIAR Comma Chameleon (Bonus) : 5`);
 		}
 	}
+	if (famTotal !== 0) {
+		famTotal = Math.floor(famTotal);
+		print(`Familiar Total: ${famTotal}`, "blue");
+		print("");
+	}
 
-	totalVal = skillTotal + slotTotal + effectTotal + otherTotal + Math.floor(famMod) + thrallBonus;
+	totalVal = skillTotal + slotTotal + effectTotal + otherTotal + famTotal;
 
 	print(`Total ${modifier}: ${totalVal}`, "purple");
 	print("");

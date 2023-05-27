@@ -3,8 +3,15 @@ import { resources } from ".";
 import { canCastLibrams } from "./asmohccs-lib";
 
 export function burnLibrams(): void {
-	if (!$skills`Summon Candy Heart, Summon Taffy, Summon Love Song`.some((skill) => have(skill)))
+	if (
+		!$skills`Summon Candy Heart, Summon Taffy, Summon Love Song, Summon BRICKOs, Summon Resolutions`.some(
+			(skill) => have(skill)
+		)
+	)
 		return;
+	if (!canCastLibrams()) {
+		return;
+	}
 	while (canCastLibrams()) {
 		const testsDone = get("csServicesPerformed").split(",");
 		if (

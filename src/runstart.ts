@@ -251,12 +251,11 @@ function doPulls() {
 
 	const pulls: (Item | Item[])[] = [
 		$items`repaid diaper, Great Wolf's beastly trousers`,
-		$items`tiny costume wardrobe, Snow Suit`,
+		$items`homemade robot gear, tiny costume wardrobe, Snow Suit`,
 		$item`Stick-Knife of Loathing`,
-		$items`Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist, Staff of the Roaring Hearth`,
+		$items`Staff of the Roaring Hearth, Staff of Kitchen Royalty, Staff of the Deepest Freeze, Staff of Frozen Lard, Staff of the Peppermint Twist`,
 		//$item`Pantaloons of Hatred`,
 		$items`meteorite necklace, meteorite ring, meteorite fragment, meteorite earring, Pantaloons of Hatred`,
-		//TODO: using metorite fragment required reworkign when to swap moonsign.
 	];
 
 	for (const pull of pulls) {

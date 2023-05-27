@@ -54,7 +54,6 @@ import {
 	$items,
 	$location,
 	$skill,
-	$skills,
 	$slot,
 	get,
 	have,
