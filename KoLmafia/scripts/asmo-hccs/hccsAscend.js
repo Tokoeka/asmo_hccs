@@ -4406,12 +4406,24 @@ function telescope() {
   };
 }
 ;// CONCATENATED MODULE: ./src/gash-hop.ts
-var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7, gash_hop_templateObject8, gash_hop_templateObject9, gash_hop_templateObject10, gash_hop_templateObject11, gash_hop_templateObject12, gash_hop_templateObject13;
+var gash_hop_templateObject, gash_hop_templateObject2, gash_hop_templateObject3, gash_hop_templateObject4, gash_hop_templateObject5, gash_hop_templateObject6, gash_hop_templateObject7, gash_hop_templateObject8, gash_hop_templateObject9, gash_hop_templateObject10, gash_hop_templateObject11, gash_hop_templateObject12, gash_hop_templateObject13, gash_hop_templateObject14, gash_hop_templateObject15, gash_hop_templateObject16, gash_hop_templateObject17, gash_hop_templateObject18, gash_hop_templateObject19, gash_hop_templateObject20, gash_hop_templateObject21;
 
 function gash_hop_taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 
-var timespinnerTargets = (/* unused pure expression or super */ null && (["Busta_Rhymes", "Manendra", "Gausie", "Beldur", "worthawholebean", "ReverKiller", "phreddrickv2", "The Dictator"]));
+
+/* const timespinnerTargets = [
+	"Busta_Rhymes",
+	"Manendra",
+	"Gausie",
+	"Beldur",
+	"worthawholebean",
+	"ReverKiller",
+	"phreddrickv2",
+	"The Dictator",
+];
+ */
+
 /*while ($skill`Experience Safari`.timescast < get("skillLevel180") && safariTargets.length) {
     useSkill($skill`Experience Safari`, 1, safariTargets[0]);
     safariTargets.shift();
@@ -4420,20 +4432,26 @@ var timespinnerTargets = (/* unused pure expression or super */ null && (["Busta
 function main() {
   var args = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var newClass = args.includes("sc") ? template_string_$class(gash_hop_templateObject || (gash_hop_templateObject = gash_hop_taggedTemplateLiteral(["Seal Clubber"]))) : args.includes("tt") ? template_string_$class(gash_hop_templateObject2 || (gash_hop_templateObject2 = gash_hop_taggedTemplateLiteral(["Turtle Tamer"]))) : args.includes("sr") ? template_string_$class(gash_hop_templateObject3 || (gash_hop_templateObject3 = gash_hop_taggedTemplateLiteral(["Sauceror"]))) : args.includes("db") ? template_string_$class(gash_hop_templateObject4 || (gash_hop_templateObject4 = gash_hop_taggedTemplateLiteral(["Disco Bandit"]))) : args.includes("at") ? template_string_$class(gash_hop_templateObject5 || (gash_hop_templateObject5 = gash_hop_taggedTemplateLiteral(["Accordion Thief"]))) : template_string_$class(gash_hop_templateObject6 || (gash_hop_templateObject6 = gash_hop_taggedTemplateLiteral(["Pastamancer"])));
-  var shed = args.includes("asdon") ? "Asdon Martin keyfob" : args.includes("pizza") ? "diabolic pizza cube" : "Little Geneticist DNA-Splicing Lab";
+  var shed = args.includes("asdon") ? template_string_$item(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["Asdon Martin keyfob"]))) : args.includes("pizza") ? template_string_$item(gash_hop_templateObject8 || (gash_hop_templateObject8 = gash_hop_taggedTemplateLiteral(["diabolic pizza cube"]))) : args.includes("train") ? template_string_$item(gash_hop_templateObject9 || (gash_hop_templateObject9 = gash_hop_taggedTemplateLiteral(["model train set"]))) : template_string_$item(gash_hop_templateObject10 || (gash_hop_templateObject10 = gash_hop_taggedTemplateLiteral(["Little Geneticist DNA-Splicing Lab"])));
   prepareAscension({
-    workshed: shed,
     garden: "Peppermint Pip Packet",
     eudora: "Our Daily Candles\u2122 order form",
     chateau: {
       desk: "continental juice bar",
-      nightstand: $classes(gash_hop_templateObject7 || (gash_hop_templateObject7 = gash_hop_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer"]))).includes(newClass) ? "electric muscle stimulator" : $classes(gash_hop_templateObject8 || (gash_hop_templateObject8 = gash_hop_taggedTemplateLiteral(["Disco Bandit, Accordion Thief"]))).includes(newClass) ? "bowl of potpourri" : "foreign language tapes",
+      nightstand: $classes(gash_hop_templateObject11 || (gash_hop_templateObject11 = gash_hop_taggedTemplateLiteral(["Seal Clubber, Turtle Tamer"]))).includes(newClass) ? "electric muscle stimulator" : $classes(gash_hop_templateObject12 || (gash_hop_templateObject12 = gash_hop_taggedTemplateLiteral(["Disco Bandit, Accordion Thief"]))).includes(newClass) ? "bowl of potpourri" : "foreign language tapes",
       ceiling: "ceiling fan"
     }
   });
-  var pet = lib_have(template_string_$familiar(gash_hop_templateObject9 || (gash_hop_templateObject9 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject10 || (gash_hop_templateObject10 = gash_hop_taggedTemplateLiteral(["astral chapeau"]))) : template_string_$item(gash_hop_templateObject11 || (gash_hop_templateObject11 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
+  var pet = lib_have(template_string_$familiar(gash_hop_templateObject13 || (gash_hop_templateObject13 = gash_hop_taggedTemplateLiteral(["Baby Bugged Bugbear"])))) ? template_string_$item(gash_hop_templateObject14 || (gash_hop_templateObject14 = gash_hop_taggedTemplateLiteral(["astral chapeau"]))) : template_string_$item(gash_hop_templateObject15 || (gash_hop_templateObject15 = gash_hop_taggedTemplateLiteral(["astral pet sweater"])));
   var lifestyle = args.includes("softcore") ? Lifestyle.softcore : Lifestyle.hardcore;
-  ascend($path(gash_hop_templateObject12 || (gash_hop_templateObject12 = gash_hop_taggedTemplateLiteral(["Community Service"]))), newClass, lifestyle, "knoll", template_string_$item(gash_hop_templateObject13 || (gash_hop_templateObject13 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+
+  if (!lib_have(template_string_$item(gash_hop_templateObject16 || (gash_hop_templateObject16 = gash_hop_taggedTemplateLiteral(["homemade robot gear"])))) && lib_have(template_string_$familiar(gash_hop_templateObject17 || (gash_hop_templateObject17 = gash_hop_taggedTemplateLiteral(["Homemade Robot"]))))) {
+    (0,external_kolmafia_namespaceObject.useFamiliar)(template_string_$familiar(gash_hop_templateObject18 || (gash_hop_templateObject18 = gash_hop_taggedTemplateLiteral(["Homemade Robot"]))));
+    (0,external_kolmafia_namespaceObject.use)(template_string_$item(gash_hop_templateObject19 || (gash_hop_templateObject19 = gash_hop_taggedTemplateLiteral(["box of Familiar Jacks"]))));
+  }
+
+  ascend($path(gash_hop_templateObject20 || (gash_hop_templateObject20 = gash_hop_taggedTemplateLiteral(["Community Service"]))), newClass, lifestyle, "knoll", template_string_$item(gash_hop_templateObject21 || (gash_hop_templateObject21 = gash_hop_taggedTemplateLiteral(["astral six-pack"]))), pet);
+  (0,external_kolmafia_namespaceObject.use)(shed);
 }
 })();
 
