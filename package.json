@@ -1,53 +1,53 @@
 {
-  "name": "asmo-hccs",
-  "version": "0.1.0",
-  "description": "Running HCCS in Kingdom of Loathing",
-  "main": "KoLmafia/scripts/asmo-hccs/asmo-hccs.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:types && npm run build:js",
-    "build:types": "tsc",
-    "build:js": "webpack",
-    "lint": "eslint src && prettier --check .",
-    "watch": "webpack --watch --progress"
-  },
-  "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.15.0",
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
-    "@babel/preset-env": "^7.15.0",
-    "@babel/preset-typescript": "^7.15.0",
-    "@typescript-eslint/eslint-plugin": "^4.29.3",
-    "@typescript-eslint/parser": "^4.29.3",
-    "babel-loader": "^8.2.2",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-libram": "^0.2.21",
-    "prettier": "^2.7.1",
-    "typescript": "^4.4.2",
-    "webpack": "^5.51.1",
-    "webpack-cli": "^4.8.0"
-  },
-  "dependencies": {
-    "ansi-regex": "^6.0.1",
-    "core-js": "^3.16.4",
-    "kolmafia": "^5.26982.0",
-    "libram": "^0.7.5",
-    "minimist": "^1.2.6",
-    "set-value": "^4.0.1",
-    "terser": "^5.14.2"
-  },
-  "author": "Tokoeka",
-  "license": "ISC",
-  "repository": "git+https://github.com/Tokoeka/asmo_hccs.git",
-  "keywords": [
-    "KoLMafia",
-    "JS",
-    "TS"
-  ],
-  "bugs": {
-    "url": "https://github.com/docrostov/kol-js-starter/issues"
-  },
-  "homepage": "https://github.com/docrostov/kol-js-starter#readme"
+	"name": "asmo-hccs",
+	"version": "0.1.0",
+	"description": "Running HCCS in Kingdom of Loathing",
+	"main": "KoLmafia/scripts/asmo-hccs/asmo-hccs.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "npm run build:types && npm run build:js",
+		"build:types": "tsc",
+		"build:js": "webpack",
+		"lint": "eslint src && prettier --check .",
+		"watch": "webpack --watch --progress"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.14.8",
+		"@babel/core": "^7.15.0",
+		"@babel/plugin-proposal-class-properties": "^7.14.5",
+		"@babel/plugin-proposal-object-rest-spread": "^7.14.7",
+		"@babel/preset-env": "^7.15.0",
+		"@babel/preset-typescript": "^7.15.0",
+		"@typescript-eslint/eslint-plugin": "^4.29.3",
+		"@typescript-eslint/parser": "^4.29.3",
+		"babel-loader": "^8.2.2",
+		"eslint": "^9.9.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-libram": "^0.4.24",
+		"prettier": "^3.3.3",
+		"typescript": "^5.5.4",
+		"webpack": "^5.51.1",
+		"webpack-cli": "^4.8.0"
+	},
+	"dependencies": {
+		"ansi-regex": "^6.0.1",
+		"core-js": "^3.16.4",
+		"kolmafia": "^5.28067.0",
+		"libram": "^0.10.10",
+		"minimist": "^1.2.6",
+		"set-value": "^4.0.1",
+		"terser": "^5.14.2"
+	},
+	"author": "Tokoeka",
+	"license": "ISC",
+	"repository": "git+https://github.com/Tokoeka/asmo_hccs.git",
+	"keywords": [
+		"KoLMafia",
+		"JS",
+		"TS"
+	],
+	"bugs": {
+		"url": "https://github.com/docrostov/kol-js-starter/issues"
+	},
+	"homepage": "https://github.com/docrostov/kol-js-starter#readme"
 }
