@@ -4,10 +4,13 @@ import {
 	familiarWeight,
 	haveEffect,
 	haveEquipped,
+	haveFamiliar,
 	haveSkill,
 	inMoxieSign,
 	inMuscleSign,
 	inMysticalitySign,
+	isUnrestricted,
+	myAdventures,
 	myEffects,
 	myFamiliar,
 	myLevel,
@@ -15,12 +18,27 @@ import {
 	myThrall,
 	numericModifier,
 	print,
+	pvpAttacksLeft,
+	todayToString,
 	toEffect,
 	toInt,
 	weightAdjustment,
 } from "kolmafia";
-import { $effect, $familiar, $item, $skills, $slot, $slots, $thrall, get, have } from "libram";
+import {
+	$effect,
+	$familiar,
+	$item,
+	$skills,
+	$slot,
+	$slots,
+	$thrall,
+	get,
+	getRemainingLiver,
+	have,
+	haveInCampground,
+} from "libram";
 import { horsery } from "./asmohccs-lib";
+import { getCeiling } from "libram/dist/resources/2015/ChateauMantegna";
 
 const moonBonus = [
 	["weapon damage percent", "mongoose", "20"],
@@ -42,6 +60,24 @@ const thrallBonus = [
 	["meat drop", "lasagmbie", "1", `${20 + 2 * myThrall().level}`],
 	["spooky spell damage", "lasagmbie", "10", "10"],
 	["item drop", "spice ghost", "1", `${10 + myThrall().level}`],
+];
+
+const capeBonus = [
+	["hot resistance", "vampire", "hold", "3"],
+	["cold resistance", "vampire", "hold", "3"],
+	["spooky resistance", "vampire", "hold", "3"],
+	["sleaze resistance", "vampire", "hold", "3"],
+	["stench resistance", "vampire", "hold", "3"],
+	["muscle percent", "vampire", "all", "30"],
+	["maximum hp", "vampire", "all", "50"],
+	["muscle experience", "vampire", "thrill", "3"],
+	["mysticality percent", "heck", "all", "30"],
+	["maximum mp", "heck", "all", "50"],
+	["mysticality experience", "heck", "thrill", "3"],
+	["moxie percent", "robot", "all", "30"],
+	["maximum hp", "robot", "all", "25"],
+	["maximum mp", "robot", "all", "25"],
+	["moxie experience", "robot", "thrill", "3"],
 ];
 
 const umbrellaBonus = [
@@ -84,17 +120,47 @@ const boomboxBonus = [
 	["weapon damage", "These Fists Were Made for Punchin'", `${myLevel()}`],
 	["meat drop", "Total Eclipse of Your Meat", "30"],
 ];
-//TODO Add voting modifiers
+
+const furnitureBonus = [
+	["hot resistance", "bed of coals", "2"],
+	["spooky resistance", "comfy coffin", "2"],
+	["stench resistance", "filth-encrusted futon", "2"],
+	["cold resistance", "frigid air mattress", "2"],
+	["spooky resistance", "Lazybones™ recliner", "2"],
+	["sleaze resistance", "stained mattress", "2"],
+	["damage reduction", "sleeping stocking", "2"],
+	["adventures", "Meat Butler", "4"],
+	["adventures", "Meat maid", "4"],
+	["adventures", "clockwork maid", "8"],
+	["adventures", "cuckoo clock", "3"],
+	["adventures", "Crimbo candle", todayToString().slice(4, 6) === "12" ? "3" : "0"],
+	["pvp fights", "tin roof (rusted)", "5"],
+];
+
+const ceilingBonus = [
+	["adventures", "artificial skylight", "3"],
+	["pvp fights", "antler chandelier", "3"],
+	["free rests", "ceiling fan", "5"],
+];
+// TODO Add voting modifiers
+// TODO Add Florist Modifiers based on get("nextAdventure")?
 
 export function modTraceList(modifier: string): void {
 	let totalVal = 0;
 	print("");
 	print(`MOD TRACE: ${modifier}`, "red");
 
+	let offhandTotal = 0;
+	let offhandCount = 0;
 	let slotTotal = 0;
 	let slotCount = 0;
 	for (const slot of $slots``) {
 		const it = equippedItem(slot);
+		const doubled =
+			(slot === $slot`offhand` ||
+				(slot === $slot`familiar` && myFamiliar() === $familiar`Left-Hand Man`)) &&
+			haveEffect($effect`Offhand Remarkable`) &&
+			it !== $item`latte lovers member's mug`;
 		if (
 			numericModifier(it, modifier) !== 0 &&
 			((haveEquipped(it) &&
@@ -112,16 +178,34 @@ export function modTraceList(modifier: string): void {
 					slot.toString().includes("sticker")) ||
 				(haveEquipped($item`card sleeve`) && slot.toString().includes("card-sleeve")))
 		) {
-			slotTotal = slotTotal + numericModifier(it, modifier);
+			const itemTotal = numericModifier(it, modifier);
+			if (doubled) {
+				offhandTotal = offhandTotal + itemTotal;
+				offhandCount++;
+			}
+			slotTotal = slotTotal + itemTotal;
 			slotCount++;
-			print(`SLOT ${slot} ITEM ${it} : ${numericModifier(it, modifier)}`);
+			print(`SLOT ${slot} ITEM ${it} : ${itemTotal}`);
 		}
 	}
 	if (equippedItem($slot`back`) === $item`unwrapped knock-off retro superhero cape`) {
 		const capeForm = get(`retroCapeSuperhero`).toLowerCase();
 		const capeWash = get(`retroCapeWashingInstructions`).toLowerCase();
 		let retroBonus = 0;
-		if (capeForm === "vampire") {
+		for (const i in capeBonus) {
+			const line = capeBonus[i];
+			const mod = line[0];
+			const form = line[1];
+			const wash = line[2];
+			const bonus = parseInt(line[3]);
+
+			if (modifier === mod && form === capeForm && (wash === "any" || wash === capeWash)) {
+				slotTotal = slotTotal + bonus;
+				retroBonus++;
+				print(`RETROCAPE ${capeForm} ${capeWash} : ${bonus}`);
+			}
+		}
+		/* if (capeForm === "vampire") {
 			if (
 				[
 					"hot resistance",
@@ -164,8 +248,9 @@ export function modTraceList(modifier: string): void {
 				retroBonus = 1;
 				print(`RETROCAPE ${capeForm} ${capeWash} : ${25}`);
 			}
-		}
-		if (retroBonus === 1) {
+		} */
+
+		if (retroBonus > 0) {
 			slotCount++;
 		}
 	}
@@ -318,6 +403,75 @@ export function modTraceList(modifier: string): void {
 		}
 	}
 
+	var ceiling = getCeiling();
+
+	for (const i in ceilingBonus) {
+		const line = ceilingBonus[i];
+		const mod = line[0];
+		const ceilFurn = line[1];
+		const bonus = line[2];
+		if (
+			isUnrestricted($item`Chateau Mantegna room key`) &&
+			modifier === mod &&
+			ceiling === ceilFurn
+		) {
+			otherTotal = otherTotal + parseInt(bonus);
+			otherCount++;
+			print(`CHATEAU ${ceiling} : ${bonus}`);
+		}
+	}
+
+	for (const i in furnitureBonus) {
+		const line = furnitureBonus[i];
+		const mod = line[0];
+		const furniture = line[1];
+		const bonus = line[2];
+		if (modifier === mod && haveInCampground($item`${furniture}`)) {
+			otherTotal = otherTotal + parseInt(bonus);
+			otherCount++;
+			print(`CAMPGROUND ${furniture} : ${bonus}`);
+		}
+	}
+
+	if (modifier === "adventures") {
+		let rolloverTotal = myAdventures();
+		otherCount++;
+		print(`ADVENTURES: ${rolloverTotal}`);
+		print("ROLLOVER: 40");
+		rolloverTotal = rolloverTotal + 40;
+
+		if (get("_borrowedTimeUsed")) {
+			print("BORROWED TIME: -20");
+			rolloverTotal = rolloverTotal - 20;
+		}
+
+		var resAdv = get("_resolutionAdv");
+
+		if (resAdv > 0) {
+			rolloverTotal = rolloverTotal + resAdv;
+			print(`RESOLUTIONS: ${resAdv}`);
+		}
+
+		var circAdv = get("_circadianRhythmsAdventures");
+
+		if (circAdv > 0) {
+			rolloverTotal = rolloverTotal + circAdv;
+			print(`CIRCADIAN RYTHYMS: ${circAdv}`);
+		}
+
+		otherTotal = otherTotal + rolloverTotal;
+	}
+
+	if (modifier === "pvp fights") {
+		var rolloverTotal = pvpAttacksLeft();
+
+		otherCount++;
+		print(`PVP FIGHTS: ${rolloverTotal}`);
+		print("ROLLOVER: 10");
+		rolloverTotal = rolloverTotal + 10;
+		otherTotal = otherTotal + rolloverTotal;
+	}
+
 	if (otherCount > 0) {
 		print(`Misc. Bonuses Total: ${otherTotal}`, "blue");
 		print("");
@@ -332,8 +486,8 @@ export function modTraceList(modifier: string): void {
 			effectCount++;
 			print(
 				`EFFECT ${ef} : ${numericModifier(ef, modifier)} ${modifier} for ${haveEffect(
-					ef
-				)} more turns`
+					ef,
+				)} more turns`,
 			);
 		}
 	}
@@ -344,6 +498,23 @@ export function modTraceList(modifier: string): void {
 		effectTotal = effectTotal + fidoTotal;
 		effectCount++;
 		print(`EFFECT ${ef} : ${fidoTotal} familiar weight for ${haveEffect(ef)} more turns`);
+	}
+
+	if (modifier === "adventures" && haveEffect($effect`Straight-Edgy`)) {
+		var ef = $effect`Straight-Edgy`;
+
+		var seTotal = (getRemainingLiver() + 1) * 4.5;
+		effectTotal = effectTotal + seTotal;
+		effectCount++;
+		print(`EFFECT ${ef} : ${seTotal} adventures based on ${getRemainingLiver()} empty liver`);
+	}
+
+	if (offhandCount > 0) {
+		var ef = $effect`Offhand Remarkable`;
+
+		effectTotal = effectTotal + offhandTotal;
+		effectCount++;
+		print(`EFFECT ${ef} : ${offhandTotal} ${modifier} for ${haveEffect(ef)} more turns`);
 	}
 
 	const squint = $effect`Steely-Eyed Squint`;
@@ -378,7 +549,7 @@ export function modTraceList(modifier: string): void {
 		myFamiliar(),
 		modifier,
 		familiarWeight(myFamiliar()) + weightAdjustment(),
-		$item.none
+		$item.none,
 	);
 
 	if (famMod !== 0) {
@@ -393,6 +564,20 @@ export function modTraceList(modifier: string): void {
 			print(`FAMILIAR Comma Chameleon (Bonus) : 5`);
 		}
 	}
+	if (modifier === "adventures") {
+		if (haveFamiliar($familiar`Squamous Gibberer`) && get("_gibbererAdv") > 0) {
+			const gibAdv = get("_gibbererAdv");
+			famTotal = famTotal + gibAdv;
+			print(`FAMILIAR Squamous Gibberer: ${gibAdv}`);
+		}
+
+		if (haveFamiliar($familiar`Wild Hare`) && get("_hareAdv") > 0) {
+			const hareAdv = get("_hareAdv");
+			famTotal = famTotal + hareAdv;
+			print(`FAMILIAR Wild Hare: ${hareAdv}`);
+		}
+	}
+
 	if (famTotal !== 0) {
 		famTotal = Math.floor(famTotal);
 		print(`Familiar Total: ${famTotal}`, "blue");
@@ -403,6 +588,14 @@ export function modTraceList(modifier: string): void {
 
 	print(`Total ${modifier}: ${totalVal}`, "purple");
 	print("");
+
+	if (
+		(modifier === "adventures" && totalVal > 200) ||
+		(modifier === "pvp fights" && totalVal > 100)
+	) {
+		var cap = modifier === "adventures" ? 200 : 100;
+		print(`Losing ${totalVal - cap} ${modifier} due to rollover cap of ${cap}`, "red");
+	}
 }
 
 export function main(args = ""): void {
